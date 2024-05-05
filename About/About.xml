@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>LC Anomaly Library</name>
+	<author>DarthCY</author>
+	<supportedVersions>
+		<li>1.5</li>
+	</supportedVersions>
+	<description>Framework of DarthCY's Anomaly.</description>
+	<packageId>DarthCY.LC.AnomalyLibrary</packageId>
+
+</ModMetaData>
