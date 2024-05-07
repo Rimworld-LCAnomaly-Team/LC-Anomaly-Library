@@ -75,24 +75,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Building\Building_LC_ContainingUnit.cs" />
-    <Compile Include="Comp\CompProperties_LC_ContainingUnitTarget.cs" />
-    <Compile Include="Comp\CompProperties_LC_EntityContainer.cs" />
-    <Compile Include="Comp\CompProperties_LC_Studiable.cs" />
-    <Compile Include="Comp\Comp_LC_ContaingUnitTarget.cs" />
-    <Compile Include="Comp\Comp_LC_EntityContainer.cs" />
-    <Compile Include="Comp\Comp_LC_EntityContainerUnit.cs" />
-    <Compile Include="Comp\CompProperties_LC_EntityContainerUnit.cs" />
-    <Compile Include="Comp\Comp_LC_Studiable.cs" />
     <Compile Include="Defs\EntityKindDefOf.cs" />
-    <Compile Include="Job\JobDriver_LC_CarryToEntityContainer.cs" />
-    <Compile Include="Job\JobDriver_LC_TransferBetweenEntityContainers.cs" />
-    <Compile Include="Utility\LC_ContainmentUtility.cs" />
-    <Compile Include="Utility\LC_StudyUtility.cs" />
     <Compile Include="Patch\PatchMain.cs" />
     <Compile Include="Patch\Patch_CompHoldingPlatformTarget.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Work\WorkGiver_LC_TakeEntityToContainingUnit.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

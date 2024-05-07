@@ -1,25 +1,70 @@
 ﻿using HarmonyLib;
 using RimWorld;
-using System;
-using System.Collections.Generic;
 using Verse;
+using Verse.AI.Group;
 
 namespace LCAnomalyLibrary.Patch
 {
+
+    [HarmonyPatch(typeof(CompHoldingPlatformTarget), nameof(CompHoldingPlatformTarget.Notify_HeldOnPlatform))]
     public class Patch_CompHoldingPlatformTarget
     {
-
-        [HarmonyTranspiler]
-        [HarmonyPatch(typeof(CompHoldingPlatformTarget), "Notify_HeldOnPlatform", new Type[] { typeof(ThingOwner) })]
-        public static IEnumerable<CodeInstruction> SomePatch(IEnumerable<CodeInstruction> instructions)
+        static bool Prefix(ThingOwner newOwner, CompHoldingPlatformTarget __instance)
         {
+            __instance.targetHolder = null;
+            Pawn pawn = null;
+            if (__instance.parent is Pawn pawn2)
+            {
+                pawn2.mindState.lastAssignedInteractTime = Find.TickManager.TicksGame;
+                PawnComponentsUtility.AddAndRemoveDynamicComponents(pawn2);
+                pawn = pawn2;
+            }
 
-            return instructions;
+            if (newOwner != null)
+            {
+                if (__instance.Props.heldPawnKind != null)
+                {
+                    Pawn pawn3 = PawnGenerator.GeneratePawn(new PawnGenerationRequest(__instance.Props.heldPawnKind, Faction.OfEntities, PawnGenerationContext.NonPlayer, -1, forceGenerateNewPawn: true, allowDead: false, allowDowned: false, canGeneratePawnRelations: true, mustBeCapableOfViolence: false, 1f, forceAddFreeWarmLayerIfNeeded: false, allowGay: true, allowPregnant: false, allowFood: true, allowAddictions: true, inhabitant: false, certainlyBeenInCryptosleep: false, forceRedressWorldPawnIfFormerColonist: false, worldPawnFactionDoesntMatter: false, 0f, 0f, null, 1f, null, null, null, null, null, 0f));
+                    newOwner.TryAdd(pawn3);
+                    pawn3.TryGetComp<CompHoldingPlatformTarget>()?.Notify_HeldOnPlatform(newOwner);
+                    pawn = pawn3;
+                    if (__instance.Props.heldPawnKind == PawnKindDefOf.Revenant)
+                    {
+                        CompBiosignatureOwner compBiosignatureOwner = __instance.parent.TryGetComp<CompBiosignatureOwner>();
+                        if (compBiosignatureOwner != null)
+                        {
+                            pawn3.TryGetComp<CompRevenant>().biosignature = compBiosignatureOwner.biosignature;
+                        }
+
+                        if (pawn3.TryGetComp<CompStudiable>(out var comp))
+                        {
+                            comp.lastStudiedTick = Find.TickManager.TicksGame;
+                        }
+                    }
+
+                    Find.HiddenItemsManager.SetDiscovered(pawn3.def);
+                    __instance.parent.Destroy();
+                }
+
+                __instance.containmentMode = EntityContainmentMode.Study;
+            }
+
+            if (pawn != null && __instance.HeldPlatform != null)
+            {
+                pawn.GetLord()?.Notify_PawnLost(pawn, PawnLostCondition.MadePrisoner);
+                pawn.TryGetComp<CompActivity>()?.Notify_HeldOnPlatform();
+                Find.StudyManager.UpdateStudiableCache(__instance.HeldPlatform, __instance.HeldPlatform.Map);
+                PlayerKnowledgeDatabase.KnowledgeDemonstrated(ConceptDefOf.CapturingEntities, KnowledgeAmount.Total);
+                LessonAutoActivator.TeachOpportunity(ConceptDefOf.ContainingEntities, OpportunityType.Important);
+            }
 
 
+
+            Log.Warning("Patch_CompHoldingPlatformTarget 成功");
+
+            return false;
         }
+
     }
 
-
-    
 }
