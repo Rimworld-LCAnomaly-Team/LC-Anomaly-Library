@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using LCAnomalyLibrary.Comp;
 using RimWorld;
 using Verse;
 using Verse.AI.Group;
@@ -28,6 +29,8 @@ namespace LCAnomalyLibrary.Patch
                     newOwner.TryAdd(pawn3);
                     pawn3.TryGetComp<CompHoldingPlatformTarget>()?.Notify_HeldOnPlatform(newOwner);
                     pawn = pawn3;
+
+
                     if (__instance.Props.heldPawnKind == PawnKindDefOf.Revenant)
                     {
                         CompBiosignatureOwner compBiosignatureOwner = __instance.parent.TryGetComp<CompBiosignatureOwner>();
@@ -39,6 +42,29 @@ namespace LCAnomalyLibrary.Patch
                         if (pawn3.TryGetComp<CompStudiable>(out var comp))
                         {
                             comp.lastStudiedTick = Find.TickManager.TicksGame;
+                        }
+                    }
+                    //TODO 测试代码 充满冗余，需要正式分函数处理
+                    else
+                    {
+                        LC_CompEgg egg = __instance.parent.GetComp<LC_CompEgg>();
+                        if (egg != null)
+                        {
+                            if (egg.ShouldTransferBiosignature)
+                            {
+                                CompBiosignatureOwner compBiosignatureOwner = __instance.parent.TryGetComp<CompBiosignatureOwner>();
+                                if (compBiosignatureOwner != null)
+                                {
+                                    pawn3.TryGetComp<LC_CompEntity>().biosignature = compBiosignatureOwner.biosignature;
+                                    Log.Warning("Patch_CompHoldingPlatformTarget:::传递生物特征成功");
+                                }
+
+                                if (pawn3.TryGetComp<CompStudiable>(out var comp))
+                                {
+                                    comp.lastStudiedTick = Find.TickManager.TicksGame;
+                                }
+                            }
+
                         }
                     }
 
@@ -57,10 +83,6 @@ namespace LCAnomalyLibrary.Patch
                 PlayerKnowledgeDatabase.KnowledgeDemonstrated(ConceptDefOf.CapturingEntities, KnowledgeAmount.Total);
                 LessonAutoActivator.TeachOpportunity(ConceptDefOf.ContainingEntities, OpportunityType.Important);
             }
-
-
-
-            Log.Warning("Patch_CompHoldingPlatformTarget 成功");
 
             return false;
         }
