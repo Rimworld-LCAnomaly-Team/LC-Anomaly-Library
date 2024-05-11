@@ -4,7 +4,7 @@ using Verse;
 namespace LCAnomalyLibrary.Comp
 {
     /// <summary>
-    /// LC基础实体抽象类
+    /// LC基础实体抽象Comp
     /// </summary>
     public abstract class LC_CompEntity : ThingComp
     {
@@ -18,9 +18,14 @@ namespace LCAnomalyLibrary.Comp
         public int biosignature;
 
         /// <summary>
-        /// 是否在攻击时受伤
+        /// 在攻击时受伤
         /// </summary>
         public bool injuredWhileAttacking;
+
+        /// <summary>
+        /// XML输入：是否在逃脱收容后提醒
+        /// </summary>
+        public bool shoundNotifyWhenEscape = true;
 
         /// <summary>
         /// 生物特征名
@@ -38,8 +43,13 @@ namespace LCAnomalyLibrary.Comp
         protected Pawn SelfPawn => (Pawn)parent;
 
         /// <summary>
-        /// 是否被看到的操作
+        /// 被看到的操作
         /// </summary>
         protected abstract void CheckIfSeen();
+
+        /// <summary>
+        /// 逃脱收容后执行的操作执行的操作
+        /// </summary>
+        public abstract void Escape();
     }
 }

@@ -1,17 +1,22 @@
 ﻿using HarmonyLib;
 using LCAnomalyLibrary.Comp;
 using RimWorld;
+using System.Collections.Generic;
+using System.Linq;
 using Verse;
+using Verse.AI;
 using Verse.AI.Group;
 
 namespace LCAnomalyLibrary.Patch
 {
 
     [HarmonyPatch(typeof(CompHoldingPlatformTarget), nameof(CompHoldingPlatformTarget.Notify_HeldOnPlatform))]
-    public class Patch_CompHoldingPlatformTarget
+    public class Patch_CompHoldingPlatformTarget_Notify_HeldOnPlatform
     {
         static bool Prefix(ThingOwner newOwner, CompHoldingPlatformTarget __instance)
         {
+            //Log.Warning("Patch_CompHoldingPlatformTarget.Notify_HeldOnPlatform 注入成功");
+
             __instance.targetHolder = null;
             Pawn pawn = null;
             if (__instance.parent is Pawn pawn2)
@@ -84,6 +89,92 @@ namespace LCAnomalyLibrary.Patch
                 LessonAutoActivator.TeachOpportunity(ConceptDefOf.ContainingEntities, OpportunityType.Important);
             }
 
+            return false;
+        }
+
+    }
+
+    [HarmonyPatch(typeof(CompHoldingPlatformTarget), nameof(CompHoldingPlatformTarget.Escape))]
+    public class Patch_CompHoldingPlatformTarget_Escape
+    {
+        static bool Prefix(bool initiator, CompHoldingPlatformTarget __instance)
+        {
+            Log.Warning("Patch_CompHoldingPlatformTarget.Escape 注入成功");
+
+            List<Pawn> list = new List<Pawn>();
+            List<Building> list2 = new List<Building> { __instance.HeldPlatform };
+            __instance.HeldPlatform.EjectContents();
+            if (!(__instance.parent is Pawn pawn))
+            {
+                Log.Warning("return");
+                return false;
+            }
+
+            pawn.health.overrideDeathOnDownedChance = 0f;
+            list.Add(pawn);
+            __instance.isEscaping = true;
+            if (__instance.Props.lookForTargetOnEscape && !pawn.Downed)
+            {
+                Pawn enemyTarget = (Pawn)AttackTargetFinder.BestAttackTarget(pawn, TargetScanFlags.NeedThreat | TargetScanFlags.NeedAutoTargetable, (Thing x) => x is Pawn && (int)x.def.race.intelligence >= 1, 0f, 9999f, default(IntVec3), float.MaxValue, canBashDoors: true, canTakeTargetsCloserThanEffectiveMinRange: true, canBashFences: true);
+                pawn.mindState.enemyTarget = enemyTarget;
+            }
+
+            ThingComp compEntity = pawn.TryGetComp<CompRevenant>();
+            if(compEntity != null)
+            {
+                Log.Warning("Revenant escaped");
+                ((CompRevenant)compEntity).revenantState = RevenantState.Escape;
+                pawn.GetInvisibilityComp()?.BecomeVisible(instant: true);
+            }
+            else
+            {
+                compEntity = pawn.TryGetComp<LC_CompEntity>();
+                if(compEntity != null)
+                {
+                    Log.Warning("LC Entity escaped");
+                    ((LC_CompEntity)compEntity).Escape();
+                }
+            }
+
+            if (!initiator)
+            {
+                return false;
+            }
+
+            Room room = pawn.GetRoom();
+            if (room == null)
+            {
+                return false;
+            }
+
+            foreach (Building_HoldingPlatform item in room.ContainedAndAdjacentThings.Where((Thing x) => x is Building_HoldingPlatform).ToList())
+            {
+                Pawn heldPawn = item.HeldPawn;
+                if (heldPawn == null || heldPawn == pawn)
+                {
+                    continue;
+                }
+
+                CompHoldingPlatformTarget compHoldingPlatformTarget = heldPawn.TryGetComp<CompHoldingPlatformTarget>();
+                if (compHoldingPlatformTarget != null && compHoldingPlatformTarget.CurrentlyHeldOnPlatform)
+                {
+                    float num = ContainmentUtility.InitiateEscapeMtbDays(heldPawn);
+                    if (!(num <= 0f) && Rand.Chance(Util.Curves.JoinEscapeChanceFromEscapeIntervalCurve.Evaluate(num)))
+                    {
+                        list.Add(heldPawn);
+                        list2.Add(compHoldingPlatformTarget.HeldPlatform);
+                        compHoldingPlatformTarget.Escape(initiator: false);
+                    }
+                }
+            }
+
+            if(compEntity is LC_CompEntity)
+            {
+                if (!((LC_CompEntity)compEntity).shoundNotifyWhenEscape)
+                    return false;
+            }
+            Find.LetterStack.ReceiveLetter(LetterMaker.MakeLetter("LetterLabelEscapingFromHoldingPlatform".Translate(), "LetterEscapingFromHoldingPlatform".Translate(list.Select((Pawn p) => p.LabelCap).ToLineList("  - ")), LetterDefOf.ThreatBig, list2));
+            
             return false;
         }
 

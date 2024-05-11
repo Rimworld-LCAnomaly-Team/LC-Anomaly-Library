@@ -85,7 +85,9 @@
     <Compile Include="Misc\LC_FX_Escaping.cs" />
     <Compile Include="Patch\PatchMain.cs" />
     <Compile Include="Patch\Patch_CompHoldingPlatformTarget.cs" />
+    <Compile Include="Patch\Patch_InvisibilityUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\Curves.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

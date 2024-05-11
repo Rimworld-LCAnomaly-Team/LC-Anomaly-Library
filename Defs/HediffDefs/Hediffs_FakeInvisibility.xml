@@ -5,17 +5,15 @@
     <hediffClass>HediffWithComps</hediffClass>
     <defName>FakeInvisibility</defName>
     <label>伪黑暗灵能隐身</label>
-    <description>这是一个用于规避自动被索敌的假隐身效果，需要配合解除隐身的整压操作</description>
+    <description>这是一个用于规避自动被索敌的假隐身效果，需要配合解除隐身的镇压操作</description>
     <!-- 是否是负面状态 -->
     <isBad>false</isBad>
     <comps>
       <li Class="LCAnomalyLibrary.Comp.LC_HediffCompProperties_FakeInvisibility">
         <!-- 玩家是否能看到该隐形对象 -->
         <visibleToPlayer>true</visibleToPlayer>
-        <!-- 这是什么，倒计时？ -->
+        <!-- 隐身状态变化间隔 -->
         <fadeDurationTicks>60</fadeDurationTicks>
-        <!-- 这是什么，倒计时？ -->
-        <recoverFromDisruptedTicks>90</recoverFromDisruptedTicks>
       </li>
       <!-- 死后消失 -->
       <li Class="HediffCompProperties_DisappearsOnDeath" />
