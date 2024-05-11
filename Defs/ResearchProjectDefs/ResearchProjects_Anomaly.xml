@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <ResearchProjectDef>
+    <defName>ExtractEnkephalin</defName>
+    <label>Extract Enkephalin</label>
+    <description>Extract Enkephalin from Anomalies.</description>
+    <tab>LCAnomaly</tab>
+    <knowledgeCost>20</knowledgeCost>
+    <knowledgeCategory>Basic</knowledgeCategory>
+    <researchViewX>0.00</researchViewX>
+    <researchViewY>1.70</researchViewY>
+    <generalRules>
+      <rulesStrings>
+        <li>subject->ExtractEnkephalin</li>
+
+        <li>subject_story->empty</li>
+        <li>subject_story->empty</li>
+
+        <li>subject_gerund->Now Extracting Enkephalin</li>
+      </rulesStrings>
+    </generalRules>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>Enkephalin_ElectricGenerator</defName>
+    <label>ElectricGenerator of Enkephalin</label>
+    <description>ElectricGenerator of Enkephalin.</description>
+    <tab>LCAnomaly</tab>
+    <knowledgeCost>80</knowledgeCost>
+    <knowledgeCategory>Basic</knowledgeCategory>
+    <researchViewX>1.00</researchViewX>
+    <researchViewY>1.20</researchViewY>
+    <prerequisites>
+      <li>ExtractEnkephalin</li>
+    </prerequisites>
+    <generalRules>
+      <rulesStrings>
+        <li>subject->Enkephalin_ElectricGenerator</li>
+
+        <li>subject_story->empty</li>
+        <li>subject_story->empty</li>
+
+        <li>subject_gerund->Now building Enkephalin Electric Generator</li>
+      </rulesStrings>
+    </generalRules>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>Enkephalin_Drug</defName>
+    <label>Drug of Enkephalin</label>
+    <description>Drug of Enkephalin.</description>
+    <tab>LCAnomaly</tab>
+    <knowledgeCost>80</knowledgeCost>
+    <knowledgeCategory>Basic</knowledgeCategory>
+    <researchViewX>1.00</researchViewX>
+    <researchViewY>2.20</researchViewY>
+    <prerequisites>
+      <li>ExtractEnkephalin</li>
+    </prerequisites>
+    <generalRules>
+      <rulesStrings>
+        <li>subject->Enkephalin_Drug</li>
+
+        <li>subject_story->empty</li>
+        <li>subject_story->empty</li>
+
+        <li>subject_gerund->Now Enkephalin_Drug</li>
+      </rulesStrings>
+    </generalRules>
+  </ResearchProjectDef>
+
+</Defs>
