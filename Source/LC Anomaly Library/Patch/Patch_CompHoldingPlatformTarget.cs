@@ -99,7 +99,7 @@ namespace LCAnomalyLibrary.Patch
     {
         static bool Prefix(bool initiator, CompHoldingPlatformTarget __instance)
         {
-            Log.Warning("Patch_CompHoldingPlatformTarget.Escape 注入成功");
+            //Log.Warning("Patch_CompHoldingPlatformTarget.Escape 注入成功");
 
             List<Pawn> list = new List<Pawn>();
             List<Building> list2 = new List<Building> { __instance.HeldPlatform };

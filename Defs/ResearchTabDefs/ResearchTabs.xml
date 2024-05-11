@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ResearchTabDef>
+    <defName>LCAnomaly</defName>
+    <label>脑叶公司-异想体科技</label>
+    <generalTitle>异想体研究项目</generalTitle>
+    <generalDescription>这是一个占位符</generalDescription>
+    <visibleByDefault>true</visibleByDefault>
+    <minMonolithLevelVisible>1</minMonolithLevelVisible>
+    <tutorTag>Research-Tab-LCAnomaly</tutorTag>
+  </ResearchTabDef>
+
+</Defs>

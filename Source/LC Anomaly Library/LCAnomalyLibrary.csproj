@@ -81,6 +81,8 @@
     <Compile Include="Comp\LC_CompSpawns.cs" />
     <Compile Include="Comp\LC_HediffCompProperties_FakeInvisibility.cs" />
     <Compile Include="Defs\EntityKindDefOf.cs" />
+    <Compile Include="Defs\PsychicRitualRoleDefOf.cs" />
+    <Compile Include="Defs\ResearchTabDefOf.cs" />
     <Compile Include="Misc\LC_FX_Dying.cs" />
     <Compile Include="Misc\LC_FX_Escaping.cs" />
     <Compile Include="Patch\PatchMain.cs" />

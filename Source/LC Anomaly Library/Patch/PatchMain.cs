@@ -14,6 +14,8 @@ namespace LCAnomalyLibrary.Patch
             instance = new Harmony("LCAnomalyLibiary.Patch");
             //对所有特性标签的方法进行patch
             instance.PatchAll(Assembly.GetExecutingAssembly());
+
+            Log.Message("LCAnomalyLibrary Patched");
         }
     }
 }
