@@ -61,7 +61,7 @@ namespace LCAnomalyLibrary.Patch
                                 if (compBiosignatureOwner != null)
                                 {
                                     pawn3.TryGetComp<LC_CompEntity>().biosignature = compBiosignatureOwner.biosignature;
-                                    Log.Warning("Patch_CompHoldingPlatformTarget:::传递生物特征成功");
+                                    //Log.Warning("Patch_CompHoldingPlatformTarget:::传递生物特征成功");
                                 }
 
                                 if (pawn3.TryGetComp<CompStudiable>(out var comp))
@@ -69,11 +69,16 @@ namespace LCAnomalyLibrary.Patch
                                     comp.lastStudiedTick = Find.TickManager.TicksGame;
                                 }
                             }
-
                         }
                     }
 
-                    Find.HiddenItemsManager.SetDiscovered(pawn3.def);
+                    //调用独有的绑上平台的回调方法
+                    LC_CompEntity tmpComp = pawn3.TryGetComp<LC_CompEntity>();
+                    if (tmpComp != null)
+                        tmpComp.AfterHoldToPlatform();
+                    else
+                        Find.HiddenItemsManager.SetDiscovered(pawn3.def);
+
                     __instance.parent.Destroy();
                 }
 
@@ -131,7 +136,7 @@ namespace LCAnomalyLibrary.Patch
                 compEntity = pawn.TryGetComp<LC_CompEntity>();
                 if(compEntity != null)
                 {
-                    Log.Warning("LC Entity escaped");
+                    //Log.Warning("LC Entity escaped");
                     ((LC_CompEntity)compEntity).Escape();
                 }
             }

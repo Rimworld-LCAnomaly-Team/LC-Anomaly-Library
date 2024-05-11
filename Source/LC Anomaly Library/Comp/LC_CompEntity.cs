@@ -51,5 +51,10 @@ namespace LCAnomalyLibrary.Comp
         /// 逃脱收容后执行的操作执行的操作
         /// </summary>
         public abstract void Escape();
+
+        /// <summary>
+        /// 绑到收容平台上的操作
+        /// </summary>
+        public abstract void AfterHoldToPlatform();
     }
 }
