@@ -9,7 +9,6 @@ using Verse.AI.Group;
 
 namespace LCAnomalyLibrary.Patch
 {
-
     [HarmonyPatch(typeof(CompHoldingPlatformTarget), nameof(CompHoldingPlatformTarget.Notify_HeldOnPlatform))]
     public class Patch_CompHoldingPlatformTarget_Notify_HeldOnPlatform
     {
@@ -184,5 +183,4 @@ namespace LCAnomalyLibrary.Patch
         }
 
     }
-
 }
