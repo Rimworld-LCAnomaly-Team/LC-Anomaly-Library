@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <HediffDef Name="LC_Anomaly_AccessoryBase" Abstract="True">
+    <hediffClass>HediffWithComps</hediffClass>
+    <isBad>false</isBad>
+  </HediffDef>
+
+  <HediffDef ParentName="LC_Anomaly_AccessoryBase" Name="LC_Anomaly_AccessoryBase_Mouth" Abstract="True">
+    <tags>
+			<li>LC_Accessory_Mouth</li>
+		</tags>
+  </HediffDef>
+  
+</Defs>

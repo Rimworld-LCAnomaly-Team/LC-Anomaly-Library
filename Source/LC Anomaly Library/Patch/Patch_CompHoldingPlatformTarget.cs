@@ -174,7 +174,7 @@ namespace LCAnomalyLibrary.Patch
 
             if(compEntity is LC_CompEntity)
             {
-                if (!((LC_CompEntity)compEntity).shoundNotifyWhenEscape)
+                if (!((LC_CompEntity)compEntity).ShoundNotifyWhenEscape)
                     return false;
             }
             Find.LetterStack.ReceiveLetter(LetterMaker.MakeLetter("LetterLabelEscapingFromHoldingPlatform".Translate(), "LetterEscapingFromHoldingPlatform".Translate(list.Select((Pawn p) => p.LabelCap).ToLineList("  - ")), LetterDefOf.ThreatBig, list2));

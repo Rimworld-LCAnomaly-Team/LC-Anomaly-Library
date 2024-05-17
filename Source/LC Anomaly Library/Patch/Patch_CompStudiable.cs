@@ -14,7 +14,7 @@ namespace LCAnomalyLibrary.Patch
             LC_CompEntity entity = __instance.Pawn.TryGetComp<LC_CompEntity>();
 
             if(entity != null)
-                entity.AfterStudy();
+                entity.AfterStudy(studier);
         }
     }
 }

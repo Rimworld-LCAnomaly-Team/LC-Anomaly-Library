@@ -1,4 +1,5 @@
 ﻿using RimWorld;
+using System;
 using Verse;
 
 namespace LCAnomalyLibrary.Comp
@@ -8,6 +9,8 @@ namespace LCAnomalyLibrary.Comp
     /// </summary>
     public abstract class LC_CompEntity : ThingComp
     {
+        public LC_CompProperties_Entity Props => (LC_CompProperties_Entity)props;
+
         public const int LongerTracksUnlockIndex = 1;
 
         public bool everRevealed;
@@ -23,9 +26,14 @@ namespace LCAnomalyLibrary.Comp
         public bool injuredWhileAttacking;
 
         /// <summary>
+        /// XML输入：工作时获得饰品的概率
+        /// </summary>
+        public float AccessoryChance => Props.accessoryChance;
+
+        /// <summary>
         /// XML输入：是否在逃脱收容后提醒
         /// </summary>
-        public bool shoundNotifyWhenEscape = true;
+        public bool ShoundNotifyWhenEscape => Props.shoundNotifyWhenEscape;
 
         /// <summary>
         /// 生物特征名
@@ -55,11 +63,21 @@ namespace LCAnomalyLibrary.Comp
         /// <summary>
         /// 被研究后执行的操作
         /// </summary>
-        public abstract void AfterStudy();
+        public abstract void AfterStudy(Pawn studier);
 
         /// <summary>
         /// 绑到收容平台上的操作
         /// </summary>
         public abstract void AfterHoldToPlatform();
+
+
+        /// <summary>
+        /// 检查饰品是否冲突的方法
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        public virtual bool CheckIfAccessoryConflict(Pawn studier)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
