@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  
+  <ThingDef Name="PeBoxBase" ParentName="ResourceBase" Abstract="True">
+    <thingClass>ThingWithComps</thingClass>
+    <graphicData>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <tickerType>Rare</tickerType>
+    <stackLimit>999</stackLimit>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <genericMarketSellable>false</genericMarketSellable>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <MarketValue>0</MarketValue>
+      <Mass>0.5</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <thingCategories>
+      <li>ItemsMisc</li>
+    </thingCategories>
+  </ThingDef>
+
+  <ThingDef ParentName="PeBoxBase">
+    <defName>PeBoxZAYIN</defName>
+    <label>PeBoxZAYIN</label>
+    <description>PeBoxZAYIN</description>
+    <thingClass>ThingWithComps</thingClass>
+    <graphicData>
+      <texPath>Things/Item/PeBox/PeBox_ZAYIN</texPath>
+    </graphicData>
+    <descriptionHyperlinks></descriptionHyperlinks>
+    <comps></comps>
+  </ThingDef>
+
+  <ThingDef ParentName="PeBoxBase">
+    <defName>PeBoxTETH</defName>
+    <label>PeBoxTETH</label>
+    <description>PeBoxTETH</description>
+    <thingClass>ThingWithComps</thingClass>
+    <graphicData>
+      <texPath>Things/Item/PeBox/PeBox_TETH</texPath>
+    </graphicData>
+    <descriptionHyperlinks></descriptionHyperlinks>
+    <comps></comps>
+  </ThingDef>
+
+  <ThingDef ParentName="PeBoxBase">
+    <defName>PeBoxHE</defName>
+    <label>PeBoxHE</label>
+    <description>PeBoxHE</description>
+    <thingClass>ThingWithComps</thingClass>
+    <graphicData>
+      <texPath>Things/Item/PeBox/PeBox_HE</texPath>
+    </graphicData>
+    <descriptionHyperlinks></descriptionHyperlinks>
+    <comps></comps>
+  </ThingDef>
+
+  <ThingDef ParentName="PeBoxBase">
+    <defName>PeBoxWAW</defName>
+    <label>PeBoxWAW</label>
+    <description>PeBoxWAW</description>
+    <thingClass>ThingWithComps</thingClass>
+    <graphicData>
+      <texPath>Things/Item/PeBox/PeBox_WAW</texPath>
+    </graphicData>
+    <descriptionHyperlinks></descriptionHyperlinks>
+    <comps></comps>
+  </ThingDef>
+
+  <ThingDef ParentName="PeBoxBase">
+    <defName>PeBoxALEPH</defName>
+    <label>PeBoxALEPH</label>
+    <description>PeBoxALEPH</description>
+    <thingClass>ThingWithComps</thingClass>
+    <graphicData>
+      <texPath>Things/Item/PeBox/PeBox_ALEPH</texPath>
+    </graphicData>
+    <descriptionHyperlinks></descriptionHyperlinks>
+    <comps></comps>
+  </ThingDef>
+
+</Defs>

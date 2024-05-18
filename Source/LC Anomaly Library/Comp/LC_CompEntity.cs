@@ -60,21 +60,6 @@ namespace LCAnomalyLibrary.Comp
         private int qliphothCountCurrent;
 
         /// <summary>
-        /// XML输入：基础研究成功率
-        /// </summary>
-        public float StudySucessRateBase => Props.studySucessRateBase;
-
-        /// <summary>
-        /// XML输入：工作时获得饰品的概率
-        /// </summary>
-        public float AccessoryChance => Props.accessoryChance;
-
-        /// <summary>
-        /// XML输入：是否在逃脱收容后提醒
-        /// </summary>
-        public bool ShoundNotifyWhenEscape => Props.shoundNotifyWhenEscape;
-
-        /// <summary>
         /// 生物特征名
         /// </summary>
         protected string biosignatureName;

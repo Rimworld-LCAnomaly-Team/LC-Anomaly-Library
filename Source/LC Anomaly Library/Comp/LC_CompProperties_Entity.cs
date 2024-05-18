@@ -6,6 +6,11 @@ namespace LCAnomalyLibrary.Comp
     {
         public int qliphothCountMax;
         public float studySucessRateBase;
+
+        public ThingDef peBoxDef;
+        public int amountPeBoxStudySuccess;
+        public int amountPeBoxStudyFail;
+
         public float accessoryChance;
         public bool shoundNotifyWhenEscape;
 

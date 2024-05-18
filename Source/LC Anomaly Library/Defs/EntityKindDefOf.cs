@@ -4,13 +4,6 @@ using Verse;
 namespace LCAnomalyLibrary.Defs
 {
     [DefOf]
-    public static class ThingDefOf
-    {
-        //[MayRequireAnomaly]
-        //public static ThingDef LC_ContaningUnit;
-    }
-
-    [DefOf]
     public static class DamageDefOf
     {
         public static DamageDef LC_Entity_RED;
