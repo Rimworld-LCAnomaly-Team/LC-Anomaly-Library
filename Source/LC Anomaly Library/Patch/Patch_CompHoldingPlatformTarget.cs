@@ -3,6 +3,7 @@ using LCAnomalyLibrary.Comp;
 using RimWorld;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using Verse;
 using Verse.AI;
 using Verse.AI.Group;
@@ -182,5 +183,38 @@ namespace LCAnomalyLibrary.Patch
             return false;
         }
 
+    }
+
+    [HarmonyPatch(typeof(CompHoldingPlatformTarget), "CaptivityTick")]
+    public class Patch_CompHoldingPlatformTarget_CaptivityTick()
+    {
+        static bool Prefix(Pawn pawn, CompHoldingPlatformTarget __instance)
+        {
+            pawn.mindState.entityTicksInCaptivity++;
+            if (__instance.targetHolder is Building_HoldingPlatform building_HoldingPlatform && building_HoldingPlatform != __instance.HeldPlatform && building_HoldingPlatform.Occupied)
+            {
+                __instance.targetHolder = null;
+            }
+
+            if (__instance.parent.IsHashIntervalTick(2500))
+            {
+                float num = ContainmentUtility.InitiateEscapeMtbDays(pawn);
+                if (num >= 0f && Rand.MTBEventOccurs(num, 60000f, 2500f))
+                {
+                    LC_CompEntity compEntity = pawn.TryGetComp<LC_CompEntity>();
+                    if (compEntity != null)
+                    {
+                        Log.Warning("检测到一次实体随机出逃，因为是LC实体所以没有执行");
+                        return false;
+                    }
+                    else
+                    {
+                        __instance.Escape(initiator: true);
+                    }
+                }
+            }
+
+            return false;
+        }
     }
 }

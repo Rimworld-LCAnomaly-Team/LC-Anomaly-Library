@@ -15,6 +15,8 @@ namespace LCAnomalyLibrary.Patch
 
             if(entity != null)
                 entity.AfterStudy(studier);
+
+            Log.Message($"studyPoints = {__instance.studyPoints}, studyAmount = {studyAmount}");
         }
     }
 }

@@ -29,5 +29,6 @@
 	</loadAfter>
 	<incompatibleWith>
     	<li>SYSMY.LCEM</li>
+		<li>DarthCY.Misc.ENER</li>
  	</incompatibleWith>
 </ModMetaData>

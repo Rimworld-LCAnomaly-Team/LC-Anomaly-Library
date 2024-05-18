@@ -26,6 +26,45 @@ namespace LCAnomalyLibrary.Comp
         public bool injuredWhileAttacking;
 
         /// <summary>
+        /// XML输入：逆卡巴拉计数器最大值
+        /// </summary>
+        public int QliphothCountMax => Props.qliphothCountMax;
+
+        /// <summary>
+        /// 逆卡巴拉计数器当前值
+        /// </summary>
+        public int QliphothCountCurrent
+        {
+            get => qliphothCountCurrent;
+            set
+            {
+                if (value > QliphothCountMax)
+                {
+                    qliphothCountCurrent = QliphothCountMax;
+                }
+                else if(value <= 0)
+                {
+                    qliphothCountCurrent = 0;
+                    QliphothMeltdown();
+                }
+                else
+                {
+                    qliphothCountCurrent = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 逆卡巴拉计数器当前值
+        /// </summary>
+        private int qliphothCountCurrent;
+
+        /// <summary>
+        /// XML输入：基础研究成功率
+        /// </summary>
+        public float StudySucessRateBase => Props.studySucessRateBase;
+
+        /// <summary>
         /// XML输入：工作时获得饰品的概率
         /// </summary>
         public float AccessoryChance => Props.accessoryChance;
@@ -70,14 +109,33 @@ namespace LCAnomalyLibrary.Comp
         /// </summary>
         public abstract void AfterHoldToPlatform();
 
+        public override void PostExposeData()
+        {
+            Scribe_Values.Look(ref everRevealed, "everRevealed", defaultValue: false);
+            Scribe_Values.Look(ref biosignature, "biosignature", 0);
+            Scribe_Values.Look(ref injuredWhileAttacking, "injuredWhileAttacking", defaultValue: false);
+            Scribe_Values.Look(ref qliphothCountCurrent, "qliphothCountCurrent", defaultValue: QliphothCountMax);
+        }
 
         /// <summary>
         /// 检查饰品是否冲突的方法
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
-        public virtual bool CheckIfAccessoryConflict(Pawn studier)
+        public abstract bool CheckIfAccessoryConflict(Pawn studier);
+
+        protected abstract bool CheckIfStudySuccess(Pawn studier);
+
+        protected abstract bool CheckIfFinalStudySuccess(Pawn studier);
+
+        protected abstract void StudyEvent_Failure(Pawn studier);
+
+        protected abstract void StudyEvent_Success(Pawn studier);
+
+        protected abstract void QliphothMeltdown();
+
+        public virtual void ForceQliphothMeltdown()
         {
-            throw new NotImplementedException();
+            QliphothCountCurrent = 0;
         }
     }
 }
