@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
 
-  <ThingDef Name="LC_ContaingUnitBase" ParentName="FurnitureBase" Abstract="True">
-    <thingClass>LCAnomalyLibrary.Building.Building_LC_ContainingUnit</thingClass>
+  <ThingDef Name="LC_HoldingPlatformBase" ParentName="FurnitureBase" Abstract="True">
+    <thingClass>Building_HoldingPlatform</thingClass>
     <containedPawnsSelectable>true</containedPawnsSelectable>
     <passability>PassThroughOnly</passability>
     <rotatable>false</rotatable>
@@ -16,12 +16,12 @@
     <size>(3, 3)</size>
     <defaultPlacingRot>North</defaultPlacingRot>
     <minMonolithLevel>1</minMonolithLevel>
-    <descriptionHyperlinks>
+    <!-- <descriptionHyperlinks>
       <ThingDef>Electroharvester</ThingDef>
       <ThingDef>ElectricInhibitor</ThingDef>
       <ThingDef>ShardInhibitor</ThingDef>
       <ThingDef>BioferriteHarvester</ThingDef>
-    </descriptionHyperlinks>
+    </descriptionHyperlinks> -->
     <thingCategories Inherit="False">
       <li>BuildingsMisc</li>
     </thingCategories>
@@ -40,10 +40,10 @@
     <comps>
       <li Class="CompProperties_AffectedByFacilities">
         <linkableFacilities>
-          <li>Electroharvester</li>
+          <!-- <li>Electroharvester</li>
           <li>ElectricInhibitor</li>
           <li>ShardInhibitor</li>
-          <li>BioferriteHarvester</li>
+          <li>BioferriteHarvester</li> -->
         </linkableFacilities>
       </li>
       <li Class="CompProperties_MeditationFocus">
@@ -98,13 +98,13 @@
       </li>
     </comps>
   </ThingDef>
-  
-  <ThingDef ParentName="LC_ContaingUnitBase">
-    <defName>LC_ContaningUnit</defName>
-    <label>Contaning Unit</label>
-    <description>Containg Unit.</description>
+
+  <ThingDef ParentName="LC_HoldingPlatformBase">
+    <defName>LC_HoldingPlatform</defName>
+    <label>lc holding platform</label>
+    <description>A platform for holding dangerous entities. The corners have eyelets where strong chains can be attached.\n\nDowned entities can be captured and secured on a holding platform, where they can be studied for Anomaly knowledge. Increase containment strength by building strong walls and doors, and other special containment devices.</description>
     <graphicData>
-      <texPath>Things/Building/LC_ContaingUnit/LC_ContaingUnit</texPath>
+      <texPath>Things/Building/LC_HoldingPlatform/HoldingPlatform</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(3, 3)</drawSize>
     </graphicData>
@@ -121,11 +121,11 @@
       <Steel>40</Steel>
     </costList>
     <comps>
-      <li Class="LCAnomalyLibrary.Comp.CompProperties_LC_EntityContainerUnit">
-        <untetheredGraphicTexPath>Things/Building/LC_ContaingUnit/HoldingPlatform_ChainsUntethered</untetheredGraphicTexPath>
-        <tilingChainTexPath>Things/Building/LC_ContaingUnit/HoldingPlatform_EntityChain_StrongOutline</tilingChainTexPath>
-        <baseChainFastenerTexPath>Things/Building/LC_ContaingUnit/HoldingPlatform_ChainFastener</baseChainFastenerTexPath>
-        <targetChainFastenerTexPath>Things/Building/LC_ContaingUnit/HoldingPlatform_ChainFastener_StrongOutline</targetChainFastenerTexPath>
+      <li Class="CompProperties_EntityHolderPlatform">
+        <untetheredGraphicTexPath>Things/Building/LC_HoldingPlatform/HoldingPlatform_ChainsUntethered</untetheredGraphicTexPath>
+        <tilingChainTexPath>Things/Building/LC_HoldingPlatform/HoldingPlatform_EntityChain_StrongOutline</tilingChainTexPath>
+        <baseChainFastenerTexPath>Things/Building/LC_HoldingPlatform/HoldingPlatform_ChainFastener</baseChainFastenerTexPath>
+        <targetChainFastenerTexPath>Things/Building/LC_HoldingPlatform/HoldingPlatform_ChainFastener_StrongOutline</targetChainFastenerTexPath>
         <entityLungeSoundHi>EntityChainHigh</entityLungeSoundHi>
         <entityLungeSoundLow>EntityChainLow</entityLungeSoundLow>
       </li>

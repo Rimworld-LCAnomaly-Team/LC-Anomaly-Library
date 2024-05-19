@@ -1,24 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-  
+
   <ThingDef Name="PeBoxBase" ParentName="ResourceBase" Abstract="True">
-    <thingClass>ThingWithComps</thingClass>
     <graphicData>
-      <graphicClass>Graphic_Single</graphicClass>
+      <graphicClass>Graphic_StackCount</graphicClass>
     </graphicData>
-    <tickerType>Rare</tickerType>
     <stackLimit>999</stackLimit>
-    <healthAffectsPrice>false</healthAffectsPrice>
     <genericMarketSellable>false</genericMarketSellable>
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Metal_Drop</soundDrop>
+    <useHitPoints>false</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
     <statBases>
-      <MaxHitPoints>100</MaxHitPoints>
       <MarketValue>0</MarketValue>
-      <Mass>0.5</Mass>
-      <Flammability>0</Flammability>
+      <Mass>0.25</Mass>
     </statBases>
     <thingCategories>
-      <li>ItemsMisc</li>
+      <li>ResourcesRaw</li>
     </thingCategories>
+    <burnableByRecipe>false</burnableByRecipe>
+    <smeltable>false</smeltable>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
   </ThingDef>
 
   <ThingDef ParentName="PeBoxBase">
@@ -27,7 +29,7 @@
     <description>PeBoxZAYIN</description>
     <thingClass>ThingWithComps</thingClass>
     <graphicData>
-      <texPath>Things/Item/PeBox/PeBox_ZAYIN</texPath>
+      <texPath>Things/Item/Resource/PeBox/PeBoxZAYIN</texPath>
     </graphicData>
     <descriptionHyperlinks></descriptionHyperlinks>
     <comps></comps>
@@ -39,7 +41,7 @@
     <description>PeBoxTETH</description>
     <thingClass>ThingWithComps</thingClass>
     <graphicData>
-      <texPath>Things/Item/PeBox/PeBox_TETH</texPath>
+      <texPath>Things/Item/Resource/PeBox/PeBoxTETH</texPath>
     </graphicData>
     <descriptionHyperlinks></descriptionHyperlinks>
     <comps></comps>
@@ -51,7 +53,7 @@
     <description>PeBoxHE</description>
     <thingClass>ThingWithComps</thingClass>
     <graphicData>
-      <texPath>Things/Item/PeBox/PeBox_HE</texPath>
+      <texPath>Things/Item/Resource/PeBox/PeBoxHE</texPath>
     </graphicData>
     <descriptionHyperlinks></descriptionHyperlinks>
     <comps></comps>
@@ -63,7 +65,7 @@
     <description>PeBoxWAW</description>
     <thingClass>ThingWithComps</thingClass>
     <graphicData>
-      <texPath>Things/Item/PeBox/PeBox_WAW</texPath>
+      <texPath>Things/Item/Resource/PeBox/PeBoxWAW</texPath>
     </graphicData>
     <descriptionHyperlinks></descriptionHyperlinks>
     <comps></comps>
@@ -75,7 +77,19 @@
     <description>PeBoxALEPH</description>
     <thingClass>ThingWithComps</thingClass>
     <graphicData>
-      <texPath>Things/Item/PeBox/PeBox_ALEPH</texPath>
+      <texPath>Things/Item/Resource/PeBox/PeBoxALEPH</texPath>
+    </graphicData>
+    <descriptionHyperlinks></descriptionHyperlinks>
+    <comps></comps>
+  </ThingDef>
+
+  <ThingDef ParentName="PeBoxBase">
+    <defName>EnkephalinBox</defName>
+    <label>EnkephalinBox</label>
+    <description>EnkephalinBox</description>
+    <thingClass>ThingWithComps</thingClass>
+    <graphicData>
+      <texPath>Things/Item/Resource/PeBox/EnkephalinBox</texPath>
     </graphicData>
     <descriptionHyperlinks></descriptionHyperlinks>
     <comps></comps>

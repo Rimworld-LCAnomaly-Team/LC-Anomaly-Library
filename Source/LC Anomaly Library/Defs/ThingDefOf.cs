@@ -1,4 +1,5 @@
 ﻿using RimWorld;
+using Verse;
 
 namespace LCAnomalyLibrary.Defs
 {
@@ -6,18 +7,24 @@ namespace LCAnomalyLibrary.Defs
     public static class ThingDefOf
     {
         [MayRequireAnomaly]
-        public static Verse.ThingDef PeBoxZAYIN;
+        public static ThingDef PeBoxZAYIN;
 
         [MayRequireAnomaly]
-        public static Verse.ThingDef PeBoxTETH;
+        public static ThingDef PeBoxTETH;
 
         [MayRequireAnomaly]
-        public static Verse.ThingDef PeBoxHE;
+        public static ThingDef PeBoxHE;
 
         [MayRequireAnomaly]
-        public static Verse.ThingDef PeBoxWAW;
+        public static ThingDef PeBoxWAW;
 
         [MayRequireAnomaly]
-        public static Verse.ThingDef PeBoxALEPH;
+        public static ThingDef PeBoxALEPH;
+
+        [MayRequireAnomaly]
+        public static ThingDef EnkephalinBox;
+
+        [MayRequireAnomaly]
+        public static ThingDef Enkephalin;
     }
 }

@@ -3,7 +3,6 @@ using LCAnomalyLibrary.Comp;
 using RimWorld;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using Verse;
 using Verse.AI;
 using Verse.AI.Group;
@@ -107,7 +106,7 @@ namespace LCAnomalyLibrary.Patch
             //Log.Warning("Patch_CompHoldingPlatformTarget.Escape 注入成功");
 
             List<Pawn> list = new List<Pawn>();
-            List<Building> list2 = new List<Building> { __instance.HeldPlatform };
+            List<Verse.Building> list2 = new List<Verse.Building> { __instance.HeldPlatform };
             __instance.HeldPlatform.EjectContents();
             if (!(__instance.parent is Pawn pawn))
             {

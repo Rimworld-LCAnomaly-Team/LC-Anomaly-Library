@@ -75,6 +75,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Building\Building_EnkephalinGenerator.cs" />
     <Compile Include="Comp\LC_CompEgg.cs" />
     <Compile Include="Comp\LC_CompEntity.cs" />
     <Compile Include="Comp\LC_CompProperties_Entity.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="Defs\PsychicRitualRoleDefOf.cs" />
     <Compile Include="Defs\ResearchTabDefOf.cs" />
     <Compile Include="Defs\ThingDefOf.cs" />
+    <Compile Include="Defs\ThoughtDefOf.cs" />
     <Compile Include="Misc\LC_FX_Dying.cs" />
     <Compile Include="Misc\LC_FX_Escaping.cs" />
     <Compile Include="Patch\PatchMain.cs" />
