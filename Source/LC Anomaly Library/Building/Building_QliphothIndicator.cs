@@ -32,11 +32,28 @@ namespace LCAnomalyLibrary.Building
             }
         }
 
+        [Unsaved(false)]
+        protected List<Graphic> cachedTopGraphic;
+        private List<Graphic> TopGraphic
+        {
+            get
+            {
+                if (this.cachedTopGraphic == null)
+                {
+                    cachedTopGraphic = new List<Graphic>();
+                    for (int i = 0; i < 6; i++)
+                    {
+                        Log.Warning("Things/Building/QliphothIndicator/Top" + i);
+                        cachedTopGraphic.Add(GraphicDatabase.Get<Graphic_Single>("Things/Building/QliphothIndicator/Top" + i, ShaderDatabase.Transparent, this.def.graphicData.drawSize, Color.white));
+                    }
+                }
+                return this.cachedTopGraphic;
+            }
+        }
+
         private CompFacility facilityComp;
 
         private CompPowerTrader powerComp;
-
-        private CompCableConnection cableConnection;
 
         public CompFacility FacilityComp => facilityComp ?? (facilityComp = GetComp<CompFacility>());
 
@@ -44,7 +61,6 @@ namespace LCAnomalyLibrary.Building
 
         public List<Thing> Platforms => FacilityComp.LinkedBuildings;
 
-        public CompCableConnection CableConnection => cableConnection ?? (cableConnection = GetComp<CompCableConnection>());
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
@@ -58,8 +74,7 @@ namespace LCAnomalyLibrary.Building
         public override void DeSpawn(DestroyMode mode = DestroyMode.Vanish)
         {
             base.DeSpawn(mode);
-            FacilityComp.OnLinkAdded -= OnLinkAdded;
-            FacilityComp.OnLinkRemoved -= OnLinkRemoved;
+
             initalized = false;
         }
 
@@ -71,17 +86,16 @@ namespace LCAnomalyLibrary.Building
             }
 
             initalized = true;
-            FacilityComp.OnLinkAdded += OnLinkAdded;
-            FacilityComp.OnLinkRemoved += OnLinkRemoved;
+
             foreach (Thing platform in Platforms)
             {
                 if (platform is Building_HoldingPlatform building_HoldingPlatform)
                 {
-                    building_HoldingPlatform.innerContainer.OnContentsChanged += RebuildCables;
+                    building_HoldingPlatform.innerContainer.OnContentsChanged += UpdateQliphothCounter;
                 }
             }
 
-            RebuildCables();
+            UpdateQliphothCounter();
         }
 
         protected override void DrawAt(Vector3 drawLoc, bool flip = false)
@@ -91,24 +105,8 @@ namespace LCAnomalyLibrary.Building
             {
                 Initialize();
             }
-        }
 
-        private void OnLinkRemoved(CompFacility facility, Thing thing)
-        {
-            if (thing is Building_HoldingPlatform building_HoldingPlatform)
-            {
-                building_HoldingPlatform.innerContainer.OnContentsChanged -= RebuildCables;
-                RebuildCables();
-            }
-        }
-
-        private void OnLinkAdded(CompFacility facility, Thing thing)
-        {
-            if (thing is Building_HoldingPlatform building_HoldingPlatform)
-            {
-                building_HoldingPlatform.innerContainer.OnContentsChanged += RebuildCables;
-                RebuildCables();
-            }
+            this.TopGraphic[qliphothCounter].Draw(this.DrawPos + Altitudes.AltIncVect * 2f, base.Rotation, this, 0f);
         }
 
         public override void Tick()
@@ -118,7 +116,6 @@ namespace LCAnomalyLibrary.Building
             {
                 //TODO 这里可以更新计数器
                 UpdateQliphothCounter();
-                //containedBioferrite = Mathf.Min(containedBioferrite + BioferritePerDay / 60000f * 250f, 60f);
             }
         }
 
@@ -147,12 +144,6 @@ namespace LCAnomalyLibrary.Building
         public override void Notify_DefsHotReloaded()
         {
             base.Notify_DefsHotReloaded();
-            RebuildCables();
-        }
-
-        private void RebuildCables()
-        {
-            CableConnection.RebuildCables(Platforms, (Thing thing) => thing is Building_HoldingPlatform building_HoldingPlatform && building_HoldingPlatform.Occupied);
             UpdateQliphothCounter();
         }
 

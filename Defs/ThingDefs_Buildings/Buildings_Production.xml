@@ -10,10 +10,8 @@
     <size>(1,1)</size>
     <graphicData>
       <texPath>Things/Building/QliphothIndicator/QliphothIndicator</texPath>
-      <graphicClass>Graphic_Multi_BuildingWorking</graphicClass>
+      <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(1,1)</drawSize>
-      <shaderType>MoteGlow</shaderType> 
-      <addTopAltitudeBias>true</addTopAltitudeBias>
     </graphicData>
     <uiIconScale>0.8</uiIconScale>
     <castEdgeShadows>true</castEdgeShadows>
@@ -24,7 +22,7 @@
         <li>Anomaly</li>
       </buildingTags>
     </building>
-    <drawerType>RealtimeOnly</drawerType>
+    <drawerType>MapMeshAndRealTime</drawerType>
     <altitudeLayer>Building</altitudeLayer>
     <passability>PassThroughOnly</passability>
     <fillPercent>0.9</fillPercent>
@@ -32,17 +30,15 @@
     <designationCategory>Anomaly</designationCategory>
     <uiOrder>115</uiOrder>
     <canOverlapZones>false</canOverlapZones>
-    <defaultPlacingRot>East</defaultPlacingRot>
     <thingCategories>
       <li>BuildingsPower</li>
     </thingCategories>
     <minifiedDef>MinifiedThing</minifiedDef>
     <statBases>
       <MaxHitPoints>200</MaxHitPoints>
-      <WorkToBuild>4000</WorkToBuild>
-      <Flammability>0.75</Flammability>
-      <Beauty>-10</Beauty>
-      <Mass>20</Mass>
+      <WorkToBuild>500</WorkToBuild>
+      <Flammability>0</Flammability>
+      <Mass>5</Mass>
     </statBases>
     <costList>
       <ComponentIndustrial>1</ComponentIndustrial>
@@ -55,73 +51,11 @@
       <li>PlaceWorker_ShowFacilitiesConnections</li>
     </placeWorkers>
     <comps>
-      <li Class="CompProperties_Breakdownable"/>
-      <li Class="CompProperties_Facility">
-        <maxDistance>5.1</maxDistance>
-        <statOffsets>
-          <ContainmentStrength>-15</ContainmentStrength>
-        </statOffsets>
-      </li>
       <li Class="CompProperties_Power">
         <compClass>CompPowerTrader</compClass>
-        <basePowerConsumption>100</basePowerConsumption>
+        <basePowerConsumption>50</basePowerConsumption>
       </li>
       <li Class="CompProperties_Flickable"/>
-      <li Class="CompProperties_AttachPoints">
-        <points>
-          <li>
-            <offset>(.1, 0, .8)</offset>
-            <type>CableConnection0</type>
-          </li>
-          <li>
-            <offset>(.1, 0, .8)</offset>
-            <type>CableConnection1</type>
-          </li>
-          <li>
-            <offset>(.1, 0, .8)</offset>
-            <type>CableConnection2</type>
-          </li>
-          <li>
-            <offset>(.1, 0, .8)</offset>
-            <type>CableConnection3</type>
-          </li>
-          <li>
-            <offset>(0, 0, .28)</offset>
-            <type>Exhaust</type>
-          </li>
-        </points>
-      </li>
-      <li Class="CompProperties_CableConnection">
-        <color>(0.36, 0.21, 0.13, 1)</color>
-        <drawMote>true</drawMote>
-        <moteDef>Mote_BioFerriteHarvested</moteDef>
-        <offsets>
-          <li>
-            <li>(0, 0, 0.9)</li>
-            <li>(0, 0, 0.48)</li>
-            <li>(0, 0, 0.3)</li>
-            <li>(0, 0, 0.1)</li>
-          </li>
-          <li>
-            <li>(0.6, 0, 0.3)</li>
-            <li>(-0.2, 0, 0)</li>
-            <li>(0.2, 0, 0)</li>
-            <li>(0.4, 0, 0)</li>
-          </li>
-          <li>
-            <li>(0, 0, -0.25)</li>
-            <li>(0.4, 0, 0.48)</li>
-            <li>(0.4, 0, 0.3)</li>
-            <li>(0.4, 0, 0.1)</li>
-          </li>
-          <li>
-            <li>(-0.65, 0, 0.3)</li>
-            <li>(-0.2, 0, 0.65)</li>
-            <li>(0.2, 0, 0.65)</li>
-            <li>(0.4, 0, 0.65)</li>
-          </li>
-        </offsets>
-      </li>
     </comps>
   </ThingDef>
 
