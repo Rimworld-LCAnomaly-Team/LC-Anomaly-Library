@@ -16,12 +16,9 @@
     <size>(3, 3)</size>
     <defaultPlacingRot>North</defaultPlacingRot>
     <minMonolithLevel>1</minMonolithLevel>
-    <!-- <descriptionHyperlinks>
-      <ThingDef>Electroharvester</ThingDef>
-      <ThingDef>ElectricInhibitor</ThingDef>
-      <ThingDef>ShardInhibitor</ThingDef>
-      <ThingDef>BioferriteHarvester</ThingDef>
-    </descriptionHyperlinks> -->
+    <descriptionHyperlinks>
+      <ThingDef>QliphothIndicator</ThingDef>
+    </descriptionHyperlinks>
     <thingCategories Inherit="False">
       <li>BuildingsMisc</li>
     </thingCategories>
@@ -40,10 +37,7 @@
     <comps>
       <li Class="CompProperties_AffectedByFacilities">
         <linkableFacilities>
-          <!-- <li>Electroharvester</li>
-          <li>ElectricInhibitor</li>
-          <li>ShardInhibitor</li>
-          <li>BioferriteHarvester</li> -->
+          <li>QliphothIndicator</li>
         </linkableFacilities>
       </li>
       <li Class="CompProperties_MeditationFocus">

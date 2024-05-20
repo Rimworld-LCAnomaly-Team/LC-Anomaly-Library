@@ -11,15 +11,4 @@ namespace LCAnomalyLibrary.Defs
         public static DamageDef LC_Entity_BLACK;
         public static DamageDef LC_Entity_PALE;
     }
-
-    [DefOf]
-    public static class LC_HediffDefOf
-    {
-        /// <summary>
-        /// 假隐形Hediff，用于做不能被自动索敌的操作
-        /// </summary>
-        [MayRequireAnomaly]
-        public static HediffDef FakeInvisibility;
-    }
-
 }

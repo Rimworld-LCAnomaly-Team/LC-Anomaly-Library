@@ -38,18 +38,18 @@ namespace LCAnomalyLibrary.Comp
             get => qliphothCountCurrent;
             set
             {
-                if (value > QliphothCountMax)
-                {
-                    qliphothCountCurrent = QliphothCountMax;
-                }
-                else if(value <= 0)
+                if (qliphothCountCurrent == value)
+                    return;
+                if(value <= 0)
                 {
                     qliphothCountCurrent = 0;
+                    Log.Message("{SelfPawn.def.defName} 的逆卡巴拉计数器变化，变为：0");
                     QliphothMeltdown();
                 }
                 else
                 {
                     qliphothCountCurrent = value;
+                    Log.Message($"{SelfPawn.def.defName} 的逆卡巴拉计数器变化，变为：{QliphothCountCurrent}");
                 }
             }
         }
