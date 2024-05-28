@@ -40,11 +40,17 @@ namespace LCAnomalyLibrary.Comp
             {
                 if (qliphothCountCurrent == value)
                     return;
+                
+                //小于0强制归零，大于最大值不处理，其他情况正常变化
                 if(value <= 0)
                 {
                     qliphothCountCurrent = 0;
                     Log.Message("{SelfPawn.def.defName} 的逆卡巴拉计数器变化，变为：0");
                     QliphothMeltdown();
+                }
+                else if(value > Props.qliphothCountMax)
+                {
+                    return;
                 }
                 else
                 {

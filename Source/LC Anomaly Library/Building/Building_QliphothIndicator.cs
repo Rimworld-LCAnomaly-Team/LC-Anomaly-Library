@@ -128,7 +128,7 @@ namespace LCAnomalyLibrary.Building
                 stringBuilder.AppendLine();
             }
 
-            stringBuilder.Append("QliphothCounter".Translate());
+            stringBuilder.Append("QliphothCounterInspect".Translate());
             stringBuilder.Append($"：{qliphothCounter}");
             return stringBuilder.ToString();
         }
