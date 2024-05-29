@@ -74,7 +74,7 @@ namespace LCAnomalyLibrary.Patch
                     //调用独有的绑上平台的回调方法
                     LC_CompEntity tmpComp = pawn3.TryGetComp<LC_CompEntity>();
                     if (tmpComp != null)
-                        tmpComp.AfterHoldToPlatform();
+                        tmpComp.Notify_Holded();
                     else
                         Find.HiddenItemsManager.SetDiscovered(pawn3.def);
 
@@ -136,7 +136,7 @@ namespace LCAnomalyLibrary.Patch
                 if(compEntity != null)
                 {
                     //Log.Warning("LC Entity escaped");
-                    ((LC_CompEntity)compEntity).Escape();
+                    ((LC_CompEntity)compEntity).Notify_Escaped();
                 }
             }
 
