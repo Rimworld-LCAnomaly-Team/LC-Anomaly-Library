@@ -77,6 +77,8 @@
   <ItemGroup>
     <Compile Include="Building\Building_QliphothIndicator.cs" />
     <Compile Include="Building\Building_EnkephalinGenerator.cs" />
+    <Compile Include="Comp\CompExtractRitualSpot.cs" />
+    <Compile Include="Comp\CompProperties_ExtractRitualSpot.cs" />
     <Compile Include="Comp\LC_CompEgg.cs" />
     <Compile Include="Comp\LC_CompEntity.cs" />
     <Compile Include="Comp\LC_CompProperties_Entity.cs" />
@@ -85,12 +87,17 @@
     <Compile Include="Comp\LC_HediffCompProperties_Accessory.cs" />
     <Compile Include="Comp\LC_HediffCompProperties_FakeInvisibility.cs" />
     <Compile Include="Comp\LC_HediffComp_Accessory.cs" />
+    <Compile Include="Defs\DutyDefOf.cs" />
     <Compile Include="Defs\EntityKindDefOf.cs" />
     <Compile Include="Defs\HediffDefOf.cs" />
-    <Compile Include="Defs\PsychicRitualRoleDefOf.cs" />
+    <Compile Include="Defs\ExtractRitualRoleDefOf.cs" />
     <Compile Include="Defs\ResearchTabDefOf.cs" />
     <Compile Include="Defs\ThingDefOf.cs" />
     <Compile Include="Defs\ThoughtDefOf.cs" />
+    <Compile Include="Sounds\ExtractRitualTransition.cs" />
+    <Compile Include="Jobs\JobGiver_GatherOfferingsForExtractRitual.cs" />
+    <Compile Include="Defs\ExtractRitualDef.cs" />
+    <Compile Include="Jobs\LordJob_ExtractRitual.cs" />
     <Compile Include="Misc\LC_FX_Dying.cs" />
     <Compile Include="Misc\LC_FX_Escaping.cs" />
     <Compile Include="Patch\PatchMain.cs" />
@@ -98,6 +105,10 @@
     <Compile Include="Patch\Patch_CompStudiable.cs" />
     <Compile Include="Patch\Patch_InvisibilityUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Defs\ExtractRitualDef_InvocationCircle.cs" />
+    <Compile Include="Gizmo\PsychicRitualGizmo.cs" />
+    <Compile Include="Toils\ExtractRitualToil_GatherOfferings.cs" />
+    <Compile Include="Toils\ExtractRitualToil_GatherForInvocation.cs" />
     <Compile Include="Util\Curves.cs" />
     <Compile Include="Util\StudyUtils.cs" />
   </ItemGroup>

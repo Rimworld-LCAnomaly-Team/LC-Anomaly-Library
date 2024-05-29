@@ -26,5 +26,8 @@ namespace LCAnomalyLibrary.Defs
 
         [MayRequireAnomaly]
         public static ThingDef Enkephalin;
+
+        [MayRequireAnomaly]
+        public static ThingDef ExtractRitualSpot;
     }
 }
