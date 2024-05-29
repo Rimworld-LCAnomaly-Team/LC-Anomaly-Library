@@ -41,7 +41,7 @@ namespace LCAnomalyLibrary.Comp
                 if (qliphothCountCurrent == value)
                     return;
                 
-                //小于0强制归零，大于最大值不处理，其他情况正常变化
+                //小于0强制归零，大于最大值时若当前值已经异常就强制归最大，其他情况正常变化
                 if(value <= 0)
                 {
                     qliphothCountCurrent = 0;
@@ -50,6 +50,9 @@ namespace LCAnomalyLibrary.Comp
                 }
                 else if(value > Props.qliphothCountMax)
                 {
+                    if(qliphothCountCurrent > Props.qliphothCountMax)
+                        qliphothCountCurrent = Props.qliphothCountMax;
+
                     return;
                 }
                 else

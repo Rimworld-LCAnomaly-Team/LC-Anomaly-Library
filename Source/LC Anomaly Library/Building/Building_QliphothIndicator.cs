@@ -4,6 +4,7 @@ using UnityEngine;
 using Verse;
 using LCAnomalyLibrary.Comp;
 using System.Text;
+using System;
 
 namespace LCAnomalyLibrary.Building
 {
@@ -106,7 +107,19 @@ namespace LCAnomalyLibrary.Building
                 Initialize();
             }
 
-            this.TopGraphic[qliphothCounter].Draw(this.DrawPos + Altitudes.AltIncVect * 2f, base.Rotation, this, 0f);
+            //TODO 测试用异常处理
+            try
+            {
+                this.TopGraphic[qliphothCounter].Draw(this.DrawPos + Altitudes.AltIncVect * 2f, base.Rotation, this, 0f);
+            }
+            catch(ArgumentOutOfRangeException)
+            {
+                Log.Error($"LCAnomalyLibrary：逆卡巴拉计数器下标越界，错误的下标值为：{qliphothCounter}");
+            }
+            catch (IndexOutOfRangeException)
+            {
+                Log.Error($"LCAnomalyLibrary：逆卡巴拉计数器下标越界，错误的下标值为：{qliphothCounter}");
+            }
         }
 
         public override void Tick()
@@ -133,9 +146,9 @@ namespace LCAnomalyLibrary.Building
             return stringBuilder.ToString();
         }
 
-        public override IEnumerable<Gizmo> GetGizmos()
+        public override IEnumerable<Verse.Gizmo> GetGizmos()
         {
-            foreach (Gizmo gizmo in base.GetGizmos())
+            foreach (Verse.Gizmo gizmo in base.GetGizmos())
             {
                 yield return gizmo;
             }
