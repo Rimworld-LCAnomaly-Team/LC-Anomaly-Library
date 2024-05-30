@@ -95,4 +95,33 @@
     <comps></comps>
   </ThingDef>
 
+  <ThingDef ParentName="ResourceBase">
+    <defName>Cogito</defName>
+    <label>Cogito</label>
+    <description>Cogito</description>
+    <thingClass>ThingWithComps</thingClass>
+    <graphicData>
+      <graphicClass>Graphic_StackCount</graphicClass>
+      <texPath>Things/Item/Resource/Cogito</texPath>
+    </graphicData>
+    <stackLimit>999</stackLimit>
+    <genericMarketSellable>false</genericMarketSellable>
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Metal_Drop</soundDrop>
+    <useHitPoints>false</useHitPoints>
+    <healthAffectsPrice>false</healthAffectsPrice>
+    <statBases>
+      <MarketValue>0</MarketValue>
+      <Mass>0.25</Mass>
+    </statBases>
+    <thingCategories>
+      <li>ResourcesRaw</li>
+    </thingCategories>
+    <burnableByRecipe>false</burnableByRecipe>
+    <smeltable>false</smeltable>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <descriptionHyperlinks></descriptionHyperlinks>
+    <comps></comps>
+  </ThingDef>
+
 </Defs>

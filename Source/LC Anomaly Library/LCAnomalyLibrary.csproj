@@ -94,7 +94,10 @@
     <Compile Include="Defs\ExtractRitualRoleDefOf.cs" />
     <Compile Include="Defs\ResearchTabDefOf.cs" />
     <Compile Include="Defs\ThingDefOf.cs" />
+    <Compile Include="Defs\ThingDef_AnomalyEgg.cs" />
     <Compile Include="Defs\ThoughtDefOf.cs" />
+    <Compile Include="PsychicRitualDef_ExtractAnomaly.cs" />
+    <Compile Include="PsychicRitualToil_ExtractAnomaly.cs" />
     <Compile Include="Sounds\ExtractRitualTransition.cs" />
     <Compile Include="Jobs\JobGiver_GatherOfferingsForExtractRitual.cs" />
     <Compile Include="Defs\ExtractRitualDef.cs" />
@@ -111,6 +114,7 @@
     <Compile Include="Toils\ExtractRitualToil_GatherOfferings.cs" />
     <Compile Include="Toils\ExtractRitualToil_GatherForInvocation.cs" />
     <Compile Include="Util\Curves.cs" />
+    <Compile Include="Util\ExtractUtil.cs" />
     <Compile Include="Util\StudyUtils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
