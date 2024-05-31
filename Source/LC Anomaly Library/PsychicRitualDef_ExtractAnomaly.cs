@@ -36,7 +36,7 @@ namespace LCAnomalyLibrary
                 psychicRitual.CancelPsychicRitual("PsychicRitualDef_InvocationCircle_InvokerLost".Translate());
                 Log.Warning("提取仪式因Tag错误而失败");
             }
-            if (!(ExtractUtil.AnomlayLvl2DefList[anomalyLevelTag].Count > 0))
+            if (!(ExtractUtil.AnomlayLvl2DefList_Ritual[anomalyLevelTag].Count > 0))
             {
                 psychicRitual.CancelPsychicRitual("PsychicRitualDef_InvocationCircle_InvokerLost".Translate());
                 Log.Warning("提取仪式因列表为空失败");

@@ -10,6 +10,8 @@ namespace LCAnomalyLibrary.Misc
 
         protected int completeTick;
 
+        protected bool isEscaping;
+
         public override void ExposeData()
         {
             base.ExposeData();
@@ -37,7 +39,5 @@ namespace LCAnomalyLibrary.Misc
         {
             throw new NotImplementedException("LC_FX_Dying:Complete():::Not implemented yet");
         }
-
-
     }
 }

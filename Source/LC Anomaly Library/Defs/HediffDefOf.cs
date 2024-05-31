@@ -11,5 +11,11 @@ namespace LCAnomalyLibrary.Defs
         /// </summary>
         [MayRequireAnomaly]
         public static HediffDef FakeInvisibility;
+
+        [MayRequireAnomaly]
+        public static HediffDef CogitoExtracted;
+
+        [MayRequireAnomaly]
+        public static HediffDef CogitoInjected;
     }
 }

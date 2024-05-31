@@ -79,6 +79,8 @@
     <Compile Include="Building\Building_EnkephalinGenerator.cs" />
     <Compile Include="Comp\CompExtractRitualSpot.cs" />
     <Compile Include="Comp\CompProperties_ExtractRitualSpot.cs" />
+    <Compile Include="Comp\HediffCompProperties_CogitoInjected.cs" />
+    <Compile Include="Comp\HediffComp_CogitoInjected.cs" />
     <Compile Include="Comp\LC_CompEgg.cs" />
     <Compile Include="Comp\LC_CompEntity.cs" />
     <Compile Include="Comp\LC_CompProperties_Entity.cs" />
@@ -92,12 +94,16 @@
     <Compile Include="Defs\FleckDefOf.cs" />
     <Compile Include="Defs\HediffDefOf.cs" />
     <Compile Include="Defs\ExtractRitualRoleDefOf.cs" />
+    <Compile Include="Defs\HistoryEventDefOf.cs" />
+    <Compile Include="Defs\RecipeDefOf.cs" />
     <Compile Include="Defs\ResearchTabDefOf.cs" />
     <Compile Include="Defs\ThingDefOf.cs" />
     <Compile Include="Defs\ThingDef_AnomalyEgg.cs" />
     <Compile Include="Defs\ThoughtDefOf.cs" />
     <Compile Include="PsychicRitualDef_ExtractAnomaly.cs" />
     <Compile Include="PsychicRitualToil_ExtractAnomaly.cs" />
+    <Compile Include="Recipe\Recipe_CogitoInjection.cs" />
+    <Compile Include="Recipe\Recipe_ExtractCogito.cs" />
     <Compile Include="Sounds\ExtractRitualTransition.cs" />
     <Compile Include="Jobs\JobGiver_GatherOfferingsForExtractRitual.cs" />
     <Compile Include="Defs\ExtractRitualDef.cs" />

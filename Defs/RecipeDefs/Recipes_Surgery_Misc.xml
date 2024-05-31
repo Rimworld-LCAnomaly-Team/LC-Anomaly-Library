@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <RecipeDef ParentName="SurgeryFlesh">
+    <defName>ExtractCogito</defName>
+    <label>extract cogito</label>
+    <description>Extract cogito from the target.</description>
+    <workerClass>LCAnomalyLibrary.Recipe.Recipe_ExtractCogito</workerClass>
+    <jobString>Extracting cogito.</jobString>
+    <workAmount>500</workAmount>
+    <hideBodyPartNames>true</hideBodyPartNames>
+    <targetsBodyPart>false</targetsBodyPart>
+    <isViolation>true</isViolation>
+    <descriptionHyperlinks>
+      <ThingDef>Cogito</ThingDef>
+    </descriptionHyperlinks>
+    <uiIconThing>Cogito</uiIconThing>
+    <anesthetize>false</anesthetize>
+    <workSkillLearnFactor>2</workSkillLearnFactor>
+  </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryFlesh">
+    <defName>CogitoInjection</defName>
+    <label>cogito injection</label>
+    <description>CogitoInjection.</description>
+    <jobString>injecting cogito into TargetA.</jobString>
+    <workAmount>800</workAmount>
+    <hideBodyPartNames>true</hideBodyPartNames>
+    <targetsBodyPart>false</targetsBodyPart>
+    <anesthetize>false</anesthetize>
+    <workerClass>LCAnomalyLibrary.Recipe.Recipe_CogitoInjection</workerClass>
+    <surgeryOutcomeEffect IsNull="True" /> <!-- Always succeeds -->
+    <uiIconThing>Cogito</uiIconThing>
+    <ingredients>
+      <li>
+        <filter>
+          <thingDefs>
+            <li>Cogito</li>
+          </thingDefs>
+        </filter>
+        <count>1</count>
+      </li>
+    </ingredients>
+    <fixedIngredientFilter>
+      <thingDefs>
+        <li>Cogito</li>
+      </thingDefs>
+    </fixedIngredientFilter>
+  </RecipeDef>
+
+</Defs>

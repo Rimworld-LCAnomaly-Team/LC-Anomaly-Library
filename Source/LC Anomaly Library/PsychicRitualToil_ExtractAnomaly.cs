@@ -43,7 +43,7 @@ namespace LCAnomalyLibrary
 
         private void ApplyOutcome(PsychicRitual psychicRitual, Pawn invoker, Pawn target)
         {
-            ThingDef_LCAnomalyBase thingDef = ExtractUtil.AnomlayLvl2DefList[anomalyLevelTag].RandomElement();
+            ThingDef_LCAnomalyBase thingDef = ExtractUtil.AnomlayLvl2DefList_Ritual[anomalyLevelTag].RandomElement();
             Log.Message($"即将提取：{thingDef.defName.Translate()}");
 
             IntVec3 cell = psychicRitual.assignments.Target.Cell;

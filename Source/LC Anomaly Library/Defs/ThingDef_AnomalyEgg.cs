@@ -20,4 +20,8 @@ namespace LCAnomalyLibrary.Defs
     public class ThingDef_AnomalyTool : ThingDef_LCAnomalyBase
     {
     }
+
+    public class ThingDef_AnomalyEntity_Spawn : ThingDef_LCAnomalyBase
+    {
+    }
 }
