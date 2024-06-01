@@ -8,8 +8,12 @@ namespace LCAnomalyLibrary.Defs
         public readonly string anomalyLevelTag;
     }
 
+    public abstract class PawnKindDef_LCAnomalyBase : PawnKindDef
+    {
+        public readonly string anomalyLevelTag;
+    }
 
-    public class ThingDef_AnomalyEntity : ThingDef_LCAnomalyBase
+    public class ThingDef_AnomalyEntity : PawnKindDef_LCAnomalyBase
     {
     }
 
@@ -22,6 +26,10 @@ namespace LCAnomalyLibrary.Defs
     }
 
     public class ThingDef_AnomalyEntity_Spawn : ThingDef_LCAnomalyBase
+    {
+    }
+
+    public class PawnKindDef_AnomalyEntity_SevenSin : ThingDef_AnomalyEntity
     {
     }
 }

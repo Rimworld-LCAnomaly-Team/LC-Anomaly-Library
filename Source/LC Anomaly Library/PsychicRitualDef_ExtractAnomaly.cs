@@ -30,13 +30,13 @@ namespace LCAnomalyLibrary
             base.CheckPsychicRitualCancelConditions(psychicRitual);
 
             //验证Tag是否正确，Tag对应异想体是否存在，若不满足任意条件则终止仪式
-            ExtractUtil.CheckHasInitial();
-            if (!ExtractUtil.CheckIfLevelLegal(anomalyLevelTag))
+            var list = ExtractUtil.Get_AnomlayLvl2DefList_Ritual(anomalyLevelTag);
+            if (list == null)
             {
                 psychicRitual.CancelPsychicRitual("PsychicRitualDef_InvocationCircle_InvokerLost".Translate());
                 Log.Warning("提取仪式因Tag错误而失败");
             }
-            if (!(ExtractUtil.AnomlayLvl2DefList_Ritual[anomalyLevelTag].Count > 0))
+            if (list.Count <= 0)
             {
                 psychicRitual.CancelPsychicRitual("PsychicRitualDef_InvocationCircle_InvokerLost".Translate());
                 Log.Warning("提取仪式因列表为空失败");

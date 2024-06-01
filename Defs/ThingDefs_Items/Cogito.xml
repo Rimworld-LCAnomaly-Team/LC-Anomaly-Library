@@ -73,7 +73,9 @@
         <severityPerDay>-0.5</severityPerDay>
         <showHoursToRecover>true</showHoursToRecover>
       </li>
-      <li Class="LCAnomalyLibrary.Comp.HediffCompProperties_CogitoInjected"/>
+      <li Class="LCAnomalyLibrary.Comp.HediffCompProperties_CogitoInjected">
+        <turnSevenSinEnitityChance>0.8</turnSevenSinEnitityChance> 
+      </li>
     </comps>
       <stages>
         <li>

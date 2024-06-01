@@ -1,7 +1,6 @@
-﻿using LCAnomalyLibrary.Defs;
-using LCAnomalyLibrary.Misc;
+﻿using LCAnomalyLibrary.Misc;
 using LCAnomalyLibrary.Util;
-using System.Collections.Generic;
+using RimWorld;
 using System.Linq;
 using Verse;
 
@@ -20,19 +19,32 @@ namespace LCAnomalyLibrary.Comp
 
         private void TurnIntoAnomaly()
         {
-            ExtractUtil.CheckHasInitial();
-            var list = ExtractUtil.AnomlayLvl2DefList_Cogito["ZAYIN"].Union(ExtractUtil.AnomlayLvl2DefList_Cogito["TETH"]).ToList();
-
-            if (list.Count > 0)
+            //判定概率生成大罪生物或异想体
+            if (Rand.Chance(Props.turnSevenSinEnitityChance))
             {
-                ((LC_FX_Escaping)GenSpawn.Spawn(list.RandomElement(), Pawn.Position, Pawn.MapHeld)).InitWith(null, false);
-                Pawn.Kill(null);
+                var list = ExtractUtil.Get_AnomlayLvl2DefList_SevenSin("ZAYIN").
+                    Union(ExtractUtil.Get_AnomlayLvl2DefList_SevenSin("TETH")).ToList();
+
+                if(list.Count > 0)
+                {
+                    Pawn pawn = PawnGenerator.GeneratePawn(list.RandomElement(), Faction.OfEntities);
+                    GenSpawn.Spawn(pawn, Pawn.Position, Pawn.MapHeld);
+                }
+                else
+                    Log.Error("ZAYIN和TETH的大罪生物列表为空");
             }
             else
             {
-                Log.Error("列表为空");
+                var list = ExtractUtil.Get_AnomlayLvl2DefList_Cogito("ZAYIN").
+                    Union(ExtractUtil.Get_AnomlayLvl2DefList_Cogito("TETH")).ToList();
+
+                if (list.Count > 0)
+                    ((LC_FX_Escaping)GenSpawn.Spawn(list.RandomElement(), Pawn.Position, Pawn.MapHeld)).InitWith(null, false);
+                else
+                    Log.Error("ZAYIN和TETH的非工具类异想体列表为空");
             }
 
+            Pawn.Kill(null);
         }
     }
 }
