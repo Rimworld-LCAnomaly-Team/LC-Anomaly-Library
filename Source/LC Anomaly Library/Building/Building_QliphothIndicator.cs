@@ -4,7 +4,7 @@ using UnityEngine;
 using Verse;
 using LCAnomalyLibrary.Comp;
 using System.Text;
-using System;
+using LCAnomalyLibrary.Util;
 
 namespace LCAnomalyLibrary.Building
 {
@@ -30,25 +30,6 @@ namespace LCAnomalyLibrary.Building
                     qliphothCounter = value;
                     Log.Message($"逆卡巴拉计数器设备值变更为：{qliphothCounter}");
                 }
-            }
-        }
-
-        [Unsaved(false)]
-        protected List<Graphic> cachedTopGraphic;
-        private List<Graphic> TopGraphic
-        {
-            get
-            {
-                if (this.cachedTopGraphic == null)
-                {
-                    cachedTopGraphic = new List<Graphic>();
-                    for (int i = 0; i < 6; i++)
-                    {
-                        Log.Warning("Things/Building/QliphothIndicator/Top" + i);
-                        cachedTopGraphic.Add(GraphicDatabase.Get<Graphic_Single>("Things/Building/QliphothIndicator/Top" + i, ShaderDatabase.Transparent, this.def.graphicData.drawSize, Color.white));
-                    }
-                }
-                return this.cachedTopGraphic;
             }
         }
 
@@ -106,20 +87,9 @@ namespace LCAnomalyLibrary.Building
             {
                 Initialize();
             }
-
-            //TODO 测试用异常处理
-            try
-            {
-                this.TopGraphic[qliphothCounter].Draw(this.DrawPos + Altitudes.AltIncVect * 2f, base.Rotation, this, 0f);
-            }
-            catch(ArgumentOutOfRangeException)
-            {
-                Log.Error($"LCAnomalyLibrary：逆卡巴拉计数器下标越界，错误的下标值为：{qliphothCounter}");
-            }
-            catch (IndexOutOfRangeException)
-            {
-                Log.Error($"LCAnomalyLibrary：逆卡巴拉计数器下标越界，错误的下标值为：{qliphothCounter}");
-            }
+            
+            GraphicUtil.QliphothIndicator_GetCachedTopGraphic()[qliphothCounter]
+                .Draw(this.DrawPos + Altitudes.AltIncVect * 2f, base.Rotation, this, 0f);
         }
 
         public override void Tick()
