@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <LCAnomalyLibrary.PsychicRitualDef_ExtractAnomaly>
+  <LCAnomalyLibrary.PsychicRituals.PsychicRitualDef_ExtractAnomaly>
     <defName>ExtractAnomaly_ZAYIN</defName>
     <label>ExtractAnomaly_ZAYIN</label>
     <description>ExtractAnomaly_ZAYIN.</description>
@@ -21,9 +21,9 @@
     <cooldownHours>480</cooldownHours>
     <chanterRole>ChanterAdvanced</chanterRole>
     <iconPath>UI/PsychicRituals/PsychicRitual_Brainwipe</iconPath>
-  </LCAnomalyLibrary.PsychicRitualDef_ExtractAnomaly>
+  </LCAnomalyLibrary.PsychicRituals.PsychicRitualDef_ExtractAnomaly>
 
-  <LCAnomalyLibrary.PsychicRitualDef_ExtractAnomaly>
+  <LCAnomalyLibrary.PsychicRituals.PsychicRitualDef_ExtractAnomaly>
     <defName>ExtractAnomaly_TETH</defName>
     <label>ExtractAnomaly_TETH</label>
     <description>ExtractAnomaly_TETH.</description>
@@ -43,9 +43,9 @@
     <cooldownHours>480</cooldownHours>
     <chanterRole>ChanterAdvanced</chanterRole>
     <iconPath>UI/PsychicRituals/PsychicRitual_Brainwipe</iconPath>
-  </LCAnomalyLibrary.PsychicRitualDef_ExtractAnomaly>
+  </LCAnomalyLibrary.PsychicRituals.PsychicRitualDef_ExtractAnomaly>
 
-  <LCAnomalyLibrary.PsychicRitualDef_ExtractAnomaly>
+  <LCAnomalyLibrary.PsychicRituals.PsychicRitualDef_ExtractAnomaly>
     <defName>ExtractAnomaly_HE</defName>
     <label>ExtractAnomaly_HE</label>
     <description>ExtractAnomaly_HE.</description>
@@ -65,9 +65,9 @@
     <cooldownHours>480</cooldownHours>
     <chanterRole>ChanterAdvanced</chanterRole>
     <iconPath>UI/PsychicRituals/PsychicRitual_Brainwipe</iconPath>
-  </LCAnomalyLibrary.PsychicRitualDef_ExtractAnomaly>
+  </LCAnomalyLibrary.PsychicRituals.PsychicRitualDef_ExtractAnomaly>
 
-  <LCAnomalyLibrary.PsychicRitualDef_ExtractAnomaly>
+  <LCAnomalyLibrary.PsychicRituals.PsychicRitualDef_ExtractAnomaly>
     <defName>ExtractAnomaly_WAW</defName>
     <label>ExtractAnomaly_WAW</label>
     <description>ExtractAnomaly_WAW.</description>
@@ -87,9 +87,9 @@
     <cooldownHours>480</cooldownHours>
     <chanterRole>ChanterAdvanced</chanterRole>
     <iconPath>UI/PsychicRituals/PsychicRitual_Brainwipe</iconPath>
-  </LCAnomalyLibrary.PsychicRitualDef_ExtractAnomaly>
+  </LCAnomalyLibrary.PsychicRituals.PsychicRitualDef_ExtractAnomaly>
 
-  <LCAnomalyLibrary.PsychicRitualDef_ExtractAnomaly>
+  <LCAnomalyLibrary.PsychicRituals.PsychicRitualDef_ExtractAnomaly>
     <defName>ExtractAnomaly_ALEPH</defName>
     <label>ExtractAnomaly_ALEPH</label>
     <description>ExtractAnomaly_ALEPH.</description>
@@ -109,6 +109,6 @@
     <cooldownHours>480</cooldownHours>
     <chanterRole>ChanterAdvanced</chanterRole>
     <iconPath>UI/PsychicRituals/PsychicRitual_Brainwipe</iconPath>
-  </LCAnomalyLibrary.PsychicRitualDef_ExtractAnomaly>
+  </LCAnomalyLibrary.PsychicRituals.PsychicRitualDef_ExtractAnomaly>
 
 </Defs>

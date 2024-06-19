@@ -13,6 +13,9 @@ namespace LCAnomalyLibrary.Building
         private bool initalized;
 
         protected int qliphothCounter;
+        /// <summary>
+        /// 逆卡巴拉计数器值
+        /// </summary>
         public int QliphothCounter
         {
             get => qliphothCounter;
@@ -95,9 +98,10 @@ namespace LCAnomalyLibrary.Building
         public override void Tick()
         {
             base.Tick();
+
+            //每 250Tick 更新一次计数器
             if (this.IsHashIntervalTick(250))
             {
-                //TODO 这里可以更新计数器
                 UpdateQliphothCounter();
             }
         }

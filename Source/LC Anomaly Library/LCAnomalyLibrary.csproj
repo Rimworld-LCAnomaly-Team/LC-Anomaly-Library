@@ -100,8 +100,8 @@
     <Compile Include="Defs\ThingDefOf.cs" />
     <Compile Include="Defs\ThingDef_AnomalyEgg.cs" />
     <Compile Include="Defs\ThoughtDefOf.cs" />
-    <Compile Include="PsychicRitualDef_ExtractAnomaly.cs" />
-    <Compile Include="PsychicRitualToil_ExtractAnomaly.cs" />
+    <Compile Include="PsychicRituals\PsychicRitualDef_ExtractAnomaly.cs" />
+    <Compile Include="PsychicRituals\PsychicRitualToil_ExtractAnomaly.cs" />
     <Compile Include="Recipe\Recipe_CogitoInjection.cs" />
     <Compile Include="Recipe\Recipe_ExtractCogito.cs" />
     <Compile Include="Sounds\ExtractRitualTransition.cs" />

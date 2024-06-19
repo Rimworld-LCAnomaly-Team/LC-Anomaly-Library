@@ -8,8 +8,9 @@ namespace LCAnomalyLibrary.Comp
         public float studySucessRateBase;
 
         public ThingDef peBoxDef;
-        public int amountPeBoxStudySuccess;
-        public int amountPeBoxStudyFail;
+        public int amountPeBoxStudyGood;
+        public int amountPeBoxStudyNormal;
+        public int amountPeBoxStudyBad;
 
         public float accessoryChance;
         public bool shoundNotifyWhenEscape;

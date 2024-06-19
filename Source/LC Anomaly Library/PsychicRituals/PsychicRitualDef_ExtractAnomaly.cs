@@ -5,7 +5,7 @@ using Verse;
 using LCAnomalyLibrary.Defs;
 using LCAnomalyLibrary.Util;
 
-namespace LCAnomalyLibrary
+namespace LCAnomalyLibrary.PsychicRituals
 {
     public class PsychicRitualDef_ExtractAnomaly : ExtractRitualDef_InvocationCircle
     {

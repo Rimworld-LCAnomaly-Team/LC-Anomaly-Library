@@ -106,27 +106,33 @@ namespace LCAnomalyLibrary.Comp
         }
 
         /// <summary>
-        /// 研究失败事件
+        /// 研究质量：非差
         /// </summary>
         /// <param name="studier">研究者</param>
-        protected virtual void StudyEvent_Failure(Pawn studier)
+        protected virtual void StudyEvent_NotBad(Pawn studier, LC_StudyResult result)
         {
-            QliphothCountCurrent--;
-            StudyUtil.DoStudyResultEffect(studier, SelfPawn, LC_StudyResult.Bad);
-            CheckSpawnPeBox(studier, Props.amountPeBoxStudyFail);
-        }
-        
-        /// <summary>
-        /// 研究成功事件
-        /// </summary>
-        /// <param name="studier">研究者</param>
-        protected virtual void StudyEvent_Success(Pawn studier)
-        {
-            QliphothCountCurrent++;
-            StudyUtil.DoStudyResultEffect(studier, SelfPawn, LC_StudyResult.Good);
-            CheckSpawnPeBox(studier, Props.amountPeBoxStudySuccess);
+            switch (result)
+            {
+                case LC_StudyResult.Good:
+                    QliphothCountCurrent++;
+                    break;
+                case LC_StudyResult.Normal:
+                    break;
+            }
+            StudyUtil.DoStudyResultEffect(studier, SelfPawn, result);
         }
 
+        /// <summary>
+        /// 研究质量：差
+        /// </summary>
+        /// <param name="studier">研究者</param>
+        protected virtual void StudyEvent_Bad(Pawn studier)
+        {
+            QliphothCountCurrent--;
+
+            StudyUtil.DoStudyResultEffect(studier, SelfPawn, LC_StudyResult.Bad);
+        }
+        
         /// <summary>
         /// 逆卡巴拉熔毁事件
         /// </summary>
@@ -199,30 +205,22 @@ namespace LCAnomalyLibrary.Comp
         {
             if (CheckStudierSkillRequire(studier))
             {
-                if (CheckIfFinalStudySuccess(studier))
-                {
-                    StudyEvent_Success(studier);
-                    return true;
-                }
-                else
-                {
-                    StudyEvent_Failure(studier);
-                    return false;
-                }
+                StudyEvent_NotBad(studier, CheckFinalStudyQuality(studier));
+                return true;
             }
             else
             {
-                StudyEvent_Failure(studier);
+                StudyEvent_Bad(studier);
                 return false;
             }
         }
 
         /// <summary>
-        /// 检查研究最终判定是否成功
+        /// 计算研究质量
         /// </summary>
         /// <param name="studier">研究者</param>
-        /// <returns></returns>
-        protected abstract bool CheckIfFinalStudySuccess(Pawn studier);
+        /// <returns>研究质量</returns>
+        protected abstract LC_StudyResult CheckFinalStudyQuality(Pawn studier);
 
         /// <summary>
         /// 检查研究者技能是否符合最低要求
@@ -232,23 +230,35 @@ namespace LCAnomalyLibrary.Comp
         protected abstract bool CheckStudierSkillRequire(Pawn studier);
 
         /// <summary>
-        /// 检查是否生成Pebox
+        /// 检查生成Pebox
         /// </summary>
         /// <param name="studier">研究者</param>
         /// <param name="amount">生成数量</param>
-        protected virtual void CheckSpawnPeBox(Pawn studier, int amount)
+        protected virtual void CheckSpawnPeBox(Pawn studier, LC_StudyResult result)
         {
-            if (amount <= 0)
-                return;
-
             if (studier != null)
             {
+                int amount = 0;
+                switch (result)
+                {
+                    case LC_StudyResult.Good:
+                        amount = Props.amountPeBoxStudyGood;
+                        break;
+                    case LC_StudyResult.Normal:
+                        amount = Props.amountPeBoxStudyNormal;
+                        break;
+                    case LC_StudyResult.Bad:
+                        amount = Props.amountPeBoxStudyBad;
+                        break;
+                }
+                if(amount <= 0) return;
+
                 if (Props.peBoxDef != null)
                 {
                     Thing thing = ThingMaker.MakeThing(Props.peBoxDef);
                     thing.stackCount = amount;
                     GenSpawn.Spawn(thing, studier.Position, studier.Map);
-                    Log.Message($"{SelfPawn.def.defName}生成了{amount}单位的{Props.peBoxDef.defName}");
+                    //Log.Message($"{SelfPawn.def.defName}生成了{amount}单位的{Props.peBoxDef.defName}");
                 }
             }
         }
@@ -261,7 +271,7 @@ namespace LCAnomalyLibrary.Comp
             //概率排前面是为了减少计算量，避免下面的foreach每次都要触发
             if (!Rand.Chance(Props.accessoryChance))
             {
-                Log.Message($"{studier.Name} 获取饰品失败，概率判定失败");
+                //Log.Message($"{studier.Name} 获取饰品失败，概率判定失败");
                 return;
             }
 
@@ -271,16 +281,16 @@ namespace LCAnomalyLibrary.Comp
                 if (bodypart != null)
                 {
                     studier.health.AddHediff(hediffDef, bodypart);
-                    Log.Message($"{studier.Name} 获取饰品成功");
+                    //Log.Message($"{studier.Name} 获取饰品成功");
                 }
                 else
                 {
-                    Log.Message($"{studier.Name} 获取饰品失败，身体核心部位为空");
+                    //Log.Message($"{studier.Name} 获取饰品失败，身体核心部位为空");
                 }
             }
             else
             {
-                Log.Message($"{studier.Name} 获取饰品失败，已经拥有相同饰品");
+                //Log.Message($"{studier.Name} 获取饰品失败，已经拥有相同饰品");
             }
         }
 

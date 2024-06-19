@@ -2,11 +2,10 @@
 using Verse.AI.Group;
 using Verse;
 using LCAnomalyLibrary.Defs;
-using System.Collections.Generic;
 using Verse.Sound;
 using LCAnomalyLibrary.Util;
 
-namespace LCAnomalyLibrary
+namespace LCAnomalyLibrary.PsychicRituals
 {
     public class PsychicRitualToil_ExtractAnomaly : PsychicRitualToil
     {
