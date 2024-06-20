@@ -120,6 +120,7 @@
     <Compile Include="Toils\ExtractRitualToil_GatherOfferings.cs" />
     <Compile Include="Toils\ExtractRitualToil_GatherForInvocation.cs" />
     <Compile Include="Util\Curves.cs" />
+    <Compile Include="Util\ExpansionActive.cs" />
     <Compile Include="Util\ExtractUtil.cs" />
     <Compile Include="Util\GraphicUtil.cs" />
     <Compile Include="Util\StudyUtils.cs" />

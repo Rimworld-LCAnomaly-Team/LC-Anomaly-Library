@@ -203,7 +203,7 @@ namespace LCAnomalyLibrary.Patch
                     LC_CompEntity compEntity = pawn.TryGetComp<LC_CompEntity>();
                     if (compEntity != null)
                     {
-                        Log.Warning("检测到一次实体随机出逃，因为是LC实体所以没有执行");
+                        Log.Warning("Patch：检测到一次实体随机出逃，因为是LC实体所以没有执行");
                         return false;
                     }
                     else

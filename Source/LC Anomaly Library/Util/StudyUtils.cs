@@ -11,19 +11,19 @@ namespace LCAnomalyLibrary.Util
             {
                 case LC_StudyResult.Good:
                     FleckMaker.Static(entity.PositionHeld, entity.MapHeld, Defs.FleckDefOf.WorkResult_Good);
-                    Log.Message($"{studier.Name} 研究异想体 {entity.def.defName.Translate()} 成功，研究质量：好。");
+                    Log.Message($"工作：{studier.Name} 对异想体 {entity.def.defName.Translate()} 工作成功，质量：良好。");
                     break;
                 case LC_StudyResult.Normal:
                     FleckMaker.Static(entity.PositionHeld, entity.MapHeld, Defs.FleckDefOf.WorkResult_Normal);
-                    Log.Message($"{studier.Name} 研究异想体 {entity.def.defName.Translate()} 成功，研究质量：普通。");
+                    Log.Message($"工作：{studier.Name} 对异想体 {entity.def.defName.Translate()} 工作成功，质量：普通。");
                     break;
 
                 case LC_StudyResult.Bad:
                     FleckMaker.Static(entity.PositionHeld, entity.MapHeld, Defs.FleckDefOf.WorkResult_Bad);
-                    Log.Message($"{studier.Name} 研究异想体 {entity.def.defName.Translate()} 失败，研究质量：差。");
+                    Log.Message($"工作：{studier.Name} 对异想体 {entity.def.defName.Translate()} 工作失败，质量：差。");
                     break;
                 default:
-                    Log.Error("检测到错误的输入。");
+                    Log.Error("工作：检测到错误的输入。");
                     break;
             }
         }

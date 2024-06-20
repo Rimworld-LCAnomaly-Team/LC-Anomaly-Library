@@ -9,7 +9,7 @@ namespace LCAnomalyLibrary.Util
     /// </summary>
     public static class GraphicUtil
     {
-        public static List<Graphic> CachedTopGraphic = new List<Graphic>();
+        private static List<Graphic> CachedTopGraphic = new List<Graphic>();
 
         /// <summary>
         /// 获取逆卡巴拉计数器的图集
@@ -21,7 +21,8 @@ namespace LCAnomalyLibrary.Util
             {
                 for (int i = 0; i < 6; i++)
                 {
-                    Log.Warning("Things/Building/QliphothIndicator/Top" + i);
+                    Log.Message("贴图缓存：Things/Building/QliphothIndicator/Top" + i);
+
                     CachedTopGraphic.Add(GraphicDatabase.Get<Graphic_Single>("Things/Building/QliphothIndicator/Top" + i,
                         ShaderDatabase.Transparent, Defs.ThingDefOf.QliphothIndicator.graphicData.drawSize, Color.white));
                 }

@@ -40,20 +40,18 @@ namespace LCAnomalyLibrary.Comp
                 if (value <= 0)
                 {
                     qliphothCountCurrent = 0;
-                    Log.Message("{SelfPawn.def.defName} 的逆卡巴拉计数器变化，变为：0");
+                    Log.Message($"逆卡巴拉计数：{SelfPawn.def.defName} 的逆卡巴拉计数器变化，变为：0");
                     QliphothMeltdown();
                 }
                 else if (value > Props.qliphothCountMax)
                 {
-                    if (qliphothCountCurrent > Props.qliphothCountMax)
-                        qliphothCountCurrent = Props.qliphothCountMax;
-
+                    qliphothCountCurrent = Props.qliphothCountMax;
                     return;
                 }
                 else
                 {
                     qliphothCountCurrent = value;
-                    Log.Message($"{SelfPawn.def.defName} 的逆卡巴拉计数器变化，变为：{QliphothCountCurrent}");
+                    Log.Message($"逆卡巴拉计数：{SelfPawn.def.defName} 的逆卡巴拉计数器变化，变为：{QliphothCountCurrent}");
                 }
             }
         }
@@ -138,12 +136,12 @@ namespace LCAnomalyLibrary.Comp
         /// </summary>
         protected virtual void QliphothMeltdown()
         {
-            Log.Message($"{SelfPawn.def.defName} 的收容单元发生了熔毁");
+            Log.Message($"收容：{SelfPawn.def.defName} 的收容单元发生了熔毁");
 
             CompHoldingPlatformTarget comp = SelfPawn.TryGetComp<CompHoldingPlatformTarget>();
             if (comp != null)
             {
-                Log.Message($"{SelfPawn.def.defName} 因收容单元熔毁而出逃");
+                Log.Message($"收容：{SelfPawn.def.defName} 因收容单元熔毁而出逃");
                 comp.Escape(initiator: true);
             }
         }
@@ -258,7 +256,7 @@ namespace LCAnomalyLibrary.Comp
                     Thing thing = ThingMaker.MakeThing(Props.peBoxDef);
                     thing.stackCount = amount;
                     GenSpawn.Spawn(thing, studier.Position, studier.Map);
-                    //Log.Message($"{SelfPawn.def.defName}生成了{amount}单位的{Props.peBoxDef.defName}");
+                    Log.Message($"工作：{SelfPawn.def.defName}生成了{amount}单位的{Props.peBoxDef.defName}");
                 }
             }
         }
@@ -271,7 +269,7 @@ namespace LCAnomalyLibrary.Comp
             //概率排前面是为了减少计算量，避免下面的foreach每次都要触发
             if (!Rand.Chance(Props.accessoryChance))
             {
-                //Log.Message($"{studier.Name} 获取饰品失败，概率判定失败");
+                Log.Message($"工作：{studier.Name} 获取饰品失败，概率判定失败");
                 return;
             }
 
@@ -281,16 +279,16 @@ namespace LCAnomalyLibrary.Comp
                 if (bodypart != null)
                 {
                     studier.health.AddHediff(hediffDef, bodypart);
-                    //Log.Message($"{studier.Name} 获取饰品成功");
+                    Log.Message($"工作：{studier.Name} 获取饰品成功");
                 }
                 else
                 {
-                    //Log.Message($"{studier.Name} 获取饰品失败，身体核心部位为空");
+                    Log.Message($"工作：{studier.Name} 获取饰品失败，RaceProps.body.corePart 不存在");
                 }
             }
             else
             {
-                //Log.Message($"{studier.Name} 获取饰品失败，已经拥有相同饰品");
+                Log.Message($"工作：{studier.Name} 获取饰品失败，已经拥有相同饰品");
             }
         }
 

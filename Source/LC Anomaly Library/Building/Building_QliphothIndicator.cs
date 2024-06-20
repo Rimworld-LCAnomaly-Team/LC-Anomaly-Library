@@ -31,7 +31,7 @@ namespace LCAnomalyLibrary.Building
                 else
                 {
                     qliphothCounter = value;
-                    Log.Message($"逆卡巴拉计数器设备值变更为：{qliphothCounter}");
+                    Log.Message($"逆卡巴拉计数器：设备值变更为：{qliphothCounter}");
                 }
             }
         }
