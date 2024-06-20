@@ -17,7 +17,7 @@ namespace LCAnomalyLibrary.Util
         /// <returns>图集</returns>
         public static List<Graphic> QliphothIndicator_GetCachedTopGraphic()
         {
-            if(CachedTopGraphic.Empty())
+            if (CachedTopGraphic.Empty())
             {
                 for (int i = 0; i < 6; i++)
                 {

@@ -1,12 +1,12 @@
-﻿using RimWorld;
-using Verse.AI;
+﻿using LCAnomalyLibrary.Defs;
+using RimWorld;
 using Verse;
+using Verse.AI;
 using Verse.AI.Group;
-using LCAnomalyLibrary.Defs;
 
 namespace LCAnomalyLibrary.Jobs
 {
-    public class LordJob_ExtractRitual: LordJob
+    public class LordJob_ExtractRitual : LordJob
     {
         public ExtractRitualDef def;
         public PsychicRitualRoleAssignments assignments;
@@ -15,6 +15,7 @@ namespace LCAnomalyLibrary.Jobs
         protected LordJob_ExtractRitual()
         {
         }
+
         public LordJob_ExtractRitual(ExtractRitualDef def, PsychicRitualRoleAssignments assignments, float points = -1f)
         {
             this.def = def;
@@ -146,9 +147,9 @@ namespace LCAnomalyLibrary.Jobs
             Scribe_Values.Look(ref points, "points", 0f);
         }
 
-        public override bool EndPawnJobOnCleanup(Pawn pawn)
+        public override bool EndPawnJobOnCleanup(Pawn p)
         {
-            return pawn.CurJob?.lord == lord;
+            return p.CurJob?.lord == lord;
         }
 
         public override bool PrisonerSecure(Pawn pawn)

@@ -1,9 +1,9 @@
-﻿using RimWorld;
-using Verse.AI.Group;
-using Verse;
-using LCAnomalyLibrary.Defs;
-using Verse.Sound;
+﻿using LCAnomalyLibrary.Defs;
 using LCAnomalyLibrary.Util;
+using RimWorld;
+using Verse;
+using Verse.AI.Group;
+using Verse.Sound;
 
 namespace LCAnomalyLibrary.PsychicRituals
 {
@@ -29,7 +29,7 @@ namespace LCAnomalyLibrary.PsychicRituals
         public override void Start(PsychicRitual psychicRitual, PsychicRitualGraph parent)
         {
             base.Start(psychicRitual, parent);
-            PsychicRitualDef_ExtractAnomaly psychicRitualDef_ExtractAnomaly = (PsychicRitualDef_ExtractAnomaly)psychicRitual.def;
+            //PsychicRitualDef_ExtractAnomaly psychicRitualDef_ExtractAnomaly = (PsychicRitualDef_ExtractAnomaly)psychicRitual.def;
             Pawn pawn = psychicRitual.assignments.FirstAssignedPawn(invokerRole);
             Pawn pawn2 = psychicRitual.assignments.FirstAssignedPawn(targetRole);
 

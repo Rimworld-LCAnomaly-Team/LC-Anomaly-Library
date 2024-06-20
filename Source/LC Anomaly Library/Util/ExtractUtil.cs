@@ -14,25 +14,25 @@ namespace LCAnomalyLibrary.Util
         /// </summary>
         private static bool hasInited = false;
 
-        public static string[] sAnomalyLevel = new string[5] { "ZAYIN", "TETH", "HE", "WAW", "ALEPH" };
+        private static string[] sAnomalyLevel = ["ZAYIN", "TETH", "HE", "WAW", "ALEPH"];
 
-        private static List<ThingDef_LCAnomalyBase> anomalyDefList_Ritual_ZAYIN = new List<ThingDef_LCAnomalyBase>();
-        private static List<ThingDef_LCAnomalyBase> anomalyDefList_Ritual_TETH = new List<ThingDef_LCAnomalyBase>();
-        private static List<ThingDef_LCAnomalyBase> anomalyDefList_Ritual_HE = new List<ThingDef_LCAnomalyBase>();
-        private static List<ThingDef_LCAnomalyBase> anomalyDefList_Ritual_WAW = new List<ThingDef_LCAnomalyBase>();
-        private static List<ThingDef_LCAnomalyBase> anomalyDefList_Ritual_ALEPH = new List<ThingDef_LCAnomalyBase>();
+        private static List<ThingDef_LCAnomalyBase> anomalyDefList_Ritual_ZAYIN = [];
+        private static List<ThingDef_LCAnomalyBase> anomalyDefList_Ritual_TETH = [];
+        private static List<ThingDef_LCAnomalyBase> anomalyDefList_Ritual_HE = [];
+        private static List<ThingDef_LCAnomalyBase> anomalyDefList_Ritual_WAW = [];
+        private static List<ThingDef_LCAnomalyBase> anomalyDefList_Ritual_ALEPH = [];
 
-        private static List<ThingDef_LCAnomalyBase> anomalyDefList_Cogito_ZAYIN = new List<ThingDef_LCAnomalyBase>();
-        private static List<ThingDef_LCAnomalyBase> anomalyDefList_Cogito_TETH = new List<ThingDef_LCAnomalyBase>();
-        private static List<ThingDef_LCAnomalyBase> anomalyDefList_Cogito_HE = new List<ThingDef_LCAnomalyBase>();
-        private static List<ThingDef_LCAnomalyBase> anomalyDefList_Cogito_WAW = new List<ThingDef_LCAnomalyBase>();
-        private static List<ThingDef_LCAnomalyBase> anomalyDefList_Cogito_ALEPH = new List<ThingDef_LCAnomalyBase>();
+        private static List<ThingDef_LCAnomalyBase> anomalyDefList_Cogito_ZAYIN = [];
+        private static List<ThingDef_LCAnomalyBase> anomalyDefList_Cogito_TETH = [];
+        private static List<ThingDef_LCAnomalyBase> anomalyDefList_Cogito_HE = [];
+        private static List<ThingDef_LCAnomalyBase> anomalyDefList_Cogito_WAW = [];
+        private static List<ThingDef_LCAnomalyBase> anomalyDefList_Cogito_ALEPH = [];
 
-        private static List<PawnKindDef_LCAnomalyBase> anomalyDefList_SevenSin_ZAYIN = new List<PawnKindDef_LCAnomalyBase>();
-        private static List<PawnKindDef_LCAnomalyBase> anomalyDefList_SevenSin_TETH = new List<PawnKindDef_LCAnomalyBase>();
-        private static List<PawnKindDef_LCAnomalyBase> anomalyDefList_SevenSin_HE = new List<PawnKindDef_LCAnomalyBase>();
-        private static List<PawnKindDef_LCAnomalyBase> anomalyDefList_SevenSin_WAW = new List<PawnKindDef_LCAnomalyBase>();
-        private static List<PawnKindDef_LCAnomalyBase> anomalyDefList_SevenSin_ALEPH = new List<PawnKindDef_LCAnomalyBase>();
+        private static List<PawnKindDef_LCAnomalyBase> anomalyDefList_SevenSin_ZAYIN = [];
+        private static List<PawnKindDef_LCAnomalyBase> anomalyDefList_SevenSin_TETH = [];
+        private static List<PawnKindDef_LCAnomalyBase> anomalyDefList_SevenSin_HE = [];
+        private static List<PawnKindDef_LCAnomalyBase> anomalyDefList_SevenSin_WAW = [];
+        private static List<PawnKindDef_LCAnomalyBase> anomalyDefList_SevenSin_ALEPH = [];
 
         /// <summary>
         /// 字典：异想体等级string->所有指定等级异想体的列表（仅限仪式召唤）
@@ -49,16 +49,15 @@ namespace LCAnomalyLibrary.Util
         /// </summary>
         private static Dictionary<string, List<PawnKindDef_LCAnomalyBase>> anomlayLvl2DefList_SevenSin;
 
-
-
         public static Dictionary<string, List<ThingDef_LCAnomalyBase>> Get_AnomlayLvl2DefDict_Ritual()
         {
             CheckHasInitial();
             return anomlayLvl2DefList_Ritual;
         }
+
         public static List<ThingDef_LCAnomalyBase> Get_AnomlayLvl2DefList_Ritual(string level)
         {
-            if(CheckIfLevelLegal(level))
+            if (CheckIfLevelLegal(level))
             {
                 CheckHasInitial();
                 return anomlayLvl2DefList_Ritual[level];
@@ -72,6 +71,7 @@ namespace LCAnomalyLibrary.Util
             CheckHasInitial();
             return anomlayLvl2DefList_Cogito;
         }
+
         public static List<ThingDef_LCAnomalyBase> Get_AnomlayLvl2DefList_Cogito(string level)
         {
             if (CheckIfLevelLegal(level))
@@ -88,6 +88,7 @@ namespace LCAnomalyLibrary.Util
             CheckHasInitial();
             return anomlayLvl2DefList_SevenSin;
         }
+
         public static List<PawnKindDef_LCAnomalyBase> Get_AnomlayLvl2DefList_SevenSin(string level)
         {
             if (CheckIfLevelLegal(level))
@@ -112,7 +113,7 @@ namespace LCAnomalyLibrary.Util
 
         private static void CheckHasInitial()
         {
-            if(hasInited) return;
+            if (hasInited) return;
 
             Init();
         }
@@ -165,7 +166,7 @@ namespace LCAnomalyLibrary.Util
                 }
 
                 //Cogito字典初始化
-                foreach(var def in DefDatabase<ThingDef_AnomalyEntity_Spawn>.AllDefsListForReading)
+                foreach (var def in DefDatabase<ThingDef_AnomalyEntity_Spawn>.AllDefsListForReading)
                 {
                     if (def.anomalyLevelTag == level)
                     {

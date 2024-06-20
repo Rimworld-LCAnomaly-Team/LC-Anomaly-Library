@@ -12,7 +12,7 @@ namespace LCAnomalyLibrary.Patch
     [HarmonyPatch(typeof(CompHoldingPlatformTarget), nameof(CompHoldingPlatformTarget.Notify_HeldOnPlatform))]
     public class Patch_CompHoldingPlatformTarget_Notify_HeldOnPlatform
     {
-        static bool Prefix(ThingOwner newOwner, CompHoldingPlatformTarget __instance)
+        private static bool Prefix(ThingOwner newOwner, CompHoldingPlatformTarget __instance)
         {
             //Log.Warning("Patch_CompHoldingPlatformTarget.Notify_HeldOnPlatform 注入成功");
 
@@ -33,7 +33,6 @@ namespace LCAnomalyLibrary.Patch
                     newOwner.TryAdd(pawn3);
                     pawn3.TryGetComp<CompHoldingPlatformTarget>()?.Notify_HeldOnPlatform(newOwner);
                     pawn = pawn3;
-
 
                     if (__instance.Props.heldPawnKind == PawnKindDefOf.Revenant)
                     {
@@ -95,13 +94,12 @@ namespace LCAnomalyLibrary.Patch
 
             return false;
         }
-
     }
 
     [HarmonyPatch(typeof(CompHoldingPlatformTarget), nameof(CompHoldingPlatformTarget.Escape))]
     public class Patch_CompHoldingPlatformTarget_Escape
     {
-        static bool Prefix(bool initiator, CompHoldingPlatformTarget __instance)
+        private static bool Prefix(bool initiator, CompHoldingPlatformTarget __instance)
         {
             //Log.Warning("Patch_CompHoldingPlatformTarget.Escape 注入成功");
 
@@ -124,7 +122,7 @@ namespace LCAnomalyLibrary.Patch
             }
 
             ThingComp compEntity = pawn.TryGetComp<CompRevenant>();
-            if(compEntity != null)
+            if (compEntity != null)
             {
                 Log.Warning("Revenant escaped");
                 ((CompRevenant)compEntity).revenantState = RevenantState.Escape;
@@ -133,7 +131,7 @@ namespace LCAnomalyLibrary.Patch
             else
             {
                 compEntity = pawn.TryGetComp<LC_CompEntity>();
-                if(compEntity != null)
+                if (compEntity != null)
                 {
                     //Log.Warning("LC Entity escaped");
                     ((LC_CompEntity)compEntity).Notify_Escaped();
@@ -172,22 +170,21 @@ namespace LCAnomalyLibrary.Patch
                 }
             }
 
-            if(compEntity is LC_CompEntity)
+            if (compEntity is LC_CompEntity)
             {
                 if (!((LC_CompEntity)compEntity).Props.shoundNotifyWhenEscape)
                     return false;
             }
             Find.LetterStack.ReceiveLetter(LetterMaker.MakeLetter("LetterLabelEscapingFromHoldingPlatform".Translate(), "LetterEscapingFromHoldingPlatform".Translate(list.Select((Pawn p) => p.LabelCap).ToLineList("  - ")), LetterDefOf.ThreatBig, list2));
-            
+
             return false;
         }
-
     }
 
     [HarmonyPatch(typeof(CompHoldingPlatformTarget), "CaptivityTick")]
     public class Patch_CompHoldingPlatformTarget_CaptivityTick()
     {
-        static bool Prefix(Pawn pawn, CompHoldingPlatformTarget __instance)
+        private static bool Prefix(Pawn pawn, CompHoldingPlatformTarget __instance)
         {
             pawn.mindState.entityTicksInCaptivity++;
             if (__instance.targetHolder is Building_HoldingPlatform building_HoldingPlatform && building_HoldingPlatform != __instance.HeldPlatform && building_HoldingPlatform.Occupied)

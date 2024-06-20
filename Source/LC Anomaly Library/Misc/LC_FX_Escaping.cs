@@ -24,7 +24,6 @@ namespace LCAnomalyLibrary.Misc
         /// <param name="targetPawn"></param>
         public abstract void InitWith(Pawn targetPawn, bool isEscaping);
 
-
         public override void Tick()
         {
             //动画播完就执行操作

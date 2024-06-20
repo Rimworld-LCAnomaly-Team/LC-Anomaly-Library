@@ -1,11 +1,11 @@
-﻿using RimWorld;
+﻿using LCAnomalyLibrary.Defs;
+using RimWorld;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Verse.AI.Group;
 using Verse;
+using Verse.AI.Group;
 using Verse.Sound;
-using LCAnomalyLibrary.Defs;
 
 namespace LCAnomalyLibrary.Gizmo
 {

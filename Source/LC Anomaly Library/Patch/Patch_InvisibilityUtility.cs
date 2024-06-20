@@ -1,23 +1,24 @@
 ﻿using HarmonyLib;
 using LCAnomalyLibrary.Comp;
 using RimWorld;
-using Verse;
 using System.Collections.Generic;
+using Verse;
 
 namespace LCAnomalyLibrary.Patch
 {
     [HarmonyPatch(typeof(InvisibilityUtility), nameof(InvisibilityUtility.IsPsychologicallyInvisible))]
     public class Patch_InvisibilityUtility_IsPsychologicallyInvisible
     {
-        static bool Prefix(Pawn pawn, ref bool __result)
+        private static bool Prefix(Pawn pawn, ref bool __result)
         {
             List<Hediff> hediffs = pawn.health.hediffSet.hediffs;
             for (int i = 0; i < hediffs.Count; i++)
             {
                 HediffComp hediffComp = hediffs[i].TryGetComp<HediffComp>();
-                if(hediffComp != null)
+
+                if (hediffComp != null)
                 {
-                    if(hediffComp is HediffComp_Invisibility)
+                    if (hediffComp is HediffComp_Invisibility)
                     {
                         if (!((HediffComp_Invisibility)hediffComp).PsychologicallyVisible)
                         {
@@ -25,7 +26,7 @@ namespace LCAnomalyLibrary.Patch
                             return false;
                         }
                     }
-                    else if(hediffComp is LC_HediffComp_FakeInvisibility)
+                    else if (hediffComp is LC_HediffComp_FakeInvisibility)
                     {
                         if (!((LC_HediffComp_FakeInvisibility)hediffComp).PsychologicallyVisible)
                         {

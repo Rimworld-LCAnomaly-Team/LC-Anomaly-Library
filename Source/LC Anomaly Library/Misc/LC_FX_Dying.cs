@@ -1,5 +1,4 @@
-﻿using RimWorld;
-using System;
+﻿using System;
 using Verse;
 
 namespace LCAnomalyLibrary.Misc
@@ -24,7 +23,6 @@ namespace LCAnomalyLibrary.Misc
         /// </summary>
         /// <param name="targetPawn"></param>
         public abstract void InitWith(Pawn targetPawn);
-
 
         public override void Tick()
         {

@@ -8,11 +8,6 @@ namespace LCAnomalyLibrary.Comp
     {
         public bool ShouldTransferBiosignature => ((LC_CompProperties_InteractableEgg)Props).shouldTransferBioSignature;
 
-        public override void PostExposeData()
-        {
-            base.PostExposeData();
-        }
-
         protected override void OnInteracted(Pawn caster)
         {
             CompUsable comp = parent.GetComp<CompUsable>();

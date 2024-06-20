@@ -16,7 +16,6 @@ namespace LCAnomalyLibrary.Comp
 
     public class LC_HediffComp_FakeInvisibility : HediffComp
     {
-
         [Unsaved(false)]
         private CompHoldingPlatformTarget platformTarget;
 
@@ -53,11 +52,6 @@ namespace LCAnomalyLibrary.Comp
         }
 
         private bool isVisible;
-
-        public override void CompExposeData()
-        {
-            base.CompExposeData();
-        }
 
         public override void CompPostPostAdd(DamageInfo? dinfo)
         {

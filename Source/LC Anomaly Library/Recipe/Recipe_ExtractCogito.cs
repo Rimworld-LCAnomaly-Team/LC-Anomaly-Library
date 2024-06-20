@@ -15,7 +15,7 @@ namespace LCAnomalyLibrary.Recipe
                 return false;
             }
 
-            if(pawn.Faction == Faction.OfEntities)
+            if (pawn.Faction == Faction.OfEntities)
             {
                 return false;
             }

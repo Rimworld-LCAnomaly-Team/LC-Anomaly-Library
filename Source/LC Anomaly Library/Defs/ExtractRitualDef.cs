@@ -1,7 +1,7 @@
-﻿using RimWorld;
-using Verse.AI.Group;
+﻿using LCAnomalyLibrary.Jobs;
+using RimWorld;
 using Verse;
-using LCAnomalyLibrary.Jobs;
+using Verse.AI.Group;
 
 namespace LCAnomalyLibrary.Defs
 {

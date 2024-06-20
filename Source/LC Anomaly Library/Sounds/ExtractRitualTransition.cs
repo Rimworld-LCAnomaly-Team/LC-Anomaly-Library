@@ -1,9 +1,8 @@
-﻿using RimWorld;
+﻿using LCAnomalyLibrary.Jobs;
+using RimWorld;
 using System.Linq;
-using Verse.AI.Group;
 using Verse;
-using KTrie;
-using LCAnomalyLibrary.Jobs;
+using Verse.AI.Group;
 
 namespace LCAnomalyLibrary.Sounds
 {

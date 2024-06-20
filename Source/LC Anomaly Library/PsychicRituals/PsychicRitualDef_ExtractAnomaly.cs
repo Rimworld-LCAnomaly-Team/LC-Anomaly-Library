@@ -1,15 +1,15 @@
-﻿using RimWorld;
-using System.Collections.Generic;
-using Verse.AI.Group;
-using Verse;
-using LCAnomalyLibrary.Defs;
+﻿using LCAnomalyLibrary.Defs;
 using LCAnomalyLibrary.Util;
+using RimWorld;
+using System.Collections.Generic;
+using Verse;
+using Verse.AI.Group;
 
 namespace LCAnomalyLibrary.PsychicRituals
 {
     public class PsychicRitualDef_ExtractAnomaly : ExtractRitualDef_InvocationCircle
     {
-        string anomalyLevelTag;
+        private string anomalyLevelTag;
 
         public override List<PsychicRitualToil> CreateToils(PsychicRitual psychicRitual, PsychicRitualGraph parent)
         {
@@ -25,6 +25,7 @@ namespace LCAnomalyLibrary.PsychicRituals
                 yield return "NonRecruitable".Translate();
             }
         }
+
         public override void CheckPsychicRitualCancelConditions(PsychicRitual psychicRitual)
         {
             base.CheckPsychicRitualCancelConditions(psychicRitual);

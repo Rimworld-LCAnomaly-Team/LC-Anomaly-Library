@@ -76,14 +76,15 @@ namespace LCAnomalyLibrary.Comp
         /// </summary>
         protected Pawn SelfPawn => (Pawn)parent;
 
-        #endregion
+        #endregion 变量
 
         #region 触发事件
 
         /// <summary>
         /// 被看到的操作
         /// </summary>
-        protected virtual void CheckIfSeen() { }
+        protected virtual void CheckIfSeen()
+        { }
 
         /// <summary>
         /// 逃脱收容后执行的操作
@@ -114,6 +115,7 @@ namespace LCAnomalyLibrary.Comp
                 case LC_StudyResult.Good:
                     QliphothCountCurrent++;
                     break;
+
                 case LC_StudyResult.Normal:
                     break;
             }
@@ -130,7 +132,7 @@ namespace LCAnomalyLibrary.Comp
 
             StudyUtil.DoStudyResultEffect(studier, SelfPawn, LC_StudyResult.Bad);
         }
-        
+
         /// <summary>
         /// 逆卡巴拉熔毁事件
         /// </summary>
@@ -146,7 +148,7 @@ namespace LCAnomalyLibrary.Comp
             }
         }
 
-        #endregion
+        #endregion 触发事件
 
         #region 生命周期
 
@@ -156,7 +158,7 @@ namespace LCAnomalyLibrary.Comp
             Scribe_Values.Look(ref qliphothCountCurrent, "qliphothCountCurrent", defaultValue: QliphothCountMax);
         }
 
-        #endregion
+        #endregion 生命周期
 
         #region 工具功能
 
@@ -242,14 +244,16 @@ namespace LCAnomalyLibrary.Comp
                     case LC_StudyResult.Good:
                         amount = Props.amountPeBoxStudyGood;
                         break;
+
                     case LC_StudyResult.Normal:
                         amount = Props.amountPeBoxStudyNormal;
                         break;
+
                     case LC_StudyResult.Bad:
                         amount = Props.amountPeBoxStudyBad;
                         break;
                 }
-                if(amount <= 0) return;
+                if (amount <= 0) return;
 
                 if (Props.peBoxDef != null)
                 {
@@ -300,7 +304,7 @@ namespace LCAnomalyLibrary.Comp
             QliphothCountCurrent = 0;
         }
 
-        #endregion
+        #endregion 工具功能
 
         #region UI
 
@@ -315,7 +319,6 @@ namespace LCAnomalyLibrary.Comp
             {
                 yield return new Command_Action
                 {
-
                     defaultLabel = "kill",
                     action = delegate
                     {
@@ -325,7 +328,6 @@ namespace LCAnomalyLibrary.Comp
 
                 yield return new Command_Action
                 {
-
                     defaultLabel = "Force Meltdown",
                     action = delegate
                     {
@@ -336,7 +338,6 @@ namespace LCAnomalyLibrary.Comp
 
                 yield return new Command_Action
                 {
-
                     defaultLabel = "QliphothCount +1",
                     action = delegate
                     {
@@ -347,7 +348,6 @@ namespace LCAnomalyLibrary.Comp
 
                 yield return new Command_Action
                 {
-
                     defaultLabel = "QliphothCount -1",
                     action = delegate
                     {
@@ -358,6 +358,6 @@ namespace LCAnomalyLibrary.Comp
             }
         }
 
-        #endregion
+        #endregion UI
     }
 }

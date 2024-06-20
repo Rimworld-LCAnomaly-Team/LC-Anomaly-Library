@@ -61,7 +61,7 @@ namespace LCAnomalyLibrary.Jobs
                 }
 
                 int stackCount = Mathf.Min(needed, thing.stackCount);
-                return pawn.CanReserve(thing, 10, stackCount) ? true : false;
+                return pawn.CanReserve(thing, 10, stackCount);
             });
             if (thing2 == null)
             {
@@ -72,6 +72,5 @@ namespace LCAnomalyLibrary.Jobs
             job.count = Mathf.Min(needed, thing2.stackCount);
             return job;
         }
-
     }
 }

@@ -1,8 +1,9 @@
 ﻿using RimWorld;
-using Verse.AI;
-using Verse;
-using Verse.AI.Group;
 using System.Collections.Generic;
+using Verse;
+using Verse.AI;
+using Verse.AI.Group;
+using System.Linq;
 
 namespace LCAnomalyLibrary.Toils
 {
@@ -61,15 +62,12 @@ namespace LCAnomalyLibrary.Toils
             float num = 0f;
             foreach (Pawn pawn in pawns)
             {
-                foreach (Thing item in (IEnumerable<Thing>)pawn.inventory.GetDirectlyHeldThings())
+                foreach (var item in pawn.inventory.GetDirectlyHeldThings().Where(item => offering.filter.Allows(item)))
                 {
-                    if (offering.filter.Allows(item))
+                    num += (float)item.stackCount;
+                    if (num >= offering.GetBaseCount())
                     {
-                        num += (float)item.stackCount;
-                        if (num >= offering.GetBaseCount())
-                        {
-                            return offering.GetBaseCount();
-                        }
+                        return offering.GetBaseCount();
                     }
                 }
             }

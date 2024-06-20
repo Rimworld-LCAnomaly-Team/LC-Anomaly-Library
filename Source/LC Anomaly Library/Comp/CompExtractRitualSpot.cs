@@ -1,9 +1,10 @@
-﻿using RimWorld;
+﻿using LCAnomalyLibrary.Gizmo;
+
+using RimWorld;
 using System.Collections.Generic;
 using System.Text;
-using Verse.AI.Group;
 using Verse;
-using LCAnomalyLibrary.Gizmo;
+using Verse.AI.Group;
 
 namespace LCAnomalyLibrary.Comp
 {

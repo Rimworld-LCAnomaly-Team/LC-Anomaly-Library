@@ -1,10 +1,10 @@
-﻿using RimWorld;
+﻿using LCAnomalyLibrary.Comp;
+using LCAnomalyLibrary.Util;
+using RimWorld;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using Verse;
-using LCAnomalyLibrary.Comp;
-using System.Text;
-using LCAnomalyLibrary.Util;
 
 namespace LCAnomalyLibrary.Building
 {
@@ -13,6 +13,7 @@ namespace LCAnomalyLibrary.Building
         private bool initalized;
 
         protected int qliphothCounter;
+
         /// <summary>
         /// 逆卡巴拉计数器值
         /// </summary>
@@ -21,11 +22,11 @@ namespace LCAnomalyLibrary.Building
             get => qliphothCounter;
             set
             {
-                if(value ==  qliphothCounter) 
+                if (value == qliphothCounter)
                     return;
 
-                if(value < 0) 
-                { 
+                if (value < 0)
+                {
                     qliphothCounter = 0;
                 }
                 else
@@ -45,7 +46,6 @@ namespace LCAnomalyLibrary.Building
         public CompPowerTrader Power => powerComp ?? (powerComp = GetComp<CompPowerTrader>());
 
         public List<Thing> Platforms => FacilityComp.LinkedBuildings;
-
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
@@ -90,7 +90,7 @@ namespace LCAnomalyLibrary.Building
             {
                 Initialize();
             }
-            
+
             GraphicUtil.QliphothIndicator_GetCachedTopGraphic()[qliphothCounter]
                 .Draw(this.DrawPos + Altitudes.AltIncVect * 2f, base.Rotation, this, 0f);
         }

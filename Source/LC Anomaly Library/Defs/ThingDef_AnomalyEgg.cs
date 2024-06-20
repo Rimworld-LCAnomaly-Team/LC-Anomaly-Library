@@ -2,7 +2,6 @@
 
 namespace LCAnomalyLibrary.Defs
 {
-
     public abstract class ThingDef_LCAnomalyBase : ThingDef
     {
         public readonly string anomalyLevelTag;
