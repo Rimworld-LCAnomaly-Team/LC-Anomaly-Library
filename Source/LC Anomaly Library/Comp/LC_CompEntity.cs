@@ -233,9 +233,15 @@ namespace LCAnomalyLibrary.Comp
         /// 检查生成Pebox
         /// </summary>
         /// <param name="studier">研究者</param>
-        /// <param name="amount">生成数量</param>
+        /// <param name="result">工作质量</param>
         protected virtual void CheckSpawnPeBox(Pawn studier, LC_StudyResult result)
         {
+            if (!Defs.ResearchProjectDefOf.ExtractEnkephalin.IsFinished)
+            {
+                Log.Warning($"工作：未完成研究项目：{Defs.ResearchProjectDefOf.ExtractEnkephalin.label.Translate()}，无法生成PeBox");
+                return;
+            }
+
             if (studier != null)
             {
                 int amount = 0;
