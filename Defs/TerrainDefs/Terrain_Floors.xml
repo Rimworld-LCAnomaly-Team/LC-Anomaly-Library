@@ -4,7 +4,7 @@
   <TerrainDef ParentName="FloorBase">
     <defName>LC_HoldingPlatformPlate</defName>
     <label>LC_HoldingPlatformPlate</label>
-    <description>Heavy plate flooring made from smoothed bioferrite. While ugly and slightly flammable, it's quick to clean and increases the containment strength of nearby holding platforms.</description>
+    <description>.</description>
     <texturePath>Terrain/Surfaces/BioferritePlateFloor</texturePath>
     <constructionSkillPrerequisite>3</constructionSkillPrerequisite>
     <constructEffect>ConstructMetal</constructEffect>
@@ -24,7 +24,7 @@
       <EnkephalinBox>1</EnkephalinBox>
     </costList>
     <researchPrerequisites>
-      <li>BioferriteShaping</li>
+      <li>LC_EntityContainment</li>
     </researchPrerequisites>
     <affordances>
       <li>Light</li>

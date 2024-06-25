@@ -26,7 +26,13 @@
     <burnableByRecipe>false</burnableByRecipe>
     <smeltable>false</smeltable>
     <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
-    <descriptionHyperlinks></descriptionHyperlinks>
+    <descriptionHyperlinks>
+      <RecipeDef>ExtractCogito</RecipeDef>
+      <RecipeDef>CogitoInjection</RecipeDef>
+    </descriptionHyperlinks>
+    <researchPrerequisites>
+      <li>CogitoUsages</li>
+    </researchPrerequisites>
     <comps></comps>
   </ThingDef>
 

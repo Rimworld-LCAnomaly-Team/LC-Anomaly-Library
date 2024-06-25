@@ -1,8 +1,26 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
+
+  <CogitoUsages.label>Cogito应用</CogitoUsages.label>
+  <CogitoUsages.description>研究如何利用Cogito。</CogitoUsages.description>
+  <CogitoUsages.generalRules.rulesStrings>
+    <li>subject->Cogito应用</li>
+    <li>subject_story->WIP</li>
+    <li>subject_story->WIP</li>
+    <li>subject_gerund->WIP</li>
+  </CogitoUsages.generalRules.rulesStrings>
+
+  <LC_EntityContainment.label>异想体收容</LC_EntityContainment.label>
+  <LC_EntityContainment.description>研究如何建造与异想体收容相关的设施。</LC_EntityContainment.description>
+  <LC_EntityContainment.generalRules.rulesStrings>
+    <li>subject->异想体收容</li>
+    <li>subject_story->WIP</li>
+    <li>subject_story->WIP</li>
+    <li>subject_gerund->WIP</li>
+  </LC_EntityContainment.generalRules.rulesStrings>
   
   <ExtractEnkephalin.label>提取脑啡肽</ExtractEnkephalin.label>
-  <ExtractEnkephalin.description>研究如何提取脑啡肽。</ExtractEnkephalin.description>
+  <ExtractEnkephalin.description>研究如何从对异想体的工作中提取提取脑啡肽。</ExtractEnkephalin.description>
   <ExtractEnkephalin.generalRules.rulesStrings>
     <li>subject->提取脑啡肽</li>
     <li>subject_story->L公司的特产</li>

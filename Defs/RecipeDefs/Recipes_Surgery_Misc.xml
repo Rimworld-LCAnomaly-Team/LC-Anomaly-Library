@@ -13,10 +13,17 @@
     <isViolation>true</isViolation>
     <descriptionHyperlinks>
       <ThingDef>Cogito</ThingDef>
+      <HediffDef>CogitoExtracted</HediffDef>
     </descriptionHyperlinks>
     <uiIconThing>Cogito</uiIconThing>
     <anesthetize>false</anesthetize>
     <workSkillLearnFactor>2</workSkillLearnFactor>
+    <skillRequirements>
+      <Medicine>5</Medicine>
+    </skillRequirements>
+    <researchPrerequisite>
+      <li>CogitoUsages</li>
+    </researchPrerequisite>
   </RecipeDef>
 
   <RecipeDef ParentName="SurgeryFlesh">
@@ -27,6 +34,11 @@
     <workAmount>800</workAmount>
     <hideBodyPartNames>true</hideBodyPartNames>
     <targetsBodyPart>false</targetsBodyPart>
+    <isViolation>true</isViolation>
+    <descriptionHyperlinks>
+      <ThingDef>Cogito</ThingDef>
+      <HediffDef>CogitoInjected</HediffDef>
+    </descriptionHyperlinks>
     <anesthetize>false</anesthetize>
     <workerClass>LCAnomalyLibrary.Recipe.Recipe_CogitoInjection</workerClass>
     <surgeryOutcomeEffect IsNull="True" /> <!-- Always succeeds -->
@@ -46,6 +58,12 @@
         <li>Cogito</li>
       </thingDefs>
     </fixedIngredientFilter>
+    <skillRequirements>
+      <Medicine>5</Medicine>
+    </skillRequirements>
+    <researchPrerequisite>
+      <li>CogitoUsages</li>
+    </researchPrerequisite>
   </RecipeDef>
 
 </Defs>

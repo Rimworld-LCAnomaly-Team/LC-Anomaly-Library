@@ -60,7 +60,9 @@ namespace LCAnomalyLibrary.Comp
             var list2 = ExtractUtil.Get_AnomlayLvl2DefList_Cogito("ZAYIN").
                 Union(ExtractUtil.Get_AnomlayLvl2DefList_Cogito("TETH")).ToList();
             if (list2.Count > 0)
-                ((LC_FX_Escaping)GenSpawn.Spawn(list2.RandomElement(), Pawn.Position, Pawn.MapHeld)).InitWith(null, false);
+                ((LC_FX_Standard)GenSpawn.Spawn(
+                    list2.RandomElement(), Pawn.Position, Pawn.MapHeld))
+                    .InitWith(null);
             else
                 Log.Warning("ZAYIN和TETH的非工具类异想体列表为空");
 

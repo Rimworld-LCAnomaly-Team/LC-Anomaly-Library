@@ -2,14 +2,35 @@
 <Defs>
 
   <ResearchProjectDef>
+    <defName>CogitoUsages</defName>
+    <label>CogitoUsages</label>
+    <description>Carry out a research into the usage of cogito.</description>
+    <tab>LCAnomaly</tab>
+    <knowledgeCost>40</knowledgeCost>
+    <knowledgeCategory>Basic</knowledgeCategory>
+    <researchViewX>0.00</researchViewX>
+    <researchViewY>1.20</researchViewY>
+    <generalRules>
+      <rulesStrings>
+        <li>subject->CogitoUsages</li>
+
+        <li>subject_story->empty</li>
+        <li>subject_story->empty</li>
+
+        <li>subject_gerund->Now learning how to use cogito.</li>
+      </rulesStrings>
+    </generalRules>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
     <defName>ExtractEnkephalin</defName>
     <label>Extract Enkephalin</label>
     <description>Extract Enkephalin from Anomalies.</description>
     <tab>LCAnomaly</tab>
-    <knowledgeCost>20</knowledgeCost>
+    <knowledgeCost>40</knowledgeCost>
     <knowledgeCategory>Basic</knowledgeCategory>
     <researchViewX>0.00</researchViewX>
-    <researchViewY>1.70</researchViewY>
+    <researchViewY>0.60</researchViewY>
     <generalRules>
       <rulesStrings>
         <li>subject->ExtractEnkephalin</li>
@@ -21,7 +42,7 @@
       </rulesStrings>
     </generalRules>
   </ResearchProjectDef>
-
+  
   <ResearchProjectDef>
     <defName>Enkephalin_ElectricGenerator</defName>
     <label>ElectricGenerator of Enkephalin</label>
@@ -30,7 +51,7 @@
     <knowledgeCost>80</knowledgeCost>
     <knowledgeCategory>Basic</knowledgeCategory>
     <researchViewX>1.00</researchViewX>
-    <researchViewY>1.20</researchViewY>
+    <researchViewY>0.60</researchViewY>
     <prerequisites>
       <li>ExtractEnkephalin</li>
     </prerequisites>
@@ -54,7 +75,7 @@
     <knowledgeCost>80</knowledgeCost>
     <knowledgeCategory>Basic</knowledgeCategory>
     <researchViewX>1.00</researchViewX>
-    <researchViewY>2.20</researchViewY>
+    <researchViewY>0.00</researchViewY>
     <prerequisites>
       <li>ExtractEnkephalin</li>
     </prerequisites>
@@ -66,6 +87,30 @@
         <li>subject_story->empty</li>
 
         <li>subject_gerund->Now Enkephalin_Drug</li>
+      </rulesStrings>
+    </generalRules>
+  </ResearchProjectDef>
+
+  <ResearchProjectDef>
+    <defName>LC_EntityContainment</defName>
+    <label>LC EntityContainment</label>
+    <description>.</description>
+    <tab>LCAnomaly</tab>
+    <knowledgeCost>40</knowledgeCost>
+    <knowledgeCategory>Basic</knowledgeCategory>
+    <researchViewX>0.00</researchViewX>
+    <researchViewY>0.00</researchViewY>
+    <prerequisites>
+      <li>EntityContainment</li>
+    </prerequisites>
+    <generalRules>
+      <rulesStrings>
+        <li>subject->CogitoUsages</li>
+
+        <li>subject_story->empty</li>
+        <li>subject_story->empty</li>
+
+        <li>subject_gerund->Now learning how to use cogito.</li>
       </rulesStrings>
     </generalRules>
   </ResearchProjectDef>

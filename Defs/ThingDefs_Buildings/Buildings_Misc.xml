@@ -103,7 +103,7 @@
       <drawSize>(3, 3)</drawSize>
     </graphicData>
     <researchPrerequisites>
-      <li>EntityContainment</li>
+      <li>LC_EntityContainment</li>
     </researchPrerequisites>
     <statBases>
       <MaxHitPoints>500</MaxHitPoints>
@@ -131,6 +131,9 @@
     <defName>QliphothIndicator</defName>
     <label>Qliphoth Indicator</label>
     <description>Qliphoth Indicator</description>
+    <descriptionHyperlinks>
+      <ThingDef>LC_HoldingPlatform</ThingDef>
+    </descriptionHyperlinks>
     <tickerType>Normal</tickerType>
     <size>(1,1)</size>
     <graphicData>
@@ -169,7 +172,7 @@
       <ComponentIndustrial>1</ComponentIndustrial>
     </costList>
     <researchPrerequisites>
-      <li>BioferriteHarvesting</li>
+      <li>LC_EntityContainment</li>
     </researchPrerequisites>
     <placeWorkers>
       <li>PlaceWorker_ShowFacilitiesConnections</li>

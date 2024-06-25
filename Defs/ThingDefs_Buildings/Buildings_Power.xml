@@ -44,7 +44,7 @@
       <li>PlaceWorker_NoiseSource</li>
     </placeWorkers>
     <researchPrerequisites>
-      <li>BioferriteGenerator</li>
+      <li>Enkephalin_ElectricGenerator</li>
     </researchPrerequisites>
     <comps>
       <li Class="CompProperties_Power">

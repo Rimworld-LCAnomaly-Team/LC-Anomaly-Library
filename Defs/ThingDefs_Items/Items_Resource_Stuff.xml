@@ -31,7 +31,12 @@
     <graphicData>
       <texPath>Things/Item/Resource/PeBox/PeBoxZAYIN</texPath>
     </graphicData>
-    <descriptionHyperlinks></descriptionHyperlinks>
+    <descriptionHyperlinks>
+      <ThingDef>EnkephalinBox</ThingDef>
+    </descriptionHyperlinks>
+    <researchPrerequisites>
+      <li>ExtractEnkephalin</li>
+    </researchPrerequisites>
     <comps></comps>
   </ThingDef>
 
@@ -43,7 +48,12 @@
     <graphicData>
       <texPath>Things/Item/Resource/PeBox/PeBoxTETH</texPath>
     </graphicData>
-    <descriptionHyperlinks></descriptionHyperlinks>
+    <descriptionHyperlinks>
+      <ThingDef>EnkephalinBox</ThingDef>
+    </descriptionHyperlinks>
+    <researchPrerequisites>
+      <li>ExtractEnkephalin</li>
+    </researchPrerequisites>
     <comps></comps>
   </ThingDef>
 
@@ -55,7 +65,12 @@
     <graphicData>
       <texPath>Things/Item/Resource/PeBox/PeBoxHE</texPath>
     </graphicData>
-    <descriptionHyperlinks></descriptionHyperlinks>
+    <descriptionHyperlinks>
+      <ThingDef>EnkephalinBox</ThingDef>
+    </descriptionHyperlinks>
+    <researchPrerequisites>
+      <li>ExtractEnkephalin</li>
+    </researchPrerequisites>
     <comps></comps>
   </ThingDef>
 
@@ -67,7 +82,12 @@
     <graphicData>
       <texPath>Things/Item/Resource/PeBox/PeBoxWAW</texPath>
     </graphicData>
-    <descriptionHyperlinks></descriptionHyperlinks>
+    <descriptionHyperlinks>
+      <ThingDef>EnkephalinBox</ThingDef>
+    </descriptionHyperlinks>
+    <researchPrerequisites>
+      <li>ExtractEnkephalin</li>
+    </researchPrerequisites>
     <comps></comps>
   </ThingDef>
 
@@ -79,7 +99,12 @@
     <graphicData>
       <texPath>Things/Item/Resource/PeBox/PeBoxALEPH</texPath>
     </graphicData>
-    <descriptionHyperlinks></descriptionHyperlinks>
+    <descriptionHyperlinks>
+      <ThingDef>EnkephalinBox</ThingDef>
+    </descriptionHyperlinks>
+    <researchPrerequisites>
+      <li>ExtractEnkephalin</li>
+    </researchPrerequisites>
     <comps></comps>
   </ThingDef>
 
@@ -91,7 +116,16 @@
     <graphicData>
       <texPath>Things/Item/Resource/PeBox/EnkephalinBox</texPath>
     </graphicData>
-    <descriptionHyperlinks></descriptionHyperlinks>
+    <descriptionHyperlinks>
+      <ThingDef>PeBoxZAYIN</ThingDef>
+      <ThingDef>PeBoxTETH</ThingDef>
+      <ThingDef>PeBoxHE</ThingDef>
+      <ThingDef>PeBoxWAW</ThingDef>
+      <ThingDef>PeBoxALEPH</ThingDef>
+    </descriptionHyperlinks>
+    <researchPrerequisites>
+      <li>ExtractEnkephalin</li>
+    </researchPrerequisites>
     <comps></comps>
   </ThingDef>
 

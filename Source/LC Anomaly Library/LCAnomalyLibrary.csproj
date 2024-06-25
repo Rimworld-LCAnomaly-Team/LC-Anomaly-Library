@@ -108,8 +108,7 @@
     <Compile Include="Jobs\JobGiver_GatherOfferingsForExtractRitual.cs" />
     <Compile Include="Defs\ExtractRitualDef.cs" />
     <Compile Include="Jobs\LordJob_ExtractRitual.cs" />
-    <Compile Include="Misc\LC_FX_Dying.cs" />
-    <Compile Include="Misc\LC_FX_Escaping.cs" />
+    <Compile Include="Misc\LC_FX_Standard.cs" />
     <Compile Include="Patch\PatchMain.cs" />
     <Compile Include="Patch\Patch_CompHoldingPlatformTarget.cs" />
     <Compile Include="Patch\Patch_CompStudiable.cs" />

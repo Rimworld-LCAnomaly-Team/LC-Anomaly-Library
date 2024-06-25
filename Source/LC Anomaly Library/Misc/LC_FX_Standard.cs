@@ -3,7 +3,7 @@ using Verse;
 
 namespace LCAnomalyLibrary.Misc
 {
-    public abstract class LC_FX_Escaping : Thing
+    public abstract class LC_FX_Standard : Thing
     {
         protected int bioSignature;
 
@@ -22,7 +22,10 @@ namespace LCAnomalyLibrary.Misc
         /// 对对应的Pawn初始化效果
         /// </summary>
         /// <param name="targetPawn"></param>
-        public abstract void InitWith(Pawn targetPawn, bool isEscaping);
+        public virtual void InitWith(Pawn targetPawn)
+        {
+            throw new NotImplementedException();
+        }
 
         public override void Tick()
         {
@@ -35,7 +38,7 @@ namespace LCAnomalyLibrary.Misc
 
         public virtual void Complete()
         {
-            throw new NotImplementedException("LC_FX_Dying:Complete():::Not implemented yet");
+            throw new NotImplementedException("LC_FX_Standard:Complete():::Not implemented yet");
         }
     }
 }
