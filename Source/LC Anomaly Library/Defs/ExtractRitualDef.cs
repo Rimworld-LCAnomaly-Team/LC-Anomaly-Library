@@ -5,8 +5,16 @@ using Verse.AI.Group;
 
 namespace LCAnomalyLibrary.Defs
 {
+    /// <summary>
+    /// 提取仪式Def
+    /// </summary>
     public class ExtractRitualDef : PsychicRitualDef
     {
+        /// <summary>
+        /// 开一个新的Lord
+        /// </summary>
+        /// <param name="assignments"></param>
+        /// <returns></returns>
         public override Lord MakeNewLord(PsychicRitualRoleAssignments assignments)
         {
             Lord lord = LordMaker.MakeNewLord(Faction.OfPlayer, new LordJob_ExtractRitual(this, assignments), Find.CurrentMap, assignments.AllAssignedPawns);

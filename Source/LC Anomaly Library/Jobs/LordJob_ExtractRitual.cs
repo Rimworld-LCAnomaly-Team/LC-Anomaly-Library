@@ -6,6 +6,9 @@ using Verse.AI.Group;
 
 namespace LCAnomalyLibrary.Jobs
 {
+    /// <summary>
+    /// 仪式工作（和原版基本一致）
+    /// </summary>
     public class LordJob_ExtractRitual : LordJob
     {
         public ExtractRitualDef def;

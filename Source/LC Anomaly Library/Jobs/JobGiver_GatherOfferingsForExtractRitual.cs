@@ -8,6 +8,9 @@ using Verse.AI.Group;
 
 namespace LCAnomalyLibrary.Jobs
 {
+    /// <summary>
+    /// 仪式收集祭品工作（和原版基本一致）
+    /// </summary>
     public class JobGiver_GatherOfferingsForExtractRitual : ThinkNode_JobGiver
     {
         protected override Job TryGiveJob(Pawn pawn)

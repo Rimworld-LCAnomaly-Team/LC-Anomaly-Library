@@ -1,5 +1,6 @@
 ﻿using LCAnomalyLibrary.Defs;
 using System.Collections.Generic;
+using System.Linq;
 using Verse;
 
 namespace LCAnomalyLibrary.Util
@@ -9,9 +10,8 @@ namespace LCAnomalyLibrary.Util
     /// </summary>
     public static class ExtractUtil
     {
-        /// <summary>
-        /// 是否已初始化
-        /// </summary>
+        #region 字段
+
         private static bool hasInited = false;
 
         private static string[] sAnomalyLevel = ["ZAYIN", "TETH", "HE", "WAW", "ALEPH"];
@@ -35,89 +35,27 @@ namespace LCAnomalyLibrary.Util
         private static List<PawnKindDef_LCAnomalyBase> anomalyDefList_SevenSin_ALEPH = [];
 
         /// <summary>
-        /// 字典：异想体等级string->所有指定等级异想体的列表（仅限仪式召唤）
+        /// 字典：异想体等级->所有指定等级异想体的列表（仅限仪式召唤）
         /// </summary>
         private static Dictionary<string, List<ThingDef_LCAnomalyBase>> anomlayLvl2DefList_Ritual;
 
         /// <summary>
-        /// 字典：异想体等级string->所有指定等级异想体的列表（仅限Cogito注射）
+        /// 字典：异想体等级->所有指定等级异想体的列表（仅限Cogito注射）
         /// </summary>
         private static Dictionary<string, List<ThingDef_LCAnomalyBase>> anomlayLvl2DefList_Cogito;
 
         /// <summary>
-        /// 字典：异想体等级string->所有指定等级异想体的列表（仅限大罪生物）
+        /// 字典：异想体等级->所有指定等级异想体的列表（仅限大罪生物）
         /// </summary>
         private static Dictionary<string, List<PawnKindDef_LCAnomalyBase>> anomlayLvl2DefList_SevenSin;
 
-        public static Dictionary<string, List<ThingDef_LCAnomalyBase>> Get_AnomlayLvl2DefDict_Ritual()
-        {
-            CheckHasInitial();
-            return anomlayLvl2DefList_Ritual;
-        }
+        #endregion
 
-        public static List<ThingDef_LCAnomalyBase> Get_AnomlayLvl2DefList_Ritual(string level)
-        {
-            if (CheckIfLevelLegal(level))
-            {
-                CheckHasInitial();
-                return anomlayLvl2DefList_Ritual[level];
-            }
+        #region 初始化
 
-            return null;
-        }
-
-        public static Dictionary<string, List<ThingDef_LCAnomalyBase>> Get_AnomlayLvl2DefDict_Cogito()
-        {
-            CheckHasInitial();
-            return anomlayLvl2DefList_Cogito;
-        }
-
-        public static List<ThingDef_LCAnomalyBase> Get_AnomlayLvl2DefList_Cogito(string level)
-        {
-            if (CheckIfLevelLegal(level))
-            {
-                CheckHasInitial();
-                return anomlayLvl2DefList_Cogito[level];
-            }
-
-            return null;
-        }
-
-        public static Dictionary<string, List<PawnKindDef_LCAnomalyBase>> Get_AnomlayLvl2DefDict_SevenSin()
-        {
-            CheckHasInitial();
-            return anomlayLvl2DefList_SevenSin;
-        }
-
-        public static List<PawnKindDef_LCAnomalyBase> Get_AnomlayLvl2DefList_SevenSin(string level)
-        {
-            if (CheckIfLevelLegal(level))
-            {
-                CheckHasInitial();
-                return anomlayLvl2DefList_SevenSin[level];
-            }
-
-            return null;
-        }
-
-        private static bool CheckIfLevelLegal(string s)
-        {
-            foreach (var level in sAnomalyLevel)
-            {
-                if (s == level)
-                    return true;
-            }
-
-            return false;
-        }
-
-        private static void CheckHasInitial()
-        {
-            if (hasInited) return;
-
-            Init();
-        }
-
+        /// <summary>
+        /// 初始化
+        /// </summary>
         private static void Init()
         {
             anomlayLvl2DefList_Ritual = new Dictionary<string, List<ThingDef_LCAnomalyBase>>
@@ -186,5 +124,85 @@ namespace LCAnomalyLibrary.Util
 
             hasInited = true;
         }
+
+        /// <summary>
+        /// 检查是否已经初始化过
+        /// </summary>
+        private static void CheckHasInitial()
+        {
+            if (hasInited) return;
+
+            Init();
+        }
+
+        #endregion
+
+        #region 工具方法
+
+        /// <summary>
+        /// 通过 异想体等级 获取 所有指定等级异想体的列表（仅限仪式召唤）
+        /// </summary>
+        /// <param name="level">异想体等级</param>
+        /// <returns>指定等级异想体的列表（仅限仪式召唤）</returns>
+        public static List<ThingDef_LCAnomalyBase> Get_AnomlayLvl2DefList_Ritual(string level)
+        {
+            if (CheckIfLevelLegal(level))
+            {
+                CheckHasInitial();
+                return anomlayLvl2DefList_Ritual[level];
+            }
+
+            return new List<ThingDef_LCAnomalyBase>();
+        }
+
+        /// <summary>
+        /// 通过 异想体等级 获取 所有指定等级异想体的列表（仅限Cogito注射）
+        /// </summary>
+        /// <param name="level">异想体等级</param>
+        /// <returns>指定等级异想体的列表（仅限Cogito注射）</returns>
+        public static List<ThingDef_LCAnomalyBase> Get_AnomlayLvl2DefList_Cogito(string level)
+        {
+            if (CheckIfLevelLegal(level))
+            {
+                CheckHasInitial();
+                return anomlayLvl2DefList_Cogito[level];
+            }
+
+            return new List<ThingDef_LCAnomalyBase>();
+        }
+
+        /// <summary>
+        /// 通过 异想体等级 获取 所有指定等级异想体的列表（仅限大罪生物）
+        /// </summary>
+        /// <param name="level">异想体等级</param>
+        /// <returns>指定等级异想体的列表（仅限大罪生物）</returns>
+        public static List<PawnKindDef_LCAnomalyBase> Get_AnomlayLvl2DefList_SevenSin(string level)
+        {
+            if (CheckIfLevelLegal(level))
+            {
+                CheckHasInitial();
+                return anomlayLvl2DefList_SevenSin[level];
+            }
+
+            return new List<PawnKindDef_LCAnomalyBase>();
+        }
+
+        /// <summary>
+        /// 检查等级是否合法
+        /// </summary>
+        /// <param name="s">等级字符串</param>
+        /// <returns>是否合法</returns>
+        private static bool CheckIfLevelLegal(string s)
+        {
+            foreach (var level in sAnomalyLevel)
+            {
+                if (s == level)
+                    return true;
+            }
+
+            return false;
+        }
+
+        #endregion
     }
 }

@@ -6,8 +6,15 @@ using Verse.AI.Group;
 
 namespace LCAnomalyLibrary.Sounds
 {
+    /// <summary>
+    /// 提取仪式时自动播放脑叶选择音乐
+    /// </summary>
     public class ExtractRitualTransition : MusicTransition
     {
+        /// <summary>
+        /// 是否满足过渡条件
+        /// </summary>
+        /// <returns></returns>
         public override bool IsTransitionSatisfied()
         {
             if (!ModsConfig.AnomalyActive)

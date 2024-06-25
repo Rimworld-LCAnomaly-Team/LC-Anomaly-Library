@@ -3,6 +3,9 @@ using Verse.AI;
 
 namespace LCAnomalyLibrary.Defs
 {
+    /// <summary>
+    /// 该Mod所有的DutyDef
+    /// </summary>
     [DefOf]
     public static class DutyDefOf
     {
@@ -11,7 +14,9 @@ namespace LCAnomalyLibrary.Defs
             DefOfHelper.EnsureInitializedInCtor(typeof(DutyDefOf));
         }
 
-        [MayRequireAnomaly]
+        /// <summary>
+        /// 为了执行提取仪式而收集祭品
+        /// </summary>
         public static DutyDef GatherOfferingsForExtractRitual;
     }
 }

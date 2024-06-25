@@ -5,10 +5,15 @@ using Verse;
 namespace LCAnomalyLibrary.Util
 {
     /// <summary>
-    /// 贴图工具
+    /// 图像工具类
     /// </summary>
     public static class GraphicUtil
     {
+        #region 逆卡巴拉计数器
+
+        /// <summary>
+        /// 缓存的逆卡巴拉计数器的图集
+        /// </summary>
         private static List<Graphic> CachedTopGraphic = new List<Graphic>();
 
         /// <summary>
@@ -30,5 +35,7 @@ namespace LCAnomalyLibrary.Util
 
             return CachedTopGraphic;
         }
+
+        #endregion
     }
 }

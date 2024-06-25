@@ -1,18 +1,20 @@
 ﻿using LCAnomalyLibrary.Util;
 using RimWorld;
-using System;
 using System.Collections.Generic;
 using Verse;
 
 namespace LCAnomalyLibrary.Comp
 {
     /// <summary>
-    /// LC基础实体抽象Comp
+    /// LC基础实体Comp
     /// </summary>
     public abstract class LC_CompEntity : ThingComp
     {
         #region 变量
 
+        /// <summary>
+        /// CompProperties
+        /// </summary>
         public LC_CompProperties_Entity Props => (LC_CompProperties_Entity)props;
 
         /// <summary>
@@ -21,7 +23,7 @@ namespace LCAnomalyLibrary.Comp
         public int biosignature;
 
         /// <summary>
-        /// XML输入：逆卡巴拉计数器最大值
+        /// XML引用：逆卡巴拉计数器最大值
         /// </summary>
         public int QliphothCountMax => Props.qliphothCountMax;
 
@@ -46,7 +48,6 @@ namespace LCAnomalyLibrary.Comp
                 else if (value > Props.qliphothCountMax)
                 {
                     qliphothCountCurrent = Props.qliphothCountMax;
-                    return;
                 }
                 else
                 {
@@ -55,21 +56,13 @@ namespace LCAnomalyLibrary.Comp
                 }
             }
         }
-
-        /// <summary>
-        /// 逆卡巴拉计数器当前值
-        /// </summary>
         private int qliphothCountCurrent;
 
         /// <summary>
         /// 生物特征名
         /// </summary>
-        protected string biosignatureName;
-
-        /// <summary>
-        /// 生物特征名
-        /// </summary>
         public string BiosignatureName => biosignatureName ?? (biosignatureName = AnomalyUtility.GetBiosignatureName(biosignature));
+        private string biosignatureName;
 
         /// <summary>
         /// Comp被挂载的Pawn
@@ -79,12 +72,6 @@ namespace LCAnomalyLibrary.Comp
         #endregion 变量
 
         #region 触发事件
-
-        /// <summary>
-        /// 被看到的操作
-        /// </summary>
-        protected virtual void CheckIfSeen()
-        { }
 
         /// <summary>
         /// 逃脱收容后执行的操作
@@ -101,6 +88,7 @@ namespace LCAnomalyLibrary.Comp
         /// </summary>
         public virtual void Notify_Holded()
         {
+            //重置逆卡巴拉计数器
             QliphothCountCurrent = Props.qliphothCountMax;
         }
 
@@ -108,6 +96,7 @@ namespace LCAnomalyLibrary.Comp
         /// 研究质量：非差
         /// </summary>
         /// <param name="studier">研究者</param>
+        /// <param name="result">研究质量</param>
         protected virtual void StudyEvent_NotBad(Pawn studier, LC_StudyResult result)
         {
             switch (result)
@@ -152,6 +141,9 @@ namespace LCAnomalyLibrary.Comp
 
         #region 生命周期
 
+        /// <summary>
+        /// 我不知道这是什么，好像和数据保存有关
+        /// </summary>
         public override void PostExposeData()
         {
             Scribe_Values.Look(ref biosignature, "biosignature", 0);
@@ -165,7 +157,10 @@ namespace LCAnomalyLibrary.Comp
         /// <summary>
         /// 检查饰品是否冲突
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
+        /// <param name="studier">研究者</param>
+        /// <param name="hediffDef">饰品hediffDef</param>
+        /// <param name="tag">部位标签</param>
+        /// <returns>不冲突为true，反之false</returns>
         protected virtual bool CheckIfAccessoryConflict(Pawn studier, HediffDef hediffDef, string tag)
         {
             //没有相关hediff就不冲突，可添加
@@ -274,6 +269,9 @@ namespace LCAnomalyLibrary.Comp
         /// <summary>
         /// 检查是否给予饰品
         /// </summary>
+        /// <param name="studier">研究者</param>
+        /// <param name="hediffDef">饰品的hediffdef</param>
+        /// <param name="tag">饰品部位tag</param>
         protected virtual void CheckGiveAccessory(Pawn studier, HediffDef hediffDef, string tag)
         {
             //概率排前面是为了减少计算量，避免下面的foreach每次都要触发
@@ -314,6 +312,10 @@ namespace LCAnomalyLibrary.Comp
 
         #region UI
 
+        /// <summary>
+        /// Gizmos
+        /// </summary>
+        /// <returns></returns>
         public override IEnumerable<Verse.Gizmo> CompGetGizmosExtra()
         {
             foreach (Verse.Gizmo gizmo in base.CompGetGizmosExtra())

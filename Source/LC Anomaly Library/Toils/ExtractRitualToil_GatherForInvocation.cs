@@ -7,6 +7,9 @@ using Verse.AI.Group;
 
 namespace LCAnomalyLibrary.Toils
 {
+    /// <summary>
+    /// 提取意识的聚集Toil（和原版基本一致）
+    /// </summary>
     public class ExtractRitualToil_GatherForInvocation : PsychicRitualToil_Multiplex
     {
         protected PsychicRitualToil_Goto fallbackToil;

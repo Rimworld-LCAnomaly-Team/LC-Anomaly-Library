@@ -11,6 +11,9 @@ using Verse.AI.Group;
 
 namespace LCAnomalyLibrary.Defs
 {
+    /// <summary>
+    /// 提取仪式Def：圆形模式（和原版基本一致）
+    /// </summary>
     public class ExtractRitualDef_InvocationCircle : ExtractRitualDef
     {
         public enum InvalidTargetReasonEnum

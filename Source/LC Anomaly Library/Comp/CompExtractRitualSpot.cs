@@ -1,5 +1,4 @@
 ﻿using LCAnomalyLibrary.Gizmo;
-
 using RimWorld;
 using System.Collections.Generic;
 using System.Text;
@@ -8,6 +7,9 @@ using Verse.AI.Group;
 
 namespace LCAnomalyLibrary.Comp
 {
+    /// <summary>
+    /// 提取仪式点的Comp（和原版的基本一致）
+    /// </summary>
     public class CompExtractRitualSpot : ThingComp
     {
         private List<Thing> obstructingThings = new List<Thing>();

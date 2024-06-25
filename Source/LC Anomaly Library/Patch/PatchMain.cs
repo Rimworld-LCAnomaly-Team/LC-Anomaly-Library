@@ -4,9 +4,15 @@ using Verse;
 
 namespace LCAnomalyLibrary.Patch
 {
+    /// <summary>
+    /// 补丁主类
+    /// </summary>
     [StaticConstructorOnStartup]
     public class PatchMain
     {
+        /// <summary>
+        /// 补丁实例
+        /// </summary>
         public static Harmony instance;
 
         static PatchMain()

@@ -3,10 +3,15 @@ using Verse;
 
 namespace LCAnomalyLibrary.Defs
 {
+    /// <summary>
+    /// 该mod的所有RecipeDef
+    /// </summary>
     [DefOf]
     public static class RecipeDefOf
     {
-        [MayRequireAnomaly]
+        /// <summary>
+        /// 提取Cogito
+        /// </summary>
         public static RecipeDef ExtractCogito;
 
         static RecipeDefOf()

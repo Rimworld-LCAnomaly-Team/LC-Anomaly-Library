@@ -11,14 +11,26 @@ namespace LCAnomalyLibrary.Comp
     /// </summary>
     public class HediffComp_CogitoInjected : HediffComp
     {
+        /// <summary>
+        /// CompProperties
+        /// </summary>
         public HediffCompProperties_CogitoInjected Props => (HediffCompProperties_CogitoInjected)props;
 
+        #region 生命周期
+
+        /// <summary>
+        /// 移除前调用
+        /// </summary>
         public override void CompPostPostRemoved()
         {
             base.CompPostPostRemoved();
 
             TurnIntoAnomaly();
         }
+
+        #endregion
+
+        #region 工具方法
 
         /// <summary>
         /// 注射提取后变成异常的方法
@@ -68,5 +80,7 @@ namespace LCAnomalyLibrary.Comp
 
             Pawn.DeSpawn();
         }
+
+        #endregion
     }
 }

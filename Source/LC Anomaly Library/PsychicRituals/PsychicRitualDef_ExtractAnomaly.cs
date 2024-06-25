@@ -7,10 +7,19 @@ using Verse.AI.Group;
 
 namespace LCAnomalyLibrary.PsychicRituals
 {
+    /// <summary>
+    /// 提取异想体仪式
+    /// </summary>
     public class PsychicRitualDef_ExtractAnomaly : ExtractRitualDef_InvocationCircle
     {
         private string anomalyLevelTag;
 
+        /// <summary>
+        /// 创建Toils
+        /// </summary>
+        /// <param name="psychicRitual">仪式</param>
+        /// <param name="parent"></param>
+        /// <returns></returns>
         public override List<PsychicRitualToil> CreateToils(PsychicRitual psychicRitual, PsychicRitualGraph parent)
         {
             List<PsychicRitualToil> list = base.CreateToils(psychicRitual, parent);
@@ -18,6 +27,11 @@ namespace LCAnomalyLibrary.PsychicRituals
             return list;
         }
 
+        /// <summary>
+        /// 提示信息
+        /// </summary>
+        /// <param name="pawn">对象</param>
+        /// <returns></returns>
         public override IEnumerable<string> GetPawnTooltipExtras(Pawn pawn)
         {
             if (pawn.guest != null && !pawn.guest.Recruitable)
@@ -26,6 +40,10 @@ namespace LCAnomalyLibrary.PsychicRituals
             }
         }
 
+        /// <summary>
+        /// 检查仪式是否满足条件
+        /// </summary>
+        /// <param name="psychicRitual">仪式</param>
         public override void CheckPsychicRitualCancelConditions(PsychicRitual psychicRitual)
         {
             base.CheckPsychicRitualCancelConditions(psychicRitual);

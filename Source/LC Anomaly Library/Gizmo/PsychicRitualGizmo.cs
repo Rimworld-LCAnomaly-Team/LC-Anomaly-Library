@@ -9,6 +9,9 @@ using Verse.Sound;
 
 namespace LCAnomalyLibrary.Gizmo
 {
+    /// <summary>
+    /// 仪式Gizmo（和原版基本一致）
+    /// </summary>
     public static class ExtractRitualGizmo
     {
         private static readonly List<ExtractRitualDef_InvocationCircle> tmpVisibleRituals = new List<ExtractRitualDef_InvocationCircle>(16);

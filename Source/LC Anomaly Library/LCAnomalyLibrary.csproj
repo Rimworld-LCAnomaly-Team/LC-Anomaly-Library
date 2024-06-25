@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>none</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\Assemblies\LCAnomalyLibrary.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -85,7 +86,6 @@
     <Compile Include="Comp\LC_CompEntity.cs" />
     <Compile Include="Comp\LC_CompProperties_Entity.cs" />
     <Compile Include="Comp\LC_CompProperties_InteractableEgg.cs" />
-    <Compile Include="Comp\LC_CompSpawns.cs" />
     <Compile Include="Comp\LC_HediffCompProperties_Accessory.cs" />
     <Compile Include="Comp\LC_HediffCompProperties_FakeInvisibility.cs" />
     <Compile Include="Comp\LC_HediffComp_Accessory.cs" />
@@ -99,8 +99,9 @@
     <Compile Include="Defs\ResearchProjectDefOf.cs" />
     <Compile Include="Defs\ResearchTabDefOf.cs" />
     <Compile Include="Defs\ThingDefOf.cs" />
-    <Compile Include="Defs\ThingDef_AnomalyEgg.cs" />
+    <Compile Include="Defs\ThingDef_LCAnomalyBase.cs" />
     <Compile Include="Defs\ThoughtDefOf.cs" />
+    <Compile Include="Comp\LC_HediffComp_FakeInvisibility.cs" />
     <Compile Include="PsychicRituals\PsychicRitualDef_ExtractAnomaly.cs" />
     <Compile Include="PsychicRituals\PsychicRitualToil_ExtractAnomaly.cs" />
     <Compile Include="Recipe\Recipe_CogitoInjection.cs" />

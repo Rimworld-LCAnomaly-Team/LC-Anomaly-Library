@@ -9,9 +9,18 @@ using Verse.AI.Group;
 
 namespace LCAnomalyLibrary.Patch
 {
+    /// <summary>
+    /// 关于CompHoldingPlatformTarget的补丁（为了提供生物特征可传递的特性）
+    /// </summary>
     [HarmonyPatch(typeof(CompHoldingPlatformTarget), nameof(CompHoldingPlatformTarget.Notify_HeldOnPlatform))]
     public class Patch_CompHoldingPlatformTarget_Notify_HeldOnPlatform
     {
+        /// <summary>
+        /// Prefix方法
+        /// </summary>
+        /// <param name="newOwner">新的所有者</param>
+        /// <param name="__instance">原来的反射对象</param>
+        /// <returns>false 终止原方法（会和同样的prefix产生可能的不兼容）</returns>
         private static bool Prefix(ThingOwner newOwner, CompHoldingPlatformTarget __instance)
         {
             //Log.Warning("Patch_CompHoldingPlatformTarget.Notify_HeldOnPlatform 注入成功");
@@ -96,9 +105,18 @@ namespace LCAnomalyLibrary.Patch
         }
     }
 
+    /// <summary>
+    /// 关于CompHoldingPlatformTarget的补丁（为了提供出逃可选提醒的特性）
+    /// </summary>
     [HarmonyPatch(typeof(CompHoldingPlatformTarget), nameof(CompHoldingPlatformTarget.Escape))]
     public class Patch_CompHoldingPlatformTarget_Escape
     {
+        /// <summary>
+        /// Prefix方法
+        /// </summary>
+        /// <param name="initiator">是否是初始化</param>
+        /// <param name="__instance">原来的反射对象</param>
+        /// <returns>false 终止原方法（会和同样的prefix产生可能的不兼容）</returns>
         private static bool Prefix(bool initiator, CompHoldingPlatformTarget __instance)
         {
             //Log.Warning("Patch_CompHoldingPlatformTarget.Escape 注入成功");
@@ -181,9 +199,18 @@ namespace LCAnomalyLibrary.Patch
         }
     }
 
+    /// <summary>
+    /// 关于CompHoldingPlatformTarget的补丁（为了提供异想体不可随机逃跑的特性）
+    /// </summary>
     [HarmonyPatch(typeof(CompHoldingPlatformTarget), "CaptivityTick")]
     public class Patch_CompHoldingPlatformTarget_CaptivityTick()
     {
+        /// <summary>
+        /// Prefix方法
+        /// </summary>
+        /// <param name="pawn">异想体</param>
+        /// <param name="__instance">原来的反射对象</param>
+        /// <returns>false 终止原方法（会和同样的prefix产生可能的不兼容）</returns>
         private static bool Prefix(Pawn pawn, CompHoldingPlatformTarget __instance)
         {
             pawn.mindState.entityTicksInCaptivity++;

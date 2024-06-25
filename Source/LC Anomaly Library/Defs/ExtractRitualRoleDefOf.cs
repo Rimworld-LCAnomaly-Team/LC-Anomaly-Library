@@ -2,6 +2,9 @@
 
 namespace LCAnomalyLibrary.Defs
 {
+    /// <summary>
+    /// 该Mod所有的ExtractRitualRoleDef
+    /// </summary>
     [DefOf]
     public static class ExtractRitualRoleDefOf
     {
@@ -10,19 +13,29 @@ namespace LCAnomalyLibrary.Defs
             DefOfHelper.EnsureInitializedInCtor(typeof(ExtractRitualRoleDefOf));
         }
 
-        [MayRequireAnomaly]
+        /// <summary>
+        /// ZAYIN异常提取仪式
+        /// </summary>
         public static PsychicRitualRoleDef ExtractLCAnomalyZAYIN;
 
-        [MayRequireAnomaly]
+        /// <summary>
+        /// TETH异常提取仪式
+        /// </summary>
         public static PsychicRitualRoleDef ExtractLCAnomalyTETH;
 
-        [MayRequireAnomaly]
+        /// <summary>
+        /// HE异常提取仪式
+        /// </summary>
         public static PsychicRitualRoleDef ExtractLCAnomalyHE;
 
-        [MayRequireAnomaly]
+        /// <summary>
+        /// WAW异常提取仪式
+        /// </summary>
         public static PsychicRitualRoleDef ExtractLCAnomalyWAW;
 
-        [MayRequireAnomaly]
+        /// <summary>
+        /// ALEPH异常提取仪式
+        /// </summary>
         public static PsychicRitualRoleDef ExtractLCAnomalyALEPH;
     }
 }
