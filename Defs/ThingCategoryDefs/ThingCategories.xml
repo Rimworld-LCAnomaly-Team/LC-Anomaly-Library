@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingCategoryDef>
+    <defName>LC_Thing</defName>
+    <label>LC thing</label>
+    <parent>Root</parent>
+    <resourceReadoutRoot>true</resourceReadoutRoot>
+    <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
+  </ThingCategoryDef>
+
+  <ThingCategoryDef>
+    <defName>LC_Entity</defName>
+    <label>LC entity</label>
+    <parent>LC_Thing</parent>
+    <resourceReadoutRoot>true</resourceReadoutRoot>
+    <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
+  </ThingCategoryDef>
+
+  <ThingCategoryDef>
+    <defName>LC_Entity_Tool</defName>
+    <label>LC entity</label>
+    <parent>LC_Entity</parent>
+    <resourceReadoutRoot>true</resourceReadoutRoot>
+    <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
+  </ThingCategoryDef>
+
+  <ThingCategoryDef>
+    <defName>LC_Entity_Egg</defName>
+    <label>LC entity</label>
+    <parent>LC_Entity</parent>
+    <resourceReadoutRoot>true</resourceReadoutRoot>
+    <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
+  </ThingCategoryDef>
+
+  <ThingCategoryDef>
+    <defName>LC_Weapon</defName>
+    <label>LC weapon</label>
+    <parent>LC_Thing</parent>
+    <resourceReadoutRoot>true</resourceReadoutRoot>
+    <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
+  </ThingCategoryDef>
+
+  <ThingCategoryDef>
+    <defName>LC_Weapon_Normal</defName>
+    <label>LC weapon normal</label>
+    <parent>LC_Weapon</parent>
+    <resourceReadoutRoot>true</resourceReadoutRoot>
+    <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
+  </ThingCategoryDef>
+
+  <ThingCategoryDef>
+    <defName>LC_Weapon_EGO</defName>
+    <label>EGO weapon</label>
+    <parent>LC_Weapon</parent>
+    <resourceReadoutRoot>true</resourceReadoutRoot>
+    <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
+  </ThingCategoryDef>
+
+  <ThingCategoryDef>
+    <defName>LC_Weapon_EGO_Melee</defName>
+    <label>EGO weapon melee</label>
+    <parent>LC_Weapon_EGO</parent>
+    <resourceReadoutRoot>true</resourceReadoutRoot>
+    <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
+  </ThingCategoryDef>
+
+  <ThingCategoryDef>
+    <defName>LC_Weapon_EGO_Ranged</defName>
+    <label>EGO weapon ranged</label>
+    <parent>LC_Weapon_EGO</parent>
+    <resourceReadoutRoot>true</resourceReadoutRoot>
+    <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
+  </ThingCategoryDef>
+
+  <ThingCategoryDef>
+    <defName>LC_Apparel</defName>
+    <label>LC apparel</label>
+    <parent>LC_Thing</parent>
+    <resourceReadoutRoot>true</resourceReadoutRoot>
+    <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
+  </ThingCategoryDef>
+
+  <ThingCategoryDef>
+    <defName>LC_Apparel_Normal</defName>
+    <label>LC apparel normal</label>
+    <parent>LC_Apparel</parent>
+    <resourceReadoutRoot>true</resourceReadoutRoot>
+    <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
+  </ThingCategoryDef>
+
+  <ThingCategoryDef>
+    <defName>LC_Apparel_EGO</defName>
+    <label>EGO apparel ego</label>
+    <parent>LC_Apparel</parent>
+    <resourceReadoutRoot>true</resourceReadoutRoot>
+    <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
+  </ThingCategoryDef>
+
+  <ThingCategoryDef>
+    <defName>LC_Drug</defName>
+    <label>LC drug</label>
+    <parent>LC_Thing</parent>
+    <resourceReadoutRoot>true</resourceReadoutRoot>
+    <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
+  </ThingCategoryDef>
+
+  <ThingCategoryDef>
+    <defName>LC_Resource</defName>
+    <label>LC resource</label>
+    <parent>LC_Thing</parent>
+    <resourceReadoutRoot>true</resourceReadoutRoot>
+    <iconPath>UI/Icons/ThingCategories/FoodRaw</iconPath>
+  </ThingCategoryDef>
+
+  <ThingCategoryDef>
+    <defName>LC_Building</defName>
+    <label>LC building</label>
+    <parent>LC_Thing</parent>
+    <resourceReadoutRoot>true</resourceReadoutRoot>
+    <iconPath>UI/Icons/ThingCategories/FoodMeals</iconPath>
+  </ThingCategoryDef>
+
+  <ThingCategoryDef>
+    <defName>LC_Building_Production</defName>
+    <label>LC building production</label>
+    <parent>LC_Building</parent>
+    <resourceReadoutRoot>true</resourceReadoutRoot>
+    <iconPath>UI/Icons/ThingCategories/FoodMeals</iconPath>
+  </ThingCategoryDef>
+
+  <ThingCategoryDef>
+    <defName>LC_Building_Containment</defName>
+    <label>LC building containment</label>
+    <parent>LC_Building</parent>
+    <resourceReadoutRoot>true</resourceReadoutRoot>
+    <iconPath>UI/Icons/ThingCategories/FoodMeals</iconPath>
+  </ThingCategoryDef>
+
+  <ThingCategoryDef>
+    <defName>LC_Building_Power</defName>
+    <label>LC building power</label>
+    <parent>LC_Building</parent>
+    <resourceReadoutRoot>true</resourceReadoutRoot>
+    <iconPath>UI/Icons/ThingCategories/FoodMeals</iconPath>
+  </ThingCategoryDef>
+
+  <ThingCategoryDef>
+    <defName>LC_Building_Misc</defName>
+    <label>LC building misc</label>
+    <parent>LC_Building</parent>
+    <resourceReadoutRoot>true</resourceReadoutRoot>
+    <iconPath>UI/Icons/ThingCategories/FoodMeals</iconPath>
+  </ThingCategoryDef>
+
+  <ThingCategoryDef>
+    <defName>LC_Misc</defName>
+    <label>LC misc</label>
+    <parent>LC_Thing</parent>
+    <resourceReadoutRoot>true</resourceReadoutRoot>
+    <iconPath>UI/Icons/ThingCategories/FoodMeals</iconPath>
+  </ThingCategoryDef>
+
+</Defs>

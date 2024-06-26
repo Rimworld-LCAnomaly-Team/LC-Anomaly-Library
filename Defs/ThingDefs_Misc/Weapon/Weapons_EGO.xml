@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+  <!--==================================== Melee ====================================-->
+
+  <ThingDef Name="LC_BaseMeleeWeapon_EGO" Abstract="True" ParentName="BaseWeapon">
+    <techLevel>Industrial</techLevel>
+    <thingCategories>
+      <li>LC_Weapon_EGO_Melee</li>
+    </thingCategories>
+    <weaponClasses>
+      <li>Melee</li>
+    </weaponClasses>
+    <burnableByRecipe>false</burnableByRecipe>
+    <smeltable>false</smeltable>
+    <inspectorTabs>
+      <li>ITab_Art</li>
+    </inspectorTabs>
+    <tradeTags>
+      <li>WeaponMelee</li>
+    </tradeTags>
+  </ThingDef>
+
+  <ThingDef Name="LC_BaseMeleeWeapon_EGO_Blunt" ParentName="LC_BaseMeleeWeapon_EGO" Abstract="True">
+    <weaponClasses>
+      <li>MeleeBlunt</li>
+    </weaponClasses>
+  </ThingDef>
+
+</Defs>

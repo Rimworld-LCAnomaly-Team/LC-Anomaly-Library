@@ -34,6 +34,9 @@
     </statBases>
     <size>(3,1)</size>
     <designationCategory>Buildings_LC</designationCategory>
+    <thingCategories>
+      <li>LC_Building_Production</li>
+    </thingCategories>
     <uiOrder>2520</uiOrder>
     <passability>PassThroughOnly</passability>
     <pathCost>50</pathCost>

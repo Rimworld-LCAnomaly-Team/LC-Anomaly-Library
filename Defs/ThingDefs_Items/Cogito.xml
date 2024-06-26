@@ -21,7 +21,7 @@
       <Mass>0.25</Mass>
     </statBases>
     <thingCategories>
-      <li>ResourcesRaw</li>
+      <li>LC_Resource</li>
     </thingCategories>
     <burnableByRecipe>false</burnableByRecipe>
     <smeltable>false</smeltable>

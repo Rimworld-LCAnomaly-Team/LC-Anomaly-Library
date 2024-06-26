@@ -9,6 +9,9 @@
       <HediffDef>EnkephalinHigh</HediffDef>
       <HediffDef>EnkephalinAddiction</HediffDef>
     </descriptionHyperlinks>
+    <thingCategories>
+      <li>LC_Drug</li>
+    </thingCategories>
     <researchPrerequisites>
       <li>Enkephalin_Drug</li>
     </researchPrerequisites>

@@ -20,7 +20,7 @@
       <ThingDef>QliphothIndicator</ThingDef>
     </descriptionHyperlinks>
     <thingCategories>
-      <li>BuildingsMisc</li>
+      <li>LC_Building_Containment</li>
     </thingCategories>
     <inspectorTabs>
       <li>ITab_Entity</li>
@@ -159,7 +159,7 @@
     <uiOrder>115</uiOrder>
     <canOverlapZones>false</canOverlapZones>
     <thingCategories>
-      <li>BuildingsPower</li>
+      <li>LC_Building_Containment</li>
     </thingCategories>
     <minifiedDef>MinifiedThing</minifiedDef>
     <statBases>

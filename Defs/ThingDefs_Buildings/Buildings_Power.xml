@@ -5,6 +5,7 @@
     <defName>LC_EnkephalinGenerator</defName>
     <label>enkephalin generator</label>
     <thingClass>LCAnomalyLibrary.Building.Building_EnkephalinGenerator</thingClass>
+    <minifiedDef>MinifiedThing</minifiedDef>
     <description>enkephalin generator</description>
     <tickerType>Normal</tickerType>
     <drawerType>RealtimeOnly</drawerType>
@@ -25,11 +26,15 @@
     <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
     <designationCategory>Buildings_LC</designationCategory>
+    <thingCategories>
+      <li>LC_Building_Containment</li>
+    </thingCategories>
     <uiOrder>2200</uiOrder>
     <canOverlapZones>false</canOverlapZones>
     <statBases>
       <MaxHitPoints>400</MaxHitPoints>
       <WorkToBuild>12000</WorkToBuild>
+      <Mass>50</Mass>
       <Flammability>0.75</Flammability>
       <Beauty>-40</Beauty>
     </statBases>
