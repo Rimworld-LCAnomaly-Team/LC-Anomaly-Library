@@ -165,6 +165,62 @@
             <param name="selPawn"></param>
             <returns></returns>
         </member>
+        <member name="P:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.Props">
+            <summary>
+            CompProperties
+            </summary>
+        </member>
+        <member name="P:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.PeBoxComp">
+            <summary>
+            提取所需PeBox的Def
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.curAmountWeapon">
+            <summary>
+            当前已被提取的EGO武器数量
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.curAmountArmor">
+            <summary>
+            当前已被提取的EGO护甲数量
+            </summary>
+        </member>
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.ConsumeExtractEGO(System.Int32)">
+            <summary>
+            EGO提取的PeBox消耗
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.CheckIfExtractEGO(LCAnomalyLibrary.Defs.EGO_TYPE)">
+            <summary>
+            EGO提取检查
+            </summary>
+            <param name="type">EGO类型</param>
+            <returns>EGO物品对象</returns>
+        </member>
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.ExtractEGO(LCAnomalyLibrary.Defs.EGO_TYPE)">
+            <summary>
+            提取EGO
+            </summary>
+            <param name="type">EGO类型</param>
+        </member>
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.CheckIfEGOTechFinished">
+            <summary>
+            EGO科技是否研究完成
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.PostExposeData">
+            <summary>
+            我不知道这是什么，好像和数据保存有关
+            </summary>
+        </member>
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.CompGetGizmosExtra">
+            <summary>
+            Gizmos
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:LCAnomalyLibrary.Comp.LC_CompEntity">
             <summary>
             LC基础实体Comp
@@ -175,19 +231,14 @@
             CompProperties
             </summary>
         </member>
+        <member name="P:LCAnomalyLibrary.Comp.LC_CompEntity.PeboxComp">
+            <summary>
+            PeBox类的Comp
+            </summary>
+        </member>
         <member name="F:LCAnomalyLibrary.Comp.LC_CompEntity.biosignature">
             <summary>
             生物特征
-            </summary>
-        </member>
-        <member name="F:LCAnomalyLibrary.Comp.LC_CompEntity.curAmountWeapon">
-            <summary>
-            当前已被提取的EGO武器数量
-            </summary>
-        </member>
-        <member name="F:LCAnomalyLibrary.Comp.LC_CompEntity.curAmountArmor">
-            <summary>
-            当前已被提取的EGO护甲数量
             </summary>
         </member>
         <member name="P:LCAnomalyLibrary.Comp.LC_CompEntity.QliphothCountMax">
@@ -203,11 +254,6 @@
         <member name="P:LCAnomalyLibrary.Comp.LC_CompEntity.BiosignatureName">
             <summary>
             生物特征名
-            </summary>
-        </member>
-        <member name="P:LCAnomalyLibrary.Comp.LC_CompEntity.SelfPawn">
-            <summary>
-            Comp被挂载的Pawn
             </summary>
         </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.Notify_Escaped">
@@ -278,13 +324,6 @@
             <param name="studier">研究者</param>
             <returns></returns>
         </member>
-        <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.CheckSpawnPeBox(Verse.Pawn,LCAnomalyLibrary.Util.LC_StudyResult)">
-            <summary>
-            检查生成Pebox
-            </summary>
-            <param name="studier">研究者</param>
-            <param name="result">工作质量</param>
-        </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.CheckGiveAccessory(Verse.Pawn,Verse.HediffDef,System.String)">
             <summary>
             检查是否给予饰品
@@ -298,36 +337,73 @@
             Debug：调试用逆卡巴拉强制熔毁
             </summary>
         </member>
-        <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.ConsumeExtractEGO(System.Int32)">
-            <summary>
-            EGO提取的PeBox消耗
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.CheckIfExtractEGO(LCAnomalyLibrary.Defs.EGO_TYPE)">
-            <summary>
-            EGO提取检查
-            </summary>
-            <param name="type">EGO类型</param>
-            <returns>EGO物品对象</returns>
-        </member>
-        <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.ExtractEGO(LCAnomalyLibrary.Defs.EGO_TYPE)">
-            <summary>
-            提取EGO
-            </summary>
-            <param name="type">EGO类型</param>
-        </member>
-        <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.CheckIfEGOTechFinished">
-            <summary>
-            EGO科技是否研究完成
-            </summary>
-            <returns></returns>
-        </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.CompGetGizmosExtra">
             <summary>
             Gizmos
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:LCAnomalyLibrary.Comp.LC_CompPeBoxProduce">
+            <summary>
+            LC可产PeBox的Comp
+            </summary>
+        </member>
+        <member name="P:LCAnomalyLibrary.Comp.LC_CompPeBoxProduce.Props">
+            <summary>
+            CompProperties
+            </summary>
+        </member>
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompPeBoxProduce.CheckSpawnPeBox(Verse.Pawn,LCAnomalyLibrary.Util.LC_StudyResult)">
+            <summary>
+            检查生成Pebox
+            </summary>
+            <param name="studier">研究者</param>
+            <param name="result">工作质量</param>
+        </member>
+        <member name="T:LCAnomalyLibrary.Comp.LC_CompProperties_EgoExtractable">
+            <summary>
+            LC可提取EGO CompProperties
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_EgoExtractable.weaponExtracted">
+            <summary>
+            XML：EGO武器
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_EgoExtractable.armorExtracted">
+            <summary>
+            XML：EGO装备
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_EgoExtractable.amountMaxWeapon">
+            <summary>
+            XML：可提取EGO武器的上限数量
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_EgoExtractable.amountMaxArmor">
+            <summary>
+            XML：可提取EGO装备的上限数量
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_EgoExtractable.weaponExtractedNeed">
+            <summary>
+            XML: 提取EGO武器所需PeBox数量
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_EgoExtractable.armorExtractedNeed">
+            <summary>
+            XML: 提取EGO装备所需PeBox数量
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_EgoExtractable.researchProject">
+            <summary>
+            提取EGO所需完成的科技
+            </summary>
+        </member>
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompProperties_EgoExtractable.#ctor">
+            <summary>
+            Comp
+            </summary>
         </member>
         <member name="T:LCAnomalyLibrary.Comp.LC_CompProperties_Entity">
             <summary>
@@ -342,56 +418,6 @@
         <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.studySucessRateBase">
             <summary>
             XML：学习基础成功率
-            </summary>
-        </member>
-        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.peBoxDef">
-            <summary>
-            XML：工作产生PeBox的类型
-            </summary>
-        </member>
-        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.amountPeBoxStudyGood">
-            <summary>
-            XML：工作产生PeBox的数量（良好）
-            </summary>
-        </member>
-        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.amountPeBoxStudyNormal">
-            <summary>
-            XML：工作产生PeBox的数量（普通）
-            </summary>
-        </member>
-        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.amountPeBoxStudyBad">
-            <summary>
-            XML：工作产生PeBox的数量（差）
-            </summary>
-        </member>
-        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.weaponExtracted">
-            <summary>
-            XML：EGO武器
-            </summary>
-        </member>
-        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.armorExtracted">
-            <summary>
-            XML：EGO装备
-            </summary>
-        </member>
-        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.amountMaxWeapon">
-            <summary>
-            XML：可提取EGO武器的上限数量
-            </summary>
-        </member>
-        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.amountMaxArmor">
-            <summary>
-            XML：可提取EGO装备的上限数量
-            </summary>
-        </member>
-        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.weaponExtractedNeed">
-            <summary>
-            XML: 提取EGO武器所需PeBox数量
-            </summary>
-        </member>
-        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.armorExtractedNeed">
-            <summary>
-            XML: 提取EGO装备所需PeBox数量
             </summary>
         </member>
         <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.accessoryChance">
@@ -420,6 +446,36 @@
             </summary>
         </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompProperties_InteractableEgg.#ctor">
+            <summary>
+            Comp
+            </summary>
+        </member>
+        <member name="T:LCAnomalyLibrary.Comp.LC_CompProperties_PeBoxProduce">
+            <summary>
+            LC可产PeBox的CompProperties
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_PeBoxProduce.peBoxDef">
+            <summary>
+            XML：工作产生PeBox的类型
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_PeBoxProduce.amountStudyGood">
+            <summary>
+            XML：工作产生PeBox的数量（良好）
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_PeBoxProduce.amountStudyNormal">
+            <summary>
+            XML：工作产生PeBox的数量（普通）
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_PeBoxProduce.amountStudyBad">
+            <summary>
+            XML：工作产生PeBox的数量（差）
+            </summary>
+        </member>
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompProperties_PeBoxProduce.#ctor">
             <summary>
             Comp
             </summary>

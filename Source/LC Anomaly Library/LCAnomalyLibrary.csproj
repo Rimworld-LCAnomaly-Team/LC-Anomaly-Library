@@ -85,9 +85,13 @@
     <Compile Include="Comp\HediffCompProperties_CogitoInjected.cs" />
     <Compile Include="Comp\HediffComp_CogitoInjected.cs" />
     <Compile Include="Comp\LC_CompEgg.cs" />
+    <Compile Include="Comp\LC_CompEgoExtractable.cs" />
     <Compile Include="Comp\LC_CompEntity.cs" />
+    <Compile Include="Comp\LC_CompPeBoxProduce.cs" />
+    <Compile Include="Comp\LC_CompProperties_EgoExtractable.cs" />
     <Compile Include="Comp\LC_CompProperties_Entity.cs" />
     <Compile Include="Comp\LC_CompProperties_InteractableEgg.cs" />
+    <Compile Include="Comp\LC_CompProperties_PeBoxProduce.cs" />
     <Compile Include="Comp\LC_HediffCompProperties_Accessory.cs" />
     <Compile Include="Comp\LC_HediffCompProperties_FakeInvisibility.cs" />
     <Compile Include="Comp\LC_HediffComp_Accessory.cs" />
