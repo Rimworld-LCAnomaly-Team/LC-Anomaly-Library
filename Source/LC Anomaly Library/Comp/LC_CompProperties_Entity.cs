@@ -38,6 +38,33 @@ namespace LCAnomalyLibrary.Comp
         public int amountPeBoxStudyBad;
 
         /// <summary>
+        /// XML：EGO武器
+        /// </summary>
+        public ThingDef weaponExtracted;
+        /// <summary>
+        /// XML：EGO装备
+        /// </summary>
+        public ThingDef armorExtracted;
+
+        /// <summary>
+        /// XML：可提取EGO武器的上限数量
+        /// </summary>
+        public int amountMaxWeapon;
+        /// <summary>
+        /// XML：可提取EGO装备的上限数量
+        /// </summary>
+        public int amountMaxArmor;
+
+        /// <summary>
+        /// XML: 提取EGO武器所需PeBox数量
+        /// </summary>
+        public int weaponExtractedNeed;
+        /// <summary>
+        /// XML: 提取EGO装备所需PeBox数量
+        /// </summary>
+        public int armorExtractedNeed;
+
+        /// <summary>
         /// XML：获取饰品的概率
         /// </summary>
         public float accessoryChance;

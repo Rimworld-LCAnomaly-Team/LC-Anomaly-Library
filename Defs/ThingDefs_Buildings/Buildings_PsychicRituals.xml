@@ -32,7 +32,7 @@
     <inspectorTabs>
       <li>ITab_Entity</li>
     </inspectorTabs>
-    <designationCategory>Anomaly</designationCategory>
+    <designationCategory>Buildings_LC</designationCategory>
     <altitudeLayer>FloorEmplacement</altitudeLayer>
     <selectable>true</selectable>
     <rotatable>false</rotatable>

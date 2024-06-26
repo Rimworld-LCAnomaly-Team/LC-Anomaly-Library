@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <PeBoxZAYIN.label>脑啡肽盒子（ZAYIN）</PeBoxZAYIN.label>
+  <PeBoxZAYIN.description>一种脑啡肽盒子，通过对ZAYIN级异想体工作产生。</PeBoxZAYIN.description>
+
+  <PeBoxTETH.label>脑啡肽盒子（TETH）</PeBoxTETH.label>
+  <PeBoxTETH.description>一种脑啡肽盒子，通过对TETH级异想体工作产生。</PeBoxTETH.description>
+
+  <PeBoxHE.label>脑啡肽盒子（HE）</PeBoxHE.label>
+  <PeBoxHE.description>一种脑啡肽盒子，通过对HE级异想体工作产生。</PeBoxHE.description>
+
+  <PeBoxWAW.label>脑啡肽盒子（WAW）</PeBoxWAW.label>
+  <PeBoxWAW.description>一种脑啡肽盒子，通过对WAW级异想体工作产生。</PeBoxWAW.description>
+
+  <PeBoxALEPH.label>脑啡肽盒子（ALEPH）</PeBoxALEPH.label>
+  <PeBoxALEPH.description>一种脑啡肽盒子，通过对ALEPH级异想体工作产生。</PeBoxALEPH.description>
+
+  <EnkephalinBox.label>脑啡肽盒子（通用）</EnkephalinBox.label>
+  <EnkephalinBox.description>一种通用脑啡肽盒子，通过对特定等级的脑啡肽盒子加工转化而来，可以用于脑啡肽发电和成瘾品制造。</EnkephalinBox.description>
+
+</LanguageData>

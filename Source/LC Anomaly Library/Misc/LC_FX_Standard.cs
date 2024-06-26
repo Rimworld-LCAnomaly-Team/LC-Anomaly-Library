@@ -25,6 +25,11 @@ namespace LCAnomalyLibrary.Misc
         /// </summary>
         protected bool isEscaping;
 
+        /// <summary>
+        /// 是否已经初始化过
+        /// </summary>
+        protected bool hasInited;
+
         #endregion
 
         #region 生命周期
@@ -47,7 +52,8 @@ namespace LCAnomalyLibrary.Misc
         /// <exception cref="NotImplementedException"></exception>
         public virtual void Complete()
         {
-            throw new NotImplementedException("LC_FX_Standard:Complete():::Not implemented yet");
+            if(hasInited)
+                throw new NotImplementedException("LC_FX_Standard:Complete():::Not implemented yet");
         }
 
         #endregion
@@ -58,6 +64,7 @@ namespace LCAnomalyLibrary.Misc
         /// <param name="targetPawn"></param>
         public virtual void InitWith(Pawn targetPawn)
         {
+            hasInited = true;
             throw new NotImplementedException();
         }
 

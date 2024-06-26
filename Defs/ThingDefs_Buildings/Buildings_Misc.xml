@@ -19,13 +19,13 @@
     <descriptionHyperlinks>
       <ThingDef>QliphothIndicator</ThingDef>
     </descriptionHyperlinks>
-    <thingCategories Inherit="False">
+    <thingCategories>
       <li>BuildingsMisc</li>
     </thingCategories>
     <inspectorTabs>
       <li>ITab_Entity</li>
     </inspectorTabs>
-    <designationCategory>Anomaly</designationCategory>
+    <designationCategory>Buildings_LC</designationCategory>
     <statBases>
       <MeditationFocusStrength>0</MeditationFocusStrength>
     </statBases>

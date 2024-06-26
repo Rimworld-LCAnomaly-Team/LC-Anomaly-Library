@@ -180,6 +180,16 @@
             生物特征
             </summary>
         </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompEntity.curAmountWeapon">
+            <summary>
+            当前已被提取的EGO武器数量
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompEntity.curAmountArmor">
+            <summary>
+            当前已被提取的EGO护甲数量
+            </summary>
+        </member>
         <member name="P:LCAnomalyLibrary.Comp.LC_CompEntity.QliphothCountMax">
             <summary>
             XML引用：逆卡巴拉计数器最大值
@@ -288,6 +298,31 @@
             Debug：调试用逆卡巴拉强制熔毁
             </summary>
         </member>
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.ConsumeExtractEGO(System.Int32)">
+            <summary>
+            EGO提取的PeBox消耗
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.CheckIfExtractEGO(LCAnomalyLibrary.Defs.EGO_TYPE)">
+            <summary>
+            EGO提取检查
+            </summary>
+            <param name="type">EGO类型</param>
+            <returns>EGO物品对象</returns>
+        </member>
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.ExtractEGO(LCAnomalyLibrary.Defs.EGO_TYPE)">
+            <summary>
+            提取EGO
+            </summary>
+            <param name="type">EGO类型</param>
+        </member>
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.CheckIfEGOTechFinished">
+            <summary>
+            EGO科技是否研究完成
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.CompGetGizmosExtra">
             <summary>
             Gizmos
@@ -327,6 +362,36 @@
         <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.amountPeBoxStudyBad">
             <summary>
             XML：工作产生PeBox的数量（差）
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.weaponExtracted">
+            <summary>
+            XML：EGO武器
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.armorExtracted">
+            <summary>
+            XML：EGO装备
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.amountMaxWeapon">
+            <summary>
+            XML：可提取EGO武器的上限数量
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.amountMaxArmor">
+            <summary>
+            XML：可提取EGO装备的上限数量
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.weaponExtractedNeed">
+            <summary>
+            XML: 提取EGO武器所需PeBox数量
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.armorExtractedNeed">
+            <summary>
+            XML: 提取EGO装备所需PeBox数量
             </summary>
         </member>
         <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.accessoryChance">
@@ -645,6 +710,21 @@
             逆卡巴拉计数器（建筑）
             </summary>
         </member>
+        <member name="T:LCAnomalyLibrary.Defs.EGO_TYPE">
+            <summary>
+            EGO类型枚举
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Defs.EGO_TYPE.Weapon">
+            <summary>
+            EGO武器
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Defs.EGO_TYPE.Armor">
+            <summary>
+            EGO装备
+            </summary>
+        </member>
         <member name="T:LCAnomalyLibrary.Defs.ThingDef_LCAnomalyBase">
             <summary>
             LC异想体ThingDef基类
@@ -906,6 +986,11 @@
         <member name="F:LCAnomalyLibrary.Misc.LC_FX_Standard.isEscaping">
             <summary>
             是否是逃脱效果
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Misc.LC_FX_Standard.hasInited">
+            <summary>
+            是否已经初始化过
             </summary>
         </member>
         <member name="M:LCAnomalyLibrary.Misc.LC_FX_Standard.Tick">

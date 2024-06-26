@@ -24,7 +24,7 @@
     <rotatable>true</rotatable>
     <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
     <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-    <designationCategory>Power</designationCategory>
+    <designationCategory>Buildings_LC</designationCategory>
     <uiOrder>2200</uiOrder>
     <canOverlapZones>false</canOverlapZones>
     <statBases>
