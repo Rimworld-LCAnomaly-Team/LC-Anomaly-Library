@@ -1,10 +1,6 @@
 ﻿using HarmonyLib;
 using LCAnomalyLibrary.Comp;
-using LCAnomalyLibrary.GameComponent;
 using RimWorld;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using Verse;
 using Verse.AI;
 using Verse.AI.Group;
@@ -108,51 +104,7 @@ namespace LCAnomalyLibrary.Patch
     }
 
     /// <summary>
-    /// 关于CompHoldingPlatformTarget的补丁（为了提供出逃音乐的特性）
-    /// </summary>
-    [HarmonyPatch(typeof(CompHoldingPlatformTarget), nameof(CompHoldingPlatformTarget.Escape))]
-    public class Patch_CompHoldingPlatformTarget_EscapeMusic
-    {
-        /// <summary>
-        /// Prefix方法
-        /// </summary>
-        /// <param name="initiator">是否是初始化</param>
-        /// <param name="__instance">原来的反射对象</param>
-        /// <returns>true</returns>
-        private static bool Prefix(bool initiator, CompHoldingPlatformTarget __instance)
-        {
-            //TODO 测试出逃音乐播放
-
-            Pawn pawn = (Pawn)__instance.parent;
-            if (pawn != null)
-            {
-                LC_CompEntity compEntity = pawn.TryGetComp<LC_CompEntity>();
-                if (compEntity != null)
-                {
-                    //不提醒的不计入威胁点数
-                    if (!compEntity.Props.shoundNotifyWhenEscape)
-                        return true;
-
-                    GameComponent_LC lc = Current.Game.GetComponent<GameComponent_LC>();
-                    if (lc != null)
-                    {
-                        lc.CurWarningPoints += compEntity.WarningPoints;
-                    }
-                    else
-                    {
-                        Log.Warning("GameComponent_LC is null");
-                    }
-                }
-            }
-
-            return true;
-        }
-    }
-
-
-    //TODO 可以改进，该false的地方false，true的地方true，减少体积
-    /// <summary>
-    /// 关于CompHoldingPlatformTarget的补丁（为了提供出逃可选提醒的特性）
+    /// 关于CompHoldingPlatformTarget的补丁（为了提供出逃回调方法）
     /// </summary>
     [HarmonyPatch(typeof(CompHoldingPlatformTarget), nameof(CompHoldingPlatformTarget.Escape))]
     public class Patch_CompHoldingPlatformTarget_Escape
@@ -162,90 +114,50 @@ namespace LCAnomalyLibrary.Patch
         /// </summary>
         /// <param name="initiator">是否是初始化</param>
         /// <param name="__instance">原来的反射对象</param>
-        /// <returns>false 终止原方法（会和同样的prefix产生可能的不兼容）</returns>
+        /// <returns>视情况而定</returns>
         private static bool Prefix(bool initiator, CompHoldingPlatformTarget __instance)
         {
-            //Log.Warning("Patch_CompHoldingPlatformTarget.Escape 注入成功");
+            //如果不是LC实体就执行原方法
+            LC_CompEntity compEntity = __instance.parent.TryGetComp<LC_CompEntity>();
+            if (compEntity == null)
+                return true;
 
-            List<Pawn> list = new List<Pawn>();
-            List<Verse.Building> list2 = new List<Verse.Building> { __instance.HeldPlatform };
+            //从下面开始不会再执行原方法
+            //-------------------------------------------------------------------------------------//
+
+            //重置收容平台状态
             __instance.HeldPlatform.EjectContents();
-            if (!(__instance.parent is Pawn pawn))
+
+            //Pawn不存在则退出
+            Pawn pawn = (Pawn)__instance.parent;
+            if (pawn == null)
             {
-                Log.Warning("return");
+                Log.Warning("pawn is null");
                 return false;
             }
 
-            pawn.health.overrideDeathOnDownedChance = 0f;
-            list.Add(pawn);
+            //设置逃跑状态，弹信封，触发回调方法
             __instance.isEscaping = true;
+            compEntity.Notify_Escaped();
+
+            //设置脱离后的第一个目标（感觉没必要，这是原方法的部分内容）
+            //感觉是给幽魂用的
             if (__instance.Props.lookForTargetOnEscape && !pawn.Downed)
             {
                 Pawn enemyTarget = (Pawn)AttackTargetFinder.BestAttackTarget(pawn, TargetScanFlags.NeedThreat | TargetScanFlags.NeedAutoTargetable, (Thing x) => x is Pawn && (int)x.def.race.intelligence >= 1, 0f, 9999f, default(IntVec3), float.MaxValue, canBashDoors: true, canTakeTargetsCloserThanEffectiveMinRange: true, canBashFences: true);
                 pawn.mindState.enemyTarget = enemyTarget;
             }
 
-            ThingComp compEntity = pawn.TryGetComp<CompRevenant>();
-            if (compEntity != null)
-            {
-                Log.Warning("Revenant escaped");
-                ((CompRevenant)compEntity).revenantState = RevenantState.Escape;
-                pawn.GetInvisibilityComp()?.BecomeVisible(instant: true);
-            }
-            else
-            {
-                compEntity = pawn.TryGetComp<LC_CompEntity>();
-                if (compEntity != null)
-                {
-                    //Log.Warning("LC Entity escaped");
-                    ((LC_CompEntity)compEntity).Notify_Escaped();
-                }
-            }
-
+            //TODO 我也不知道这是什么，还得去看看
             if (!initiator)
             {
                 return false;
             }
 
-            Room room = pawn.GetRoom();
-            if (room == null)
-            {
-                return false;
-            }
-
-            foreach (Building_HoldingPlatform item in room.ContainedAndAdjacentThings.Where((Thing x) => x is Building_HoldingPlatform).ToList())
-            {
-                Pawn heldPawn = item.HeldPawn;
-                if (heldPawn == null || heldPawn == pawn)
-                {
-                    continue;
-                }
-
-                CompHoldingPlatformTarget compHoldingPlatformTarget = heldPawn.TryGetComp<CompHoldingPlatformTarget>();
-                if (compHoldingPlatformTarget != null && compHoldingPlatformTarget.CurrentlyHeldOnPlatform)
-                {
-                    float num = ContainmentUtility.InitiateEscapeMtbDays(heldPawn);
-                    if (!(num <= 0f) && Rand.Chance(Util.Curves.JoinEscapeChanceFromEscapeIntervalCurve.Evaluate(num)))
-                    {
-                        list.Add(heldPawn);
-                        list2.Add(compHoldingPlatformTarget.HeldPlatform);
-                        compHoldingPlatformTarget.Escape(initiator: false);
-                    }
-                }
-            }
-
-            if (compEntity is LC_CompEntity)
-            {
-                if (!((LC_CompEntity)compEntity).Props.shoundNotifyWhenEscape)
-                    return false;
-            }
-            Find.LetterStack.ReceiveLetter(LetterMaker.MakeLetter("LetterLabelEscapingFromHoldingPlatform".Translate(), "LetterEscapingFromHoldingPlatform".Translate(list.Select((Pawn p) => p.LabelCap).ToLineList("  - ")), LetterDefOf.ThreatBig, list2));
-
+            //不执行原方法
             return false;
         }
     }
-
-
 
     /// <summary>
     /// 关于CompHoldingPlatformTarget的补丁（为了提供异想体不可随机逃跑的特性）

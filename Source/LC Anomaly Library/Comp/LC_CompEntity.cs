@@ -1,4 +1,4 @@
-﻿using LCAnomalyLibrary.Defs;
+﻿using LCAnomalyLibrary.GameComponent;
 using LCAnomalyLibrary.Util;
 using RimWorld;
 using System.Collections.Generic;
@@ -119,7 +119,28 @@ namespace LCAnomalyLibrary.Comp
         /// <summary>
         /// 逃脱收容后执行的操作
         /// </summary>
-        public abstract void Notify_Escaped();
+        public virtual void Notify_Escaped()
+        {
+            //如果出逃提醒就弹出逃信封和计算警报点数
+            if (Props.shoundNotifyWhenEscape)
+            {
+                //TODO 这个写的不对，需要研究如何格式化
+                Find.LetterStack.ReceiveLetter(LetterMaker.MakeLetter("LetterLabelEscapingFromHoldingPlatform".Translate(),
+                    "LetterEscapingFromHoldingPlatform", LetterDefOf.ThreatBig));
+
+                //计算威胁点数
+                GameComponent_LC lc = Current.Game.GetComponent<GameComponent_LC>();
+                if (lc != null)
+                {
+                    lc.CurWarningPoints += WarningPoints;
+                }
+                else
+                {
+                    Log.Warning("GameComponent_LC is null");
+                }
+            }
+
+        }
 
         /// <summary>
         /// 被研究后执行的操作
