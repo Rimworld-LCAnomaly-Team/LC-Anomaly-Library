@@ -1,0 +1,1 @@
+这是一个基于RimWorld1.5 Anomaly开发的mod框架，主要内容是提供对脑叶公司相关mod的异常mod开发支持。
