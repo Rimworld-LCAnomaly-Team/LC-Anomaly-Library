@@ -104,10 +104,12 @@
     <Compile Include="Defs\RecipeDefOf.cs" />
     <Compile Include="Defs\ResearchProjectDefOf.cs" />
     <Compile Include="Defs\ResearchTabDefOf.cs" />
+    <Compile Include="Defs\SongDefOf.cs" />
     <Compile Include="Defs\ThingDefOf.cs" />
     <Compile Include="Defs\ThingDef_LCAnomalyBase.cs" />
     <Compile Include="Defs\ThoughtDefOf.cs" />
     <Compile Include="Comp\LC_HediffComp_FakeInvisibility.cs" />
+    <Compile Include="GameComponent\GameComponent_LC.cs" />
     <Compile Include="PsychicRituals\PsychicRitualDef_ExtractAnomaly.cs" />
     <Compile Include="PsychicRituals\PsychicRitualToil_ExtractAnomaly.cs" />
     <Compile Include="Recipe\Recipe_CogitoInjection.cs" />
@@ -130,7 +132,9 @@
     <Compile Include="Util\ExpansionActive.cs" />
     <Compile Include="Util\ExtractUtil.cs" />
     <Compile Include="Util\GraphicUtil.cs" />
+    <Compile Include="Util\MusicUtils.cs" />
     <Compile Include="Util\StudyUtils.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

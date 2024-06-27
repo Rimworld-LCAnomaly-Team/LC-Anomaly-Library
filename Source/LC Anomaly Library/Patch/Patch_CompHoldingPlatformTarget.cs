@@ -1,8 +1,10 @@
 ﻿using HarmonyLib;
 using LCAnomalyLibrary.Comp;
+using LCAnomalyLibrary.GameComponent;
 using RimWorld;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using Verse;
 using Verse.AI;
 using Verse.AI.Group;
@@ -106,6 +108,50 @@ namespace LCAnomalyLibrary.Patch
     }
 
     /// <summary>
+    /// 关于CompHoldingPlatformTarget的补丁（为了提供出逃音乐的特性）
+    /// </summary>
+    [HarmonyPatch(typeof(CompHoldingPlatformTarget), nameof(CompHoldingPlatformTarget.Escape))]
+    public class Patch_CompHoldingPlatformTarget_EscapeMusic
+    {
+        /// <summary>
+        /// Prefix方法
+        /// </summary>
+        /// <param name="initiator">是否是初始化</param>
+        /// <param name="__instance">原来的反射对象</param>
+        /// <returns>true</returns>
+        private static bool Prefix(bool initiator, CompHoldingPlatformTarget __instance)
+        {
+            //TODO 测试出逃音乐播放
+
+            Pawn pawn = (Pawn)__instance.parent;
+            if (pawn != null)
+            {
+                LC_CompEntity compEntity = pawn.TryGetComp<LC_CompEntity>();
+                if (compEntity != null)
+                {
+                    //不提醒的不计入威胁点数
+                    if (!compEntity.Props.shoundNotifyWhenEscape)
+                        return true;
+
+                    GameComponent_LC lc = Current.Game.GetComponent<GameComponent_LC>();
+                    if (lc != null)
+                    {
+                        lc.CurWarningPoints += compEntity.WarningPoints;
+                    }
+                    else
+                    {
+                        Log.Warning("GameComponent_LC is null");
+                    }
+                }
+            }
+
+            return true;
+        }
+    }
+
+
+    //TODO 可以改进，该false的地方false，true的地方true，减少体积
+    /// <summary>
     /// 关于CompHoldingPlatformTarget的补丁（为了提供出逃可选提醒的特性）
     /// </summary>
     [HarmonyPatch(typeof(CompHoldingPlatformTarget), nameof(CompHoldingPlatformTarget.Escape))]
@@ -198,6 +244,8 @@ namespace LCAnomalyLibrary.Patch
             return false;
         }
     }
+
+
 
     /// <summary>
     /// 关于CompHoldingPlatformTarget的补丁（为了提供异想体不可随机逃跑的特性）

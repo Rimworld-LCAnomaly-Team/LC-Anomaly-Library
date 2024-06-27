@@ -29,6 +29,16 @@ namespace LCAnomalyLibrary.Comp
         /// </summary>
         public bool shoundNotifyWhenEscape;
 
+        /// <summary>
+        /// XML：提供出逃点数（决定是否提供点数，不提供的情况下自定义点数无效）
+        /// </summary>
+        public bool ifProvideWarningPoints;
+
+        /// <summary>
+        /// XML：自定义出逃警报点数（填大于0则启用自定义点数，否则按异常等级计算）
+        /// </summary>
+        public int customWarningPoints;
+
         #endregion
 
         /// <summary>

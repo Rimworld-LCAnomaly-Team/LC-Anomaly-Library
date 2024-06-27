@@ -162,7 +162,11 @@ namespace LCAnomalyLibrary.Building
                     }
                     else
                     {
-                        QliphothCounter = 0;
+                        if(QliphothCounter != 0)
+                        {
+                            Log.Message($"逆卡巴拉计数器：未找到实体组件，重置计数器");
+                            QliphothCounter = 0;
+                        }
                     }
                 }
             }

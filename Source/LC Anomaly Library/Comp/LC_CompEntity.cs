@@ -1,4 +1,5 @@
-﻿using LCAnomalyLibrary.Util;
+﻿using LCAnomalyLibrary.Defs;
+using LCAnomalyLibrary.Util;
 using RimWorld;
 using System.Collections.Generic;
 using Verse;
@@ -31,6 +32,36 @@ namespace LCAnomalyLibrary.Comp
         /// XML引用：逆卡巴拉计数器最大值
         /// </summary>
         public int QliphothCountMax => Props.qliphothCountMax;
+
+        /// <summary>
+        /// XML引用：警报点数
+        /// </summary>
+        public int WarningPoints
+        {
+            get
+            {
+                //强制不提供警报点数就返回0
+                if (!Props.ifProvideWarningPoints)
+                {
+                    Log.Message($"警报点数：{parent.def.label.Translate()}不提供警报点数");
+                    return 0;
+                }
+
+                //如果警报点数大于0就返回警报点数，否则返回等级对应的点数
+                if (Props.customWarningPoints > 0)
+                {
+                    Log.Message($"警报点数：{parent.def.label.Translate()}提供自定义警报点数{Props.customWarningPoints}点");
+                    return Props.customWarningPoints;
+                }
+                else
+                {
+                    var points = MusicUtils.LevelTag2Points(parent.def.entityCodexEntry.category.defName);
+                    Log.Message($"警报点数：{parent.def.label.Translate()}提供根据等级的警报点数{points}点");
+
+                    return points;
+                }
+            }
+        }
 
         /// <summary>
         /// 逆卡巴拉计数器当前值
@@ -74,6 +105,18 @@ namespace LCAnomalyLibrary.Comp
         #region 触发事件
 
         /// <summary>
+        /// PostPostMake初始化
+        /// </summary>
+        public override void PostPostMake()
+        {
+            base.PostPostMake();
+
+            //初始化生物特征和逆卡巴拉计数
+            biosignature = Rand.Int;
+            QliphothCountCurrent = Props.qliphothCountMax;
+        }
+
+        /// <summary>
         /// 逃脱收容后执行的操作
         /// </summary>
         public abstract void Notify_Escaped();
@@ -86,11 +129,7 @@ namespace LCAnomalyLibrary.Comp
         /// <summary>
         /// 绑到收容平台上的操作
         /// </summary>
-        public virtual void Notify_Holded()
-        {
-            //重置逆卡巴拉计数器
-            QliphothCountCurrent = Props.qliphothCountMax;
-        }
+        public abstract void Notify_Holded();
 
         /// <summary>
         /// 研究质量：非差

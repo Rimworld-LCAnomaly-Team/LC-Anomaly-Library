@@ -246,6 +246,11 @@
             XML引用：逆卡巴拉计数器最大值
             </summary>
         </member>
+        <member name="P:LCAnomalyLibrary.Comp.LC_CompEntity.WarningPoints">
+            <summary>
+            XML引用：警报点数
+            </summary>
+        </member>
         <member name="P:LCAnomalyLibrary.Comp.LC_CompEntity.QliphothCountCurrent">
             <summary>
             逆卡巴拉计数器当前值
@@ -254,6 +259,11 @@
         <member name="P:LCAnomalyLibrary.Comp.LC_CompEntity.BiosignatureName">
             <summary>
             生物特征名
+            </summary>
+        </member>
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.PostPostMake">
+            <summary>
+            PostPostMake初始化
             </summary>
         </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.Notify_Escaped">
@@ -428,6 +438,16 @@
         <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.shoundNotifyWhenEscape">
             <summary>
             XML：出逃时是否通知
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.ifProvideWarningPoints">
+            <summary>
+            XML：提供出逃点数（决定是否提供点数，不提供的情况下自定义点数无效）
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.customWarningPoints">
+            <summary>
+            XML：自定义出逃警报点数（填大于0则启用自定义点数，否则按异常等级计算）
             </summary>
         </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.#ctor">
@@ -711,6 +731,21 @@
             异想体研究面板
             </summary>
         </member>
+        <member name="F:LCAnomalyLibrary.Defs.SongDefOf.FirstWarning">
+            <summary>
+            一级警报
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Defs.SongDefOf.SecondWarning">
+            <summary>
+            二级警报
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Defs.SongDefOf.ThirdWarning">
+            <summary>
+            三级警报
+            </summary>
+        </member>
         <member name="T:LCAnomalyLibrary.Defs.ThingDefOf">
             <summary>
             该mod所有的ThingDef
@@ -856,6 +891,21 @@
         <member name="T:LCAnomalyLibrary.Defs.ExtractRitualDef_InvocationCircle">
             <summary>
             提取仪式Def：圆形模式（和原版基本一致）
+            </summary>
+        </member>
+        <member name="T:LCAnomalyLibrary.GameComponent.GameComponent_LC">
+            <summary>
+            LC游戏组件
+            </summary>
+        </member>
+        <member name="P:LCAnomalyLibrary.GameComponent.GameComponent_LC.CurWarningPoints">
+            <summary>
+            当前的警报点数
+            </summary>
+        </member>
+        <member name="M:LCAnomalyLibrary.GameComponent.GameComponent_LC.GameComponentTick">
+            <summary>
+            Tick
             </summary>
         </member>
         <member name="T:LCAnomalyLibrary.PsychicRituals.PsychicRitualDef_ExtractAnomaly">
@@ -1094,6 +1144,19 @@
             <param name="__instance">原来的反射对象</param>
             <returns>false 终止原方法（会和同样的prefix产生可能的不兼容）</returns>
         </member>
+        <member name="T:LCAnomalyLibrary.Patch.Patch_CompHoldingPlatformTarget_EscapeMusic">
+            <summary>
+            关于CompHoldingPlatformTarget的补丁（为了提供出逃音乐的特性）
+            </summary>
+        </member>
+        <member name="M:LCAnomalyLibrary.Patch.Patch_CompHoldingPlatformTarget_EscapeMusic.Prefix(System.Boolean,RimWorld.CompHoldingPlatformTarget)">
+            <summary>
+            Prefix方法
+            </summary>
+            <param name="initiator">是否是初始化</param>
+            <param name="__instance">原来的反射对象</param>
+            <returns>true</returns>
+        </member>
         <member name="T:LCAnomalyLibrary.Patch.Patch_CompHoldingPlatformTarget_Escape">
             <summary>
             关于CompHoldingPlatformTarget的补丁（为了提供出逃可选提醒的特性）
@@ -1265,6 +1328,11 @@
             获取逆卡巴拉计数器的图集
             </summary>
             <returns>图集</returns>
+        </member>
+        <member name="T:LCAnomalyLibrary.Util.MusicUtils">
+            <summary>
+            音乐工具
+            </summary>
         </member>
         <member name="T:LCAnomalyLibrary.Util.StudyUtil">
             <summary>
