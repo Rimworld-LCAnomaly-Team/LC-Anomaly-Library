@@ -1,4 +1,5 @@
 ﻿using LCAnomalyLibrary.GameComponent;
+using LCAnomalyLibrary.Setting;
 using LCAnomalyLibrary.Util;
 using RimWorld;
 using System.Collections.Generic;
@@ -133,15 +134,18 @@ namespace LCAnomalyLibrary.Comp
                 Find.LetterStack.ReceiveLetter(LetterMaker.MakeLetter("LetterLabelEscapingFromHoldingPlatform".Translate(),
                     "LetterEscapingFromHoldingPlatform", LetterDefOf.ThreatBig));
 
-                //计算威胁点数
-                GameComponent_LC lc = Current.Game.GetComponent<GameComponent_LC>();
-                if (lc != null)
+
+                //如果未启用警报系统，就不更新警报点数
+                if (Setting_LCAnomalyLibrary_Main.Settings.If_EnableLCWarning)
                 {
-                    lc.CurWarningPoints += WarningPoints;
-                }
-                else
-                {
-                    Log.Warning("GameComponent_LC is null");
+                    if (Components.LC != null)
+                    {
+                        Components.LC.CurWarningPoints += WarningPoints;
+                    }
+                    else
+                    {
+                        Log.Warning("GameComponent_LC is null");
+                    }
                 }
             }
 

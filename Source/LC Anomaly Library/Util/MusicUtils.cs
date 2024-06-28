@@ -1,4 +1,5 @@
-﻿using RimWorld;
+﻿using LCAnomalyLibrary.Setting;
+using RimWorld;
 using System.ComponentModel;
 using Verse;
 
@@ -11,6 +12,10 @@ namespace LCAnomalyLibrary.Util
     {
         public static void PlayMusic_LC(int points)
         {
+            //如果未启用警报音乐，就不播放音乐
+            if (!Setting_LCAnomalyLibrary_Main.Settings.If_EnableLCWarningMusic)
+                return;
+
             MusicManagerPlay musicManager = Find.MusicManagerPlay;
 
             if (points >= 80)

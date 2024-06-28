@@ -111,10 +111,13 @@
     <Compile Include="Defs\ThoughtDefOf.cs" />
     <Compile Include="Comp\LC_HediffComp_FakeInvisibility.cs" />
     <Compile Include="GameComponent\GameComponent_LC.cs" />
+    <Compile Include="Patch\Patch_Pawn.cs" />
     <Compile Include="PsychicRituals\PsychicRitualDef_ExtractAnomaly.cs" />
     <Compile Include="PsychicRituals\PsychicRitualToil_ExtractAnomaly.cs" />
     <Compile Include="Recipe\Recipe_CogitoInjection.cs" />
     <Compile Include="Recipe\Recipe_ExtractCogito.cs" />
+    <Compile Include="Setting\Setting_LCAnomalyLibrary.cs" />
+    <Compile Include="Setting\Setting_LCAnomalyLibrary_Main.cs" />
     <Compile Include="Sounds\ExtractRitualTransition.cs" />
     <Compile Include="Jobs\JobGiver_GatherOfferingsForExtractRitual.cs" />
     <Compile Include="Defs\ExtractRitualDef.cs" />
@@ -129,6 +132,7 @@
     <Compile Include="Gizmo\PsychicRitualGizmo.cs" />
     <Compile Include="Toils\ExtractRitualToil_GatherOfferings.cs" />
     <Compile Include="Toils\ExtractRitualToil_GatherForInvocation.cs" />
+    <Compile Include="Util\Components.cs" />
     <Compile Include="Util\Curves.cs" />
     <Compile Include="Util\ExpansionActive.cs" />
     <Compile Include="Util\ExtractUtil.cs" />
