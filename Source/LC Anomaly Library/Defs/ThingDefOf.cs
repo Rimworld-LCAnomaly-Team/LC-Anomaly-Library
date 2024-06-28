@@ -50,6 +50,11 @@ namespace LCAnomalyLibrary.Defs
         public static ThingDef Cogito;
 
         /// <summary>
+        /// LC收容单元
+        /// </summary>
+        public static ThingDef LC_HoldingPlatform;
+
+        /// <summary>
         /// 提取仪式点（建筑）
         /// </summary>
         public static ThingDef ExtractRitualSpot;

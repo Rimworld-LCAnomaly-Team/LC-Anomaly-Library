@@ -815,6 +815,11 @@
             Cogito
             </summary>
         </member>
+        <member name="F:LCAnomalyLibrary.Defs.ThingDefOf.LC_HoldingPlatform">
+            <summary>
+            LC收容单元
+            </summary>
+        </member>
         <member name="F:LCAnomalyLibrary.Defs.ThingDefOf.ExtractRitualSpot">
             <summary>
             提取仪式点（建筑）
@@ -930,6 +935,11 @@
         <member name="M:LCAnomalyLibrary.GameComponent.GameComponent_LC.GameComponentTick">
             <summary>
             Tick
+            </summary>
+        </member>
+        <member name="T:LCAnomalyLibrary.Patch.Patch_WorkGiver_DarkStudyInteract">
+            <summary>
+            关于WorkGiver_DarkStudyInteract的补丁（用于禁止主动研究LC实体）
             </summary>
         </member>
         <member name="T:LCAnomalyLibrary.Patch.Patch_Pawn">
