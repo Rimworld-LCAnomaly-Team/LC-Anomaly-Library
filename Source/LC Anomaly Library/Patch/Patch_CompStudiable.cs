@@ -22,8 +22,7 @@ namespace LCAnomalyLibrary.Patch
         {
             //如果是LC实体派生，则触发回调事件
             LC_CompEntity entity = __instance.Pawn.TryGetComp<LC_CompEntity>();
-            if (entity != null)
-                entity.Notify_Studied(studier);
+            entity?.Notify_Studied(studier);
         }
     }
 }

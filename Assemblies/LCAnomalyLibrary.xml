@@ -202,6 +202,11 @@
             提取所需PeBox的Def
             </summary>
         </member>
+        <member name="P:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.HoldingTargetComp">
+            <summary>
+            CompHoldingPlatformTarget
+            </summary>
+        </member>
         <member name="F:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.curAmountWeapon">
             <summary>
             当前已被提取的EGO武器数量
@@ -530,47 +535,6 @@
             Comp
             </summary>
         </member>
-        <member name="T:LCAnomalyLibrary.Comp.LC_HediffCompProperties_FakeInvisibility">
-            <summary>
-            LC假隐形HediffCompProperties
-            </summary>
-        </member>
-        <member name="T:LCAnomalyLibrary.Comp.LC_HediffComp_FakeInvisibility">
-            <summary>
-            LC假隐形HediffComp
-            </summary>
-        </member>
-        <member name="P:LCAnomalyLibrary.Comp.LC_HediffComp_FakeInvisibility.Props">
-            <summary>
-            CompProperties
-            </summary>
-        </member>
-        <member name="P:LCAnomalyLibrary.Comp.LC_HediffComp_FakeInvisibility.PsychologicallyVisible">
-            <summary>
-            是否处于隐身状态
-            </summary>
-        </member>
-        <member name="M:LCAnomalyLibrary.Comp.LC_HediffComp_FakeInvisibility.CompPostPostAdd(System.Nullable{Verse.DamageInfo})">
-            <summary>
-            hediff被添加前时
-            </summary>
-            <param name="dinfo"></param>
-        </member>
-        <member name="M:LCAnomalyLibrary.Comp.LC_HediffComp_FakeInvisibility.CompPostPostRemoved">
-            <summary>
-            hediff被移除前时
-            </summary>
-        </member>
-        <member name="M:LCAnomalyLibrary.Comp.LC_HediffComp_FakeInvisibility.BecomeVisible">
-            <summary>
-            显形
-            </summary>
-        </member>
-        <member name="M:LCAnomalyLibrary.Comp.LC_HediffComp_FakeInvisibility.BecomeInvisible">
-            <summary>
-            隐身
-            </summary>
-        </member>
         <member name="T:LCAnomalyLibrary.Defs.ApparelLayerDefOf">
             <summary>
             所有的服装层Def
@@ -704,11 +668,6 @@
         <member name="T:LCAnomalyLibrary.Defs.HediffDefOf">
             <summary>
             该mod的所有HediffDef
-            </summary>
-        </member>
-        <member name="F:LCAnomalyLibrary.Defs.HediffDefOf.FakeInvisibility">
-            <summary>
-            假隐形Hediff，用于做不能被自动索敌的操作
             </summary>
         </member>
         <member name="F:LCAnomalyLibrary.Defs.HediffDefOf.CogitoExtracted">
@@ -1054,19 +1013,6 @@
             <param name="studier">研究者</param>
             <param name="studyAmount">研究量？</param>
             <param name="anomalyKnowledgeAmount">异常知识数量？</param>
-        </member>
-        <member name="T:LCAnomalyLibrary.Patch.Patch_InvisibilityUtility_IsPsychologicallyInvisible">
-            <summary>
-            关于InvisibilityUtility的补丁（为了提供假灵能隐身判断的特性）
-            </summary>
-        </member>
-        <member name="M:LCAnomalyLibrary.Patch.Patch_InvisibilityUtility_IsPsychologicallyInvisible.Prefix(Verse.Pawn,System.Boolean@)">
-            <summary>
-            Prefix方法
-            </summary>
-            <param name="pawn">持有hediff的pawn</param>
-            <param name="__result">原方法返回结果</param>
-            <returns>false 终止原方法（会和同样的prefix产生可能的不兼容）</returns>
         </member>
         <member name="T:LCAnomalyLibrary.PsychicRituals.PsychicRitualDef_ExtractAnomaly">
             <summary>

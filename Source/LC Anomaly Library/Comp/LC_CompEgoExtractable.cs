@@ -1,4 +1,5 @@
 ﻿using LCAnomalyLibrary.Defs;
+using RimWorld;
 using System.Collections.Generic;
 using System.Linq;
 using Verse;
@@ -18,6 +19,11 @@ namespace LCAnomalyLibrary.Comp
         /// 提取所需PeBox的Def
         /// </summary>
         protected LC_CompPeBoxProduce PeBoxComp => parent.GetComp<LC_CompPeBoxProduce>();
+
+        /// <summary>
+        /// CompHoldingPlatformTarget
+        /// </summary>
+        protected CompHoldingPlatformTarget HoldingTargetComp => parent.GetComp<CompHoldingPlatformTarget>();
 
         /// <summary>
         /// 当前已被提取的EGO武器数量
@@ -215,9 +221,10 @@ namespace LCAnomalyLibrary.Comp
                 yield return gizmo;
             }
 
-            //TODO 需要加一个判断是否可以提取的条件
-            if (true)
+            //HoldingTargetComp不为空并且在收容平台上时才能提取
+            if (HoldingTargetComp != null && !HoldingTargetComp.isEscaping)
             {
+                //科技研究完成后才能提取
                 if (CheckIfEGOTechFinished())
                 {
                     yield return new Command_Action

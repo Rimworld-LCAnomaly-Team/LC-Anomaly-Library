@@ -94,7 +94,6 @@
     <Compile Include="Comp\LC_CompProperties_Entity.cs" />
     <Compile Include="Comp\LC_CompProperties_InteractableEgg.cs" />
     <Compile Include="Comp\LC_CompProperties_PeBoxProduce.cs" />
-    <Compile Include="Comp\LC_HediffCompProperties_FakeInvisibility.cs" />
     <Compile Include="Defs\ApparelLayerDefOf.cs" />
     <Compile Include="Defs\DutyDefOf.cs" />
     <Compile Include="Defs\DamageDefOf.cs" />
@@ -109,8 +108,8 @@
     <Compile Include="Defs\ThingDefOf.cs" />
     <Compile Include="Defs\ThingDef_LCAnomalyBase.cs" />
     <Compile Include="Defs\ThoughtDefOf.cs" />
-    <Compile Include="Comp\LC_HediffComp_FakeInvisibility.cs" />
     <Compile Include="GameComponent\GameComponent_LC.cs" />
+    <Compile Include="Patch\Patch_WorkGiver_DarkStudyInteract.cs" />
     <Compile Include="Patch\Patch_Pawn.cs" />
     <Compile Include="PsychicRituals\PsychicRitualDef_ExtractAnomaly.cs" />
     <Compile Include="PsychicRituals\PsychicRitualToil_ExtractAnomaly.cs" />
@@ -126,7 +125,6 @@
     <Compile Include="Patch\PatchMain.cs" />
     <Compile Include="Patch\Patch_CompHoldingPlatformTarget.cs" />
     <Compile Include="Patch\Patch_CompStudiable.cs" />
-    <Compile Include="Patch\Patch_InvisibilityUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Defs\ExtractRitualDef_InvocationCircle.cs" />
     <Compile Include="Gizmo\PsychicRitualGizmo.cs" />
