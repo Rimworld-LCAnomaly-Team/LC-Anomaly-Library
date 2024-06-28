@@ -24,6 +24,11 @@ namespace LCAnomalyLibrary.Comp
         public LC_CompPeBoxProduce PeboxComp => parent.TryGetComp<LC_CompPeBoxProduce>();
 
         /// <summary>
+        /// Accessoryable类的Comp
+        /// </summary>
+        public LC_CompAccessoryable AccessoryableComp => parent.TryGetComp<LC_CompAccessoryable>();
+
+        /// <summary>
         /// 生物特征
         /// </summary>
         public int biosignature;
@@ -215,43 +220,6 @@ namespace LCAnomalyLibrary.Comp
         #region 工具功能
 
         /// <summary>
-        /// 检查饰品是否冲突
-        /// </summary>
-        /// <param name="studier">研究者</param>
-        /// <param name="hediffDef">饰品hediffDef</param>
-        /// <param name="tag">部位标签</param>
-        /// <returns>不冲突为true，反之false</returns>
-        protected virtual bool CheckIfAccessoryConflict(Pawn studier, HediffDef hediffDef, string tag)
-        {
-            //没有相关hediff就不冲突，可添加
-            var hediffs = studier.health.hediffSet.hediffs;
-            List<Hediff> hediffs1 = new List<Hediff>();
-            foreach (var hediff in hediffs)
-            {
-                if ((hediff.def.tags != null) && hediff.def.tags.Contains(tag))
-                    hediffs1.Add(hediff);
-            }
-            if (hediffs1.NullOrEmpty())
-            {
-                Log.Message("没有检测相同部位的hediff");
-                return true;
-            }
-
-            //如果有相同的hediff则不进行添加操作，否则清理重复部位的hediff
-            foreach (var hediff in hediffs1)
-            {
-                if (hediff.def == hediffDef)
-                {
-                    Log.Message("检测到相同Hediff");
-                    return false;
-                }
-                else
-                    studier.health.RemoveHediff(hediff);
-            }
-            return true;
-        }
-
-        /// <summary>
         /// 检查研究是否成功
         /// </summary>
         /// <param name="studier">研究者</param>
@@ -283,40 +251,6 @@ namespace LCAnomalyLibrary.Comp
         /// <param name="studier">研究者</param>
         /// <returns></returns>
         protected abstract bool CheckStudierSkillRequire(Pawn studier);
-
-        /// <summary>
-        /// 检查是否给予饰品
-        /// </summary>
-        /// <param name="studier">研究者</param>
-        /// <param name="hediffDef">饰品的hediffdef</param>
-        /// <param name="tag">饰品部位tag</param>
-        protected virtual void CheckGiveAccessory(Pawn studier, HediffDef hediffDef, string tag)
-        {
-            //概率排前面是为了减少计算量，避免下面的foreach每次都要触发
-            if (!Rand.Chance(Props.accessoryChance))
-            {
-                Log.Message($"工作：{studier.Name} 获取饰品失败，概率判定失败");
-                return;
-            }
-
-            if (CheckIfAccessoryConflict(studier, hediffDef, tag))
-            {
-                var bodypart = studier.RaceProps.body.corePart;
-                if (bodypart != null)
-                {
-                    studier.health.AddHediff(hediffDef, bodypart);
-                    Log.Message($"工作：{studier.Name} 获取饰品成功");
-                }
-                else
-                {
-                    Log.Message($"工作：{studier.Name} 获取饰品失败，RaceProps.body.corePart 不存在");
-                }
-            }
-            else
-            {
-                Log.Message($"工作：{studier.Name} 获取饰品失败，已经拥有相同饰品");
-            }
-        }
 
         /// <summary>
         /// Debug：调试用逆卡巴拉强制熔毁

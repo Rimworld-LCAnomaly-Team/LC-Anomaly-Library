@@ -16,6 +16,9 @@
   <LC_Apparel.label>服装</LC_Apparel.label>
   <LC_Apparel_Normal.label>普通服装</LC_Apparel_Normal.label>
   <LC_Apparel_EGO.label>E.G.O服装</LC_Apparel_EGO.label>
+  <LC_Apparel_Accessory.label>饰品</LC_Apparel_Accessory.label>
+  <LC_Apparel_Accessory_Normal.label>普通饰品</LC_Apparel_Accessory_Normal.label>
+  <LC_Apparel_Accessory_EGO.label>E.G.O饰品</LC_Apparel_Accessory_EGO.label>
 
   <LC_Drug.label>药物与成瘾品</LC_Drug.label>
   <LC_Resource.label>资源</LC_Resource.label>

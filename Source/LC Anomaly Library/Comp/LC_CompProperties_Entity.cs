@@ -20,11 +20,6 @@ namespace LCAnomalyLibrary.Comp
         public float studySucessRateBase;
 
         /// <summary>
-        /// XML：获取饰品的概率
-        /// </summary>
-        public float accessoryChance;
-
-        /// <summary>
         /// XML：出逃时是否通知
         /// </summary>
         public bool shoundNotifyWhenEscape;

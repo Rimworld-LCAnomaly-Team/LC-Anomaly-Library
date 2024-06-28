@@ -1,33 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <ThingDef Name="LC_Apparel_EGO" Abstract="True">
+  <ThingDef Name="LC_Apparel_AccessoryBase" ParentName="ApparelNoQualityBase" Abstract="True">
     <thingClass>Apparel</thingClass>
     <category>Item</category>
     <selectable>true</selectable>
-    <pathCost>14</pathCost>
+    <pathCost>10</pathCost>
     <useHitPoints>false</useHitPoints>
     <techLevel>Industrial</techLevel>
     <graphicData>
       <graphicClass>Graphic_Single</graphicClass>
+      <shaderType>CutoutComplex</shaderType>
       <drawSize>1.0</drawSize>
       <drawOffset>(0,0,0)</drawOffset>
-      <onGroundRandomRotateAngle>0</onGroundRandomRotateAngle>
+	    <onGroundRandomRotateAngle>0</onGroundRandomRotateAngle>
     </graphicData>
-    <drawGUIOverlay>true</drawGUIOverlay>
-    <statBases>
-      <MaxHitPoints>0</MaxHitPoints>
-      <Flammability>0</Flammability>
-      <DeteriorationRate>0</DeteriorationRate>
-    </statBases>
     <apparel>
       <useWornGraphicMask>false</useWornGraphicMask>
       <wearPerDay>0</wearPerDay>
       <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
     </apparel>
-    <thingCategories>
-      <li>LC_Apparel_EGO</li>
-    </thingCategories>
+    <generateAllowChance>0</generateAllowChance>
+    <drawGUIOverlay>true</drawGUIOverlay>
+    <statBases>
+      <Mass>0.02</Mass>
+      <MaxHitPoints>0</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+    </statBases>
     <altitudeLayer>Item</altitudeLayer>
     <alwaysHaulable>True</alwaysHaulable>
     <tickerType>Never</tickerType>
@@ -36,6 +36,9 @@
     <comps>
       <li Class="CompProperties_Forbiddable"/>
     </comps>
+    <tradeTags>
+      <li>LC_Apparel_Accessory</li>
+    </tradeTags>
   </ThingDef>
   
 </Defs>

@@ -11,6 +11,13 @@
     <weaponClasses>
       <li>Melee</li>
     </weaponClasses>
+    <useHitPoints>false</useHitPoints>
+    <statBases>
+      <MaxHitPoints>0</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Beauty>0</Beauty>
+    </statBases>
     <burnableByRecipe>false</burnableByRecipe>
     <smeltable>false</smeltable>
     <inspectorTabs>
