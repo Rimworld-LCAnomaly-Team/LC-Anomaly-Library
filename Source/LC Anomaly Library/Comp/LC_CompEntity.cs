@@ -22,12 +22,17 @@ namespace LCAnomalyLibrary.Comp
         /// <summary>
         /// PeBox类的Comp
         /// </summary>
-        public LC_CompPeBoxProduce PeboxComp => parent.TryGetComp<LC_CompPeBoxProduce>();
+        public LC_CompPeBoxProduce PeboxComp => parent.GetComp<LC_CompPeBoxProduce>();
 
         /// <summary>
         /// Accessoryable类的Comp
         /// </summary>
-        public LC_CompAccessoryable AccessoryableComp => parent.TryGetComp<LC_CompAccessoryable>();
+        public LC_CompAccessoryable AccessoryableComp => parent.GetComp<LC_CompAccessoryable>();
+
+        /// <summary>
+        /// 研究阶段解锁
+        /// </summary>
+        public CompStudyUnlocks StudyUnlocksComp => parent.GetComp<CompStudyUnlocks>();
 
         /// <summary>
         /// 生物特征

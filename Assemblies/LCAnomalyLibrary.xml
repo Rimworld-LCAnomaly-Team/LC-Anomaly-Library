@@ -152,6 +152,11 @@
             CompProperties
             </summary>
         </member>
+        <member name="P:LCAnomalyLibrary.Comp.LC_CompAccessoryable.EntityComp">
+            <summary>
+            CompEntity
+            </summary>
+        </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompAccessoryable.CheckGiveAccessory(Verse.Pawn)">
             <summary>
             检查是否给予饰品
@@ -162,6 +167,12 @@
             <summary>
             生成饰品
             </summary>
+        </member>
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompAccessoryable.CheckIfEGOExtractUnlocked">
+            <summary>
+            EGO提取是否已解锁
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompAccessoryable.CompGetGizmosExtra">
             <summary>
@@ -195,6 +206,11 @@
         <member name="P:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.Props">
             <summary>
             CompProperties
+            </summary>
+        </member>
+        <member name="P:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.EntityComp">
+            <summary>
+            CompEntity
             </summary>
         </member>
         <member name="P:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.PeBoxComp">
@@ -236,9 +252,9 @@
             </summary>
             <param name="type">EGO类型</param>
         </member>
-        <member name="M:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.CheckIfEGOTechFinished">
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.CheckIfEGOExtractUnlocked">
             <summary>
-            EGO科技是否研究完成
+            EGO提取是否已解锁
             </summary>
             <returns></returns>
         </member>
@@ -271,6 +287,11 @@
         <member name="P:LCAnomalyLibrary.Comp.LC_CompEntity.AccessoryableComp">
             <summary>
             Accessoryable类的Comp
+            </summary>
+        </member>
+        <member name="P:LCAnomalyLibrary.Comp.LC_CompEntity.StudyUnlocksComp">
+            <summary>
+            研究阶段解锁
             </summary>
         </member>
         <member name="F:LCAnomalyLibrary.Comp.LC_CompEntity.biosignature">
@@ -405,6 +426,11 @@
             XML：获取饰品的概率
             </summary>
         </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Accessoryable.unlockLevel">
+            <summary>
+            XML: 饰品解锁所需观察等级
+            </summary>
+        </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompProperties_Accessoryable.#ctor">
             <summary>
             Comp
@@ -423,6 +449,16 @@
         <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_EgoExtractable.armorExtracted">
             <summary>
             XML：EGO装备
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_EgoExtractable.weaponIconPath">
+            <summary>
+            XML: EGO武器提取图标路径
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_EgoExtractable.armorIconPath">
+            <summary>
+            XML: EGO装备提取图标路径
             </summary>
         </member>
         <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_EgoExtractable.amountMaxWeapon">
@@ -445,9 +481,9 @@
             XML: 提取EGO装备所需PeBox数量
             </summary>
         </member>
-        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_EgoExtractable.researchProject">
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_EgoExtractable.unlockLevel">
             <summary>
-            提取EGO所需完成的科技
+            XML: EGO解锁所需观察等级
             </summary>
         </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompProperties_EgoExtractable.#ctor">

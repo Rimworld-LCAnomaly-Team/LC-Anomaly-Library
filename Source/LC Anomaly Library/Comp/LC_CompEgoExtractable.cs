@@ -16,6 +16,11 @@ namespace LCAnomalyLibrary.Comp
         public LC_CompProperties_EgoExtractable Props => (LC_CompProperties_EgoExtractable)props;
 
         /// <summary>
+        /// CompEntity
+        /// </summary>
+        public LC_CompEntity EntityComp => parent.GetComp<LC_CompEntity>();
+
+        /// <summary>
         /// 提取所需PeBox的Def
         /// </summary>
         protected LC_CompPeBoxProduce PeBoxComp => parent.GetComp<LC_CompPeBoxProduce>();
@@ -179,18 +184,15 @@ namespace LCAnomalyLibrary.Comp
         }
 
         /// <summary>
-        /// EGO科技是否研究完成
+        /// EGO提取是否已解锁
         /// </summary>
         /// <returns></returns>
-        protected virtual bool CheckIfEGOTechFinished()
+        protected virtual bool CheckIfEGOExtractUnlocked()
         {
-            bool finished = false;
+            if(EntityComp.StudyUnlocksComp.Progress >= Props.unlockLevel)
+                return true;
 
-            if(Props.researchProject != null)
-            {
-                finished = Props.researchProject.IsFinished;
-            }
-            return finished;
+            return false;
         }
 
         #endregion
@@ -225,22 +227,30 @@ namespace LCAnomalyLibrary.Comp
             if (HoldingTargetComp != null && !HoldingTargetComp.isEscaping)
             {
                 //科技研究完成后才能提取
-                if (CheckIfEGOTechFinished())
+                if (CheckIfEGOExtractUnlocked())
                 {
+                    //提取EGO武器
                     yield return new Command_Action
                     {
-                        defaultLabel = "Extract EGO Weapon",
-                        defaultDesc = $"提取数量：{curAmountWeapon}/{Props.amountMaxWeapon}",
+                        icon = ContentFinder<UnityEngine.Texture2D>.Get(Props.weaponIconPath),
+                        defaultLabel = "ExtractEGOWeaponCommandText".Translate(),
+                        defaultDesc = $"{"ExtractEGOCommandText".Translate()}{curAmountWeapon}/{Props.amountMaxWeapon}"
+                        + $"\n{"ExtractEGONeedPeboxDefCommandText".Translate()}{PeBoxComp.Props.peBoxDef.label.Translate()}"
+                        + $"\n{"ExtractEGONeedPeboxAmountCommandText".Translate()}{Props.weaponExtractedNeed}",
                         action = delegate
                         {
                             ExtractEGO(EGO_TYPE.Weapon);
                         }
                     };
 
+                    //提取EGO装备
                     yield return new Command_Action
                     {
-                        defaultLabel = "Extract EGO Armor",
-                        defaultDesc = $"提取数量：{curAmountArmor}/{Props.amountMaxArmor}",
+                        icon = ContentFinder<UnityEngine.Texture2D>.Get(Props.armorIconPath),
+                        defaultLabel = "ExtractEGOArmorCommandText".Translate(),
+                        defaultDesc = $"{"ExtractEGOCommandText".Translate()}{curAmountArmor}/{Props.amountMaxArmor}"
+                        + $"\n{"ExtractEGONeedPeboxDefCommandText".Translate()}{PeBoxComp.Props.peBoxDef.label.Translate()}"
+                        + $"\n{"ExtractEGONeedPeboxAmountCommandText".Translate()}{Props.armorExtractedNeed}",
                         action = delegate
                         {
                             ExtractEGO(EGO_TYPE.Armor);

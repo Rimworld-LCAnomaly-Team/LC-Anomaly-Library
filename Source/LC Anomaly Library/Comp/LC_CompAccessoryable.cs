@@ -13,6 +13,11 @@ namespace LCAnomalyLibrary.Comp
         /// </summary>
         public LC_CompProperties_Accessoryable Props => (LC_CompProperties_Accessoryable)props;
 
+        /// <summary>
+        /// CompEntity
+        /// </summary>
+        public LC_CompEntity EntityComp => parent.GetComp<LC_CompEntity>();
+
         #region 工具方法
 
         /// <summary>
@@ -21,15 +26,21 @@ namespace LCAnomalyLibrary.Comp
         /// <param name="studier">研究者</param>
         public void CheckGiveAccessory(Pawn studier)
         {
+            if (!CheckIfEGOExtractUnlocked())
+            {
+                Log.Message($"饰品：观察等级不足{Props.unlockLevel}，获取饰品固定失败，");
+                return;
+            }
+
             //概率排前面是为了减少计算量，避免下面的foreach每次都要触发
             if (Rand.Chance(Props.accessoryChance))
             {
                 SpawnAccessory(studier);
-                Log.Message($"工作：{studier.Name} 获取饰品成功");
+                Log.Message($"饰品：{studier.Name} 获取饰品成功");
             }
             else
             {
-                Log.Message($"工作：{studier.Name} 获取饰品失败，概率判定失败");
+                Log.Message($"饰品：{studier.Name} 获取饰品失败，概率判定失败");
             }
         }
 
@@ -47,6 +58,18 @@ namespace LCAnomalyLibrary.Comp
                 var target = studier ?? parent;
                 GenPlace.TryPlaceThing(thing, target.PositionHeld, target.MapHeld, ThingPlaceMode.Near);
             }
+        }
+
+        /// <summary>
+        /// EGO提取是否已解锁
+        /// </summary>
+        /// <returns></returns>
+        private bool CheckIfEGOExtractUnlocked()
+        {
+            if (EntityComp.StudyUnlocksComp.Progress >= Props.unlockLevel)
+                return true;
+
+            return false;
         }
 
         #endregion

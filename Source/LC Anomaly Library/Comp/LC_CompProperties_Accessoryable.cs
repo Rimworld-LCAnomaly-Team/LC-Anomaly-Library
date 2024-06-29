@@ -17,6 +17,11 @@ namespace LCAnomalyLibrary.Comp
         public float accessoryChance;
 
         /// <summary>
+        /// XML: 饰品解锁所需观察等级
+        /// </summary>
+        public int unlockLevel = 2;
+
+        /// <summary>
         /// Comp
         /// </summary>
         public LC_CompProperties_Accessoryable()

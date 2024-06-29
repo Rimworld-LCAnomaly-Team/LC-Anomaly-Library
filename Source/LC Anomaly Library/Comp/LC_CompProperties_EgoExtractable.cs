@@ -13,10 +13,20 @@ namespace LCAnomalyLibrary.Comp
         /// XML：EGO武器
         /// </summary>
         public ThingDef weaponExtracted;
+
         /// <summary>
         /// XML：EGO装备
         /// </summary>
         public ThingDef armorExtracted;
+
+        /// <summary>
+        /// XML: EGO武器提取图标路径
+        /// </summary>
+        public string weaponIconPath;
+        /// <summary>
+        /// XML: EGO装备提取图标路径
+        /// </summary>
+        public string armorIconPath;
 
         /// <summary>
         /// XML：可提取EGO武器的上限数量
@@ -37,9 +47,9 @@ namespace LCAnomalyLibrary.Comp
         public int armorExtractedNeed;
 
         /// <summary>
-        /// 提取EGO所需完成的科技
+        /// XML: EGO解锁所需观察等级
         /// </summary>
-        public ResearchProjectDef researchProject;
+        public int unlockLevel = 2;
 
         #endregion
 
