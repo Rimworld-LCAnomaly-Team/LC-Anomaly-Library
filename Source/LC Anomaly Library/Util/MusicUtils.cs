@@ -22,8 +22,8 @@ namespace LCAnomalyLibrary.Util
             {
                 if(musicManager.CurrentSong != Defs.SongDefOf.ThirdWarning)
                 {
-                    musicManager.ForcePlaySong(Defs.SongDefOf.ThirdWarning, false);
                     Log.Warning("警报音乐：播放3级警报音乐");
+                    musicManager.ForcePlaySong(Defs.SongDefOf.ThirdWarning, false);
                 }
                 return;
             }
@@ -32,8 +32,12 @@ namespace LCAnomalyLibrary.Util
             {
                 if (musicManager.CurrentSong != Defs.SongDefOf.SecondWarning)
                 {
-                    musicManager.ForcePlaySong(Defs.SongDefOf.SecondWarning, false);
+                    //播放比自己高的警报后，不会向下自动递减警报音乐
+                    if (musicManager.CurrentSong == Defs.SongDefOf.ThirdWarning)
+                        return;
+
                     Log.Warning("警报音乐：播放2级警报音乐");
+                    musicManager.ForcePlaySong(Defs.SongDefOf.SecondWarning, false);
                 }
 
                 return;
@@ -43,6 +47,10 @@ namespace LCAnomalyLibrary.Util
             {
                 if (musicManager.CurrentSong != Defs.SongDefOf.FirstWarning)
                 {
+                    //播放比自己高的警报后，不会向下自动递减警报音乐
+                    if (musicManager.CurrentSong == Defs.SongDefOf.ThirdWarning || musicManager.CurrentSong == Defs.SongDefOf.SecondWarning)
+                        return;
+
                     Log.Warning("警报音乐：播放1级警报音乐");
                     musicManager.ForcePlaySong(Defs.SongDefOf.FirstWarning, false);
                 }

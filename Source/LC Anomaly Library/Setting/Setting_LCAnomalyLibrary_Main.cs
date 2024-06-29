@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Verse;
+using Verse.Noise;
 
 namespace LCAnomalyLibrary.Setting
 {
@@ -10,11 +11,16 @@ namespace LCAnomalyLibrary.Setting
         /// </summary>
         public static Setting_LCAnomalyLibrary Settings;
 
+        private string PointsOfWarning_FadeDurationEditBuffer;
+        private string PointsOfWarning_FadeAmountEditBuffer;
+
         private string PointsOfWarning_PlayerFactionDieEditBuffer;
         private string PointsOfWarning_AllyFactionDieEditBuffer;
         private string PointsOfWarning_NeturalFactionDieEditBuffer;
-        private string PointsOfWarning_FadeDurationEditBuffer;
-        private string PointsOfWarning_FadeAmountEditBuffer;
+
+        private string PointsOfWarning_PlayerFactionMentalBreakEditBuffer;
+        private string PointsOfWarning_AllyFactionMentalBreakEditBuffer;
+        private string PointsOfWarning_NeturalFactionMentalBreakEditBuffer;
 
         /// <summary>
         /// 构造函数
@@ -40,41 +46,106 @@ namespace LCAnomalyLibrary.Setting
         /// <param name="inRect"></param>
         public override void DoSettingsWindowContents(Rect inRect)
         {
-            Widgets.Checkbox(0f, 40f, ref Settings.If_EnableLCWarning, 25f, false, false, null, null);
-            Widgets.Label(new Rect(35f, 41f, inRect.width - 50f, 25f), Translator.Translate("If_EnableLCWarningText"));
+            float y = 0;
 
-            if (Settings.If_EnableLCWarning)
-            {
-                Widgets.Checkbox(35f, 81f, ref Settings.If_EnableLCWarningMusic, 25f, false, false, null, null);
-                Widgets.Label(new Rect(70f, 82f, inRect.width - 50f, 25f), Translator.Translate("If_EnableLCWarningMusicText"));
-
-                Widgets.TextFieldNumericLabeled(new Rect(0f, 121f, inRect.width * 0.5f, 25f)
-                    , Translator.Translate("PointsOfWarning_FadeDurationText")
-                    , ref Settings.PointsOfWarning_FadeDuration
-                    , ref this.PointsOfWarning_FadeDurationEditBuffer);
-
-                Widgets.TextFieldNumericLabeled(new Rect(0f, 161f, inRect.width * 0.5f, 25f)
-                    , Translator.Translate("PointsOfWarning_FadeAmountText")
-                    , ref Settings.PointsOfWarning_FadeAmount
-                    , ref this.PointsOfWarning_FadeAmountEditBuffer);
-
-                Widgets.TextFieldNumericLabeled(new Rect(0f, 201f, inRect.width * 0.5f, 25f)
-                    , Translator.Translate("PointsOfWarning_PlayerFactionDieText")
-                    , ref Settings.PointsOfWarning_PlayerFactionDie
-                    , ref this.PointsOfWarning_PlayerFactionDieEditBuffer);
-
-                Widgets.TextFieldNumericLabeled(new Rect(0f, 241f, inRect.width * 0.5f, 25f)
-                    , Translator.Translate("PointsOfWarning_AllyFactionDieText")
-                    , ref Settings.PointsOfWarning_AllyFactionDie
-                    , ref this.PointsOfWarning_AllyFactionDieEditBuffer);
-
-                Widgets.TextFieldNumericLabeled(new Rect(0f, 281f, inRect.width * 0.5f, 25f)
-                    , Translator.Translate("PointsOfWarning_NeturalFactionDieText")
-                    , ref Settings.PointsOfWarning_NeturalFactionDie
-                    , ref this.PointsOfWarning_NeturalFactionDieEditBuffer);
-            }
+            y += 40;
+            Widgets.Checkbox(0f, y, ref Settings.If_ShowWarningSettings, 25f, false, false, null, null);
+            Widgets.Label(new Rect(35f, y + 1f, inRect.width - 50f, 25f), Translator.Translate("If_ShowWarningSettingsText"));
+            ShowWarningSettings(Settings.If_ShowWarningSettings, ref y, inRect);
 
             base.DoSettingsWindowContents(inRect);
+        }
+
+        /// <summary>
+        /// 警报相关菜单
+        /// </summary>
+        /// <param name="state"></param>
+        /// <param name="y"></param>
+        /// <param name="inRect"></param>
+        private void ShowWarningSettings(bool state, ref float y, Rect inRect)
+        {
+            if(!state)
+                return;
+
+            y += 40;
+            Widgets.Checkbox(35f, y, ref Settings.If_EnableLCWarning, 25f, false, false, null, null);
+            Widgets.Label(new Rect(70f, y + 1f, inRect.width - 50f, 25f), Translator.Translate("If_EnableLCWarningText"));
+            if (Settings.If_EnableLCWarning)
+            {
+                //启用警报
+                y += 40;
+                Widgets.Checkbox(70f, y, ref Settings.If_EnableLCWarningMusic, 25f, false, false, null, null);
+                Widgets.Label(new Rect(105f, y + 1f, inRect.width - 50f, 25f), Translator.Translate("If_EnableLCWarningMusicText"));
+
+                //警报点数降低
+                y += 40;
+                Widgets.Checkbox(70f, y, ref Settings.If_EnableCustomWarningFadeOption, 25f, false, false, null, null);
+                Widgets.Label(new Rect(105f, y + 1f, inRect.width - 50f, 25f), Translator.Translate("If_EnableCustomWarningFadeOptionText"));
+                if (Settings.If_EnableCustomWarningFadeOption)
+                {
+                    y += 40;
+                    Widgets.TextFieldNumericLabeled(new Rect(0f, y, inRect.width * 0.5f, 25f)
+                        , Translator.Translate("PointsOfWarning_FadeDurationText")
+                        , ref Settings.PointsOfWarning_FadeDuration
+                        , ref this.PointsOfWarning_FadeDurationEditBuffer);
+
+                    y += 40;
+                    Widgets.TextFieldNumericLabeled(new Rect(0f, y, inRect.width * 0.5f, 25f)
+                        , Translator.Translate("PointsOfWarning_FadeAmountText")
+                        , ref Settings.PointsOfWarning_FadeAmount
+                        , ref this.PointsOfWarning_FadeAmountEditBuffer);
+                }
+
+                //死亡
+                y += 40;
+                Widgets.Checkbox(70f, y, ref Settings.If_EnableLCWarningDeath, 25f, false, false, null, null);
+                Widgets.Label(new Rect(105f, y + 1f, inRect.width - 50f, 25f), Translator.Translate("If_EnableLCWarningDeathText"));
+                if (Settings.If_EnableLCWarningDeath)
+                {
+                    y += 40;
+                    Widgets.TextFieldNumericLabeled(new Rect(0f, y, inRect.width * 0.5f, 25f)
+                        , Translator.Translate("PointsOfWarning_PlayerFactionText")
+                        , ref Settings.PointsOfWarning_PlayerFactionDie
+                        , ref this.PointsOfWarning_PlayerFactionDieEditBuffer);
+
+                    y += 40;
+                    Widgets.TextFieldNumericLabeled(new Rect(0f, y, inRect.width * 0.5f, 25f)
+                        , Translator.Translate("PointsOfWarning_AllyFactionText")
+                        , ref Settings.PointsOfWarning_AllyFactionDie
+                        , ref this.PointsOfWarning_AllyFactionDieEditBuffer);
+
+                    y += 40;
+                    Widgets.TextFieldNumericLabeled(new Rect(0f, y, inRect.width * 0.5f, 25f)
+                        , Translator.Translate("PointsOfWarning_NeturalFactionText")
+                        , ref Settings.PointsOfWarning_NeturalFactionDie
+                        , ref this.PointsOfWarning_NeturalFactionDieEditBuffer);
+                }
+
+                //心理崩溃
+                y += 40;
+                Widgets.Checkbox(70f, y, ref Settings.If_EnableLCWarningMentalBreak, 25f, false, false, null, null);
+                Widgets.Label(new Rect(105f, y + 1f, inRect.width - 50f, 25f), Translator.Translate("If_EnableLCWarningMentalBreakText"));
+                if (Settings.If_EnableLCWarningMentalBreak)
+                {
+                    y += 40;
+                    Widgets.TextFieldNumericLabeled(new Rect(0f, y, inRect.width * 0.5f, 25f)
+                        , Translator.Translate("PointsOfWarning_PlayerFactionText")
+                        , ref Settings.PointsOfWarning_PlayerFactionMentalBreak
+                        , ref this.PointsOfWarning_PlayerFactionMentalBreakEditBuffer);
+
+                    y += 40;
+                    Widgets.TextFieldNumericLabeled(new Rect(0f, y, inRect.width * 0.5f, 25f)
+                        , Translator.Translate("PointsOfWarning_AllyFactionText")
+                        , ref Settings.PointsOfWarning_AllyFactionMentalBreak
+                        , ref this.PointsOfWarning_AllyFactionMentalBreakEditBuffer);
+
+                    y += 40;
+                    Widgets.TextFieldNumericLabeled(new Rect(0f, y, inRect.width * 0.5f, 25f)
+                        , Translator.Translate("PointsOfWarning_NeturalFactionText")
+                        , ref Settings.PointsOfWarning_NeturalFactionMentalBreak
+                        , ref this.PointsOfWarning_NeturalFactionMentalBreakEditBuffer);
+                }
+            }
         }
     }
 }

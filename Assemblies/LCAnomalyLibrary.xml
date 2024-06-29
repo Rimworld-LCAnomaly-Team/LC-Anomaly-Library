@@ -937,6 +937,16 @@
             Tick
             </summary>
         </member>
+        <member name="T:LCAnomalyLibrary.Patch.Patch_MentalBreak">
+            <summary>
+            关于MentalStateHandler的补丁（为了提供崩溃警报点数）
+            </summary>
+        </member>
+        <member name="M:LCAnomalyLibrary.Patch.Patch_MentalBreak.Postfix(Verse.AI.MentalStateHandler,System.Boolean,Verse.MentalStateDef,System.String,System.Boolean,System.Boolean,System.Boolean,Verse.Pawn,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Postfix
+            </summary>
+        </member>
         <member name="T:LCAnomalyLibrary.Patch.Patch_WorkGiver_DarkStudyInteract">
             <summary>
             关于WorkGiver_DarkStudyInteract的补丁（用于禁止主动研究LC实体）
@@ -944,17 +954,16 @@
         </member>
         <member name="T:LCAnomalyLibrary.Patch.Patch_Pawn">
             <summary>
-            关于CompHoldingPlatformTarget的补丁（为了提供生物特征可传递的特性）
+            关于Pawn的补丁（为了提供死亡警报点数）
             </summary>
         </member>
-        <member name="M:LCAnomalyLibrary.Patch.Patch_Pawn.Prefix(Verse.Pawn,System.Nullable{Verse.DamageInfo},Verse.Hediff)">
+        <member name="M:LCAnomalyLibrary.Patch.Patch_Pawn.Postfix(Verse.Pawn,System.Nullable{Verse.DamageInfo},Verse.Hediff)">
             <summary>
             Prefix方法
             </summary>
             <param name="__instance">原来的反射对象</param>
             <param name="dinfo">伤害信息</param>
             <param name="exactCulprit">?</param>
-            <returns>true 返回原方法</returns>
         </member>
         <member name="T:LCAnomalyLibrary.Patch.PatchMain">
             <summary>
@@ -1174,6 +1183,11 @@
             游戏内配置文件
             </summary>
         </member>
+        <member name="F:LCAnomalyLibrary.Setting.Setting_LCAnomalyLibrary.If_ShowWarningSettings">
+            <summary>
+            是否显示警报相关自定义选项
+            </summary>
+        </member>
         <member name="F:LCAnomalyLibrary.Setting.Setting_LCAnomalyLibrary.If_EnableLCWarning">
             <summary>
             是否启用LC警报系统
@@ -1184,6 +1198,11 @@
             是否启用LC警报音乐
             </summary>
         </member>
+        <member name="F:LCAnomalyLibrary.Setting.Setting_LCAnomalyLibrary.If_EnableCustomWarningFadeOption">
+            <summary>
+            是否启用自定义警报点数降低选项
+            </summary>
+        </member>
         <member name="F:LCAnomalyLibrary.Setting.Setting_LCAnomalyLibrary.PointsOfWarning_FadeDuration">
             <summary>
             警报点数降低间隔（Tick）
@@ -1192,6 +1211,11 @@
         <member name="F:LCAnomalyLibrary.Setting.Setting_LCAnomalyLibrary.PointsOfWarning_FadeAmount">
             <summary>
             每次降低的警报点数
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Setting.Setting_LCAnomalyLibrary.If_EnableLCWarningDeath">
+            <summary>
+            是否启用死亡警报点数计算
             </summary>
         </member>
         <member name="F:LCAnomalyLibrary.Setting.Setting_LCAnomalyLibrary.PointsOfWarning_PlayerFactionDie">
@@ -1207,6 +1231,26 @@
         <member name="F:LCAnomalyLibrary.Setting.Setting_LCAnomalyLibrary.PointsOfWarning_NeturalFactionDie">
             <summary>
             中立派系死亡提供的警报点数
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Setting.Setting_LCAnomalyLibrary.If_EnableLCWarningMentalBreak">
+            <summary>
+            是否启用精神崩溃警报点数计算
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Setting.Setting_LCAnomalyLibrary.PointsOfWarning_PlayerFactionMentalBreak">
+            <summary>
+            玩家派系精神崩溃提供的警报点数
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Setting.Setting_LCAnomalyLibrary.PointsOfWarning_AllyFactionMentalBreak">
+            <summary>
+            友军派系精神崩溃提供的警报点数
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Setting.Setting_LCAnomalyLibrary.PointsOfWarning_NeturalFactionMentalBreak">
+            <summary>
+            中立派系精神崩溃提供的警报点数
             </summary>
         </member>
         <member name="M:LCAnomalyLibrary.Setting.Setting_LCAnomalyLibrary.ExposeData">
@@ -1235,6 +1279,14 @@
             <summary>
             界面绘制
             </summary>
+            <param name="inRect"></param>
+        </member>
+        <member name="M:LCAnomalyLibrary.Setting.Setting_LCAnomalyLibrary_Main.ShowWarningSettings(System.Boolean,System.Single@,UnityEngine.Rect)">
+            <summary>
+            警报相关菜单
+            </summary>
+            <param name="state"></param>
+            <param name="y"></param>
             <param name="inRect"></param>
         </member>
         <member name="T:LCAnomalyLibrary.Sounds.ExtractRitualTransition">
