@@ -19,4 +19,6 @@
   <PointsOfWarning_AllyFactionText>人形（友善）：</PointsOfWarning_AllyFactionText>
   <PointsOfWarning_NeturalFactionText>人形（中立）：</PointsOfWarning_NeturalFactionText>
 
+  <RequireThingNotInstalledText>缺失必要组件：</RequireThingNotInstalledText>
+
 </LanguageData>

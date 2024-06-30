@@ -65,5 +65,29 @@
       <li>CogitoUsages</li>
     </researchPrerequisite>
   </RecipeDef>
+
+  <RecipeDef ParentName="SurgeryFlesh">
+    <defName>ExtractBrainSpinalNerve</defName>
+    <label>extract BrainSpinalNerve</label>
+    <description>Extract BrainSpinalNerve from the target.</description>
+    <workerClass>LCAnomalyLibrary.Recipe.Recipe_ExtractBrainSpinalNerve</workerClass>
+    <jobString>Extracting BrainSpinalNerve.</jobString>
+    <workAmount>1000</workAmount>
+    <hideBodyPartNames>true</hideBodyPartNames>
+    <targetsBodyPart>false</targetsBodyPart>
+    <isViolation>true</isViolation>
+    <descriptionHyperlinks>
+      <ThingDef>BrainSpinalNerve</ThingDef>
+    </descriptionHyperlinks>
+    <uiIconThing>BrainSpinalNerve</uiIconThing>
+    <anesthetize>false</anesthetize>
+    <workSkillLearnFactor>2</workSkillLearnFactor>
+    <skillRequirements>
+      <Medicine>10</Medicine>
+    </skillRequirements>
+    <researchPrerequisite>
+      <li>CogitoUsages</li>
+    </researchPrerequisite>
+  </RecipeDef>
   
 </Defs>

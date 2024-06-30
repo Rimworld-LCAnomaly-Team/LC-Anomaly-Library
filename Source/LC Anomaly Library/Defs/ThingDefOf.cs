@@ -50,6 +50,11 @@ namespace LCAnomalyLibrary.Defs
         public static ThingDef Cogito;
 
         /// <summary>
+        /// 脑与脊髓神经
+        /// </summary>
+        public static ThingDef BrainSpinalNerve;
+
+        /// <summary>
         /// LC收容单元
         /// </summary>
         public static ThingDef LC_HoldingPlatform;
@@ -63,6 +68,11 @@ namespace LCAnomalyLibrary.Defs
         /// 逆卡巴拉计数器（建筑）
         /// </summary>
         public static ThingDef QliphothIndicator;
+
+        /// <summary>
+        /// Cogito水桶（建筑）
+        /// </summary>
+        public static ThingDef CogitoBucket;
     }
 
     /// <summary>

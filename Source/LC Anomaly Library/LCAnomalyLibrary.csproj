@@ -80,7 +80,11 @@
   <ItemGroup>
     <Compile Include="Building\Building_QliphothIndicator.cs" />
     <Compile Include="Building\Building_EnkephalinGenerator.cs" />
+    <Compile Include="Comp\CompBrainSpinalNerve.cs" />
+    <Compile Include="Comp\CompCogitoBucketSpawner.cs" />
     <Compile Include="Comp\CompExtractRitualSpot.cs" />
+    <Compile Include="Comp\CompProperties_BrainSpinalNerve.cs" />
+    <Compile Include="Comp\CompProperties_CogitoBucketSpawner.cs" />
     <Compile Include="Comp\CompProperties_ExtractRitualSpot.cs" />
     <Compile Include="Comp\HediffCompProperties_CogitoInjected.cs" />
     <Compile Include="Comp\HediffComp_CogitoInjected.cs" />
@@ -112,11 +116,13 @@
     <Compile Include="Jobs\JobDriver_CarryToEntityHolder.cs" />
     <Compile Include="Patch\Patch_MentalBreak.cs" />
     <Compile Include="Patch\Patch_TargetHoldingPlatformForEntity.cs" />
+    <Compile Include="Patch\Patch_TickManager.cs" />
     <Compile Include="Patch\Patch_WorkGiver_DarkStudyInteract.cs" />
     <Compile Include="Patch\Patch_Pawn.cs" />
     <Compile Include="PsychicRituals\PsychicRitualDef_ExtractAnomaly.cs" />
     <Compile Include="PsychicRituals\PsychicRitualToil_ExtractAnomaly.cs" />
     <Compile Include="Recipe\Recipe_CogitoInjection.cs" />
+    <Compile Include="Recipe\Recipe_ExtractBrainSpinalNerve.cs" />
     <Compile Include="Recipe\Recipe_ExtractCogito.cs" />
     <Compile Include="Setting\Setting_LCAnomalyLibrary.cs" />
     <Compile Include="Setting\Setting_LCAnomalyLibrary_Main.cs" />

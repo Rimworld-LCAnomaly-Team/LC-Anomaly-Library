@@ -97,6 +97,11 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="P:LCAnomalyLibrary.Comp.CompBrainSpinalNerve.Props">
+            <summary>
+            CompProperties
+            </summary>
+        </member>
         <member name="T:LCAnomalyLibrary.Comp.CompExtractRitualSpot">
             <summary>
             提取仪式点的Comp（和原版的基本一致）
@@ -851,6 +856,11 @@
             Cogito
             </summary>
         </member>
+        <member name="F:LCAnomalyLibrary.Defs.ThingDefOf.BrainSpinalNerve">
+            <summary>
+            脑与脊髓神经
+            </summary>
+        </member>
         <member name="F:LCAnomalyLibrary.Defs.ThingDefOf.LC_HoldingPlatform">
             <summary>
             LC收容单元
@@ -864,6 +874,11 @@
         <member name="F:LCAnomalyLibrary.Defs.ThingDefOf.QliphothIndicator">
             <summary>
             逆卡巴拉计数器（建筑）
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Defs.ThingDefOf.CogitoBucket">
+            <summary>
+            Cogito水桶（建筑）
             </summary>
         </member>
         <member name="T:LCAnomalyLibrary.Defs.EGO_TYPE">
@@ -997,6 +1012,17 @@
             <summary>
             Postfix
             </summary>
+        </member>
+        <member name="T:LCAnomalyLibrary.Patch.Patch_TickManager">
+            <summary>
+            关于Pawn的补丁（为了提供暂停机制处理）
+            </summary>
+        </member>
+        <member name="M:LCAnomalyLibrary.Patch.Patch_TickManager.Postfix(Verse.TickManager)">
+            <summary>
+            Postfix
+            </summary>
+            <param name="__instance">原来的反射对象</param>
         </member>
         <member name="T:LCAnomalyLibrary.Patch.Patch_WorkGiver_DarkStudyInteract">
             <summary>
@@ -1193,6 +1219,47 @@
         <member name="M:LCAnomalyLibrary.Recipe.Recipe_CogitoInjection.ApplyOnPawn(Verse.Pawn,Verse.BodyPartRecord,Verse.Pawn,System.Collections.Generic.List{Verse.Thing},RimWorld.Bill)">
             <summary>
             执行手术
+            </summary>
+            <param name="pawn">目标pawn</param>
+            <param name="part">身体部位</param>
+            <param name="billDoer">医生</param>
+            <param name="ingredients">？</param>
+            <param name="bill">手术</param>
+        </member>
+        <member name="T:LCAnomalyLibrary.Recipe.Recipe_ExtractBrainSpinalNerve">
+            <summary>
+            提取脑脊髓神经的手术
+            </summary>
+        </member>
+        <member name="M:LCAnomalyLibrary.Recipe.Recipe_ExtractBrainSpinalNerve.AvailableOnNow(Verse.Thing,Verse.BodyPartRecord)">
+            <summary>
+            是否可用
+            </summary>
+            <param name="thing">被执行者</param>
+            <param name="part">身体部位</param>
+            <returns>是否可用</returns>
+        </member>
+        <member name="M:LCAnomalyLibrary.Recipe.Recipe_ExtractBrainSpinalNerve.AvailableReport(Verse.Thing,Verse.BodyPartRecord)">
+            <summary>
+            是否可用的提示
+            </summary>
+            <param name="thing">被执行者</param>
+            <param name="part">身体部位</param>
+            <returns>提示内容</returns>
+        </member>
+        <member name="M:LCAnomalyLibrary.Recipe.Recipe_ExtractBrainSpinalNerve.ApplyOnPawn(Verse.Pawn,Verse.BodyPartRecord,Verse.Pawn,System.Collections.Generic.List{Verse.Thing},RimWorld.Bill)">
+            <summary>
+            执行手术
+            </summary>
+            <param name="pawn">目标pawn</param>
+            <param name="part">身体部位</param>
+            <param name="billDoer">医生</param>
+            <param name="ingredients">？</param>
+            <param name="bill">手术</param>
+        </member>
+        <member name="M:LCAnomalyLibrary.Recipe.Recipe_ExtractBrainSpinalNerve.OnSurgerySuccess(Verse.Pawn,Verse.BodyPartRecord,Verse.Pawn,System.Collections.Generic.List{Verse.Thing},RimWorld.Bill)">
+            <summary>
+            执行手术成功后
             </summary>
             <param name="pawn">目标pawn</param>
             <param name="part">身体部位</param>
