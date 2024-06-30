@@ -111,7 +111,7 @@
     <Compile Include="GameComponent\GameComponent_LC.cs" />
     <Compile Include="Jobs\JobDriver_CarryToEntityHolder.cs" />
     <Compile Include="Patch\Patch_MentalBreak.cs" />
-    <Compile Include="Patch\Patch_Test.cs" />
+    <Compile Include="Patch\Patch_TargetHoldingPlatformForEntity.cs" />
     <Compile Include="Patch\Patch_WorkGiver_DarkStudyInteract.cs" />
     <Compile Include="Patch\Patch_Pawn.cs" />
     <Compile Include="PsychicRituals\PsychicRitualDef_ExtractAnomaly.cs" />

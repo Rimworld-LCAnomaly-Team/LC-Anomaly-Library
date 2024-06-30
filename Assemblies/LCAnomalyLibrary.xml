@@ -1003,18 +1003,30 @@
             关于WorkGiver_DarkStudyInteract的补丁（用于禁止主动研究LC实体）
             </summary>
         </member>
-        <member name="T:LCAnomalyLibrary.Patch.Patch_Pawn">
+        <member name="T:LCAnomalyLibrary.Patch.Patch_PawnKill">
             <summary>
             关于Pawn的补丁（为了提供死亡警报点数）
             </summary>
         </member>
-        <member name="M:LCAnomalyLibrary.Patch.Patch_Pawn.Postfix(Verse.Pawn,System.Nullable{Verse.DamageInfo},Verse.Hediff)">
+        <member name="M:LCAnomalyLibrary.Patch.Patch_PawnKill.Postfix(Verse.Pawn,System.Nullable{Verse.DamageInfo},Verse.Hediff)">
             <summary>
-            Prefix方法
+            Postfix
             </summary>
             <param name="__instance">原来的反射对象</param>
             <param name="dinfo">伤害信息</param>
             <param name="exactCulprit">?</param>
+        </member>
+        <member name="T:LCAnomalyLibrary.Patch.Patch_PawnDespawn">
+            <summary>
+            关于Pawn的补丁（为了提供DeSpawn警报点数）
+            </summary>
+        </member>
+        <member name="M:LCAnomalyLibrary.Patch.Patch_PawnDespawn.Postfix(Verse.Pawn,Verse.DestroyMode)">
+            <summary>
+            PostFix
+            </summary>
+            <param name="__instance">原来的反射对象</param>
+            <param name="mode">消失模式</param>
         </member>
         <member name="T:LCAnomalyLibrary.Patch.PatchMain">
             <summary>

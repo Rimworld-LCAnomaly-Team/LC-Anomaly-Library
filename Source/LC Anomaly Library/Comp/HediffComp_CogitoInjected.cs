@@ -50,10 +50,20 @@ namespace LCAnomalyLibrary.Comp
                     if (Rand.Chance(Props.turnSevenSinEnitityChance))
                     {
                         Pawn pawn = PawnGenerator.GeneratePawn(list1.RandomElement(), Faction.OfEntities);
-                        pawn.Name = Pawn.Name;
+
+                        if (Pawn.Name != null)
+                        {
+                            pawn.Name = Pawn.Name;
+                            Log.Message($"Congito注射提取：{Pawn.Name}变成了大罪生物{pawn.def.defName.Translate()}");
+                        }
+                        else
+                        {
+                            Log.Message($"Congito注射提取：???变成了大罪生物{pawn.def.defName.Translate()}");
+                        }
+
                         GenSpawn.Spawn(pawn, Pawn.Position, Pawn.MapHeld);
 
-                        Log.Message($"Congito注射提取：{Pawn.Name}变成了大罪生物{pawn.def.defName.Translate()}");
+                        
                         Pawn.DeSpawn();
                         return;
                     }

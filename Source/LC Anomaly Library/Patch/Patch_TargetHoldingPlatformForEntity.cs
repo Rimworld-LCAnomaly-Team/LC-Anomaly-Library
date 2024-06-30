@@ -10,7 +10,7 @@ namespace LCAnomalyLibrary.Patch
 {
 
     [HarmonyPatch(typeof(StudyUtility), nameof(StudyUtility.TargetHoldingPlatformForEntity))]
-    public class Patch_Test
+    public class Patch_TargetHoldingPlatformForEntity
     {
         private static bool Prefix(Pawn carrier, Thing entity, bool transferBetweenPlatforms = false, Thing sourcePlatform = null)
         {
