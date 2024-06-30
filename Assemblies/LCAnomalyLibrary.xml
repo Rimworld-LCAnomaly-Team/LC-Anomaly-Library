@@ -973,6 +973,21 @@
             Tick
             </summary>
         </member>
+        <member name="T:LCAnomalyLibrary.Jobs.JobDriver_CarryToEntityHolder">
+            <summary>
+            改自原版同名工作，是携带实体到平台的工作
+            </summary>
+        </member>
+        <member name="T:LCAnomalyLibrary.Jobs.JobGiver_GatherOfferingsForExtractRitual">
+            <summary>
+            仪式收集祭品工作（和原版基本一致）
+            </summary>
+        </member>
+        <member name="T:LCAnomalyLibrary.Jobs.LordJob_ExtractRitual">
+            <summary>
+            仪式工作（和原版基本一致）
+            </summary>
+        </member>
         <member name="T:LCAnomalyLibrary.Patch.Patch_MentalBreak">
             <summary>
             关于MentalStateHandler的补丁（为了提供崩溃警报点数）
@@ -1335,16 +1350,6 @@
             是否满足过渡条件
             </summary>
             <returns></returns>
-        </member>
-        <member name="T:LCAnomalyLibrary.Jobs.JobGiver_GatherOfferingsForExtractRitual">
-            <summary>
-            仪式收集祭品工作（和原版基本一致）
-            </summary>
-        </member>
-        <member name="T:LCAnomalyLibrary.Jobs.LordJob_ExtractRitual">
-            <summary>
-            仪式工作（和原版基本一致）
-            </summary>
         </member>
         <member name="T:LCAnomalyLibrary.Misc.LC_FX_Standard">
             <summary>
