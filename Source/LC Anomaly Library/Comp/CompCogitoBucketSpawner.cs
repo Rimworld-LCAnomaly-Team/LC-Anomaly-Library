@@ -2,7 +2,6 @@
 using RimWorld;
 using System.Collections.Generic;
 using Verse;
-using Verse.Noise;
 
 namespace LCAnomalyLibrary.Comp
 {
@@ -15,7 +14,7 @@ namespace LCAnomalyLibrary.Comp
         protected bool PowerOn => parent.GetComp<CompPowerTrader>()?.PowerOn ?? false;
 
         public Thing ThingRequireInstalled;
-        protected bool HasRequireThingInstalled => ThingRequireInstalled != null;
+        public bool HasRequireThingInstalled => ThingRequireInstalled != null;
 
 
         public override void PostSpawnSetup(bool respawningAfterLoad)
@@ -185,6 +184,7 @@ namespace LCAnomalyLibrary.Comp
         {
             string text = (PropsSpawner.saveKeysPrefix.NullOrEmpty() ? null : (PropsSpawner.saveKeysPrefix + "_"));
             Scribe_Values.Look(ref ticksUntilSpawn, text + "ticksUntilSpawn", 0);
+            Scribe_Deep.Look(ref ThingRequireInstalled, "ThingRequireInstalled");
         }
 
         public override IEnumerable<Verse.Gizmo> CompGetGizmosExtra()
@@ -203,13 +203,76 @@ namespace LCAnomalyLibrary.Comp
 
                 yield return new Command_Action
                 {
+                    defaultLabel = "DEV: SelfExplode",
+                    action = delegate
+                    {
+                        parent.GetComp<CompExplosive>()?.StartWick();
+                    }
+                };
+
+                yield return new Command_Action
+                {
+                    defaultLabel = "DEV: ForceInstallNerve",
+                    action = delegate
+                    {
+                        if (!HasRequireThingInstalled)
+                            ThingRequireInstalled = ThingMaker.MakeThing(Defs.ThingDefOf.BrainSpinalNerve);
+                    }
+                };
+
+                yield return new Command_Action
+                {
+                    defaultLabel = "DEV: ForceRemoveNerve",
+                    action = delegate
+                    {
+                        if (HasRequireThingInstalled)
+                        {
+                            var thing = ThingRequireInstalled;
+                            ThingRequireInstalled = null;
+
+                            GenPlace.TryPlaceThing(thing, parent.PositionHeld, parent.MapHeld, ThingPlaceMode.Near);
+                        }
+                    }
+                };
+
+                yield return new Command_Action
+                {
                     defaultLabel = "DEV: WaringPoints +10",
                     action = delegate
                     {
                         Current.Game.GetComponent<GameComponent_LC>().CurWarningPoints += 10;
                     }
                 };
+
+                yield return new Command_Action
+                {
+                    defaultLabel = "DEV: WaringPoints -10",
+                    action = delegate
+                    {
+                        Current.Game.GetComponent<GameComponent_LC>().CurWarningPoints -= 10;
+                    }
+                };
             }
+
+            if (HasRequireThingInstalled)
+            {
+                Command_Action command_Action = new Command_Action();
+                command_Action.defaultLabel = "ExtractInstantFromNerveLabel".Translate();
+                command_Action.defaultDesc = "ExtractInstantFromNerveDesc".Translate();
+                command_Action.icon = ThingRequireInstalled.def.uiIcon;
+                command_Action.action = delegate
+                {
+                    ThingRequireInstalled.Destroy();
+                    ThingRequireInstalled = null;
+
+                    Thing thing = ThingMaker.MakeThing(Defs.ThingDefOf.Cogito);
+                    thing.stackCount = 10;
+                    GenPlace.TryPlaceThing(thing, parent.PositionHeld, parent.MapHeld, ThingPlaceMode.Near);
+                };
+                yield return command_Action;
+            }
+
+
         }
 
         public override string CompInspectStringExtra()

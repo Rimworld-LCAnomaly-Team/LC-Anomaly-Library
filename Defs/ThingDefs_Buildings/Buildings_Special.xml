@@ -5,8 +5,11 @@
     <defName>CogitoBucket</defName>
     <label>Cogito Bucket</label>
     <description>.</description>
+    <thingClass>LCAnomalyLibrary.Building.Building_CogitoBucket</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <tickerType>Normal</tickerType>
     <graphicData>
-      <texPath>Things/Building/Special/InfiniteChemreactor</texPath>
+      <texPath>Things/Building/TheBucket/TheBucket_WithFloor</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(3, 3)</drawSize>
       <shadowData>
@@ -37,20 +40,16 @@
         <thingToSpawn>Cogito</thingToSpawn>
         <thingRequire>BrainSpinalNerve</thingRequire>
         <spawnCount>10</spawnCount>
-        <spawnIntervalRange><min>600000</min><max>600000</max></spawnIntervalRange>
+        <spawnIntervalRange><min>120000</min><max>120000</max></spawnIntervalRange>
         <writeTimeLeftToSpawn>true</writeTimeLeftToSpawn>
         <showMessageIfOwned>true</showMessageIfOwned>
       </li>
       <li Class="CompProperties_Explosive">
-        <explosiveRadius>8</explosiveRadius>
-        <explosiveDamageType>Flame</explosiveDamageType>
-      </li>
-      <li Class="CompProperties_Glower">
-        <glowRadius>8</glowRadius>
-        <glowColor>(80,141,223,0)</glowColor>
-      </li>
-      <li Class="CompProperties_NoiseSource">
-        <radius>8.9</radius>
+        <explosiveRadius>16</explosiveRadius>
+        <damageAmountBase>10</damageAmountBase>
+        <armorPenetrationBase>0</armorPenetrationBase>
+        <explosiveDamageType>Psychic</explosiveDamageType>
+        <explosionSound>Pawn_Revenant_StartledScream</explosionSound>
       </li>
     </comps>
     <altitudeLayer>Building</altitudeLayer>
@@ -68,11 +67,7 @@
     <researchPrerequisites>
       <li>Enkephalin_ElectricGenerator</li>
     </researchPrerequisites>
-    <thingSetMakerTags>
-      <li>RewardStandardCore</li>
-    </thingSetMakerTags>
-    <tickerType>Normal</tickerType>
-    <size>(2, 2)</size>
+    <size>(3, 3)</size>
     <fillPercent>1.0</fillPercent>
     <leaveResourcesWhenKilled>false</leaveResourcesWhenKilled>
     <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
@@ -82,9 +77,6 @@
     <canOverlapZones>false</canOverlapZones>
     <minifiedDef>MinifiedThing</minifiedDef>
     <tradeability>Sellable</tradeability>
-    <tradeTags>
-      <li>ExoticBuilding</li>
-    </tradeTags>
   </ThingDef>
 
 </Defs>

@@ -4,6 +4,13 @@
         <name>LCAnomalyLibrary</name>
     </assembly>
     <members>
+        <member name="M:LCAnomalyLibrary.Building.Building_CogitoBucket.DrawAt(UnityEngine.Vector3,System.Boolean)">
+            <summary>
+            绘制方法
+            </summary>
+            <param name="drawLoc">位置</param>
+            <param name="flip">是否翻转</param>
+        </member>
         <member name="T:LCAnomalyLibrary.Building.Building_QliphothIndicator">
             <summary>
             逆卡巴拉计数器（建筑）
@@ -1607,6 +1614,22 @@
             </summary>
         </member>
         <member name="M:LCAnomalyLibrary.Util.GraphicUtil.QliphothIndicator_GetCachedTopGraphic">
+            <summary>
+            获取逆卡巴拉计数器的图集
+            </summary>
+            <returns>图集</returns>
+        </member>
+        <member name="F:LCAnomalyLibrary.Util.GraphicUtil.CogitoBucket_CachedGlassGraphic">
+            <summary>
+            缓存的玻璃图
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Util.GraphicUtil.CogitoBucket_CachedBrainSpinalNerve">
+            <summary>
+            缓存的脑-脊髓神经图
+            </summary>
+        </member>
+        <member name="M:LCAnomalyLibrary.Util.GraphicUtil.CogitoBucket_GetCachedGraphic(System.String)">
             <summary>
             获取逆卡巴拉计数器的图集
             </summary>

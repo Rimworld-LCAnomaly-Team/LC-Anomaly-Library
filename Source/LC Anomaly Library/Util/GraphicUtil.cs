@@ -37,5 +37,53 @@ namespace LCAnomalyLibrary.Util
         }
 
         #endregion
+
+        #region “水桶”
+
+        /// <summary>
+        /// 缓存的玻璃图
+        /// </summary>
+        private static Graphic CogitoBucket_CachedGlassGraphic = new Graphic();
+
+        /// <summary>
+        /// 缓存的脑-脊髓神经图
+        /// </summary>
+        private static Graphic CogitoBucket_CachedBrainSpinalNerve = new Graphic();
+
+        /// <summary>
+        /// 获取逆卡巴拉计数器的图集
+        /// </summary>
+        /// <returns>图集</returns>
+        public static Graphic CogitoBucket_GetCachedGraphic(string type)
+        {
+            if(type == "Glass")
+            {
+                if(CogitoBucket_CachedGlassGraphic.path.NullOrEmpty())
+                {
+                    CogitoBucket_CachedGlassGraphic = 
+                        GraphicDatabase.Get<Graphic_Single>("Things/Building/TheBucket/TheBucket_Glass",
+                        ShaderDatabase.MoteGlow, Defs.ThingDefOf.CogitoBucket.graphicData.drawSize, Color.white);
+
+                    Log.Message("贴图缓存：Things/Building/TheBucket/TheBucket_Glass");
+                }
+
+                return CogitoBucket_CachedGlassGraphic;
+            }
+            else if(type == "BrainSpinalNerve")
+            {
+                if(CogitoBucket_CachedBrainSpinalNerve.path.NullOrEmpty())
+                {
+                    CogitoBucket_CachedBrainSpinalNerve =
+                        GraphicDatabase.Get<Graphic_Single>("Things/Building/TheBucket/TheBucket_BrainSpinalNerve",
+                        ShaderDatabase.Transparent, Defs.ThingDefOf.CogitoBucket.graphicData.drawSize, Color.white);
+                }
+
+                return CogitoBucket_CachedBrainSpinalNerve;
+            }
+
+            return null;
+        }
+
+        #endregion
     }
 }

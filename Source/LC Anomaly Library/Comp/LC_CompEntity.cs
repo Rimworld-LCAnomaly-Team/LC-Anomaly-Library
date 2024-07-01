@@ -1,5 +1,4 @@
-﻿using LCAnomalyLibrary.GameComponent;
-using LCAnomalyLibrary.Setting;
+﻿using LCAnomalyLibrary.Setting;
 using LCAnomalyLibrary.Util;
 using RimWorld;
 using System.Collections.Generic;
@@ -154,6 +153,8 @@ namespace LCAnomalyLibrary.Comp
                 }
             }
 
+            CompHoldingPlatformTarget comp = parent.TryGetComp<CompHoldingPlatformTarget>();
+            comp.isEscaping = true;
         }
 
         /// <summary>
