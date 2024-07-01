@@ -1,4 +1,5 @@
 ﻿using LCAnomalyLibrary.Setting;
+using LCAnomalyLibrary.Singleton;
 using RimWorld;
 using System.ComponentModel;
 using Verse;
@@ -24,6 +25,7 @@ namespace LCAnomalyLibrary.Util
                 {
                     Log.Warning("警报音乐：播放3级警报音乐");
                     musicManager.ForcePlaySong(Defs.SongDefOf.ThirdWarning, false);
+                    LCCanvasSingleton.Instance.ShowWarningUI(EWarningLevel.Third);
                 }
                 return;
             }
@@ -38,6 +40,7 @@ namespace LCAnomalyLibrary.Util
 
                     Log.Warning("警报音乐：播放2级警报音乐");
                     musicManager.ForcePlaySong(Defs.SongDefOf.SecondWarning, false);
+                    LCCanvasSingleton.Instance.ShowWarningUI(EWarningLevel.Second);
                 }
 
                 return;
@@ -53,6 +56,7 @@ namespace LCAnomalyLibrary.Util
 
                     Log.Warning("警报音乐：播放1级警报音乐");
                     musicManager.ForcePlaySong(Defs.SongDefOf.FirstWarning, false);
+                    LCCanvasSingleton.Instance.ShowWarningUI(EWarningLevel.First);
                 }
 
                 return;
@@ -86,6 +90,13 @@ namespace LCAnomalyLibrary.Util
                 default:
                     throw new InvalidEnumArgumentException($"未知的异想体等级：{tag}");
             }
+        }
+
+        public enum EWarningLevel
+        {
+            First,
+            Second,
+            Third
         }
     }
 }

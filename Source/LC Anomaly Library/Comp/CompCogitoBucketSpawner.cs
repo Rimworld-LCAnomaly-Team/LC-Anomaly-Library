@@ -1,4 +1,5 @@
-﻿using RimWorld;
+﻿using LCAnomalyLibrary.GameComponent;
+using RimWorld;
 using System.Collections.Generic;
 using Verse;
 using Verse.Noise;
@@ -192,7 +193,6 @@ namespace LCAnomalyLibrary.Comp
             {
                 Command_Action command_Action = new Command_Action();
                 command_Action.defaultLabel = "DEV: Spawn " + PropsSpawner.thingToSpawn.label;
-                //command_Action.icon = TexCommand.DesirePower;
                 command_Action.icon = PropsSpawner.thingToSpawn.uiIcon;
                 command_Action.action = delegate
                 {
@@ -200,6 +200,15 @@ namespace LCAnomalyLibrary.Comp
                     TryDoSpawn();
                 };
                 yield return command_Action;
+
+                yield return new Command_Action
+                {
+                    defaultLabel = "DEV: WaringPoints +10",
+                    action = delegate
+                    {
+                        Current.Game.GetComponent<GameComponent_LC>().CurWarningPoints += 10;
+                    }
+                };
             }
         }
 

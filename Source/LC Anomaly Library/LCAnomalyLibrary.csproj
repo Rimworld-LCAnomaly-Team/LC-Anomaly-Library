@@ -72,8 +72,16 @@
       <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.UIElementsModule">
       <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.UIElementsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.UIModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
@@ -126,6 +134,7 @@
     <Compile Include="Recipe\Recipe_ExtractCogito.cs" />
     <Compile Include="Setting\Setting_LCAnomalyLibrary.cs" />
     <Compile Include="Setting\Setting_LCAnomalyLibrary_Main.cs" />
+    <Compile Include="Singleton\LCCanvasSingleton.cs" />
     <Compile Include="Sounds\ExtractRitualTransition.cs" />
     <Compile Include="Jobs\JobGiver_GatherOfferingsForExtractRitual.cs" />
     <Compile Include="Defs\ExtractRitualDef.cs" />
@@ -147,6 +156,8 @@
     <Compile Include="Util\MusicUtils.cs" />
     <Compile Include="Util\StudyUtils.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Test\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

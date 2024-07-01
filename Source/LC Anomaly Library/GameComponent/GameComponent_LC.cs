@@ -3,6 +3,8 @@ using Verse;
 
 namespace LCAnomalyLibrary.GameComponent
 {
+    public delegate void LCGameComponentTick();
+
     /// <summary>
     /// LC游戏组件
     /// </summary>
@@ -33,6 +35,7 @@ namespace LCAnomalyLibrary.GameComponent
 
         private int waringPointsCounter;
 
+        public LCGameComponentTick LCGameComponentTickEvent;
 
         public GameComponent_LC(Game game)
         {
@@ -44,6 +47,8 @@ namespace LCAnomalyLibrary.GameComponent
         /// </summary>
         public override void GameComponentTick()
         {
+            LCGameComponentTickEvent?.Invoke();
+
             //如果启用警报系统，就自动更新警报点数
             if (Setting_LCAnomalyLibrary_Main.Settings.If_EnableLCWarning)
             {
