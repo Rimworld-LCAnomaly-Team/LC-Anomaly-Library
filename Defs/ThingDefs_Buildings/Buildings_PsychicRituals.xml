@@ -2,8 +2,8 @@
 <Defs>
 
   <ThingDef ParentName="BuildingBase">
-    <defName>ExtractRitualSpot</defName>
-    <label>Extract Ritual Spot</label>
+    <defName>TheWell</defName>
+    <label>the well</label>
     <description>.</description>
     <tickerType>Normal</tickerType>
     <passability>Standable</passability>
@@ -20,7 +20,7 @@
     </building>
     <uiOrder>200</uiOrder>
     <graphicData>
-      <texPath>Things/Building/PsychicRitualSpot</texPath>
+      <texPath>Things/Building/TheWell/TheWell</texPath>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>(3, 3)</drawSize>
     </graphicData>

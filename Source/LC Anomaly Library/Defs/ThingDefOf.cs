@@ -60,9 +60,9 @@ namespace LCAnomalyLibrary.Defs
         public static ThingDef LC_HoldingPlatform;
 
         /// <summary>
-        /// 提取仪式点（建筑）
+        /// 水井（建筑）
         /// </summary>
-        public static ThingDef ExtractRitualSpot;
+        public static ThingDef TheWell;
 
         /// <summary>
         /// 逆卡巴拉计数器（建筑）

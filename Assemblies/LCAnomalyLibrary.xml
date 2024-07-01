@@ -866,9 +866,9 @@
             LC收容单元
             </summary>
         </member>
-        <member name="F:LCAnomalyLibrary.Defs.ThingDefOf.ExtractRitualSpot">
+        <member name="F:LCAnomalyLibrary.Defs.ThingDefOf.TheWell">
             <summary>
-            提取仪式点（建筑）
+            水井（建筑）
             </summary>
         </member>
         <member name="F:LCAnomalyLibrary.Defs.ThingDefOf.QliphothIndicator">
