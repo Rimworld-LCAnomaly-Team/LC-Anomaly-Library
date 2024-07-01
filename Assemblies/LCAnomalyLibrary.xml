@@ -117,9 +117,24 @@
             Cogito被注射状态的HediffCompProperties
             </summary>
         </member>
-        <member name="F:LCAnomalyLibrary.Comp.HediffCompProperties_CogitoInjected.turnSevenSinEnitityChance">
+        <member name="F:LCAnomalyLibrary.Comp.HediffCompProperties_CogitoInjected.deadChance">
             <summary>
-            XML：注射后大罪生物生成概率
+            XML：注射后直接死亡概率（单独判定）
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.HediffCompProperties_CogitoInjected.sevenSinEnitityChance">
+            <summary>
+            XML：注射后大罪生物生成概率（单独判定）
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.HediffCompProperties_CogitoInjected.zayinChance">
+            <summary>
+            XML：注射后ZAYIN异常生成概率（单独判定）
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.HediffCompProperties_CogitoInjected.tethChance">
+            <summary>
+            XML：注射后TETH异常生成概率（单独判定）
             </summary>
         </member>
         <member name="M:LCAnomalyLibrary.Comp.HediffCompProperties_CogitoInjected.#ctor">
@@ -146,6 +161,12 @@
             <summary>
             注射提取后变成异常的方法
             </summary>
+        </member>
+        <member name="M:LCAnomalyLibrary.Comp.HediffComp_CogitoInjected.SpawnEntity(System.Collections.Generic.List{LCAnomalyLibrary.Defs.ThingDef_LCAnomalyBase},System.Single)">
+            <summary>
+            生成实体
+            </summary>
+            <param name="list">实体列表</param>
         </member>
         <member name="T:LCAnomalyLibrary.Comp.LC_CompAccessoryable">
             <summary>

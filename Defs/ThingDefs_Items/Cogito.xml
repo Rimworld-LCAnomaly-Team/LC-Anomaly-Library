@@ -80,7 +80,10 @@
         <showHoursToRecover>true</showHoursToRecover>
       </li>
       <li Class="LCAnomalyLibrary.Comp.HediffCompProperties_CogitoInjected">
-        <turnSevenSinEnitityChance>0.8</turnSevenSinEnitityChance> 
+        <deadChance>0.5</deadChance>
+        <sevenSinEnitityChance>0.8</sevenSinEnitityChance>
+        <zayinChance>0.8</zayinChance>
+        <tethChance>0.5</tethChance>
       </li>
     </comps>
       <stages>
