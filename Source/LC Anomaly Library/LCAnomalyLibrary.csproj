@@ -107,6 +107,7 @@
     <Compile Include="Comp\LC_CompProperties_Entity.cs" />
     <Compile Include="Comp\LC_CompProperties_InteractableEgg.cs" />
     <Compile Include="Comp\LC_CompProperties_PeBoxProduce.cs" />
+    <Compile Include="Comp\LC_CompRequireThingSpawner.cs" />
     <Compile Include="Defs\ApparelLayerDefOf.cs" />
     <Compile Include="Defs\DutyDefOf.cs" />
     <Compile Include="Defs\DamageDefOf.cs" />
@@ -123,6 +124,7 @@
     <Compile Include="Defs\ThoughtDefOf.cs" />
     <Compile Include="GameComponent\GameComponent_LC.cs" />
     <Compile Include="Jobs\JobDriver_CarryToEntityHolder.cs" />
+    <Compile Include="LC_CompProperties_RequireThingSpawner.cs" />
     <Compile Include="Patch\Patch_MentalBreak.cs" />
     <Compile Include="Patch\Patch_TargetHoldingPlatformForEntity.cs" />
     <Compile Include="Patch\Patch_TickManager.cs" />
