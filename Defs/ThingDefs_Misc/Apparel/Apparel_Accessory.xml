@@ -8,6 +8,8 @@
     <pathCost>10</pathCost>
     <useHitPoints>false</useHitPoints>
     <techLevel>Industrial</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <generateAllowChance>0</generateAllowChance>
     <graphicData>
       <graphicClass>Graphic_Single</graphicClass>
       <shaderType>CutoutComplex</shaderType>
@@ -16,6 +18,12 @@
 	    <onGroundRandomRotateAngle>0</onGroundRandomRotateAngle>
     </graphicData>
     <apparel>
+      <tags>
+        <li>Apparel_EGOAccessory</li>
+      </tags>
+      <defaultOutfitTags>
+        <li>Soldier</li>
+      </defaultOutfitTags>
       <useWornGraphicMask>false</useWornGraphicMask>
       <wearPerDay>0</wearPerDay>
       <canBeDesiredForIdeo>false</canBeDesiredForIdeo>

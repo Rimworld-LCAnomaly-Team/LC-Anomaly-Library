@@ -7,13 +7,13 @@
   <LC_Entity_Tool.label>工具异想体</LC_Entity_Tool.label>
   <LC_Entity_Egg.label>异想体蛋</LC_Entity_Egg.label>
 
-  <LC_Weapon.label>武器</LC_Weapon.label>
+  <LC_Weapon.label>脑叶公司武器</LC_Weapon.label>
   <LC_Weapon_Normal.label>普通武器</LC_Weapon_Normal.label>
   <LC_Weapon_EGO.label>E.G.O武器</LC_Weapon_EGO.label>
   <LC_Weapon_EGO_Melee.label>近战</LC_Weapon_EGO_Melee.label>
   <LC_Weapon_EGO_Ranged.label>远程</LC_Weapon_EGO_Ranged.label>
 
-  <LC_Apparel.label>服装</LC_Apparel.label>
+  <LC_Apparel.label>脑叶公司服装</LC_Apparel.label>
   <LC_Apparel_Normal.label>普通服装</LC_Apparel_Normal.label>
   <LC_Apparel_EGO.label>E.G.O服装</LC_Apparel_EGO.label>
   <LC_Apparel_Accessory.label>饰品</LC_Apparel_Accessory.label>

@@ -18,14 +18,19 @@
       <DeteriorationRate>0</DeteriorationRate>
       <Beauty>0</Beauty>
     </statBases>
+    <generateCommonality>0</generateCommonality>
+    <generateAllowChance>0</generateAllowChance>
     <burnableByRecipe>false</burnableByRecipe>
     <smeltable>false</smeltable>
     <inspectorTabs>
       <li>ITab_Art</li>
     </inspectorTabs>
     <tradeTags>
-      <li>WeaponMelee</li>
+      <li>WeaponEGO</li>
     </tradeTags>
+    <weaponTags>
+      <li>WeaponEGO</li>
+    </weaponTags>
   </ThingDef>
 
   <ThingDef Name="LC_BaseMeleeWeapon_EGO_Blunt" ParentName="LC_BaseMeleeWeapon_EGO" Abstract="True">

@@ -8,6 +8,8 @@
     <pathCost>14</pathCost>
     <useHitPoints>false</useHitPoints>
     <techLevel>Industrial</techLevel>
+    <generateCommonality>0</generateCommonality>
+    <generateAllowChance>0</generateAllowChance>
     <graphicData>
       <graphicClass>Graphic_Single</graphicClass>
       <drawSize>1.0</drawSize>
@@ -21,6 +23,12 @@
       <DeteriorationRate>0</DeteriorationRate>
     </statBases>
     <apparel>
+      <tags>
+        <li>Apparel_EGO</li>
+      </tags>
+      <defaultOutfitTags>
+        <li>Soldier</li>
+      </defaultOutfitTags>
       <useWornGraphicMask>false</useWornGraphicMask>
       <wearPerDay>0</wearPerDay>
       <canBeDesiredForIdeo>false</canBeDesiredForIdeo>

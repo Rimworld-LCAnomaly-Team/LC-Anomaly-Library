@@ -36,7 +36,7 @@
   <ThingCategoryDef>
     <defName>LC_Weapon</defName>
     <label>LC weapon</label>
-    <parent>LC_Thing</parent>
+    <parent>Weapons</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
     <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
   </ThingCategoryDef>
@@ -76,7 +76,7 @@
   <ThingCategoryDef>
     <defName>LC_Apparel</defName>
     <label>LC apparel</label>
-    <parent>LC_Thing</parent>
+    <parent>Apparel</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
     <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
   </ThingCategoryDef>
