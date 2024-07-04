@@ -1,7 +1,6 @@
-﻿using LCAnomalyLibrary.Comp;
-using Verse;
+﻿using Verse;
 
-namespace LCAnomalyLibrary
+namespace LCAnomalyLibrary.Comp
 {
     public class LC_CompProperties_RequireThingSpawner : CompProperties
     {

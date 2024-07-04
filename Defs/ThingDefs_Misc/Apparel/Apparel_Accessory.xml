@@ -28,7 +28,6 @@
       <wearPerDay>0</wearPerDay>
       <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
     </apparel>
-    <generateAllowChance>0</generateAllowChance>
     <drawGUIOverlay>true</drawGUIOverlay>
     <statBases>
       <Mass>0.02</Mass>

@@ -233,18 +233,18 @@ namespace LCAnomalyLibrary.Comp
                 yield return command_Action3;
             }
 
-
             if (DebugSettings.ShowDevGizmos)
             {
-                Command_Action command_Action = new Command_Action();
-                command_Action.defaultLabel = "DEV: Spawn " + PropsSpawner.thingToSpawn.label;
-                command_Action.icon = PropsSpawner.thingToSpawn.uiIcon;
-                command_Action.action = delegate
+                yield return new Command_Action
                 {
-                    ResetCountdown();
-                    TryDoSpawn();
+                    defaultLabel = "DEV: Spawn " + PropsSpawner.thingToSpawn.label,
+                    icon = PropsSpawner.thingToSpawn.uiIcon,
+                    action = delegate
+                    {
+                        ResetCountdown();
+                        TryDoSpawn();
+                    }
                 };
-                yield return command_Action;
 
                 if (HasRequireThingInstalled)
                 {
@@ -253,10 +253,7 @@ namespace LCAnomalyLibrary.Comp
                         defaultLabel = "DEV: ForceDropItem",
                         action = delegate
                         {
-                            if (HasRequireThingInstalled)
-                            {
-                                innerContainer.TryDropAll(parent.Position, parent.Map, ThingPlaceMode.Near);
-                            }
+                            innerContainer.TryDropAll(parent.Position, parent.Map, ThingPlaceMode.Near);
                         }
                     };
                 }
@@ -267,8 +264,7 @@ namespace LCAnomalyLibrary.Comp
                         defaultLabel = "DEV: ForceSpawnOwnedItem",
                         action = delegate
                         {
-                            if (!HasRequireThingInstalled)
-                                innerContainer.TryAddOrTransfer(ThingMaker.MakeThing(Defs.ThingDefOf.BrainSpinalNerve), false);
+                            innerContainer.TryAddOrTransfer(ThingMaker.MakeThing(Defs.ThingDefOf.BrainSpinalNerve), false);
                         }
                     };
                 }

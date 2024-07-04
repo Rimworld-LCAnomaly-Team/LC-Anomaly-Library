@@ -9,10 +9,21 @@ namespace LCAnomalyLibrary.Comp
     /// </summary>
     public abstract class LC_CompEgg : CompInteractable
     {
+        public LC_CompProperties_InteractableEgg Props => (LC_CompProperties_InteractableEgg)props;
+
         /// <summary>
-        /// 是否保持生物特征
+        /// 研究知识等级
         /// </summary>
-        public bool ShouldTransferBiosignature => ((LC_CompProperties_InteractableEgg)Props).shouldTransferBioSignature;
+        public int StudyProgress;
+
+        /// <summary>
+        /// EGO武器已提取数量
+        /// </summary>
+        public int CurEgoWeaponExtractAmount;
+        /// <summary>
+        /// EGO装备已提取数量
+        /// </summary>
+        public int CurEgoArmorExtractAmount;
 
         /// <summary>
         /// 交互时触发

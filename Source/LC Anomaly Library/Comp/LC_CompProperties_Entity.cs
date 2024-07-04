@@ -22,7 +22,17 @@ namespace LCAnomalyLibrary.Comp
         /// <summary>
         /// XML：出逃时是否通知
         /// </summary>
-        public bool shoundNotifyWhenEscape;
+        public bool shouldNotifyWhenEscape;
+
+        /// <summary>
+        /// XML：是否传递研究等级
+        /// </summary>
+        public bool shouldTransferStudyProgress;
+
+        /// <summary>
+        /// XML：是否传递已提取Ego的数量
+        /// </summary>
+        public bool shouldTransferEgoExtractAmount;
 
         /// <summary>
         /// XML：提供出逃点数（决定是否提供点数，不提供的情况下自定义点数无效）

@@ -132,7 +132,7 @@ namespace LCAnomalyLibrary.Comp
         public virtual void Notify_Escaped()
         {
             //如果出逃提醒就弹出逃信封和计算警报点数
-            if (Props.shoundNotifyWhenEscape)
+            if (Props.shouldNotifyWhenEscape)
             {
                 //TODO 这个写的不对，需要研究如何格式化
                 Find.LetterStack.ReceiveLetter(LetterMaker.MakeLetter("LetterLabelEscapingFromHoldingPlatform".Translate(),

@@ -218,9 +218,19 @@
             LC异想体蛋基础Comp
             </summary>
         </member>
-        <member name="P:LCAnomalyLibrary.Comp.LC_CompEgg.ShouldTransferBiosignature">
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompEgg.StudyProgress">
             <summary>
-            是否保持生物特征
+            研究知识等级
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompEgg.CurEgoWeaponExtractAmount">
+            <summary>
+            EGO武器已提取数量
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompEgg.CurEgoArmorExtractAmount">
+            <summary>
+            EGO装备已提取数量
             </summary>
         </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompEgg.OnInteracted(Verse.Pawn)">
@@ -256,17 +266,24 @@
             CompHoldingPlatformTarget
             </summary>
         </member>
-        <member name="F:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.curAmountWeapon">
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.CurAmountWeapon">
             <summary>
             当前已被提取的EGO武器数量
             </summary>
         </member>
-        <member name="F:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.curAmountArmor">
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.CurAmountArmor">
             <summary>
             当前已被提取的EGO护甲数量
             </summary>
         </member>
-        <member name="M:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.ConsumeExtractEGO(System.Int32)">
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.TransferEgoExtractAmount(System.Int32,System.Int32)">
+            <summary>
+            初始化
+            </summary>
+            <param name="curAmountWeapon">当前提取武器数量</param>
+            <param name="curAmountArmor">当前提取护甲数量</param>
+        </member>
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.ConsumePebox(LCAnomalyLibrary.Defs.EGO_TYPE)">
             <summary>
             EGO提取的PeBox消耗
             </summary>
@@ -277,7 +294,7 @@
             EGO提取检查
             </summary>
             <param name="type">EGO类型</param>
-            <returns>EGO物品对象</returns>
+            <returns></returns>
         </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.ExtractEGO(LCAnomalyLibrary.Defs.EGO_TYPE)">
             <summary>
@@ -291,9 +308,16 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.HasReachedMaxExtractAmount(LCAnomalyLibrary.Defs.EGO_TYPE)">
+            <summary>
+            E.G.O是否已经达到提取最大量
+            </summary>
+            <param name="type">类型</param>
+            <returns></returns>
+        </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.PostExposeData">
             <summary>
-            我不知道这是什么，好像和数据保存有关
+            数据保存
             </summary>
         </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.CompGetGizmosExtra">
@@ -539,9 +563,19 @@
             XML：学习基础成功率
             </summary>
         </member>
-        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.shoundNotifyWhenEscape">
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.shouldNotifyWhenEscape">
             <summary>
             XML：出逃时是否通知
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.shouldTransferStudyProgress">
+            <summary>
+            XML：是否传递研究等级
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.shouldTransferEgoExtractAmount">
+            <summary>
+            XML：是否传递已提取Ego的数量
             </summary>
         </member>
         <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.ifProvideWarningPoints">
@@ -567,6 +601,16 @@
         <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_InteractableEgg.shouldTransferBioSignature">
             <summary>
             XML：是否保持生物特征
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_InteractableEgg.shouldTransferEgoExtractAmount">
+            <summary>
+            XML：是否传递已提取Ego的数量
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_InteractableEgg.shouldTransferStudyProgress">
+            <summary>
+            XML：是否传递研究等级
             </summary>
         </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompProperties_InteractableEgg.#ctor">
@@ -1466,6 +1510,21 @@
         <member name="F:LCAnomalyLibrary.Misc.LC_FX_Standard.bioSignature">
             <summary>
             生物特征
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Misc.LC_FX_Standard.studyProgress">
+            <summary>
+            研究知识等级
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Misc.LC_FX_Standard.curEgoWeaponExtractAmount">
+            <summary>
+            EGO武器已提取数量
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Misc.LC_FX_Standard.curEgoArmorExtractAmount">
+            <summary>
+            EGO装备已提取数量
             </summary>
         </member>
         <member name="F:LCAnomalyLibrary.Misc.LC_FX_Standard.completeTick">

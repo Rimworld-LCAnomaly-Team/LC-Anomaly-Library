@@ -60,7 +60,7 @@ namespace LCAnomalyLibrary.Patch
                         LC_CompEgg egg = __instance.parent.GetComp<LC_CompEgg>();
                         if (egg != null)
                         {
-                            if (egg.ShouldTransferBiosignature)
+                            if (egg.Props.shouldTransferBioSignature)
                             {
                                 CompBiosignatureOwner compBiosignatureOwner = __instance.parent.TryGetComp<CompBiosignatureOwner>();
                                 if (compBiosignatureOwner != null)
@@ -73,6 +73,18 @@ namespace LCAnomalyLibrary.Patch
                                 {
                                     comp.lastStudiedTick = Find.TickManager.TicksGame;
                                 }
+                            }
+
+                            if (egg.Props.shouldTransferStudyProgress)
+                            {
+                                var comp = pawn3.TryGetComp<LC_CompStudyUnlocks>();
+                                comp?.TransferStudyProgress(egg.StudyProgress);
+                            }
+
+                            if (egg.Props.shouldTransferEgoExtractAmount)
+                            {
+                                var comp = pawn3.TryGetComp<LC_CompEgoExtractable>();
+                                comp?.TransferEgoExtractAmount(egg.CurEgoWeaponExtractAmount, egg.CurEgoArmorExtractAmount);
                             }
                         }
                     }

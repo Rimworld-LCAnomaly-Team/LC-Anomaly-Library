@@ -21,4 +21,8 @@
 
   <RequireThingNotInstalledText>缺失必要组件：</RequireThingNotInstalledText>
 
+  <EGOExtractSucceedText>E.G.O提取成功：</EGOExtractSucceedText>
+  <EGOExtractFailedByPeBoxConsumeText>E.G.O提取失败：地图上所需PeBox数量不足</EGOExtractFailedByPeBoxConsumeText>
+  <ExtractEGODisabledReasonText>E.G.O提取禁用：提取数量已达最大值</ExtractEGODisabledReasonText>
+
 </LanguageData>

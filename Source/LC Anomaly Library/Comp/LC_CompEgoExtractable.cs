@@ -33,13 +33,24 @@ namespace LCAnomalyLibrary.Comp
         /// <summary>
         /// 当前已被提取的EGO武器数量
         /// </summary>
-        protected int curAmountWeapon;
+        public int CurAmountWeapon;
         /// <summary>
         /// 当前已被提取的EGO护甲数量
         /// </summary>
-        protected int curAmountArmor;
+        public int CurAmountArmor;
 
         #endregion
+
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="curAmountWeapon">当前提取武器数量</param>
+        /// <param name="curAmountArmor">当前提取护甲数量</param>
+        public void TransferEgoExtractAmount(int curAmountWeapon, int curAmountArmor)
+        {
+            this.CurAmountWeapon = curAmountWeapon;
+            this.CurAmountArmor = curAmountArmor;
+        }
 
         #region 工具方法
 
@@ -47,8 +58,10 @@ namespace LCAnomalyLibrary.Comp
         /// EGO提取的PeBox消耗
         /// </summary>
         /// <returns></returns>
-        protected virtual bool ConsumeExtractEGO(int amount)
+        protected virtual bool ConsumePebox(EGO_TYPE type)
         {
+            int amount = type == EGO_TYPE.Weapon ? Props.weaponExtractedNeed : Props.armorExtractedNeed;
+
             //如果没有PeBoxComp，就不能提取
             if (PeBoxComp == null)
             {
@@ -90,7 +103,6 @@ namespace LCAnomalyLibrary.Comp
                         if (stack.stackCount >= amount)
                         {
                             stack.stackCount -= amount;
-
                             Log.Warning($"提取EGO：地图上{peBoxDef.label.Translate()}的堆数量足够，数量操作完成");
                             break;
                         }
@@ -99,7 +111,6 @@ namespace LCAnomalyLibrary.Comp
                         {
                             amount -= stack.stackCount;
                             stack.Destroy();
-
                             Log.Warning($"提取EGO：地图上{peBoxDef.label.Translate()}的单个堆数量不足，移除该堆后仍然需要{amount}个");
                         }
                     }
@@ -118,35 +129,12 @@ namespace LCAnomalyLibrary.Comp
         /// EGO提取检查
         /// </summary>
         /// <param name="type">EGO类型</param>
-        /// <returns>EGO物品对象</returns>
+        /// <returns></returns>
         protected virtual bool CheckIfExtractEGO(EGO_TYPE type)
         {
-            if (type == EGO_TYPE.Weapon)
+            if (!HasReachedMaxExtractAmount(type))
             {
-                if (curAmountWeapon < Props.amountMaxWeapon)
-                {
-                    Log.Message($"提取EGO：{Props.weaponExtracted.label.Translate()}武器当前提取数量状态为：{curAmountWeapon}/{Props.amountMaxWeapon}");
-
-                    return ConsumeExtractEGO(Props.weaponExtractedNeed);
-                }
-                else
-                {
-                    Log.Message($"提取EGO：{Props.weaponExtracted.label.Translate()}武器无法提取，因为已经达到提取上限");
-                }
-            }
-
-            if (type == EGO_TYPE.Armor)
-            {
-                if (curAmountArmor < Props.amountMaxArmor)
-                {
-                    Log.Message($"提取EGO：{Props.weaponExtracted.label.Translate()}装备当前提取数量状态为：{curAmountArmor}/{Props.amountMaxArmor}");
-
-                    return ConsumeExtractEGO(Props.armorExtractedNeed);
-                }
-                else
-                {
-                    Log.Message($"提取EGO：{Props.armorExtracted.label.Translate()}护甲无法提取，因为已经达到提取上限");
-                }
+                return ConsumePebox(type);
             }
 
             return false;
@@ -166,12 +154,12 @@ namespace LCAnomalyLibrary.Comp
                 {
                     case EGO_TYPE.Weapon:
                         ego = Props.weaponExtracted;
-                        curAmountWeapon++;
+                        CurAmountWeapon++;
                         break;
 
                     case EGO_TYPE.Armor:
                         ego = Props.armorExtracted;
-                        curAmountArmor++;
+                        CurAmountArmor++;
                         break;
                     default:
                         return;
@@ -180,6 +168,11 @@ namespace LCAnomalyLibrary.Comp
                 Thing thing = ThingMaker.MakeThing(ego);
                 thing.stackCount = 1;
                 GenPlace.TryPlaceThing(thing, parent.PositionHeld, parent.MapHeld, ThingPlaceMode.Near);
+                Messages.Message("EGOExtractSucceedText".Translate() + thing.def.label.Translate(), MessageTypeDefOf.TaskCompletion, false);
+            }
+            else
+            {
+                Messages.Message("EGOExtractFailedByPeBoxConsumeText".Translate(), MessageTypeDefOf.RejectInput, false);
             }
         }
 
@@ -189,10 +182,37 @@ namespace LCAnomalyLibrary.Comp
         /// <returns></returns>
         protected virtual bool CheckIfEGOExtractUnlocked()
         {
-            if(EntityComp.StudyUnlocksComp.Progress >= Props.unlockLevel)
-                return true;
 
-            return false;
+            //没有收容和研究组件固定不允许提取
+            if (HoldingTargetComp == null || EntityComp.StudyUnlocksComp == null)
+                return false;
+
+            //逃离中不允许提取
+            if (HoldingTargetComp.isEscaping)
+                return false;
+
+            //到达设定的解锁等级后才允许提取
+            return EntityComp.StudyUnlocksComp.Progress >= Props.unlockLevel;
+        }
+
+        /// <summary>
+        /// E.G.O是否已经达到提取最大量
+        /// </summary>
+        /// <param name="type">类型</param>
+        /// <returns></returns>
+        protected virtual bool HasReachedMaxExtractAmount(EGO_TYPE type)
+        {
+            switch (type)
+            {
+                case EGO_TYPE.Weapon:
+                    return CurAmountWeapon >= Props.amountMaxWeapon;
+                case EGO_TYPE.Armor:
+                    return CurAmountArmor >= Props.amountMaxArmor;
+                default:
+                    Log.Error("提取EGO:EGO类型不存在");
+                    return true;
+            }
+
         }
 
         #endregion
@@ -200,12 +220,12 @@ namespace LCAnomalyLibrary.Comp
         #region 生命周期
 
         /// <summary>
-        /// 我不知道这是什么，好像和数据保存有关
+        /// 数据保存
         /// </summary>
         public override void PostExposeData()
         {
-            Scribe_Values.Look(ref curAmountWeapon, "curAmountWeapon", 0);
-            Scribe_Values.Look(ref curAmountArmor, "curAmountArmor", 0);
+            Scribe_Values.Look(ref CurAmountWeapon, "curAmountWeapon", 0);
+            Scribe_Values.Look(ref CurAmountArmor, "curAmountArmor", 0);
         }
 
         #endregion
@@ -223,8 +243,8 @@ namespace LCAnomalyLibrary.Comp
                 yield return gizmo;
             }
 
-            //HoldingTargetComp不为空并且在收容平台上时才能提取
-            if (HoldingTargetComp != null && !HoldingTargetComp.isEscaping)
+            //在收容平台上才能提取
+            if (HoldingTargetComp != null && HoldingTargetComp.HeldPlatform != null)
             {
                 //科技研究完成后才能提取
                 if (CheckIfEGOExtractUnlocked())
@@ -234,9 +254,11 @@ namespace LCAnomalyLibrary.Comp
                     {
                         icon = ContentFinder<UnityEngine.Texture2D>.Get(Props.weaponIconPath),
                         defaultLabel = "ExtractEGOWeaponCommandText".Translate(),
-                        defaultDesc = $"{"ExtractEGOCommandText".Translate()}{curAmountWeapon}/{Props.amountMaxWeapon}"
+                        defaultDesc = $"{"ExtractEGOCommandText".Translate()}{CurAmountWeapon}/{Props.amountMaxWeapon}"
                         + $"\n{"ExtractEGONeedPeboxDefCommandText".Translate()}{PeBoxComp.Props.peBoxDef.label.Translate()}"
                         + $"\n{"ExtractEGONeedPeboxAmountCommandText".Translate()}{Props.weaponExtractedNeed}",
+                        Disabled = HasReachedMaxExtractAmount(EGO_TYPE.Weapon),
+                        disabledReason = "ExtractEGODisabledReasonText".Translate(),
                         action = delegate
                         {
                             ExtractEGO(EGO_TYPE.Weapon);
@@ -248,9 +270,11 @@ namespace LCAnomalyLibrary.Comp
                     {
                         icon = ContentFinder<UnityEngine.Texture2D>.Get(Props.armorIconPath),
                         defaultLabel = "ExtractEGOArmorCommandText".Translate(),
-                        defaultDesc = $"{"ExtractEGOCommandText".Translate()}{curAmountArmor}/{Props.amountMaxArmor}"
+                        defaultDesc = $"{"ExtractEGOCommandText".Translate()}{CurAmountArmor}/{Props.amountMaxArmor}"
                         + $"\n{"ExtractEGONeedPeboxDefCommandText".Translate()}{PeBoxComp.Props.peBoxDef.label.Translate()}"
                         + $"\n{"ExtractEGONeedPeboxAmountCommandText".Translate()}{Props.armorExtractedNeed}",
+                        Disabled = HasReachedMaxExtractAmount(EGO_TYPE.Armor),
+                        disabledReason = "ExtractEGODisabledReasonText".Translate(),
                         action = delegate
                         {
                             ExtractEGO(EGO_TYPE.Armor);
