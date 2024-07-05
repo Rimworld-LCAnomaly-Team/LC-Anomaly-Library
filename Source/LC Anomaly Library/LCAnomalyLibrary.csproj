@@ -127,6 +127,7 @@
     <Compile Include="GameComponent\GameComponent_LC.cs" />
     <Compile Include="Jobs\JobDriver_CarryToEntityHolder.cs" />
     <Compile Include="Comp\LC_CompProperties_RequireThingSpawner.cs" />
+    <Compile Include="Patch\Patch_CompStudyUnlocks.cs" />
     <Compile Include="Patch\Patch_MentalBreak.cs" />
     <Compile Include="Patch\Patch_TargetHoldingPlatformForEntity.cs" />
     <Compile Include="Patch\Patch_TickManager.cs" />

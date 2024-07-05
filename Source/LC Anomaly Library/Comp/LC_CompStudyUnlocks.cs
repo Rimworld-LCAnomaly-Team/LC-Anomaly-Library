@@ -7,7 +7,7 @@ namespace LCAnomalyLibrary.Comp
     {
         protected LC_CompProperties_StudyUnlocks Props => (LC_CompProperties_StudyUnlocks)props;
 
-        public void TransferStudyProgress(int progress)
+        public virtual void TransferStudyProgress(int progress)
         {
             for(int i = 0; i < progress; i++)
             {
@@ -30,5 +30,7 @@ namespace LCAnomalyLibrary.Comp
                 Notify_StudyLevelChanged(choiceLetter);
             }
         }
+
+        public virtual void UnlockNameCheck(){}
     }
 }

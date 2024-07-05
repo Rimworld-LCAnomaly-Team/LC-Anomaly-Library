@@ -1075,6 +1075,16 @@
             仪式工作（和原版基本一致）
             </summary>
         </member>
+        <member name="T:LCAnomalyLibrary.Patch.Patch_CompStudyUnlocks">
+            <summary>
+            关于ConpStudyUnlocks的补丁（为了插入改名方法）
+            </summary>
+        </member>
+        <member name="M:LCAnomalyLibrary.Patch.Patch_CompStudyUnlocks.Postfix(RimWorld.CompStudyUnlocks,Verse.Pawn,System.Int32)">
+            <summary>
+            Postfix
+            </summary>
+        </member>
         <member name="T:LCAnomalyLibrary.Patch.Patch_MentalBreak">
             <summary>
             关于MentalStateHandler的补丁（为了提供崩溃警报点数）

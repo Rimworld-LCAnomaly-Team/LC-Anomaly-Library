@@ -1,4 +1,5 @@
 ﻿using LCAnomalyLibrary.Setting;
+using System.Collections.Generic;
 using Verse;
 
 namespace LCAnomalyLibrary.GameComponent
