@@ -32,7 +32,7 @@
       <texPath>Things/Item/Resource/PeBox/EnkephalinBox</texPath>
     </graphicData>
     <descriptionHyperlinks>
-      <ThingDef>LC_EnkephalinGenerator</ThingDef>
+      <ThingDef>EnkephalinGenerator</ThingDef>
     </descriptionHyperlinks>
     <researchPrerequisites>
       <li>ExtractEnkephalin</li>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
   
-  <LC_EnkephalinGenerator.label>脑啡肽发电机</LC_EnkephalinGenerator.label>
-  <LC_EnkephalinGenerator.description>清洁能源。</LC_EnkephalinGenerator.description>
+  <EnkephalinGenerator.label>脑啡肽发电机</EnkephalinGenerator.label>
+  <EnkephalinGenerator.description>清洁能源。</EnkephalinGenerator.description>
 
 </LanguageData>

@@ -1,4 +1,6 @@
-﻿using Verse;
+﻿using RimWorld;
+using System.Collections.Generic;
+using Verse;
 
 namespace LCAnomalyLibrary.Building
 {
@@ -12,6 +14,25 @@ namespace LCAnomalyLibrary.Building
 
         private CompHeatPusherPowered HeatPusher => heatPusher ?? (heatPusher = GetComp<CompHeatPusherPowered>());
 
+        public override IEnumerable<Verse.Gizmo> GetGizmos()
+        {
+            foreach(var gizmo in base.GetGizmos())
+            {
+                yield return gizmo;
+            }
+
+            //TODO 测试
+            yield return new Command_Action
+            {
+                defaultLabel = "EntityCodex".Translate() + "...",
+                defaultDesc = "EntityCodexGizmoTip".Translate(),
+                icon = new CachedTexture("UI/Icons/OpenCodex").Texture,
+                action = delegate ()
+                {
+                    Find.WindowStack.Add(new UI.Dialog_LC_EntityCodex(null));
+                }
+            };
+        }
 
         /// <summary>
         /// 是否正在工作

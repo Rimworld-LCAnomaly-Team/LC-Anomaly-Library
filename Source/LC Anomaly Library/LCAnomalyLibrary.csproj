@@ -113,6 +113,7 @@
     <Compile Include="Defs\ApparelLayerDefOf.cs" />
     <Compile Include="Defs\DutyDefOf.cs" />
     <Compile Include="Defs\DamageDefOf.cs" />
+    <Compile Include="Defs\EntityCodexEntryDef.cs" />
     <Compile Include="Defs\FleckDefOf.cs" />
     <Compile Include="Defs\HediffDefOf.cs" />
     <Compile Include="Defs\ExtractRitualRoleDefOf.cs" />
@@ -128,6 +129,7 @@
     <Compile Include="Jobs\JobDriver_CarryToEntityHolder.cs" />
     <Compile Include="Comp\LC_CompProperties_RequireThingSpawner.cs" />
     <Compile Include="Patch\Patch_CompStudyUnlocks.cs" />
+    <Compile Include="Patch\Patch_Dialog_EntityCodex.cs" />
     <Compile Include="Patch\Patch_MentalBreak.cs" />
     <Compile Include="Patch\Patch_TargetHoldingPlatformForEntity.cs" />
     <Compile Include="Patch\Patch_TickManager.cs" />
@@ -154,6 +156,7 @@
     <Compile Include="Gizmo\PsychicRitualGizmo.cs" />
     <Compile Include="Toils\ExtractRitualToil_GatherOfferings.cs" />
     <Compile Include="Toils\ExtractRitualToil_GatherForInvocation.cs" />
+    <Compile Include="UI\Dialog_LC_EntityCodex.cs" />
     <Compile Include="Util\Components.cs" />
     <Compile Include="Util\Curves.cs" />
     <Compile Include="Util\ExpansionActive.cs" />

@@ -1,67 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Defs>
-
+  
   <ThingDef ParentName="BuildingBase">
-    <defName>LC_EnkephalinGenerator</defName>
+    <defName>EnkephalinGenerator</defName>
     <label>enkephalin generator</label>
+    <description>.</description>
     <thingClass>LCAnomalyLibrary.Building.Building_EnkephalinGenerator</thingClass>
-    <minifiedDef>MinifiedThing</minifiedDef>
-    <description>enkephalin generator</description>
-    <tickerType>Normal</tickerType>
-    <drawerType>RealtimeOnly</drawerType>
+    <drawerType>MapMeshAndRealTime</drawerType>
     <graphicData>
-      <graphicClass>Graphic_Multi_BuildingWorking</graphicClass>
-      <texPath>Things/Building/EnkephalinGenerator/EnkephalinGenerator</texPath>
-      <shaderType>BuildingWorking</shaderType>
-      <drawSize>(3,2)</drawSize>
+      <texPath>Things/Building/Power/EnkephalinGenerator</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2,2)</drawSize>
       <shadowData>
-        <volume>(2.9, 1, 1.9)</volume>
+        <volume>(1.93,1,1.69)</volume>
+        <offset>(-0.03,0,-0.1)</offset>
       </shadowData>
     </graphicData>
     <altitudeLayer>Building</altitudeLayer>
     <passability>PassThroughOnly</passability>
     <fillPercent>0.9</fillPercent>
     <pathCost>50</pathCost>
-    <rotatable>true</rotatable>
-    <constructionSkillPrerequisite>6</constructionSkillPrerequisite>
-    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-    <designationCategory>Buildings_LC</designationCategory>
-    <thingCategories>
-      <li>LC_Building_Containment</li>
-    </thingCategories>
-    <uiOrder>2200</uiOrder>
-    <canOverlapZones>false</canOverlapZones>
+    <rotatable>false</rotatable>
+    <blockWind>true</blockWind>
+    <castEdgeShadows>false</castEdgeShadows>
     <statBases>
-      <MaxHitPoints>400</MaxHitPoints>
-      <WorkToBuild>12000</WorkToBuild>
-      <Mass>50</Mass>
-      <Flammability>0.75</Flammability>
-      <Beauty>-40</Beauty>
+      <MaxHitPoints>300</MaxHitPoints>
+      <WorkToBuild>2500</WorkToBuild>
+      <Flammability>1.0</Flammability>
+      <Beauty>-20</Beauty>
     </statBases>
-    <size>(3,2)</size>
+    <tickerType>Normal</tickerType>
+    <canOverlapZones>false</canOverlapZones>
+    <size>(2,2)</size>
+    <building>
+      <destroySound>BuildingDestroyed_Metal_Medium</destroySound>
+    </building>
     <costList>
-      <Shard>1</Shard>
-      <ComponentIndustrial>4</ComponentIndustrial>
-      <Bioferrite>100</Bioferrite>
-      <Steel>50</Steel>
+      <Steel>100</Steel>
+      <ComponentIndustrial>2</ComponentIndustrial>
     </costList>
-    <placeWorkers>
-      <li>PlaceWorker_NoiseSource</li>
-    </placeWorkers>
-    <researchPrerequisites>
-      <li>Enkephalin_ElectricGenerator</li>
-    </researchPrerequisites>
     <comps>
       <li Class="CompProperties_Power">
         <compClass>CompPowerPlant</compClass>
-        <basePowerConsumption>-4000</basePowerConsumption>
+        <basePowerConsumption>-2000</basePowerConsumption>
         <transmitsPower>true</transmitsPower>
-        <soundAmbientProducingPower>ChemfuelFiredGenerator_Ambience</soundAmbientProducingPower>
+        <soundAmbientProducingPower>WoodFiredGenerator_Ambience</soundAmbientProducingPower>
       </li>
       <li Class="CompProperties_Flickable"/>
       <li Class="CompProperties_Refuelable">
-        <fuelConsumptionRate>1</fuelConsumptionRate>
-        <fuelCapacity>50.0</fuelCapacity>
+        <fuelConsumptionRate>10.0</fuelConsumptionRate>
+        <fuelCapacity>75.0</fuelCapacity>
         <fuelFilter>
           <thingDefs>
             <li>EnkephalinBox</li>
@@ -70,12 +58,8 @@
         <showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
       </li>
       <li Class="CompProperties_Glower">
-        <glowRadius>8</glowRadius>
-        <glowColor>(80,141,223,0)</glowColor>
-      </li>
-      <li Class="CompProperties_HeatPusher">
-        <compClass>CompHeatPusherPowered</compClass>
-        <heatPerSecond>12</heatPerSecond>
+        <glowRadius>6</glowRadius>
+        <glowColor>(0,206,209,0)</glowColor>
       </li>
       <li Class="CompProperties_Breakdownable"/>
       <li Class="CompProperties_Stunnable">
@@ -84,10 +68,15 @@
           <li>EMP</li>
         </affectedDamageDefs>
       </li>
-      <li Class="CompProperties_NoiseSource">
-        <radius>8.9</radius>
-      </li>
     </comps>
+    <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+    <designationCategory>Buildings_LC</designationCategory>
+    <uiOrder>2100</uiOrder>
+    <constructEffect>ConstructMetal</constructEffect>
+    <researchPrerequisites>
+      <li>Enkephalin_ElectricGenerator</li>
+    </researchPrerequisites>
+    <constructionSkillPrerequisite>5</constructionSkillPrerequisite>
   </ThingDef>
-  
+
 </Defs>
