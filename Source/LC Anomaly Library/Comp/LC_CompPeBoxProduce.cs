@@ -1,4 +1,5 @@
-﻿using LCAnomalyLibrary.Util;
+﻿using LCAnomalyLibrary.GameComponent;
+using LCAnomalyLibrary.Util;
 using Verse;
 
 namespace LCAnomalyLibrary.Comp
@@ -12,6 +13,26 @@ namespace LCAnomalyLibrary.Comp
         /// CompProperties
         /// </summary>
         public LC_CompProperties_PeBoxProduce Props => (LC_CompProperties_PeBoxProduce)props;
+
+        protected GameComponent_LC component => Current.Game.GetComponent<GameComponent_LC>();
+
+        /// <summary>
+        /// 当前独立PeBox数量
+        /// </summary>
+        public int CurAmountIndiPebox
+        {
+            get
+            {
+                component.TryGetAnomalyStatusSaved(parent.def, out AnomalyStatusSaved saved);
+                return saved.IndiPeBoxAmount;
+            }
+            set
+            {
+                component.TryGetAnomalyStatusSaved(parent.def, out AnomalyStatusSaved saved);
+                saved.IndiPeBoxAmount = value;
+                component.AnomalyStatusSavedDict[parent.def] = saved;
+            }
+        }
 
         /// <summary>
         /// 检查生成Pebox
@@ -47,10 +68,13 @@ namespace LCAnomalyLibrary.Comp
 
                 if (Props.peBoxDef != null)
                 {
+                    CurAmountIndiPebox += amount;
+                    Log.Message($"工作：{parent.def.label.Translate()}生成了{amount}单位的独立PeBox");
+
                     Thing thing = ThingMaker.MakeThing(Props.peBoxDef);
                     thing.stackCount = amount;
                     GenSpawn.Spawn(thing, studier.Position, studier.Map);
-                    Log.Message($"工作：{parent.def.label.Translate()}生成了{amount}单位的{Props.peBoxDef.label.Translate()}");
+                    Log.Message($"工作：{parent.def.label.Translate()}生成了{amount}单位的打包PeBox");
                 }
             }
         }

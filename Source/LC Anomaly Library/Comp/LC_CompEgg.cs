@@ -12,20 +12,6 @@ namespace LCAnomalyLibrary.Comp
         public LC_CompProperties_InteractableEgg Props => (LC_CompProperties_InteractableEgg)props;
 
         /// <summary>
-        /// 研究知识等级
-        /// </summary>
-        public int StudyProgress;
-
-        /// <summary>
-        /// EGO武器已提取数量
-        /// </summary>
-        public int CurEgoWeaponExtractAmount;
-        /// <summary>
-        /// EGO装备已提取数量
-        /// </summary>
-        public int CurEgoArmorExtractAmount;
-
-        /// <summary>
         /// 交互时触发
         /// </summary>
         /// <param name="caster"></param>

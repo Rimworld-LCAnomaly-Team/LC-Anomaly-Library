@@ -24,91 +24,6 @@
   </ThingDef>
 
   <ThingDef ParentName="PeBoxBase">
-    <defName>PeBoxZAYIN</defName>
-    <label>PeBoxZAYIN</label>
-    <description>PeBoxZAYIN</description>
-    <thingClass>ThingWithComps</thingClass>
-    <graphicData>
-      <texPath>Things/Item/Resource/PeBox/PeBoxZAYIN</texPath>
-    </graphicData>
-    <descriptionHyperlinks>
-      <ThingDef>EnkephalinBox</ThingDef>
-    </descriptionHyperlinks>
-    <researchPrerequisites>
-      <li>ExtractEnkephalin</li>
-    </researchPrerequisites>
-    <comps></comps>
-  </ThingDef>
-
-  <ThingDef ParentName="PeBoxBase">
-    <defName>PeBoxTETH</defName>
-    <label>PeBoxTETH</label>
-    <description>PeBoxTETH</description>
-    <thingClass>ThingWithComps</thingClass>
-    <graphicData>
-      <texPath>Things/Item/Resource/PeBox/PeBoxTETH</texPath>
-    </graphicData>
-    <descriptionHyperlinks>
-      <ThingDef>EnkephalinBox</ThingDef>
-    </descriptionHyperlinks>
-    <researchPrerequisites>
-      <li>ExtractEnkephalin</li>
-    </researchPrerequisites>
-    <comps></comps>
-  </ThingDef>
-
-  <ThingDef ParentName="PeBoxBase">
-    <defName>PeBoxHE</defName>
-    <label>PeBoxHE</label>
-    <description>PeBoxHE</description>
-    <thingClass>ThingWithComps</thingClass>
-    <graphicData>
-      <texPath>Things/Item/Resource/PeBox/PeBoxHE</texPath>
-    </graphicData>
-    <descriptionHyperlinks>
-      <ThingDef>EnkephalinBox</ThingDef>
-    </descriptionHyperlinks>
-    <researchPrerequisites>
-      <li>ExtractEnkephalin</li>
-    </researchPrerequisites>
-    <comps></comps>
-  </ThingDef>
-
-  <ThingDef ParentName="PeBoxBase">
-    <defName>PeBoxWAW</defName>
-    <label>PeBoxWAW</label>
-    <description>PeBoxWAW</description>
-    <thingClass>ThingWithComps</thingClass>
-    <graphicData>
-      <texPath>Things/Item/Resource/PeBox/PeBoxWAW</texPath>
-    </graphicData>
-    <descriptionHyperlinks>
-      <ThingDef>EnkephalinBox</ThingDef>
-    </descriptionHyperlinks>
-    <researchPrerequisites>
-      <li>ExtractEnkephalin</li>
-    </researchPrerequisites>
-    <comps></comps>
-  </ThingDef>
-
-  <ThingDef ParentName="PeBoxBase">
-    <defName>PeBoxALEPH</defName>
-    <label>PeBoxALEPH</label>
-    <description>PeBoxALEPH</description>
-    <thingClass>ThingWithComps</thingClass>
-    <graphicData>
-      <texPath>Things/Item/Resource/PeBox/PeBoxALEPH</texPath>
-    </graphicData>
-    <descriptionHyperlinks>
-      <ThingDef>EnkephalinBox</ThingDef>
-    </descriptionHyperlinks>
-    <researchPrerequisites>
-      <li>ExtractEnkephalin</li>
-    </researchPrerequisites>
-    <comps></comps>
-  </ThingDef>
-
-  <ThingDef ParentName="PeBoxBase">
     <defName>EnkephalinBox</defName>
     <label>EnkephalinBox</label>
     <description>EnkephalinBox</description>
@@ -117,11 +32,7 @@
       <texPath>Things/Item/Resource/PeBox/EnkephalinBox</texPath>
     </graphicData>
     <descriptionHyperlinks>
-      <ThingDef>PeBoxZAYIN</ThingDef>
-      <ThingDef>PeBoxTETH</ThingDef>
-      <ThingDef>PeBoxHE</ThingDef>
-      <ThingDef>PeBoxWAW</ThingDef>
-      <ThingDef>PeBoxALEPH</ThingDef>
+      <ThingDef>LC_EnkephalinGenerator</ThingDef>
     </descriptionHyperlinks>
     <researchPrerequisites>
       <li>ExtractEnkephalin</li>

@@ -1,4 +1,5 @@
 ﻿using LCAnomalyLibrary.Defs;
+using LCAnomalyLibrary.GameComponent;
 using RimWorld;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,27 +31,44 @@ namespace LCAnomalyLibrary.Comp
         /// </summary>
         protected CompHoldingPlatformTarget HoldingTargetComp => parent.GetComp<CompHoldingPlatformTarget>();
 
+        protected GameComponent_LC component => Current.Game.GetComponent<GameComponent_LC>();
+
         /// <summary>
         /// 当前已被提取的EGO武器数量
         /// </summary>
-        public int CurAmountWeapon;
+        public int CurAmountWeapon
+        {
+            get
+            {
+                component.TryGetAnomalyStatusSaved(parent.def, out AnomalyStatusSaved saved);
+                return saved.ExtractedEgoWeaponAmount;
+            }
+            set
+            {
+                component.TryGetAnomalyStatusSaved(parent.def, out AnomalyStatusSaved saved);
+                saved.ExtractedEgoWeaponAmount = value;
+                component.AnomalyStatusSavedDict[parent.def] = saved;
+            }
+        }
         /// <summary>
         /// 当前已被提取的EGO护甲数量
         /// </summary>
-        public int CurAmountArmor;
+        public int CurAmountArmor
+        {
+            get
+            {
+                component.TryGetAnomalyStatusSaved(parent.def, out AnomalyStatusSaved saved);
+                return saved.ExtractedEgoArmorAmount;
+            }
+            set
+            {
+                component.TryGetAnomalyStatusSaved(parent.def, out AnomalyStatusSaved saved);
+                saved.ExtractedEgoArmorAmount = value;
+                component.AnomalyStatusSavedDict[parent.def] = saved;
+            }
+        }
 
         #endregion
-
-        /// <summary>
-        /// 初始化
-        /// </summary>
-        /// <param name="curAmountWeapon">当前提取武器数量</param>
-        /// <param name="curAmountArmor">当前提取护甲数量</param>
-        public void TransferEgoExtractAmount(int curAmountWeapon, int curAmountArmor)
-        {
-            this.CurAmountWeapon = curAmountWeapon;
-            this.CurAmountArmor = curAmountArmor;
-        }
 
         #region 工具方法
 
@@ -60,8 +78,6 @@ namespace LCAnomalyLibrary.Comp
         /// <returns></returns>
         protected virtual bool ConsumePebox(EGO_TYPE type)
         {
-            int amount = type == EGO_TYPE.Weapon ? Props.weaponExtractedNeed : Props.armorExtractedNeed;
-
             //如果没有PeBoxComp，就不能提取
             if (PeBoxComp == null)
             {
@@ -71,58 +87,24 @@ namespace LCAnomalyLibrary.Comp
 
             //如果PeBoxComp没有PeBoxDef，就不能提取
             var peBoxDef = PeBoxComp.Props.peBoxDef;
-            if( peBoxDef == null )
+            if (peBoxDef == null)
             {
                 Log.Warning($"提取EGO：{PeBoxComp.ToString()}没有PeBoxDef，无法提取");
                 return false;
             }
-
-            List<Thing> stackList = parent.MapHeld.listerThings.AllThings.Where(x => x.def == peBoxDef).ToList();
-            int sum = stackList.Sum(x => x.stackCount);
-
-            //如果地图上没有PeBox，就不能提取
-            if (stackList.NullOrEmpty())
+            
+            //消耗独立PeBox
+            int delta = type == EGO_TYPE.Weapon ? Props.weaponExtractedNeed : Props.armorExtractedNeed;
+            if (delta <= PeBoxComp.CurAmountIndiPebox)
             {
-                Log.Warning($"提取EGO：地图上找不到{peBoxDef.label.Translate()}");
-                return false;
+                PeBoxComp.CurAmountIndiPebox -= delta;
+                return true;
             }
             else
             {
-                //如果地图上PeBox的总数量不足，就不能提取
-                if (sum < amount)
-                {
-                    Log.Warning($"提取EGO：地图上{peBoxDef.label.Translate()}总数量不足，需要{amount}个，发现{sum}个在{stackList.Count}个堆中");
-                    return false;
-                }
-                //如果地图上PeBox的总数量足够，就进行进一步的数量判断
-                else if (sum > amount)
-                {
-                    foreach (var stack in stackList)
-                    {
-                        //如果当前堆数量大于等于需要的数量，直接减去
-                        if (stack.stackCount >= amount)
-                        {
-                            stack.stackCount -= amount;
-                            Log.Warning($"提取EGO：地图上{peBoxDef.label.Translate()}的堆数量足够，数量操作完成");
-                            break;
-                        }
-                        //如果当前堆数量小于需要的数量，减去后继续对下一个堆进行操作
-                        else
-                        {
-                            amount -= stack.stackCount;
-                            stack.Destroy();
-                            Log.Warning($"提取EGO：地图上{peBoxDef.label.Translate()}的单个堆数量不足，移除该堆后仍然需要{amount}个");
-                        }
-                    }
-                }
-                //如果地图上PeBox的总数量刚好，直接全部移除
-                else
-                {
-                    stackList.ForEach(x => x.Destroy());
-                }
+                Log.Warning($"提取EGO：{parent.Label.Translate()}的独立pebox数量不足，无法提取");
+                return false;
             }
-
-            return true;
         }
 
         /// <summary>
@@ -217,19 +199,6 @@ namespace LCAnomalyLibrary.Comp
 
         #endregion
 
-        #region 生命周期
-
-        /// <summary>
-        /// 数据保存
-        /// </summary>
-        public override void PostExposeData()
-        {
-            Scribe_Values.Look(ref CurAmountWeapon, "curAmountWeapon", 0);
-            Scribe_Values.Look(ref CurAmountArmor, "curAmountArmor", 0);
-        }
-
-        #endregion
-
         #region UI
 
         /// <summary>
@@ -249,14 +218,16 @@ namespace LCAnomalyLibrary.Comp
                 //科技研究完成后才能提取
                 if (CheckIfEGOExtractUnlocked())
                 {
+                    component.TryGetAnomalyStatusSaved(parent.def, out AnomalyStatusSaved saved);
+
                     //提取EGO武器
                     yield return new Command_Action
                     {
                         icon = ContentFinder<UnityEngine.Texture2D>.Get(Props.weaponIconPath),
                         defaultLabel = "ExtractEGOWeaponCommandText".Translate(),
                         defaultDesc = $"{"ExtractEGOCommandText".Translate()}{CurAmountWeapon}/{Props.amountMaxWeapon}"
-                        + $"\n{"ExtractEGONeedPeboxDefCommandText".Translate()}{PeBoxComp.Props.peBoxDef.label.Translate()}"
-                        + $"\n{"ExtractEGONeedPeboxAmountCommandText".Translate()}{Props.weaponExtractedNeed}",
+                        + $"\n{"ExtractEGONeedPeboxAmountCommandText".Translate()}{Props.weaponExtractedNeed}"
+                        + $"\n{"IndiPeBoxAmountCommandText".Translate()}{saved.IndiPeBoxAmount}",
                         Disabled = HasReachedMaxExtractAmount(EGO_TYPE.Weapon),
                         disabledReason = "ExtractEGODisabledReasonText".Translate(),
                         action = delegate
@@ -271,8 +242,8 @@ namespace LCAnomalyLibrary.Comp
                         icon = ContentFinder<UnityEngine.Texture2D>.Get(Props.armorIconPath),
                         defaultLabel = "ExtractEGOArmorCommandText".Translate(),
                         defaultDesc = $"{"ExtractEGOCommandText".Translate()}{CurAmountArmor}/{Props.amountMaxArmor}"
-                        + $"\n{"ExtractEGONeedPeboxDefCommandText".Translate()}{PeBoxComp.Props.peBoxDef.label.Translate()}"
-                        + $"\n{"ExtractEGONeedPeboxAmountCommandText".Translate()}{Props.armorExtractedNeed}",
+                        + $"\n{"ExtractEGONeedPeboxAmountCommandText".Translate()}{Props.armorExtractedNeed}"
+                        + $"\n{"IndiPeBoxAmountCommandText".Translate()}{saved.IndiPeBoxAmount}",
                         Disabled = HasReachedMaxExtractAmount(EGO_TYPE.Armor),
                         disabledReason = "ExtractEGODisabledReasonText".Translate(),
                         action = delegate

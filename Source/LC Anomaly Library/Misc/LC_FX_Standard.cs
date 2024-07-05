@@ -16,20 +16,6 @@ namespace LCAnomalyLibrary.Misc
         protected int bioSignature;
 
         /// <summary>
-        /// 研究知识等级
-        /// </summary>
-        protected int studyProgress;
-
-        /// <summary>
-        /// EGO武器已提取数量
-        /// </summary>
-        protected int curEgoWeaponExtractAmount;
-        /// <summary>
-        /// EGO装备已提取数量
-        /// </summary>
-        protected int curEgoArmorExtractAmount;
-
-        /// <summary>
         /// 完成所需Tick
         /// </summary>
         protected int completeTick;

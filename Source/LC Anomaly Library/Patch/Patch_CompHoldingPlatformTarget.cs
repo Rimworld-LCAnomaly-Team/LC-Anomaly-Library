@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using LCAnomalyLibrary.Comp;
+using LCAnomalyLibrary.GameComponent;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -69,23 +70,17 @@ namespace LCAnomalyLibrary.Patch
                                     //Log.Warning("Patch_CompHoldingPlatformTarget:::传递生物特征成功");
                                 }
 
-                                if (pawn3.TryGetComp<CompStudiable>(out var comp))
+                                if (pawn3.TryGetComp<CompStudiable>(out var comp1))
                                 {
-                                    comp.lastStudiedTick = Find.TickManager.TicksGame;
+                                    comp1.lastStudiedTick = Find.TickManager.TicksGame;
                                 }
                             }
 
-                            if (egg.Props.shouldTransferStudyProgress)
-                            {
-                                var comp = pawn3.TryGetComp<LC_CompStudyUnlocks>();
-                                comp?.TransferStudyProgress(egg.StudyProgress);
-                            }
+                            var component = Current.Game.GetComponent<GameComponent_LC>();
+                            component.TryGetAnomalyStatusSaved(pawn3.def, out AnomalyStatusSaved saved);
 
-                            if (egg.Props.shouldTransferEgoExtractAmount)
-                            {
-                                var comp = pawn3.TryGetComp<LC_CompEgoExtractable>();
-                                comp?.TransferEgoExtractAmount(egg.CurEgoWeaponExtractAmount, egg.CurEgoArmorExtractAmount);
-                            }
+                            var comp2 = pawn3.TryGetComp<LC_CompStudyUnlocks>();
+                            comp2?.TransferStudyProgress(saved.StudyProgress);
                         }
                     }
 

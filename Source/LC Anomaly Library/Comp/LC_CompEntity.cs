@@ -325,6 +325,29 @@ namespace LCAnomalyLibrary.Comp
                         QliphothCountCurrent--;
                     }
                 };
+
+                if(PeboxComp != null)
+                {
+                    yield return new Command_Action
+                    {
+                        defaultLabel = "IndiPebox + 50",
+                        action = delegate
+                        {
+                            Log.Warning($"Dev：{parent.def.label.Translate()} 的独立PeBox增加了50点");
+                            PeboxComp.CurAmountIndiPebox += 50;
+                        }
+                    };
+
+                    yield return new Command_Action
+                    {
+                        defaultLabel = "IndiPebox - 50",
+                        action = delegate
+                        {
+                            Log.Warning($"Dev：{parent.def.label.Translate()} 的独立PeBox减少了50点");
+                            PeboxComp.CurAmountIndiPebox -= 50;
+                        }
+                    };
+                }
             }
         }
 

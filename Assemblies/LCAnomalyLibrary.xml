@@ -218,21 +218,6 @@
             LC异想体蛋基础Comp
             </summary>
         </member>
-        <member name="F:LCAnomalyLibrary.Comp.LC_CompEgg.StudyProgress">
-            <summary>
-            研究知识等级
-            </summary>
-        </member>
-        <member name="F:LCAnomalyLibrary.Comp.LC_CompEgg.CurEgoWeaponExtractAmount">
-            <summary>
-            EGO武器已提取数量
-            </summary>
-        </member>
-        <member name="F:LCAnomalyLibrary.Comp.LC_CompEgg.CurEgoArmorExtractAmount">
-            <summary>
-            EGO装备已提取数量
-            </summary>
-        </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompEgg.OnInteracted(Verse.Pawn)">
             <summary>
             交互时触发
@@ -266,22 +251,15 @@
             CompHoldingPlatformTarget
             </summary>
         </member>
-        <member name="F:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.CurAmountWeapon">
+        <member name="P:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.CurAmountWeapon">
             <summary>
             当前已被提取的EGO武器数量
             </summary>
         </member>
-        <member name="F:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.CurAmountArmor">
+        <member name="P:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.CurAmountArmor">
             <summary>
             当前已被提取的EGO护甲数量
             </summary>
-        </member>
-        <member name="M:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.TransferEgoExtractAmount(System.Int32,System.Int32)">
-            <summary>
-            初始化
-            </summary>
-            <param name="curAmountWeapon">当前提取武器数量</param>
-            <param name="curAmountArmor">当前提取护甲数量</param>
         </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.ConsumePebox(LCAnomalyLibrary.Defs.EGO_TYPE)">
             <summary>
@@ -314,11 +292,6 @@
             </summary>
             <param name="type">类型</param>
             <returns></returns>
-        </member>
-        <member name="M:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.PostExposeData">
-            <summary>
-            数据保存
-            </summary>
         </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompEgoExtractable.CompGetGizmosExtra">
             <summary>
@@ -461,6 +434,11 @@
             CompProperties
             </summary>
         </member>
+        <member name="P:LCAnomalyLibrary.Comp.LC_CompPeBoxProduce.CurAmountIndiPebox">
+            <summary>
+            当前独立PeBox数量
+            </summary>
+        </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompPeBoxProduce.CheckSpawnPeBox(Verse.Pawn,LCAnomalyLibrary.Util.LC_StudyResult)">
             <summary>
             检查生成Pebox
@@ -568,16 +546,6 @@
             XML：出逃时是否通知
             </summary>
         </member>
-        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.shouldTransferStudyProgress">
-            <summary>
-            XML：是否传递研究等级
-            </summary>
-        </member>
-        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.shouldTransferEgoExtractAmount">
-            <summary>
-            XML：是否传递已提取Ego的数量
-            </summary>
-        </member>
         <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.ifProvideWarningPoints">
             <summary>
             XML：提供出逃点数（决定是否提供点数，不提供的情况下自定义点数无效）
@@ -601,16 +569,6 @@
         <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_InteractableEgg.shouldTransferBioSignature">
             <summary>
             XML：是否保持生物特征
-            </summary>
-        </member>
-        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_InteractableEgg.shouldTransferEgoExtractAmount">
-            <summary>
-            XML：是否传递已提取Ego的数量
-            </summary>
-        </member>
-        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_InteractableEgg.shouldTransferStudyProgress">
-            <summary>
-            XML：是否传递研究等级
             </summary>
         </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompProperties_InteractableEgg.#ctor">
@@ -888,31 +846,6 @@
             该mod所有的ThingDef
             </summary>
         </member>
-        <member name="F:LCAnomalyLibrary.Defs.ThingDefOf.PeBoxZAYIN">
-            <summary>
-            ZAYIN级别的Pebox
-            </summary>
-        </member>
-        <member name="F:LCAnomalyLibrary.Defs.ThingDefOf.PeBoxTETH">
-            <summary>
-            TETH级别的Pebox
-            </summary>
-        </member>
-        <member name="F:LCAnomalyLibrary.Defs.ThingDefOf.PeBoxHE">
-            <summary>
-            HE级别的Pebox
-            </summary>
-        </member>
-        <member name="F:LCAnomalyLibrary.Defs.ThingDefOf.PeBoxWAW">
-            <summary>
-            WAW级别的Pebox
-            </summary>
-        </member>
-        <member name="F:LCAnomalyLibrary.Defs.ThingDefOf.PeBoxALEPH">
-            <summary>
-            ALEPH级别的Pebox
-            </summary>
-        </member>
         <member name="F:LCAnomalyLibrary.Defs.ThingDefOf.EnkephalinBox">
             <summary>
             通用PeBox
@@ -1055,9 +988,39 @@
             当前的警报点数
             </summary>
         </member>
+        <member name="P:LCAnomalyLibrary.GameComponent.GameComponent_LC.AnomalyStatusSavedDict">
+            <summary>
+            异想体独立数据字典
+            </summary>
+        </member>
         <member name="M:LCAnomalyLibrary.GameComponent.GameComponent_LC.GameComponentTick">
             <summary>
             Tick
+            </summary>
+        </member>
+        <member name="T:LCAnomalyLibrary.GameComponent.AnomalyStatusSaved">
+            <summary>
+            异想体独立数据
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.GameComponent.AnomalyStatusSaved.ExtractedEgoWeaponAmount">
+            <summary>
+            已提取EGO武器数量
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.GameComponent.AnomalyStatusSaved.ExtractedEgoArmorAmount">
+            <summary>
+            已提取EGO护甲数量
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.GameComponent.AnomalyStatusSaved.IndiPeBoxAmount">
+            <summary>
+            已提取独立PeBox数量
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.GameComponent.AnomalyStatusSaved.StudyProgress">
+            <summary>
+            研究进度
             </summary>
         </member>
         <member name="T:LCAnomalyLibrary.Jobs.JobDriver_CarryToEntityHolder">
@@ -1520,21 +1483,6 @@
         <member name="F:LCAnomalyLibrary.Misc.LC_FX_Standard.bioSignature">
             <summary>
             生物特征
-            </summary>
-        </member>
-        <member name="F:LCAnomalyLibrary.Misc.LC_FX_Standard.studyProgress">
-            <summary>
-            研究知识等级
-            </summary>
-        </member>
-        <member name="F:LCAnomalyLibrary.Misc.LC_FX_Standard.curEgoWeaponExtractAmount">
-            <summary>
-            EGO武器已提取数量
-            </summary>
-        </member>
-        <member name="F:LCAnomalyLibrary.Misc.LC_FX_Standard.curEgoArmorExtractAmount">
-            <summary>
-            EGO装备已提取数量
             </summary>
         </member>
         <member name="F:LCAnomalyLibrary.Misc.LC_FX_Standard.completeTick">

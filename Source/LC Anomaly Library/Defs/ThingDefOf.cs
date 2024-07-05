@@ -10,31 +10,6 @@ namespace LCAnomalyLibrary.Defs
     public static class ThingDefOf
     {
         /// <summary>
-        /// ZAYIN级别的Pebox
-        /// </summary>
-        public static ThingDef PeBoxZAYIN;
-
-        /// <summary>
-        /// TETH级别的Pebox
-        /// </summary>
-        public static ThingDef PeBoxTETH;
-
-        /// <summary>
-        /// HE级别的Pebox
-        /// </summary>
-        public static ThingDef PeBoxHE;
-
-        /// <summary>
-        /// WAW级别的Pebox
-        /// </summary>
-        public static ThingDef PeBoxWAW;
-
-        /// <summary>
-        /// ALEPH级别的Pebox
-        /// </summary>
-        public static ThingDef PeBoxALEPH;
-
-        /// <summary>
         /// 通用PeBox
         /// </summary>
         public static ThingDef EnkephalinBox;

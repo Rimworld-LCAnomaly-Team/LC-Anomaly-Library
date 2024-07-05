@@ -13,16 +13,6 @@ namespace LCAnomalyLibrary.Comp
         public bool shouldTransferBioSignature;
 
         /// <summary>
-        /// XML：是否传递已提取Ego的数量
-        /// </summary>
-        public bool shouldTransferEgoExtractAmount;
-
-        /// <summary>
-        /// XML：是否传递研究等级
-        /// </summary>
-        public bool shouldTransferStudyProgress;
-
-        /// <summary>
         /// Comp
         /// </summary>
         public LC_CompProperties_InteractableEgg()

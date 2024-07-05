@@ -1,11 +1,8 @@
 ﻿using HarmonyLib;
-using LCAnomalyLibrary.Setting;
-using LCAnomalyLibrary.Util;
 using RimWorld;
-using System.Reflection;
-using Verse.AI;
 using Verse;
 using LCAnomalyLibrary.Comp;
+using LCAnomalyLibrary.GameComponent;
 
 namespace LCAnomalyLibrary.Patch
 {
@@ -22,6 +19,14 @@ namespace LCAnomalyLibrary.Patch
         {
             //Log.Warning("CompStudyUnlocks.RegisterStudyLevel 注入成功");
 
+            //更新研究进度
+
+            var component = Current.Game.GetComponent<GameComponent_LC>();
+            component.TryGetAnomalyStatusSaved(__instance.parent.def, out AnomalyStatusSaved saved);
+            saved.StudyProgress = i + 1;
+            component.AnomalyStatusSavedDict[__instance.parent.def] = saved;
+
+            //进行名称检查
             var lcComp = __instance as LC_CompStudyUnlocks;
             lcComp?.UnlockNameCheck();
         }
