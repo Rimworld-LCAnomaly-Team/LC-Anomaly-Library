@@ -13,7 +13,7 @@ namespace LCAnomalyLibrary.Patch
         private static bool Prefix(ref bool __result, Pawn pawn, Thing t, bool forced = false)
         {
             //非强制情况下，如果是LC实体则取消研究工作
-            if (!forced && t.def == Defs.ThingDefOf.LC_HoldingPlatform)
+            if (!forced && t.def is Defs.LC_HoldingPlatformDef)
             {
                 __result = false;
                 return false;

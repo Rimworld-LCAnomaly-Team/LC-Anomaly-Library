@@ -42,7 +42,6 @@ namespace LCAnomalyLibrary.Patch
                 return;
             }
 
-
             //如果未启用精神崩溃警报机制，就不处理
             if (!Setting_LCAnomalyLibrary_Main.Settings.If_EnableLCWarningMentalBreak)
             {

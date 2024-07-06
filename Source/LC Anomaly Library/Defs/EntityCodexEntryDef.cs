@@ -1,5 +1,4 @@
-﻿
-namespace LCAnomalyLibrary.Defs
+﻿namespace LCAnomalyLibrary.Defs
 {
     public class EntityCodexEntryDef : RimWorld.EntityCodexEntryDef
     {

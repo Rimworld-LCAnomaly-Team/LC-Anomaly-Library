@@ -1,6 +1,5 @@
 ﻿using LCAnomalyLibrary.Defs;
 using System.Collections.Generic;
-using System.Linq;
 using Verse;
 
 namespace LCAnomalyLibrary.Util
@@ -49,7 +48,7 @@ namespace LCAnomalyLibrary.Util
         /// </summary>
         private static Dictionary<string, List<PawnKindDef_LCAnomalyBase>> anomlayLvl2DefList_SevenSin;
 
-        #endregion
+        #endregion 字段
 
         #region 初始化
 
@@ -135,7 +134,7 @@ namespace LCAnomalyLibrary.Util
             Init();
         }
 
-        #endregion
+        #endregion 初始化
 
         #region 工具方法
 
@@ -203,6 +202,6 @@ namespace LCAnomalyLibrary.Util
             return false;
         }
 
-        #endregion
+        #endregion 工具方法
     }
 }

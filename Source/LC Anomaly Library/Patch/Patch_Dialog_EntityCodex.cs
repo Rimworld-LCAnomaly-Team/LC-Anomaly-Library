@@ -8,7 +8,7 @@ using Verse;
 
 namespace LCAnomalyLibrary.Patch
 {
-    [HarmonyPatch(typeof(Dialog_EntityCodex), MethodType.Constructor, new Type[] {typeof(EntityCodexEntryDef) })]
+    [HarmonyPatch(typeof(Dialog_EntityCodex), MethodType.Constructor, new Type[] { typeof(EntityCodexEntryDef) })]
     public class Patch_Dialog_EntityCodex
     {
         private static void Postfix(Dialog_EntityCodex __instance, EntityCodexEntryDef selectedEntry = null)
@@ -24,9 +24,9 @@ namespace LCAnomalyLibrary.Patch
             __instance.doCloseButton = true;
             __instance.forcePause = true;
 
-
             var temp_categoriesInOrder = (from x in DefDatabase<EntityCategoryDef>.AllDefsListForReading
-                                          where DefDatabase<EntityCodexEntryDef>.AllDefs.Any((EntityCodexEntryDef y) => !(y is Defs.EntityCodexEntryDef) && y.category == x && y.Visible)
+                                          where DefDatabase<EntityCodexEntryDef>.AllDefs
+                                          .Any((EntityCodexEntryDef y) => !(y is Defs.EntityCodexEntryDef) && y.category == x && y.Visible)
                                           orderby x.listOrder
                                           select x).ToList();
 
@@ -56,7 +56,6 @@ namespace LCAnomalyLibrary.Patch
                 value.SortBy((EntityCodexEntryDef e) => e.orderInCategory, (EntityCodexEntryDef e) => e.label);
             }
             fieldInfo1.SetValue(__instance, temp_entriesByCategory);
-
 
             var temp_selectedEntry = selectedEntry ?? DefDatabase<EntityCodexEntryDef>.AllDefs.OrderBy((EntityCodexEntryDef x) => x.label).FirstOrDefault((EntityCodexEntryDef x) => x.Discovered);
             fieldInfo3.SetValue(__instance, temp_selectedEntry);

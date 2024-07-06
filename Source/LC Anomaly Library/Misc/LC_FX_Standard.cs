@@ -30,7 +30,7 @@ namespace LCAnomalyLibrary.Misc
         /// </summary>
         protected bool hasInited;
 
-        #endregion
+        #endregion 字段
 
         #region 生命周期
 
@@ -52,11 +52,11 @@ namespace LCAnomalyLibrary.Misc
         /// <exception cref="NotImplementedException"></exception>
         public virtual void Complete()
         {
-            if(hasInited)
+            if (hasInited)
                 throw new NotImplementedException("LC_FX_Standard:Complete():::Not implemented yet");
         }
 
-        #endregion
+        #endregion 生命周期
 
         /// <summary>
         /// 对对应的Pawn初始化效果

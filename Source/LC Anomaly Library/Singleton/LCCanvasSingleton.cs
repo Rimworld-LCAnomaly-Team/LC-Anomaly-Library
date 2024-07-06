@@ -6,7 +6,6 @@ using static LCAnomalyLibrary.Util.MusicUtils;
 
 namespace LCAnomalyLibrary.Singleton
 {
-
     public class LCCanvasSingleton
     {
         public static LCCanvasSingleton Instance
@@ -18,6 +17,7 @@ namespace LCAnomalyLibrary.Singleton
                 return instance;
             }
         }
+
         private static LCCanvasSingleton instance = null;
 
         public GameObject GameObject;
@@ -33,7 +33,7 @@ namespace LCAnomalyLibrary.Singleton
         private bool shouldShowWarningUI;
         private bool shouldDecreaseAlpha;
 
-        public LCCanvasSingleton() 
+        public LCCanvasSingleton()
         {
             this.GameObject = new GameObject();
             this.GameObject.name = "LCAnomalyCanvas";
@@ -50,7 +50,7 @@ namespace LCAnomalyLibrary.Singleton
             this.CanvasGroup.blocksRaycasts = false;
             this.CanvasGroup.ignoreParentGroups = false;
             this.CanvasGroup.alpha = 1f;
-            
+
             RegisterEvents();
         }
 
@@ -77,15 +77,14 @@ namespace LCAnomalyLibrary.Singleton
                     this.CanvasGroup.alpha += 0.01f;
                 }
 
-                if(this.CanvasGroup.alpha >= 1f)
+                if (this.CanvasGroup.alpha >= 1f)
                 {
                     shouldDecreaseAlpha = true;
                 }
-                else if(this.CanvasGroup.alpha <= 0f)
+                else if (this.CanvasGroup.alpha <= 0f)
                 {
                     shouldDecreaseAlpha = false;
                 }
-
             }
 
             tickCounter++;
@@ -98,10 +97,9 @@ namespace LCAnomalyLibrary.Singleton
             }
         }
 
-
         public void ShowWarningUI(EWarningLevel level)
         {
-            if(level == EWarningLevel.First)
+            if (level == EWarningLevel.First)
             {
                 this.Image.sprite = FirstWarningSprite;
                 this.Image.material.color = Color.yellow;

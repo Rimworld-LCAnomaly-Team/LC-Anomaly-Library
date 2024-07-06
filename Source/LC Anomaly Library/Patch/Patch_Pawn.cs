@@ -1,8 +1,8 @@
 ﻿using HarmonyLib;
+using LCAnomalyLibrary.Setting;
+using LCAnomalyLibrary.Util;
 using RimWorld;
 using Verse;
-using LCAnomalyLibrary.Util;
-using LCAnomalyLibrary.Setting;
 
 namespace LCAnomalyLibrary.Patch
 {
@@ -72,14 +72,12 @@ namespace LCAnomalyLibrary.Patch
                 return;
             }
 
-
             //如果未启用死亡警报机制，就返回原方法
             if (!Setting_LCAnomalyLibrary_Main.Settings.If_EnableLCWarningDeath)
             {
                 Log.Warning("警报点数（Pawn）：未启用死亡警报机制");
                 return;
             }
-
 
             //非人类不提供点数
             if (!pawn.RaceProps.Humanlike)

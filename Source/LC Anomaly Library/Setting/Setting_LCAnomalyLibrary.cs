@@ -20,6 +20,7 @@ namespace LCAnomalyLibrary.Setting
         /// 是否启用LC警报系统
         /// </summary>
         public bool If_EnableLCWarning = true;
+
         /// <summary>
         /// 是否启用LC警报音乐
         /// </summary>
@@ -29,10 +30,12 @@ namespace LCAnomalyLibrary.Setting
         /// 是否启用自定义警报点数降低选项
         /// </summary>
         public bool If_EnableCustomWarningFadeOption = false;
+
         /// <summary>
         /// 警报点数降低间隔（Tick）
         /// </summary>
         public int PointsOfWarning_FadeDuration = 900;
+
         /// <summary>
         /// 每次降低的警报点数
         /// </summary>
@@ -42,14 +45,17 @@ namespace LCAnomalyLibrary.Setting
         /// 是否启用死亡警报点数计算
         /// </summary>
         public bool If_EnableLCWarningDeath = true;
+
         /// <summary>
         /// 玩家派系死亡提供的警报点数
         /// </summary>
         public int PointsOfWarning_PlayerFactionDie = 4;
+
         /// <summary>
         /// 友军派系死亡提供的警报点数
         /// </summary>
         public int PointsOfWarning_AllyFactionDie = 2;
+
         /// <summary>
         /// 中立派系死亡提供的警报点数
         /// </summary>
@@ -59,22 +65,25 @@ namespace LCAnomalyLibrary.Setting
         /// 是否启用精神崩溃警报点数计算
         /// </summary>
         public bool If_EnableLCWarningMentalBreak = true;
+
         /// <summary>
         /// 玩家派系精神崩溃提供的警报点数
         /// </summary>
         public int PointsOfWarning_PlayerFactionMentalBreak = 2;
+
         /// <summary>
         /// 友军派系精神崩溃提供的警报点数
         /// </summary>
         public int PointsOfWarning_AllyFactionMentalBreak = 1;
+
         /// <summary>
         /// 中立派系精神崩溃提供的警报点数
         /// </summary>
         public int PointsOfWarning_NeturalFactionMentalBreak = 0;
 
-        #endregion
+        #endregion 警报相关
 
-        #endregion
+        #endregion 字段
 
         /// <summary>
         /// 保存相关
@@ -109,7 +118,7 @@ namespace LCAnomalyLibrary.Setting
             Scribe_Values.Look<int>(ref this.PointsOfWarning_AllyFactionMentalBreak, "PointsOfWarning_AllyFactionMentalBreak", 1, false);
             Scribe_Values.Look<int>(ref this.PointsOfWarning_NeturalFactionMentalBreak, "PointsOfWarning_NeturalFactionMentalBreak", 0, false);
 
-            #endregion
+            #endregion 警报相关
         }
     }
 }

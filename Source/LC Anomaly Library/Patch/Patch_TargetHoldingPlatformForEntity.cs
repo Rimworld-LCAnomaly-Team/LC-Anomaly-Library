@@ -8,7 +8,6 @@ using Verse.AI;
 
 namespace LCAnomalyLibrary.Patch
 {
-
     [HarmonyPatch(typeof(StudyUtility), nameof(StudyUtility.TargetHoldingPlatformForEntity))]
     public class Patch_TargetHoldingPlatformForEntity
     {
@@ -86,7 +85,7 @@ namespace LCAnomalyLibrary.Patch
                     {
                         /* 新增方法开始 */
 
-                        bool isLCPlatform = p.def == Defs.ThingDefOf.LC_HoldingPlatform;
+                        bool isLCPlatform = p.def is LC_HoldingPlatformDef;
 
                         if (StudyUtility.AlreadyReserved(p, out reserver))
                         {
@@ -124,7 +123,6 @@ namespace LCAnomalyLibrary.Patch
 
             return false;
 
-
             bool CanReserveForTransfer(LocalTargetInfo t)
             {
                 if (transferBetweenPlatforms)
@@ -146,7 +144,7 @@ namespace LCAnomalyLibrary.Patch
                 {
                     /* 新增方法开始 */
 
-                    bool isLCPlatform = t.Thing.def == Defs.ThingDefOf.LC_HoldingPlatform;
+                    bool isLCPlatform = t.Thing.def is LC_HoldingPlatformDef;
 
                     if (!((isLCEntity && isLCPlatform) || (!isLCEntity && !isLCPlatform)))
                     {

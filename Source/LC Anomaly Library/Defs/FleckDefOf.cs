@@ -13,10 +13,12 @@ namespace LCAnomalyLibrary.Defs
         /// 工作质量为好
         /// </summary>
         public static FleckDef WorkResult_Good;
+
         /// <summary>
         /// 工作质量为普通
         /// </summary>
         public static FleckDef WorkResult_Normal;
+
         /// <summary>
         /// 工作质量为差
         /// </summary>

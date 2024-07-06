@@ -254,4 +254,3 @@ namespace LCAnomalyLibrary.UI
         }
     }
 }
-

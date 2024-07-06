@@ -27,7 +27,6 @@ namespace LCAnomalyLibrary.PsychicRituals
         /// </summary>
         public string anomalyLevelTag;
 
-
         /// <summary>
         /// 提取仪式
         /// </summary>

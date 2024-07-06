@@ -49,10 +49,12 @@ namespace LCAnomalyLibrary.Util
         /// 良好
         /// </summary>
         Good,
+
         /// <summary>
         /// 一般
         /// </summary>
         Normal,
+
         /// <summary>
         /// 差
         /// </summary>

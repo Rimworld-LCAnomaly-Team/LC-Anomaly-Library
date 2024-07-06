@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using Verse;
-using Verse.Noise;
 
 namespace LCAnomalyLibrary.Setting
 {
@@ -64,7 +63,7 @@ namespace LCAnomalyLibrary.Setting
         /// <param name="inRect"></param>
         private void ShowWarningSettings(bool state, ref float y, Rect inRect)
         {
-            if(!state)
+            if (!state)
                 return;
 
             y += 40;

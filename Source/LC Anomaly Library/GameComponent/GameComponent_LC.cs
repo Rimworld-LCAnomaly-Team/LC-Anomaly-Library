@@ -9,7 +9,7 @@ namespace LCAnomalyLibrary.GameComponent
     /// <summary>
     /// LC游戏组件
     /// </summary>
-    public class GameComponent_LC: Verse.GameComponent
+    public class GameComponent_LC : Verse.GameComponent
     {
         /// <summary>
         /// 当前的警报点数
@@ -32,6 +32,7 @@ namespace LCAnomalyLibrary.GameComponent
                 Util.MusicUtils.PlayMusic_LC(curWarningPoints);
             }
         }
+
         private int curWarningPoints;
 
         private int waringPointsCounter;
@@ -49,11 +50,11 @@ namespace LCAnomalyLibrary.GameComponent
                 return anomalyStatusSavedDict;
             }
         }
+
         protected Dictionary<ThingDef, AnomalyStatusSaved> anomalyStatusSavedDict;
 
         public GameComponent_LC(Game game)
         {
-
         }
 
         /// <summary>
@@ -113,6 +114,7 @@ namespace LCAnomalyLibrary.GameComponent
         /// 已提取EGO武器数量
         /// </summary>
         public int ExtractedEgoWeaponAmount = 0;
+
         /// <summary>
         /// 已提取EGO护甲数量
         /// </summary>

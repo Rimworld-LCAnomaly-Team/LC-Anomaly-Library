@@ -81,6 +81,6 @@ namespace LCAnomalyLibrary.Defs
         /// </summary>
         public static ApparelLayerDef LC_AccessoryBack_Left;
 
-        #endregion
+        #endregion E.G.O饰品
     }
 }

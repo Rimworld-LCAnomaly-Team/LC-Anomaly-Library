@@ -21,7 +21,7 @@ namespace LCAnomalyLibrary.Util
 
             if (points >= 80)
             {
-                if(musicManager.CurrentSong != Defs.SongDefOf.ThirdWarning)
+                if (musicManager.CurrentSong != Defs.SongDefOf.ThirdWarning)
                 {
                     Log.Warning("警报音乐：播放3级警报音乐");
                     musicManager.ForcePlaySong(Defs.SongDefOf.ThirdWarning, false);
@@ -30,7 +30,7 @@ namespace LCAnomalyLibrary.Util
                 return;
             }
 
-            if(points >= 50)
+            if (points >= 50)
             {
                 if (musicManager.CurrentSong != Defs.SongDefOf.SecondWarning)
                 {
@@ -70,7 +70,6 @@ namespace LCAnomalyLibrary.Util
                 Log.Warning("警报音乐：重置音乐");
                 musicManager.StartNewSong();
             }
-
         }
 
         public static int LevelTag2Points(string tag)
@@ -79,14 +78,19 @@ namespace LCAnomalyLibrary.Util
             {
                 case "ZAYIN":
                     return 5;
+
                 case "TETH":
                     return 20;
+
                 case "HE":
                     return 40;
+
                 case "WAW":
                     return 60;
+
                 case "ALEPH":
                     return 75;
+
                 default:
                     throw new InvalidEnumArgumentException($"未知的异想体等级：{tag}");
             }
