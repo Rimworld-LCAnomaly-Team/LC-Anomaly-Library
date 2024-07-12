@@ -113,22 +113,66 @@ namespace LCAnomalyLibrary.GameComponent
         /// <summary>
         /// 已提取EGO武器数量
         /// </summary>
-        public int ExtractedEgoWeaponAmount = 0;
+        public int ExtractedEgoWeaponAmount
+        {
+            get => extractedEgoWeaponAmount;
+            set
+            {
+                if (value < 0)
+                    return;
+
+                extractedEgoWeaponAmount = value;
+            }
+        }
+        private int extractedEgoWeaponAmount = 0;
 
         /// <summary>
         /// 已提取EGO护甲数量
         /// </summary>
-        public int ExtractedEgoArmorAmount = 0;
+        public int ExtractedEgoArmorAmount
+        {
+            get => extractedEgoArmorAmount;
+            set
+            {
+                if (value < 0)
+                    return;
+
+                extractedEgoArmorAmount = value;
+            }
+        }
+        private int extractedEgoArmorAmount = 0;
 
         /// <summary>
         /// 已提取独立PeBox数量
         /// </summary>
-        public int IndiPeBoxAmount = 0;
+        public int IndiPeBoxAmount
+        {
+            get => indiPeBoxAmount;
+            set
+            {
+                if (value < 0)
+                    return;
+
+                indiPeBoxAmount = value;
+            }
+        }
+        private int indiPeBoxAmount = 0;
 
         /// <summary>
         /// 研究进度
         /// </summary>
-        public int StudyProgress = 0;
+        public int StudyProgress
+        {
+            get => studyProgress;
+            set
+            {
+                if (value < 0)
+                    return;
+
+                studyProgress = value;
+            }
+        }
+        private int studyProgress = 0;
 
         public AnomalyStatusSaved(int extractedEgoWeaponAmount, int extractedEgoArmorAmount, int indiPeBoxAmount, int studyProgress)
         {
@@ -140,10 +184,10 @@ namespace LCAnomalyLibrary.GameComponent
 
         public void ExposeData()
         {
-            Scribe_Values.Look(ref ExtractedEgoWeaponAmount, "ExtractedEgoWeaponAmount", 0);
-            Scribe_Values.Look(ref ExtractedEgoArmorAmount, "ExtractedEgoArmorAmount", 0);
-            Scribe_Values.Look(ref IndiPeBoxAmount, "IndiPeBoxAmount", 0);
-            Scribe_Values.Look(ref StudyProgress, "StudyProgress", 0);
+            Scribe_Values.Look(ref extractedEgoWeaponAmount, "extractedEgoWeaponAmount", 0);
+            Scribe_Values.Look(ref extractedEgoArmorAmount, "extractedEgoArmorAmount", 0);
+            Scribe_Values.Look(ref indiPeBoxAmount, "indiPeBoxAmount", 0);
+            Scribe_Values.Look(ref studyProgress, "studyProgress", 0);
         }
     }
 }

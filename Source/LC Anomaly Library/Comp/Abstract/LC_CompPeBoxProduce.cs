@@ -1,5 +1,6 @@
 ﻿using LCAnomalyLibrary.GameComponent;
 using LCAnomalyLibrary.Util;
+using System;
 using System.Collections.Generic;
 using Verse;
 
@@ -32,6 +33,8 @@ namespace LCAnomalyLibrary.Comp
                 component.TryGetAnomalyStatusSaved(parent.def, out AnomalyStatusSaved saved);
                 saved.IndiPeBoxAmount = value;
                 component.AnomalyStatusSavedDict[parent.def] = saved;
+
+                OnContentsChanged?.Invoke();
             }
         }
 
@@ -74,6 +77,11 @@ namespace LCAnomalyLibrary.Comp
             }
         }
 
+        /// <summary>
+        /// 值发生变化时调用
+        /// </summary>
+        public event Action OnContentsChanged;
+
         public override IEnumerable<Verse.Gizmo> CompGetGizmosExtra()
         {
             foreach (var gizmo in base.CompGetGizmosExtra())
@@ -85,21 +93,21 @@ namespace LCAnomalyLibrary.Comp
             {
                 yield return new Command_Action
                 {
-                    defaultLabel = "IndiPebox + 50",
+                    defaultLabel = "IndiPebox + 20",
                     action = delegate
                     {
-                        Log.Warning($"Dev：{parent.def.label.Translate()} 的独立PeBox增加了50点");
-                        CurAmountIndiPebox += 50;
+                        Log.Warning($"Dev：{parent.def.label.Translate()} 的独立PeBox增加了20点");
+                        CurAmountIndiPebox += 20;
                     }
                 };
 
                 yield return new Command_Action
                 {
-                    defaultLabel = "IndiPebox - 50",
+                    defaultLabel = "IndiPebox - 20",
                     action = delegate
                     {
-                        Log.Warning($"Dev：{parent.def.label.Translate()} 的独立PeBox减少了50点");
-                        CurAmountIndiPebox -= 50;
+                        Log.Warning($"Dev：{parent.def.label.Translate()} 的独立PeBox减少了20点");
+                        CurAmountIndiPebox -= 20;
                     }
                 };
             }

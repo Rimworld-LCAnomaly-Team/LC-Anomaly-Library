@@ -325,6 +325,11 @@
             <param name="studier">研究者</param>
             <param name="result">工作质量</param>
         </member>
+        <member name="E:LCAnomalyLibrary.Comp.LC_CompPeBoxProduce.OnContentsChanged">
+            <summary>
+            值发生变化时调用
+            </summary>
+        </member>
         <member name="T:LCAnomalyLibrary.Comp.CompProperties_Accessoryable">
             <summary>
             可获取饰品的CompProperties
@@ -692,22 +697,22 @@
             异想体独立数据
             </summary>
         </member>
-        <member name="F:LCAnomalyLibrary.GameComponent.AnomalyStatusSaved.ExtractedEgoWeaponAmount">
+        <member name="P:LCAnomalyLibrary.GameComponent.AnomalyStatusSaved.ExtractedEgoWeaponAmount">
             <summary>
             已提取EGO武器数量
             </summary>
         </member>
-        <member name="F:LCAnomalyLibrary.GameComponent.AnomalyStatusSaved.ExtractedEgoArmorAmount">
+        <member name="P:LCAnomalyLibrary.GameComponent.AnomalyStatusSaved.ExtractedEgoArmorAmount">
             <summary>
             已提取EGO护甲数量
             </summary>
         </member>
-        <member name="F:LCAnomalyLibrary.GameComponent.AnomalyStatusSaved.IndiPeBoxAmount">
+        <member name="P:LCAnomalyLibrary.GameComponent.AnomalyStatusSaved.IndiPeBoxAmount">
             <summary>
             已提取独立PeBox数量
             </summary>
         </member>
-        <member name="F:LCAnomalyLibrary.GameComponent.AnomalyStatusSaved.StudyProgress">
+        <member name="P:LCAnomalyLibrary.GameComponent.AnomalyStatusSaved.StudyProgress">
             <summary>
             研究进度
             </summary>
