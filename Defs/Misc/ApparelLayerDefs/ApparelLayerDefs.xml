@@ -19,7 +19,7 @@
   <ApparelLayerDef>
     <defName>LC_AccessoryMouth</defName>
     <label>LC_AccessoryMouth</label>
-    <drawOrder>600</drawOrder>
+    <drawOrder>400</drawOrder>
   </ApparelLayerDef>
 
   <!-- 口罩 -->

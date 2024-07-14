@@ -112,6 +112,7 @@
     <Compile Include="Defs\ThingDef_LCAnomalyBase.cs" />
     <Compile Include="GameComponent\GameComponent_LC.cs" />
     <Compile Include="Jobs\JobDriver_CarryToEntityHolder.cs" />
+    <Compile Include="Patch\Patch_ApparelProperties.cs" />
     <Compile Include="Patch\Patch_Dialog_EntityCodex.cs" />
     <Compile Include="Patch\Patch_MentalBreak.cs" />
     <Compile Include="Patch\Patch_TargetHoldingPlatformForEntity.cs" />
