@@ -32,6 +32,9 @@
       <useWornGraphicMask>false</useWornGraphicMask>
       <wearPerDay>0</wearPerDay>
       <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
+      <drawData>
+        <dataNorth><layer>40</layer></dataNorth>
+      </drawData>
     </apparel>
     <thingCategories>
       <li>LC_Apparel_EGO</li>
