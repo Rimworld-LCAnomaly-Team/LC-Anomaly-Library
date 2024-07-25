@@ -12,21 +12,21 @@ namespace LCAnomalyLibrary.Defs
         /// <summary>
         /// 红伤（WIP）
         /// </summary>
-        public static DamageDef LC_Entity_RED;
+        public static DamageDef LC_RedDamage;
 
         /// <summary>
         /// 白伤（WIP）
         /// </summary>
-        public static DamageDef LC_Entity_WHITE;
+        public static DamageDef LC_WhiteDamage;
 
         /// <summary>
         /// 黑伤（WIP）
         /// </summary>
-        public static DamageDef LC_Entity_BLACK;
+        public static DamageDef LC_BlackDamage;
 
         /// <summary>
         /// 蓝伤（WIP）
         /// </summary>
-        public static DamageDef LC_Entity_PALE;
+        public static DamageDef LC_PaleDamage;
     }
 }

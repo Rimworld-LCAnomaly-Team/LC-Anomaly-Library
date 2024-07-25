@@ -97,9 +97,14 @@
     <Compile Include="Comp\Concrete\CompAccessoryable.cs" />
     <Compile Include="Comp\Concrete\CompEgoExtractable.cs" />
     <Compile Include="Comp\Abstract\LC_CompPeBoxProduce.cs" />
+    <Compile Include="Comp\Concrete\CompEgoSuit.cs" />
+    <Compile Include="Comp\Concrete\CompEgoWeapon.cs" />
+    <Compile Include="Comp\Concrete\CompPoperties_EgoSuit.cs" />
     <Compile Include="Comp\Concrete\CompProperties_Accessoryable.cs" />
     <Compile Include="Comp\Concrete\CompProperties_EgoExtractable.cs" />
     <Compile Include="Comp\Abstract\LC_CompProperties_PeBoxProduce.cs" />
+    <Compile Include="Comp\Concrete\CompProperties_EgoWeapon.cs" />
+    <Compile Include="DamageWorker\DamageWorker_LC_Red.cs" />
     <Compile Include="Defs\ApparelLayerDefOf.cs" />
     <Compile Include="Defs\DutyDefOf.cs" />
     <Compile Include="Defs\DamageDefOf.cs" />
@@ -139,6 +144,7 @@
     <Compile Include="UI\Dialog_LC_EntityCodex.cs" />
     <Compile Include="Util\Components.cs" />
     <Compile Include="Util\Curves.cs" />
+    <Compile Include="Util\DamageUtils.cs" />
     <Compile Include="Util\ExpansionActive.cs" />
     <Compile Include="Util\ExtractUtil.cs" />
     <Compile Include="Util\MusicUtils.cs" />
