@@ -717,21 +717,6 @@
             研究进度
             </summary>
         </member>
-        <member name="T:LCAnomalyLibrary.Jobs.JobDriver_CarryToEntityHolder">
-            <summary>
-            改自原版同名工作，是携带实体到平台的工作
-            </summary>
-        </member>
-        <member name="T:LCAnomalyLibrary.Jobs.JobGiver_GatherOfferingsForExtractRitual">
-            <summary>
-            仪式收集祭品工作（和原版基本一致）
-            </summary>
-        </member>
-        <member name="T:LCAnomalyLibrary.Jobs.LordJob_ExtractRitual">
-            <summary>
-            仪式工作（和原版基本一致）
-            </summary>
-        </member>
         <member name="T:LCAnomalyLibrary.Patch.Patch_ApparelProperties">
             <summary>
             服装层Patch（用于解决头部服装渲染问题）
@@ -757,11 +742,6 @@
             Postfix
             </summary>
             <param name="__instance">原来的反射对象</param>
-        </member>
-        <member name="T:LCAnomalyLibrary.Patch.Patch_WorkGiver_DarkStudyInteract">
-            <summary>
-            关于WorkGiver_DarkStudyInteract的补丁（用于禁止主动研究LC实体）
-            </summary>
         </member>
         <member name="T:LCAnomalyLibrary.Patch.Patch_PawnKill">
             <summary>
@@ -1025,6 +1005,16 @@
             是否满足过渡条件
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:LCAnomalyLibrary.Jobs.JobGiver_GatherOfferingsForExtractRitual">
+            <summary>
+            仪式收集祭品工作（和原版基本一致）
+            </summary>
+        </member>
+        <member name="T:LCAnomalyLibrary.Jobs.LordJob_ExtractRitual">
+            <summary>
+            仪式工作（和原版基本一致）
+            </summary>
         </member>
         <member name="T:LCAnomalyLibrary.Misc.LC_FX_Standard">
             <summary>
