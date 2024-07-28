@@ -261,7 +261,7 @@ namespace LCAnomalyLibrary.Comp
         /// </summary>
         /// <param name="studier">研究者</param>
         /// <returns></returns>
-        protected abstract bool CheckStudierSkillRequire(Pawn studier);
+        public abstract bool CheckStudierSkillRequire(Pawn studier);
 
         /// <summary>
         /// Debug：调试用逆卡巴拉强制熔毁

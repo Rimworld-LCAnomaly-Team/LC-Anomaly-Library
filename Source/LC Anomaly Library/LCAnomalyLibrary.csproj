@@ -94,6 +94,7 @@
     <Compile Include="Comp\Abstract\LC_CompProperties_StudyUnlocks.cs" />
     <Compile Include="Comp\Abstract\LC_CompRequireThingSpawner.cs" />
     <Compile Include="Comp\Abstract\LC_CompStudyUnlocks.cs" />
+    <Compile Include="Comp\Abstract\LC_EntityBase.cs" />
     <Compile Include="Comp\Concrete\CompAccessoryable.cs" />
     <Compile Include="Comp\Concrete\CompEgoExtractable.cs" />
     <Compile Include="Comp\Abstract\LC_CompPeBoxProduce.cs" />
@@ -116,6 +117,7 @@
     <Compile Include="Defs\ThingDef_LCAnomalyBase.cs" />
     <Compile Include="GameComponent\GameComponent_LC.cs" />
     <Compile Include="Patch\Patch_ApparelProperties.cs" />
+    <Compile Include="Patch\Patch_AnomalyUtility.cs" />
     <Compile Include="Patch\Patch_Dialog_EntityCodex.cs" />
     <Compile Include="Patch\Patch_MentalBreak.cs" />
     <Compile Include="Patch\Patch_TickManager.cs" />
@@ -143,8 +145,10 @@
     <Compile Include="Util\DamageUtils.cs" />
     <Compile Include="Util\ExpansionActive.cs" />
     <Compile Include="Util\ExtractUtil.cs" />
+    <Compile Include="Util\Gizmos.cs" />
     <Compile Include="Util\MusicUtils.cs" />
     <Compile Include="Util\StudyUtils.cs" />
+    <Compile Include="Util\Types.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Test\" />

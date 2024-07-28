@@ -80,7 +80,7 @@ namespace LCAnomalyLibrary.UI
             rect.height -= ButSize.y + 10f;
             using (new TextBlock(GameFont.Medium))
             {
-                Widgets.Label(new Rect(0f, 0f, rect.width, 30f), "EntityCodex".Translate());
+                Widgets.Label(new Rect(0f, 0f, rect.width, 30f), "LC_EntityCodexLabel".Translate());
             }
 
             if (Prefs.DevMode && DebugSettings.godMode)
@@ -89,7 +89,7 @@ namespace LCAnomalyLibrary.UI
             }
 
             rect.yMin += 40f;
-            TaggedString taggedString = "EntityCodexDesc".Translate();
+            TaggedString taggedString = "LC_EntityCodexDesc".Translate();
             float num = Text.CalcHeight(taggedString, rect.width);
             Widgets.Label(new Rect(0f, rect.y, rect.width, num), taggedString);
             rect.yMin += num + 10f;
@@ -201,8 +201,13 @@ namespace LCAnomalyLibrary.UI
                 float num2 = num;
                 float height = categoryRectSizes[item];
                 GUI.color = new Color(1f, 1f, 1f, 0.5f);
-                Widgets.DrawHighlight(new Rect(0f, num, rect.width, height));
+
+                //绘制每行的灰色长条和Tip
+                var rectBg = new Rect(0f, num, rect.width, height);
+                Widgets.DrawHighlight(rectBg);
                 GUI.color = Color.white;
+                DrawToolTipRow(item, rectBg);
+
                 Widgets.Label(new Rect(10f, num, rect.width, Text.LineHeight), item.LabelCap);
                 num += Text.LineHeight + 4f;
                 List<Defs.EntityCodexEntryDef> list = entriesByCategory[item];
@@ -251,6 +256,22 @@ namespace LCAnomalyLibrary.UI
                 selectedEntry = entry;
                 SoundDefOf.Tick_High.PlayOneShotOnCamera();
             }
+        }
+
+        /// <summary>
+        /// 绘制Tip
+        /// </summary>
+        /// <param name="cat">类型</param>
+        /// <param name="rect">rect</param>
+        private void DrawToolTipRow(EntityCategoryDef cat, Rect rect)
+        {
+            //Log.Message("鼠标进入区域");
+
+            string labelCap = cat.label.Translate();
+            labelCap += "\n\n" + ("LC_EntityCodexTip." + cat.defName).Translate();
+
+            if (Mouse.IsOver(rect))
+                TooltipHandler.TipRegion(rect, labelCap);
         }
     }
 }

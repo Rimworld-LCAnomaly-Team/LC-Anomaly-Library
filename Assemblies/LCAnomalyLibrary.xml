@@ -197,6 +197,16 @@
             Comp
             </summary>
         </member>
+        <member name="T:LCAnomalyLibrary.Comp.Abstract.LC_EntityBaseThing">
+            <summary>
+            LC实体Thing基类
+            </summary>
+        </member>
+        <member name="T:LCAnomalyLibrary.Comp.Abstract.LC_EntityBasePawn">
+            <summary>
+            LC实体Pawn基类
+            </summary>
+        </member>
         <member name="T:LCAnomalyLibrary.Comp.CompAccessoryable">
             <summary>
             可获取饰品的Comp
@@ -722,6 +732,19 @@
             服装层Patch（用于解决头部服装渲染问题）
             </summary>
         </member>
+        <member name="T:LCAnomalyLibrary.Patch.Patch_AnomalyUtility">
+            <summary>
+            关于AnomalyUtility的补丁（用于移除和添加图鉴）
+            </summary>
+        </member>
+        <member name="M:LCAnomalyLibrary.Patch.Patch_AnomalyUtility.Prefix(Verse.Thing,Verse.Gizmo@)">
+            <summary>
+            Prefix方法
+            </summary>
+            <param name="thing">实体</param>
+            <param name="__result">gizmo</param>
+            <returns>是否中断原方法</returns>
+        </member>
         <member name="T:LCAnomalyLibrary.Patch.Patch_MentalBreak">
             <summary>
             关于MentalStateHandler的补丁（为了提供崩溃警报点数）
@@ -1078,6 +1101,13 @@
             提取意识的聚集Toil（和原版基本一致）
             </summary>
         </member>
+        <member name="M:LCAnomalyLibrary.UI.Dialog_LC_EntityCodex.DrawToolTipRow(RimWorld.EntityCategoryDef,UnityEngine.Rect)">
+            <summary>
+            绘制Tip
+            </summary>
+            <param name="cat">类型</param>
+            <param name="rect">rect</param>
+        </member>
         <member name="T:LCAnomalyLibrary.Util.Curves">
             <summary>
             曲线工具类
@@ -1198,6 +1228,18 @@
             <summary>
             差
             </summary>
+        </member>
+        <member name="T:LCAnomalyLibrary.Util.Types">
+            <summary>
+            类型转换工具
+            </summary>
+        </member>
+        <member name="M:LCAnomalyLibrary.Util.Types.CheckIfLCEntity(Verse.Thing)">
+            <summary>
+            检查是否是LC实体
+            </summary>
+            <param name="thing">实体</param>
+            <returns>是则返回true，反之false</returns>
         </member>
     </members>
 </doc>
