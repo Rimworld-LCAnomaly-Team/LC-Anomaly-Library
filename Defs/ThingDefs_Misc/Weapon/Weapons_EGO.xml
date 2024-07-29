@@ -11,6 +11,7 @@
     <weaponClasses>
       <li>Melee</li>
     </weaponClasses>
+    <stackLimit>1</stackLimit>
     <useHitPoints>false</useHitPoints>
     <statBases>
       <MaxHitPoints>0</MaxHitPoints>
