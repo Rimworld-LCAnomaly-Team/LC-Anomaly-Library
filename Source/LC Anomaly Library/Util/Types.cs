@@ -14,6 +14,9 @@ namespace LCAnomalyLibrary.Util
         /// <returns>是则返回true，反之false</returns>
         public static bool CheckIfLCEntity(Thing thing)
         {
+            if (thing == null)
+                return false;
+
             return thing.def.entityCodexEntry is Defs.EntityCodexEntryDef;
         }
     }
