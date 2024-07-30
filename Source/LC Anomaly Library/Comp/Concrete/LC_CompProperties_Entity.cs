@@ -5,7 +5,7 @@ namespace LCAnomalyLibrary.Comp
     /// <summary>
     /// LC基础实体CompProperties
     /// </summary>
-    public abstract class LC_CompProperties_Entity : CompProperties
+    public class LC_CompProperties_Entity : CompProperties
     {
         #region XML字段
 

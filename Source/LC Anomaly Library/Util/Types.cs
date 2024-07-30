@@ -20,4 +20,13 @@ namespace LCAnomalyLibrary.Util
             return thing.def.entityCodexEntry is Defs.EntityCodexEntryDef;
         }
     }
+
+    public enum EAnomalyWorkType
+    {
+        Unknown,
+        Instinct,
+        Attachment,
+        Insight,
+        Repression
+    }
 }

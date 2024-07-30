@@ -3,7 +3,7 @@ using Verse;
 
 namespace LCAnomalyLibrary.Comp
 {
-    public abstract class LC_CompStudyUnlocks : CompStudyUnlocks
+    public class LC_CompStudyUnlocks : CompStudyUnlocks
     {
         protected new LC_CompProperties_StudyUnlocks Props => (LC_CompProperties_StudyUnlocks)props;
 
@@ -13,9 +13,11 @@ namespace LCAnomalyLibrary.Comp
             {
                 TransferStudyLevel(i);
             }
+
+            UnlockNameCheck();
         }
 
-        protected void TransferStudyLevel(int i)
+        protected virtual void TransferStudyLevel(int i)
         {
             if (nextIndex <= i)
             {
@@ -32,6 +34,8 @@ namespace LCAnomalyLibrary.Comp
         }
 
         public virtual void UnlockNameCheck()
-        { }
+        {
+
+        }
     }
 }

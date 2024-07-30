@@ -5,7 +5,7 @@
 	<supportedVersions>
 		<li>1.5</li>
 	</supportedVersions>
-	<description>Framework for DarthCY's Anomaly.</description>
+	<description>Framework for LobotomyCorporation's Anomaly DLC Expansion.</description>
 	<url>https://github.com/DarthCY-K/LC-Anomaly-Library</url>
 	<packageId>DarthCY.LC.AnomalyLibrary</packageId>
 	<modDependencies>

@@ -2,7 +2,7 @@
 
 namespace LCAnomalyLibrary.Comp
 {
-    public abstract class LC_CompProperties_StudyUnlocks : CompProperties_StudyUnlocks
+    public class LC_CompProperties_StudyUnlocks : CompProperties_StudyUnlocks
     {
         public LC_CompProperties_StudyUnlocks()
         {

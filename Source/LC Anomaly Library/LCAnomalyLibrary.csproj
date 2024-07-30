@@ -87,13 +87,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comp\Abstract\LC_CompEgg.cs" />
-    <Compile Include="Comp\Abstract\LC_CompEntity.cs" />
-    <Compile Include="Comp\Abstract\LC_CompProperties_Entity.cs" />
+    <Compile Include="Comp\Concrete\LC_CompEntity.cs" />
+    <Compile Include="Comp\Concrete\LC_CompProperties_Entity.cs" />
     <Compile Include="Comp\Abstract\LC_CompProperties_InteractableEgg.cs" />
     <Compile Include="Comp\Abstract\LC_CompProperties_RequireThingSpawner.cs" />
-    <Compile Include="Comp\Abstract\LC_CompProperties_StudyUnlocks.cs" />
+    <Compile Include="Comp\Concrete\LC_CompProperties_StudyUnlocks.cs" />
     <Compile Include="Comp\Abstract\LC_CompRequireThingSpawner.cs" />
-    <Compile Include="Comp\Abstract\LC_CompStudyUnlocks.cs" />
+    <Compile Include="Comp\Concrete\LC_CompStudyUnlocks.cs" />
     <Compile Include="Comp\Abstract\LC_EntityBase.cs" />
     <Compile Include="Comp\Concrete\CompAccessoryable.cs" />
     <Compile Include="Comp\Concrete\CompEgoExtractable.cs" />
@@ -116,6 +116,7 @@
     <Compile Include="Defs\EGO_TYPE.cs" />
     <Compile Include="Defs\ThingDef_LCAnomalyBase.cs" />
     <Compile Include="GameComponent\GameComponent_LC.cs" />
+    <Compile Include="Interface\IHoldingPlatformWorkTypeSelectable.cs" />
     <Compile Include="Patch\Patch_ApparelProperties.cs" />
     <Compile Include="Patch\Patch_AnomalyUtility.cs" />
     <Compile Include="Patch\Patch_Dialog_EntityCodex.cs" />

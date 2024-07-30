@@ -1,4 +1,5 @@
-﻿using LCAnomalyLibrary.Setting;
+﻿using LCAnomalyLibrary.Interface;
+using LCAnomalyLibrary.Setting;
 using LCAnomalyLibrary.Util;
 using RimWorld;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace LCAnomalyLibrary.Comp
     /// <summary>
     /// LC基础实体Comp
     /// </summary>
-    public abstract class LC_CompEntity : ThingComp
+    public class LC_CompEntity : ThingComp
     {
         #region 变量
 
@@ -161,12 +162,25 @@ namespace LCAnomalyLibrary.Comp
         /// <summary>
         /// 被研究后执行的操作
         /// </summary>
-        public abstract void Notify_Studied(Pawn studier);
+        public virtual void Notify_Studied(Pawn studier)
+        {
+            if (studier == null)
+                return;
+            var platform = parent.GetComp<CompHoldingPlatformTarget>().HeldPlatform as IHoldingPlatformWorkTypeSelectable;
+            if (platform != null)
+            {
+                Log.Warning($"研究者：{studier.Name} 将通过工作类型 {platform.CurWorkType.ToString()} 来通过判定");
+                CheckIfStudySuccess(studier, platform.CurWorkType);
+            }
+        }
 
         /// <summary>
         /// 绑到收容平台上的操作
         /// </summary>
-        public abstract void Notify_Holded();
+        public virtual void Notify_Holded()
+        {
+
+        }
 
         /// <summary>
         /// 研究质量：非差
@@ -179,11 +193,15 @@ namespace LCAnomalyLibrary.Comp
             {
                 case LC_StudyResult.Good:
                     QliphothCountCurrent++;
+                    AccessoryableComp?.CheckGiveAccessory(studier);
                     break;
 
                 case LC_StudyResult.Normal:
                     break;
             }
+
+            PeBoxComp?.CheckSpawnPeBox(studier, result);
+
             StudyUtil.DoStudyResultEffect(studier, (Pawn)parent, result);
         }
 
@@ -194,6 +212,8 @@ namespace LCAnomalyLibrary.Comp
         protected virtual void StudyEvent_Bad(Pawn studier)
         {
             QliphothCountCurrent--;
+
+            PeBoxComp?.CheckSpawnPeBox(studier, LC_StudyResult.Bad);
 
             StudyUtil.DoStudyResultEffect(studier, (Pawn)parent, LC_StudyResult.Bad);
         }
@@ -234,12 +254,13 @@ namespace LCAnomalyLibrary.Comp
         /// 检查研究是否成功
         /// </summary>
         /// <param name="studier">研究者</param>
+        /// <param name="workType">工作类型</param>
         /// <returns></returns>
-        protected virtual bool CheckIfStudySuccess(Pawn studier)
+        protected virtual bool CheckIfStudySuccess(Pawn studier, EAnomalyWorkType workType)
         {
             if (CheckStudierSkillRequire(studier))
             {
-                StudyEvent_NotBad(studier, CheckFinalStudyQuality(studier));
+                StudyEvent_NotBad(studier, CheckFinalStudyQuality(studier, workType));
                 return true;
             }
             else
@@ -253,15 +274,22 @@ namespace LCAnomalyLibrary.Comp
         /// 计算研究质量
         /// </summary>
         /// <param name="studier">研究者</param>
+        /// <param name="workType">工作类型</param>
         /// <returns>研究质量</returns>
-        protected abstract LC_StudyResult CheckFinalStudyQuality(Pawn studier);
+        protected virtual LC_StudyResult CheckFinalStudyQuality(Pawn studier, EAnomalyWorkType workType)
+        {
+            return LC_StudyResult.Bad;
+        }
 
         /// <summary>
         /// 检查研究者技能是否符合最低要求
         /// </summary>
         /// <param name="studier">研究者</param>
         /// <returns></returns>
-        public abstract bool CheckStudierSkillRequire(Pawn studier);
+        public virtual bool CheckStudierSkillRequire(Pawn studier)
+        {
+            return false;
+        }
 
         /// <summary>
         /// Debug：调试用逆卡巴拉强制熔毁

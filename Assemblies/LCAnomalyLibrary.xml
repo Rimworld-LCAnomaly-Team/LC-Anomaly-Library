@@ -115,18 +115,20 @@
             我不知道这是什么，好像和数据保存有关
             </summary>
         </member>
-        <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.CheckIfStudySuccess(Verse.Pawn)">
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.CheckIfStudySuccess(Verse.Pawn,LCAnomalyLibrary.Util.EAnomalyWorkType)">
             <summary>
             检查研究是否成功
             </summary>
             <param name="studier">研究者</param>
+            <param name="workType">工作类型</param>
             <returns></returns>
         </member>
-        <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.CheckFinalStudyQuality(Verse.Pawn)">
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.CheckFinalStudyQuality(Verse.Pawn,LCAnomalyLibrary.Util.EAnomalyWorkType)">
             <summary>
             计算研究质量
             </summary>
             <param name="studier">研究者</param>
+            <param name="workType">工作类型</param>
             <returns>研究质量</returns>
         </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.CheckStudierSkillRequire(Verse.Pawn)">
