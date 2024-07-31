@@ -179,7 +179,6 @@ namespace LCAnomalyLibrary.Comp
         /// </summary>
         public virtual void Notify_Holded()
         {
-
         }
 
         /// <summary>

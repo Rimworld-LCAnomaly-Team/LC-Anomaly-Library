@@ -32,8 +32,7 @@ namespace LCAnomalyLibrary.DamageWorker
                     }
                 }
 
-                
-                if(flag1)
+                if (flag1)
                 {
                     Log.Warning("DamageWorker：被攻击对象穿着EGO装备");
                 }
@@ -41,8 +40,6 @@ namespace LCAnomalyLibrary.DamageWorker
                 {
                     Log.Warning("DamageWorker：被攻击对象没有穿着EGO装备");
                 }
-
-
             }
 
             return damageResult;

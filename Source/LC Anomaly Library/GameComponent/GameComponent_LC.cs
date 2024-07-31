@@ -124,6 +124,7 @@ namespace LCAnomalyLibrary.GameComponent
                 extractedEgoWeaponAmount = value;
             }
         }
+
         private int extractedEgoWeaponAmount = 0;
 
         /// <summary>
@@ -140,6 +141,7 @@ namespace LCAnomalyLibrary.GameComponent
                 extractedEgoArmorAmount = value;
             }
         }
+
         private int extractedEgoArmorAmount = 0;
 
         /// <summary>
@@ -156,6 +158,7 @@ namespace LCAnomalyLibrary.GameComponent
                 indiPeBoxAmount = value;
             }
         }
+
         private int indiPeBoxAmount = 0;
 
         /// <summary>
@@ -172,6 +175,7 @@ namespace LCAnomalyLibrary.GameComponent
                 studyProgress = value;
             }
         }
+
         private int studyProgress = 0;
 
         public AnomalyStatusSaved(int extractedEgoWeaponAmount, int extractedEgoArmorAmount, int indiPeBoxAmount, int studyProgress)

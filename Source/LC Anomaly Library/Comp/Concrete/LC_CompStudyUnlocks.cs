@@ -35,7 +35,6 @@ namespace LCAnomalyLibrary.Comp
 
         public virtual void UnlockNameCheck()
         {
-
         }
     }
 }

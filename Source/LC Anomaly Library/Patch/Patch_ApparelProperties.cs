@@ -17,7 +17,7 @@ namespace LCAnomalyLibrary.Patch
             if (layers.Count > 0)
             {
                 var tmpLayer = layers[layers.Count - 1];
-                if(tmpLayer == Defs.ApparelLayerDefOf.LC_AccessoryMouth)
+                if (tmpLayer == Defs.ApparelLayerDefOf.LC_AccessoryMouth)
                 {
                     __result = ApparelLayerDefOf.Overhead;
                     return false;

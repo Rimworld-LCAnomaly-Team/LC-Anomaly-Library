@@ -9,7 +9,6 @@ namespace LCAnomalyLibrary.Comp.Abstract
     {
         public LC_EntityBaseThing()
         {
-
         }
     }
 
@@ -20,7 +19,6 @@ namespace LCAnomalyLibrary.Comp.Abstract
     {
         public LC_EntityBasePawn()
         {
-
         }
     }
 }
