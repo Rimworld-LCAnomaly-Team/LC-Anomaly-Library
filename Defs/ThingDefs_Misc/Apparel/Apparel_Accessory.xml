@@ -6,10 +6,9 @@
     <category>Item</category>
     <selectable>true</selectable>
     <pathCost>10</pathCost>
-    <useHitPoints>false</useHitPoints>
     <techLevel>Industrial</techLevel>
-    <generateCommonality>0</generateCommonality>
     <generateAllowChance>0</generateAllowChance>
+    <generateCommonality>0</generateCommonality>
     <graphicData>
       <graphicClass>Graphic_Single</graphicClass>
       <shaderType>CutoutComplex</shaderType>
@@ -29,9 +28,9 @@
       <canBeDesiredForIdeo>false</canBeDesiredForIdeo>
     </apparel>
     <drawGUIOverlay>true</drawGUIOverlay>
+    <useHitPoints>false</useHitPoints>
     <statBases>
       <Mass>0.02</Mass>
-      <MaxHitPoints>0</MaxHitPoints>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
     </statBases>

@@ -14,13 +14,12 @@
     <stackLimit>1</stackLimit>
     <useHitPoints>false</useHitPoints>
     <statBases>
-      <MaxHitPoints>0</MaxHitPoints>
       <Flammability>0</Flammability>
       <DeteriorationRate>0</DeteriorationRate>
       <Beauty>0</Beauty>
     </statBases>
-    <generateCommonality>0</generateCommonality>
     <generateAllowChance>0</generateAllowChance>
+    <generateCommonality>0</generateCommonality>
     <burnableByRecipe>false</burnableByRecipe>
     <smeltable>false</smeltable>
     <inspectorTabs>
