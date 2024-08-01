@@ -91,8 +91,10 @@
     <Compile Include="Comp\Concrete\LC_CompProperties_Entity.cs" />
     <Compile Include="Comp\Abstract\LC_CompProperties_InteractableEgg.cs" />
     <Compile Include="Comp\Abstract\LC_CompProperties_RequireThingSpawner.cs" />
+    <Compile Include="Comp\Concrete\LC_CompProperties_Studiable.cs" />
     <Compile Include="Comp\Concrete\LC_CompProperties_StudyUnlocks.cs" />
     <Compile Include="Comp\Abstract\LC_CompRequireThingSpawner.cs" />
+    <Compile Include="Comp\Concrete\LC_CompStudiable.cs" />
     <Compile Include="Comp\Concrete\LC_CompStudyUnlocks.cs" />
     <Compile Include="Comp\Abstract\LC_EntityBase.cs" />
     <Compile Include="Comp\Concrete\CompAccessoryable.cs" />
@@ -134,7 +136,6 @@
     <Compile Include="Misc\LC_FX_Standard.cs" />
     <Compile Include="Patch\PatchMain.cs" />
     <Compile Include="Patch\Patch_CompHoldingPlatformTarget.cs" />
-    <Compile Include="Patch\Patch_CompStudiable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Defs\ExtractRitualDef_InvocationCircle.cs" />
     <Compile Include="Gizmo\PsychicRitualGizmo.cs" />

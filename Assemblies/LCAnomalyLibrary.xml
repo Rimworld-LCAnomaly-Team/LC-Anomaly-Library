@@ -847,20 +847,6 @@
             <param name="__instance">原来的反射对象</param>
             <returns>false 终止原方法（会和同样的prefix产生可能的不兼容）</returns>
         </member>
-        <member name="T:LCAnomalyLibrary.Patch.Patch_CompStudiable_Study">
-            <summary>
-            关于CompStudiable的补丁（为了提供研究工作结束回调的特性）
-            </summary>
-        </member>
-        <member name="M:LCAnomalyLibrary.Patch.Patch_CompStudiable_Study.Postfix(RimWorld.CompStudiable,Verse.Pawn,System.Single,System.Single)">
-            <summary>
-            Postfix方法
-            </summary>
-            <param name="__instance">原来的反射对象</param>
-            <param name="studier">研究者</param>
-            <param name="studyAmount">研究量？</param>
-            <param name="anomalyKnowledgeAmount">异常知识数量？</param>
-        </member>
         <member name="T:LCAnomalyLibrary.PsychicRituals.PsychicRitualToil_ExtractAnomaly">
             <summary>
             提取异想体仪式的Toil
