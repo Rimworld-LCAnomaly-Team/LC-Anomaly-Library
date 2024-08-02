@@ -1,4 +1,5 @@
 ﻿using LCAnomalyLibrary.GameComponent;
+using LCAnomalyLibrary.Test;
 using UnityEngine;
 using UnityEngine.UI;
 using Verse;
@@ -21,9 +22,9 @@ namespace LCAnomalyLibrary.Singleton
         private static LCCanvasSingleton instance = null;
 
         public GameObject GameObject;
-        public Canvas Canvas;
+        public Canvas CanvasWarningUI;
         public Image Image;
-        public CanvasGroup CanvasGroup;
+        public CanvasGroup CanvasGroupWarningUI;
 
         public Sprite FirstWarningSprite = Sprite.Create(ContentFinder<Texture2D>.Get("UI/WarningUI/WarningUI_First"), new Rect(0, 0, 4096, 2160), new Vector2(0.5f, 0.5f));
         public Sprite SecondWarningSprite = Sprite.Create(ContentFinder<Texture2D>.Get("UI/WarningUI/WarningUI_Second"), new Rect(0, 0, 4096, 2160), new Vector2(0.5f, 0.5f));
@@ -35,21 +36,20 @@ namespace LCAnomalyLibrary.Singleton
 
         public LCCanvasSingleton()
         {
-            this.GameObject = new GameObject();
-            this.GameObject.name = "LCAnomalyCanvas";
+            this.GameObject = new GameObject("LCAnomalyCanvas");
 
-            this.Canvas = this.GameObject.AddComponent<Canvas>();
-            this.Canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            this.CanvasWarningUI = this.GameObject.AddComponent<Canvas>();
+            this.CanvasWarningUI.renderMode = RenderMode.ScreenSpaceOverlay;
 
             this.Image = this.GameObject.AddComponent<Image>();
             this.Image.sprite = FirstWarningSprite;
             this.Image.material.color = Color.red;
 
-            this.CanvasGroup = this.GameObject.AddComponent<CanvasGroup>();
-            this.CanvasGroup.interactable = false;
-            this.CanvasGroup.blocksRaycasts = false;
-            this.CanvasGroup.ignoreParentGroups = false;
-            this.CanvasGroup.alpha = 1f;
+            this.CanvasGroupWarningUI = this.GameObject.AddComponent<CanvasGroup>();
+            this.CanvasGroupWarningUI.interactable = false;
+            this.CanvasGroupWarningUI.blocksRaycasts = false;
+            this.CanvasGroupWarningUI.ignoreParentGroups = false;
+            this.CanvasGroupWarningUI.alpha = 0f;
 
             RegisterEvents();
         }
@@ -70,18 +70,18 @@ namespace LCAnomalyLibrary.Singleton
             {
                 if (shouldDecreaseAlpha)
                 {
-                    this.CanvasGroup.alpha -= 0.01f;
+                    this.CanvasGroupWarningUI.alpha -= 0.01f;
                 }
                 else
                 {
-                    this.CanvasGroup.alpha += 0.01f;
+                    this.CanvasGroupWarningUI.alpha += 0.01f;
                 }
 
-                if (this.CanvasGroup.alpha >= 1f)
+                if (this.CanvasGroupWarningUI.alpha >= 1f)
                 {
                     shouldDecreaseAlpha = true;
                 }
-                else if (this.CanvasGroup.alpha <= 0f)
+                else if (this.CanvasGroupWarningUI.alpha <= 0f)
                 {
                     shouldDecreaseAlpha = false;
                 }
@@ -92,7 +92,7 @@ namespace LCAnomalyLibrary.Singleton
             if (tickCounter >= 1800)
             {
                 shouldShowWarningUI = false;
-                this.CanvasGroup.alpha = 0f;
+                this.CanvasGroupWarningUI.alpha = 0f;
                 tickCounter = 0;
             }
         }
@@ -117,6 +117,14 @@ namespace LCAnomalyLibrary.Singleton
 
             tickCounter = 0;
             shouldShowWarningUI = true;
+        }
+
+        public void ShowText(string text)
+        {
+            GameObject go = new GameObject("TestText");
+            var controller = go.AddComponent<ThrowTextController>();
+
+            controller.Trigger("主<size=36>管</size>，<size=34>这</size>就是你所<size=38>谓</size>的 “<size=34>无法控制</size>的<size=38>局面</size>”。");
         }
     }
 }

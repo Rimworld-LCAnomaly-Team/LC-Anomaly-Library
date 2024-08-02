@@ -199,12 +199,12 @@
             Comp
             </summary>
         </member>
-        <member name="T:LCAnomalyLibrary.Comp.Abstract.LC_EntityBaseThing">
+        <member name="T:LCAnomalyLibrary.Comp.LC_EntityBaseThing">
             <summary>
             LC实体Thing基类
             </summary>
         </member>
-        <member name="T:LCAnomalyLibrary.Comp.Abstract.LC_EntityBasePawn">
+        <member name="T:LCAnomalyLibrary.Comp.LC_EntityBasePawn">
             <summary>
             LC实体Pawn基类
             </summary>

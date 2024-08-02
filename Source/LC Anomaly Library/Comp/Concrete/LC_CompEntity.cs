@@ -1,5 +1,6 @@
 ﻿using LCAnomalyLibrary.Interface;
 using LCAnomalyLibrary.Setting;
+using LCAnomalyLibrary.Singleton;
 using LCAnomalyLibrary.Util;
 using RimWorld;
 using System.Collections.Generic;
@@ -351,6 +352,16 @@ namespace LCAnomalyLibrary.Comp
                     {
                         Log.Warning($"Dev：{parent.def.label.Translate()} 的逆卡巴拉计数器下降了1点");
                         QliphothCountCurrent--;
+                    }
+                };
+
+                yield return new Command_Action
+                {
+                    defaultLabel = "show text",
+                    action = delegate
+                    {
+                        Log.Warning($"Dev：Show screen text");
+                        LCCanvasSingleton.Instance.ShowText("s2as2s3sss32321ssssssssss1231ssssssssss1231sssssssssss");
                     }
                 };
             }
