@@ -747,6 +747,11 @@
             <param name="__result">gizmo</param>
             <returns>是否中断原方法</returns>
         </member>
+        <member name="T:LCAnomalyLibrary.Patch.Patch_Dialog_EntityCodex">
+            <summary>
+            关于Dialog_EntityCodex的补丁（将脑叶异常从原版图鉴列表中移除）
+            </summary>
+        </member>
         <member name="T:LCAnomalyLibrary.Patch.Patch_MentalBreak">
             <summary>
             关于MentalStateHandler的补丁（为了提供崩溃警报点数）

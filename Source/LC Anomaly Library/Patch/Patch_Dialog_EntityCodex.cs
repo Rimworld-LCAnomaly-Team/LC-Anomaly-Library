@@ -8,6 +8,9 @@ using Verse;
 
 namespace LCAnomalyLibrary.Patch
 {
+    /// <summary>
+    /// 关于Dialog_EntityCodex的补丁（将脑叶异常从原版图鉴列表中移除）
+    /// </summary>
     [HarmonyPatch(typeof(Dialog_EntityCodex), MethodType.Constructor, new Type[] { typeof(EntityCodexEntryDef) })]
     public class Patch_Dialog_EntityCodex
     {
