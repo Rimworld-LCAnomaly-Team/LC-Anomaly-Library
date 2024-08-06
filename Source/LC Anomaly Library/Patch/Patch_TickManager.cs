@@ -17,7 +17,7 @@ namespace LCAnomalyLibrary.Patch
         {
             //Log.Warning("Patch_TickManager.Pause 注入成功");
 
-            Log.Warning("暂停机制：玩家尝试暂停");
+            //Log.Warning("暂停机制：玩家尝试暂停");
             //Find.CurrentMap.mapPawns.FreeColonists.RandomElement().Kill(null);
             //Find.TickManager.CurTimeSpeed = TimeSpeed.Normal;
         }

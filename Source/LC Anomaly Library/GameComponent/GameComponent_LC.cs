@@ -27,7 +27,7 @@ namespace LCAnomalyLibrary.GameComponent
                 if (value > 100) return;
 
                 curWarningPoints = value;
-                Log.Message($"警报点数：警报点数更新，当前警报点数为：{curWarningPoints}");
+                //Log.Message($"警报点数：警报点数更新，当前警报点数为：{curWarningPoints}");
 
                 Util.MusicUtils.PlayMusic_LC(curWarningPoints);
             }
@@ -97,7 +97,7 @@ namespace LCAnomalyLibrary.GameComponent
         {
             if (!AnomalyStatusSavedDict.ContainsKey(key))
             {
-                Log.Warning($"LC组件：AnomalyStatusSavedDict中未找到对应的ThingDef Key：{key.defName}，将新建一个");
+                //Log.Warning($"LC组件：AnomalyStatusSavedDict中未找到对应的ThingDef Key：{key.defName}，将新建一个");
                 AnomalyStatusSavedDict.Add(key, new AnomalyStatusSaved(0, 0, 0, 0));
             }
 

@@ -24,28 +24,28 @@ namespace LCAnomalyLibrary.Patch
             //如果并没有精神崩溃，就不处理
             if (!__result)
             {
-                Log.Message("警报点数（崩溃）：并没有崩溃");
+                //Log.Message("警报点数（崩溃）：并没有崩溃");
                 return;
             }
 
             //LC组件null直接退出
             if (Components.LC == null)
             {
-                Log.Error("警报点数（崩溃）：GameComponent_LC is null");
+                //Log.Error("警报点数（崩溃）：GameComponent_LC is null");
                 return;
             }
 
             //如果未启用警报机制，就不处理
             if (!Setting_LCAnomalyLibrary_Main.Settings.If_EnableLCWarning)
             {
-                Log.Warning("警报点数（崩溃）：未启用警报机制");
+                //Log.Warning("警报点数（崩溃）：未启用警报机制");
                 return;
             }
 
             //如果未启用精神崩溃警报机制，就不处理
             if (!Setting_LCAnomalyLibrary_Main.Settings.If_EnableLCWarningMentalBreak)
             {
-                Log.Warning("警报点数（崩溃）：未启用崩溃警报机制");
+                //Log.Warning("警报点数（崩溃）：未启用崩溃警报机制");
                 return;
             }
 
@@ -54,21 +54,21 @@ namespace LCAnomalyLibrary.Patch
             Pawn pawn = (Pawn)field.GetValue(__instance);
             if (pawn == null)
             {
-                Log.Error("警报点数（崩溃）：Pawn is null");
+                //Log.Error("警报点数（崩溃）：Pawn is null");
                 return;
             }
 
             //非人类不提供点数
             if (!pawn.RaceProps.Humanlike)
             {
-                Log.Message("警报点数（崩溃）：非人类不提供点数");
+                //Log.Message("警报点数（崩溃）：非人类不提供点数");
                 return;
             }
 
             //如果是无派系人就和中立派系相同
             if (pawn.Faction == null)
             {
-                Log.Message($"警报点数（崩溃）：无派系人类，点数 +{Setting_LCAnomalyLibrary_Main.Settings.PointsOfWarning_NeturalFactionMentalBreak}");
+                //Log.Message($"警报点数（崩溃）：无派系人类，点数 +{Setting_LCAnomalyLibrary_Main.Settings.PointsOfWarning_NeturalFactionMentalBreak}");
                 Components.LC.CurWarningPoints += Setting_LCAnomalyLibrary_Main.Settings.PointsOfWarning_NeturalFactionMentalBreak;
                 return;
             }
@@ -76,7 +76,7 @@ namespace LCAnomalyLibrary.Patch
             //如果是玩家派系
             if (pawn.Faction.IsPlayer)
             {
-                Log.Message($"警报点数（崩溃）：玩家派系人类，点数 +{Setting_LCAnomalyLibrary_Main.Settings.PointsOfWarning_PlayerFactionMentalBreak}");
+                //Log.Message($"警报点数（崩溃）：玩家派系人类，点数 +{Setting_LCAnomalyLibrary_Main.Settings.PointsOfWarning_PlayerFactionMentalBreak}");
                 Components.LC.CurWarningPoints += Setting_LCAnomalyLibrary_Main.Settings.PointsOfWarning_PlayerFactionMentalBreak;
                 return;
             }
@@ -86,12 +86,12 @@ namespace LCAnomalyLibrary.Patch
             {
                 if (pawn.Faction.PlayerRelationKind == FactionRelationKind.Ally)
                 {
-                    Log.Message($"警报点数（崩溃）：盟友派系人类，点数 +{Setting_LCAnomalyLibrary_Main.Settings.PointsOfWarning_AllyFactionMentalBreak}");
+                    //Log.Message($"警报点数（崩溃）：盟友派系人类，点数 +{Setting_LCAnomalyLibrary_Main.Settings.PointsOfWarning_AllyFactionMentalBreak}");
                     Components.LC.CurWarningPoints += Setting_LCAnomalyLibrary_Main.Settings.PointsOfWarning_AllyFactionMentalBreak;
                 }
                 else
                 {
-                    Log.Message($"警报点数（崩溃）：中立派系人类，点数 +{Setting_LCAnomalyLibrary_Main.Settings.PointsOfWarning_NeturalFactionMentalBreak}");
+                    //Log.Message($"警报点数（崩溃）：中立派系人类，点数 +{Setting_LCAnomalyLibrary_Main.Settings.PointsOfWarning_NeturalFactionMentalBreak}");
                     Components.LC.CurWarningPoints += Setting_LCAnomalyLibrary_Main.Settings.PointsOfWarning_NeturalFactionMentalBreak;
                 }
             }

@@ -857,11 +857,6 @@
             提取异想体仪式的Toil
             </summary>
         </member>
-        <member name="F:LCAnomalyLibrary.PsychicRituals.PsychicRitualToil_ExtractAnomaly.targetRole">
-            <summary>
-            目标角色
-            </summary>
-        </member>
         <member name="F:LCAnomalyLibrary.PsychicRituals.PsychicRitualToil_ExtractAnomaly.invokerRole">
             <summary>
             触发角色
@@ -872,12 +867,11 @@
             异常等级标签
             </summary>
         </member>
-        <member name="M:LCAnomalyLibrary.PsychicRituals.PsychicRitualToil_ExtractAnomaly.#ctor(RimWorld.PsychicRitualRoleDef,RimWorld.PsychicRitualRoleDef,System.String)">
+        <member name="M:LCAnomalyLibrary.PsychicRituals.PsychicRitualToil_ExtractAnomaly.#ctor(RimWorld.PsychicRitualRoleDef,System.String)">
             <summary>
             提取仪式
             </summary>
             <param name="invokerRole">触发角色</param>
-            <param name="targetRole">目标角色</param>
             <param name="anomalyLevelTag">异常等级标签</param>
         </member>
         <member name="M:LCAnomalyLibrary.PsychicRituals.PsychicRitualToil_ExtractAnomaly.Start(Verse.AI.Group.PsychicRitual,Verse.AI.Group.PsychicRitualGraph)">
@@ -887,13 +881,12 @@
             <param name="psychicRitual">仪式</param>
             <param name="parent"></param>
         </member>
-        <member name="M:LCAnomalyLibrary.PsychicRituals.PsychicRitualToil_ExtractAnomaly.ApplyOutcome(Verse.AI.Group.PsychicRitual,Verse.Pawn,Verse.Pawn)">
+        <member name="M:LCAnomalyLibrary.PsychicRituals.PsychicRitualToil_ExtractAnomaly.ApplyOutcome(Verse.AI.Group.PsychicRitual,Verse.Pawn)">
             <summary>
             仪式结果
             </summary>
             <param name="psychicRitual">仪式</param>
             <param name="invoker">触发者</param>
-            <param name="target">目标</param>
         </member>
         <member name="M:LCAnomalyLibrary.PsychicRituals.PsychicRitualToil_ExtractAnomaly.ExposeData">
             <summary>

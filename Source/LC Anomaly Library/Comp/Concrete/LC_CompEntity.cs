@@ -55,20 +55,20 @@ namespace LCAnomalyLibrary.Comp
                 //强制不提供警报点数就返回0
                 if (!Props.ifProvideWarningPoints)
                 {
-                    Log.Message($"警报点数：{parent.def.label.Translate()}不提供警报点数");
+                    //Log.Message($"警报点数：{parent.def.label.Translate()}不提供警报点数");
                     return 0;
                 }
 
                 //如果警报点数大于0就返回警报点数，否则返回等级对应的点数
                 if (Props.customWarningPoints > 0)
                 {
-                    Log.Message($"警报点数：{parent.def.label.Translate()}提供自定义警报点数{Props.customWarningPoints}点");
+                    //Log.Message($"警报点数：{parent.def.label.Translate()}提供自定义警报点数{Props.customWarningPoints}点");
                     return Props.customWarningPoints;
                 }
                 else
                 {
                     var points = MusicUtils.LevelTag2Points(parent.def.entityCodexEntry.category.defName);
-                    Log.Message($"警报点数：{parent.def.label.Translate()}提供根据等级的警报点数{points}点");
+                    //Log.Message($"警报点数：{parent.def.label.Translate()}提供根据等级的警报点数{points}点");
 
                     return points;
                 }
@@ -90,7 +90,7 @@ namespace LCAnomalyLibrary.Comp
                 if (value <= 0)
                 {
                     qliphothCountCurrent = 0;
-                    Log.Message($"逆卡巴拉计数：{parent.def.defName} 的逆卡巴拉计数器变化，变为：0");
+                    //Log.Message($"逆卡巴拉计数：{parent.def.defName} 的逆卡巴拉计数器变化，变为：0");
                     QliphothMeltdown();
                 }
                 else if (value > Props.qliphothCountMax)
@@ -100,7 +100,7 @@ namespace LCAnomalyLibrary.Comp
                 else
                 {
                     qliphothCountCurrent = value;
-                    Log.Message($"逆卡巴拉计数：{parent.def.defName} 的逆卡巴拉计数器变化，变为：{QliphothCountCurrent}");
+                    //Log.Message($"逆卡巴拉计数：{parent.def.defName} 的逆卡巴拉计数器变化，变为：{QliphothCountCurrent}");
                 }
             }
         }
@@ -170,7 +170,7 @@ namespace LCAnomalyLibrary.Comp
             var platform = parent.GetComp<CompHoldingPlatformTarget>().HeldPlatform as IHoldingPlatformWorkTypeSelectable;
             if (platform != null)
             {
-                Log.Warning($"研究者：{studier.Name} 将通过工作类型 {platform.CurWorkType.ToString()} 来通过判定");
+                //Log.Warning($"研究者：{studier.Name} 将通过工作类型 {platform.CurWorkType.ToString()} 来通过判定");
                 CheckIfStudySuccess(studier, platform.CurWorkType);
             }
         }
@@ -223,12 +223,12 @@ namespace LCAnomalyLibrary.Comp
         /// </summary>
         protected virtual void QliphothMeltdown()
         {
-            Log.Message($"收容：{parent.def.label.Translate()} 的收容单元发生了熔毁");
+            //Log.Message($"收容：{parent.def.label.Translate()} 的收容单元发生了熔毁");
 
             CompHoldingPlatformTarget comp = parent.TryGetComp<CompHoldingPlatformTarget>();
             if (comp != null)
             {
-                Log.Message($"收容：{parent.def.label.Translate()} 因收容单元熔毁而出逃");
+                //Log.Message($"收容：{parent.def.label.Translate()} 因收容单元熔毁而出逃");
                 comp.Escape(initiator: true);
             }
         }
@@ -355,15 +355,15 @@ namespace LCAnomalyLibrary.Comp
                     }
                 };
 
-                yield return new Command_Action
-                {
-                    defaultLabel = "show text",
-                    action = delegate
-                    {
-                        Log.Warning($"Dev：Show screen text");
-                        LCCanvasSingleton.Instance.ShowText("s2as2s3sss32321ssssssssss1231ssssssssss1231sssssssssss");
-                    }
-                };
+                //yield return new Command_Action
+                //{
+                //    defaultLabel = "show text",
+                //    action = delegate
+                //    {
+                //        Log.Warning($"Dev：Show screen text");
+                //        LCCanvasSingleton.Instance.ShowText("s2as2s3sss32321ssssssssss1231ssssssssss1231sssssssssss");
+                //    }
+                //};
             }
         }
 

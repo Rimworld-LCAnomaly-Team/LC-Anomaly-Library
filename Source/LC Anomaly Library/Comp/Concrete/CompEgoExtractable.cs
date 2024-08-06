@@ -81,7 +81,7 @@ namespace LCAnomalyLibrary.Comp
             //如果没有PeBoxComp，就不能提取
             if (PeBoxComp == null)
             {
-                Log.Warning($"提取EGO：{parent.def.label.Translate()}没有PeBoxComp，无法提取");
+                //Log.Warning($"提取EGO：{parent.def.label.Translate()}没有PeBoxComp，无法提取");
                 return false;
             }
 
@@ -89,7 +89,7 @@ namespace LCAnomalyLibrary.Comp
             var peBoxDef = PeBoxComp.Props.peBoxDef;
             if (peBoxDef == null)
             {
-                Log.Warning($"提取EGO：{PeBoxComp.ToString()}没有PeBoxDef，无法提取");
+                //Log.Warning($"提取EGO：{PeBoxComp.ToString()}没有PeBoxDef，无法提取");
                 return false;
             }
 
@@ -102,7 +102,7 @@ namespace LCAnomalyLibrary.Comp
             }
             else
             {
-                Log.Warning($"提取EGO：{parent.Label.Translate()}的独立pebox数量不足，无法提取");
+                //Log.Warning($"提取EGO：{parent.Label.Translate()}的独立pebox数量不足，无法提取");
                 return false;
             }
         }
@@ -193,7 +193,7 @@ namespace LCAnomalyLibrary.Comp
                     return CurAmountArmor >= Props.amountMaxArmor;
 
                 default:
-                    Log.Error("提取EGO:EGO类型不存在");
+                    //Log.Error("提取EGO:EGO类型不存在");
                     return true;
             }
         }

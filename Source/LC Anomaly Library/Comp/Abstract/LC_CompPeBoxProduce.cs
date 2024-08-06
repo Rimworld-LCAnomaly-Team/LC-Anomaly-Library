@@ -67,12 +67,12 @@ namespace LCAnomalyLibrary.Comp
                 if (Props.peBoxDef != null)
                 {
                     CurAmountIndiPebox += amount;
-                    Log.Message($"工作：{parent.def.label.Translate()}生成了{amount}单位的独立PeBox");
+                    //Log.Message($"工作：{parent.def.label.Translate()}生成了{amount}单位的独立PeBox");
 
                     Thing thing = ThingMaker.MakeThing(Props.peBoxDef);
                     thing.stackCount = amount;
                     GenSpawn.Spawn(thing, studier.Position, studier.Map);
-                    Log.Message($"工作：{parent.def.label.Translate()}生成了{amount}单位的打包PeBox");
+                    //Log.Message($"工作：{parent.def.label.Translate()}生成了{amount}单位的打包PeBox");
                 }
             }
         }
@@ -93,21 +93,21 @@ namespace LCAnomalyLibrary.Comp
             {
                 yield return new Command_Action
                 {
-                    defaultLabel = "IndiPebox + 20",
+                    defaultLabel = "IndiPebox + 10",
                     action = delegate
                     {
-                        Log.Warning($"Dev：{parent.def.label.Translate()} 的独立PeBox增加了20点");
-                        CurAmountIndiPebox += 20;
+                        //Log.Warning($"Dev：{parent.def.label.Translate()} 的独立PeBox增加了20点");
+                        CurAmountIndiPebox += 10;
                     }
                 };
 
                 yield return new Command_Action
                 {
-                    defaultLabel = "IndiPebox - 20",
+                    defaultLabel = "IndiPebox - 10",
                     action = delegate
                     {
-                        Log.Warning($"Dev：{parent.def.label.Translate()} 的独立PeBox减少了20点");
-                        CurAmountIndiPebox -= 20;
+                        //Log.Warning($"Dev：{parent.def.label.Translate()} 的独立PeBox减少了20点");
+                        CurAmountIndiPebox -= 10;
                     }
                 };
             }

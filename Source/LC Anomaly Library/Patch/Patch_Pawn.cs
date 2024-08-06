@@ -54,42 +54,42 @@ namespace LCAnomalyLibrary.Patch
             //LC组件null直接返回原方法
             if (Components.LC == null)
             {
-                Log.Error("警报点数（Pawn）：GameComponent_LC is null");
+                //Log.Error("警报点数（Pawn）：GameComponent_LC is null");
                 return;
             }
 
             //Pawn不能为null
             if (pawn == null)
             {
-                Log.Error("警报点数（Pawn）：Pawn is null");
+                //Log.Error("警报点数（Pawn）：Pawn is null");
                 return;
             }
 
             //如果未启用警报机制，就返回原方法
             if (!Setting_LCAnomalyLibrary_Main.Settings.If_EnableLCWarning)
             {
-                Log.Warning("警报点数（Pawn）：未启用警报机制");
+                //Log.Warning("警报点数（Pawn）：未启用警报机制");
                 return;
             }
 
             //如果未启用死亡警报机制，就返回原方法
             if (!Setting_LCAnomalyLibrary_Main.Settings.If_EnableLCWarningDeath)
             {
-                Log.Warning("警报点数（Pawn）：未启用死亡警报机制");
+                //Log.Warning("警报点数（Pawn）：未启用死亡警报机制");
                 return;
             }
 
             //非人类不提供点数
             if (!pawn.RaceProps.Humanlike)
             {
-                Log.Message("警报点数（Pawn）：非人类死亡不提供点数");
+                //Log.Message("警报点数（Pawn）：非人类死亡不提供点数");
                 return;
             }
 
             //如果是无派系人就和中立派系死亡相同
             if (pawn.Faction == null)
             {
-                Log.Message($"警报点数（Pawn）：无派系人类死亡，点数 +{Setting_LCAnomalyLibrary_Main.Settings.PointsOfWarning_NeturalFactionDie}");
+                //Log.Message($"警报点数（Pawn）：无派系人类死亡，点数 +{Setting_LCAnomalyLibrary_Main.Settings.PointsOfWarning_NeturalFactionDie}");
                 Components.LC.CurWarningPoints += Setting_LCAnomalyLibrary_Main.Settings.PointsOfWarning_NeturalFactionDie;
                 return;
             }
@@ -97,7 +97,7 @@ namespace LCAnomalyLibrary.Patch
             //如果是玩家派系死亡
             if (pawn.Faction.IsPlayer)
             {
-                Log.Message($"警报点数（Pawn）：玩家派系人类死亡，点数 +{Setting_LCAnomalyLibrary_Main.Settings.PointsOfWarning_PlayerFactionDie}");
+                //Log.Message($"警报点数（Pawn）：玩家派系人类死亡，点数 +{Setting_LCAnomalyLibrary_Main.Settings.PointsOfWarning_PlayerFactionDie}");
                 Components.LC.CurWarningPoints += Setting_LCAnomalyLibrary_Main.Settings.PointsOfWarning_PlayerFactionDie;
                 return;
             }
@@ -107,12 +107,12 @@ namespace LCAnomalyLibrary.Patch
             {
                 if (pawn.Faction.PlayerRelationKind == FactionRelationKind.Ally)
                 {
-                    Log.Message($"警报点数（Pawn）：盟友派系人类死亡，点数 +{Setting_LCAnomalyLibrary_Main.Settings.PointsOfWarning_AllyFactionDie}");
+                    //Log.Message($"警报点数（Pawn）：盟友派系人类死亡，点数 +{Setting_LCAnomalyLibrary_Main.Settings.PointsOfWarning_AllyFactionDie}");
                     Components.LC.CurWarningPoints += Setting_LCAnomalyLibrary_Main.Settings.PointsOfWarning_AllyFactionDie;
                 }
                 else
                 {
-                    Log.Message($"警报点数（Pawn）：中立派系人类死亡，点数 +{Setting_LCAnomalyLibrary_Main.Settings.PointsOfWarning_NeturalFactionDie}");
+                    //Log.Message($"警报点数（Pawn）：中立派系人类死亡，点数 +{Setting_LCAnomalyLibrary_Main.Settings.PointsOfWarning_NeturalFactionDie}");
                     Components.LC.CurWarningPoints += Setting_LCAnomalyLibrary_Main.Settings.PointsOfWarning_NeturalFactionDie;
                 }
             }

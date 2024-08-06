@@ -28,7 +28,7 @@ namespace LCAnomalyLibrary.Comp
         {
             if (!CheckIfEGOExtractUnlocked())
             {
-                Log.Message($"饰品：观察等级不足{Props.unlockLevel}，获取饰品固定失败，");
+                //Log.Message($"饰品：观察等级不足{Props.unlockLevel}，获取饰品固定失败，");
                 return;
             }
 
@@ -36,12 +36,12 @@ namespace LCAnomalyLibrary.Comp
             if (Rand.Chance(Props.accessoryChance))
             {
                 SpawnAccessory(studier);
-                Log.Message($"饰品：{studier.Name} 获取饰品成功");
+                //Log.Message($"饰品：{studier.Name} 获取饰品成功");
             }
-            else
-            {
-                Log.Message($"饰品：{studier.Name} 获取饰品失败，概率判定失败");
-            }
+            //else
+            //{
+            //    Log.Message($"饰品：{studier.Name} 获取饰品失败，概率判定失败");
+            //}
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace LCAnomalyLibrary.Comp
                     defaultLabel = "Spawn Accessory",
                     action = delegate
                     {
-                        Log.Warning($"Dev：产生E.G.O饰品{Props.accessoryDef.label.Translate()}");
+                        //Log.Warning($"Dev：产生E.G.O饰品{Props.accessoryDef.label.Translate()}");
                         SpawnAccessory(null);
                     }
                 };

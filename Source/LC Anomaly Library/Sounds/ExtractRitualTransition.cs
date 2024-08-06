@@ -61,7 +61,7 @@ namespace LCAnomalyLibrary.Sounds
             {
                 if (lord.LordJob is LordJob_ExtractRitual)
                 {
-                    Log.Warning("播放提取bgm");
+                    //Log.Warning("播放提取bgm");
                     return true;
                 }
             }
