@@ -3,7 +3,7 @@
 
   <DesignationCategoryDef>
     <defName>Buildings_LC</defName>
-    <label>LC Buildings</label>
+    <label>LC Anomaly</label>
     <order>320</order>
     <specialDesignatorClasses>
       <li>Designator_Cancel</li>

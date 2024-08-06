@@ -1,101 +1,101 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <!-- 后脑 -->
+  <!-- BackHead -->
   <ApparelLayerDef>
     <defName>LC_AccessoryBackHead</defName>
-    <label>LC_AccessoryBackHead</label>
+    <label>Anomaly Accessory (BackHead)</label>
     <drawOrder>600</drawOrder>
   </ApparelLayerDef>
 
-  <!-- 颈部 -->
+  <!-- Neck -->
   <ApparelLayerDef>
     <defName>LC_AccessoryNeck</defName>
-    <label>LC_AccessoryNeck</label>
+    <label>Anomaly Accessory (Neck)</label>
     <drawOrder>600</drawOrder>
   </ApparelLayerDef>
 
-  <!-- 口部 -->
+  <!-- Mouth -->
   <ApparelLayerDef>
     <defName>LC_AccessoryMouth</defName>
-    <label>LC_AccessoryMouth</label>
+    <label>Anomaly Accessory (Mouth)</label>
     <drawOrder>400</drawOrder>
   </ApparelLayerDef>
 
-  <!-- 口罩 -->
+  <!-- Mask -->
   <ApparelLayerDef>
     <defName>LC_AccessoryMask</defName>
-    <label>LC_AccessoryMask</label>
+    <label>Anomaly Accessory (Mask)</label>
     <drawOrder>600</drawOrder>
   </ApparelLayerDef>
 
-  <!-- 脸颊 -->
+  <!-- Cheek -->
   <ApparelLayerDef>
     <defName>LC_AccessoryCheek</defName>
-    <label>LC_AccessoryCheek</label>
+    <label>Anomaly Accessory (Cheek)</label>
     <drawOrder>600</drawOrder>
   </ApparelLayerDef>
 
-  <!-- 面部 -->
+  <!-- Face -->
   <ApparelLayerDef>
     <defName>LC_AccessoryFace</defName>
-    <label>LC_AccessoryFace</label>
+    <label>Anomaly Accessory (Face)</label>
     <drawOrder>600</drawOrder>
   </ApparelLayerDef>
 
-  <!-- 手部 -->
+  <!-- Hand -->
   <ApparelLayerDef>
     <defName>LC_AccessoryHand</defName>
-    <label>LC_AccessoryHand</label>
+    <label>Anomaly Accessory (Hand)</label>
     <drawOrder>600</drawOrder>
   </ApparelLayerDef>
 
-  <!-- 手套 -->
+  <!-- Glove -->
   <ApparelLayerDef>
     <defName>LC_AccessoryGlove</defName>
-    <label>LC_AccessoryGlove</label>
+    <label>Anomaly Accessory (Glove)</label>
     <drawOrder>600</drawOrder>
   </ApparelLayerDef>
 
-  <!-- 头部 -->
+  <!-- Head -->
   <ApparelLayerDef>
     <defName>LC_AccessoryHead</defName>
-    <label>LC_AccessoryHead</label>
+    <label>Anomaly Accessory (Head)</label>
     <drawOrder>600</drawOrder>
   </ApparelLayerDef>
 
-  <!-- 头饰 -->
+  <!-- Hat -->
   <ApparelLayerDef>
     <defName>LC_AccessoryHat</defName>
-    <label>LC_AccessoryHat</label>
+    <label>Anomaly Accessory (Hat)</label>
     <drawOrder>600</drawOrder>
   </ApparelLayerDef>
 
-  <!-- 胸部 -->
+  <!-- Chest -->
   <ApparelLayerDef>
     <defName>LC_AccessoryChest</defName>
-    <label>LC_AccessoryChest</label>
+    <label>Anomaly Accessory (Chest)</label>
     <drawOrder>600</drawOrder>
   </ApparelLayerDef>
 
-  <!-- 眼部 -->
+  <!-- Eye -->
   <ApparelLayerDef>
     <defName>LC_AccessoryEye</defName>
-    <label>LC_AccessoryEye</label>
+    <label>Anomaly Accessory (Eye)</label>
     <drawOrder>600</drawOrder>
   </ApparelLayerDef>
 
-  <!-- 右背 -->
+  <!-- RightBack -->
   <ApparelLayerDef>
     <defName>LC_AccessoryBack_Right</defName>
-    <label>LC_AccessoryBack_Right</label>
+    <label>Anomaly Accessory (Right Back)</label>
     <drawOrder>600</drawOrder>
   </ApparelLayerDef>
 
-  <!-- 左背 -->
+  <!-- LeftBack -->
   <ApparelLayerDef>
     <defName>LC_AccessoryBack_Left</defName>
-    <label>LC_AccessoryBack_Left</label>
+    <label>Anomaly Accessory (Left Back)</label>
     <drawOrder>600</drawOrder>
   </ApparelLayerDef>
   

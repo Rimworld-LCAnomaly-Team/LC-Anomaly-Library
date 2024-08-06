@@ -3,7 +3,7 @@
 
   <ThingCategoryDef>
     <defName>LC_Thing</defName>
-    <label>LC thing</label>
+    <label>LC Things</label>
     <parent>Root</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
     <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
@@ -11,7 +11,7 @@
 
   <ThingCategoryDef>
     <defName>LC_Entity</defName>
-    <label>LC entity</label>
+    <label>Anomaly</label>
     <parent>LC_Thing</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
     <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
@@ -19,7 +19,7 @@
 
   <ThingCategoryDef>
     <defName>LC_Entity_Tool</defName>
-    <label>LC entity</label>
+    <label>Anomaly Tool</label>
     <parent>LC_Entity</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
     <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
@@ -27,7 +27,7 @@
 
   <ThingCategoryDef>
     <defName>LC_Entity_Egg</defName>
-    <label>LC entity</label>
+    <label>Anomaly Egg</label>
     <parent>LC_Entity</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
     <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
@@ -35,7 +35,7 @@
 
   <ThingCategoryDef>
     <defName>LC_Weapon</defName>
-    <label>LC weapon</label>
+    <label>Weapon</label>
     <parent>Weapons</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
     <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
@@ -43,7 +43,7 @@
 
   <ThingCategoryDef>
     <defName>LC_Weapon_Normal</defName>
-    <label>LC weapon normal</label>
+    <label>Normal Weapon</label>
     <parent>LC_Weapon</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
     <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
@@ -51,7 +51,7 @@
 
   <ThingCategoryDef>
     <defName>LC_Weapon_EGO</defName>
-    <label>EGO weapon</label>
+    <label>EGO Weapon</label>
     <parent>LC_Weapon</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
     <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
@@ -59,7 +59,7 @@
 
   <ThingCategoryDef>
     <defName>LC_Weapon_EGO_Melee</defName>
-    <label>EGO weapon melee</label>
+    <label>EGO Weapon (Melee)</label>
     <parent>LC_Weapon_EGO</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
     <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
@@ -67,7 +67,7 @@
 
   <ThingCategoryDef>
     <defName>LC_Weapon_EGO_Ranged</defName>
-    <label>EGO weapon ranged</label>
+    <label>EGO Weapon (Ranged)</label>
     <parent>LC_Weapon_EGO</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
     <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
@@ -75,7 +75,7 @@
 
   <ThingCategoryDef>
     <defName>LC_Apparel</defName>
-    <label>LC apparel</label>
+    <label>Apparel</label>
     <parent>Apparel</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
     <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
@@ -83,7 +83,7 @@
 
   <ThingCategoryDef>
     <defName>LC_Apparel_Normal</defName>
-    <label>LC apparel normal</label>
+    <label>Normal Apparel</label>
     <parent>LC_Apparel</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
     <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
@@ -91,7 +91,7 @@
 
   <ThingCategoryDef>
     <defName>LC_Apparel_EGO</defName>
-    <label>EGO apparel ego</label>
+    <label>EGO Apparel</label>
     <parent>LC_Apparel</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
     <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
@@ -99,7 +99,7 @@
 
   <ThingCategoryDef>
     <defName>LC_Apparel_Accessory</defName>
-    <label>LC apparel accessory</label>
+    <label>Accessory</label>
     <parent>LC_Apparel</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
     <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
@@ -107,7 +107,7 @@
 
   <ThingCategoryDef>
     <defName>LC_Apparel_Accessory_Normal</defName>
-    <label>LC apparel accessory normal</label>
+    <label>Normal Accessory</label>
     <parent>LC_Apparel_Accessory</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
     <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
@@ -115,7 +115,7 @@
 
   <ThingCategoryDef>
     <defName>LC_Apparel_Accessory_EGO</defName>
-    <label>LC apparel accessory ego</label>
+    <label>EGO Accessory</label>
     <parent>LC_Apparel_Accessory</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
     <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
@@ -123,7 +123,7 @@
 
   <ThingCategoryDef>
     <defName>LC_Drug</defName>
-    <label>LC drug</label>
+    <label>Drug</label>
     <parent>LC_Thing</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
     <iconPath>UI/Icons/ThingCategories/Foods</iconPath>
@@ -131,7 +131,7 @@
 
   <ThingCategoryDef>
     <defName>LC_Resource</defName>
-    <label>LC resource</label>
+    <label>Resource</label>
     <parent>LC_Thing</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
     <iconPath>UI/Icons/ThingCategories/FoodRaw</iconPath>
@@ -139,7 +139,7 @@
 
   <ThingCategoryDef>
     <defName>LC_Building</defName>
-    <label>LC building</label>
+    <label>Building</label>
     <parent>LC_Thing</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
     <iconPath>UI/Icons/ThingCategories/FoodMeals</iconPath>
@@ -147,7 +147,7 @@
 
   <ThingCategoryDef>
     <defName>LC_Building_Production</defName>
-    <label>LC building production</label>
+    <label>Production</label>
     <parent>LC_Building</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
     <iconPath>UI/Icons/ThingCategories/FoodMeals</iconPath>
@@ -155,7 +155,7 @@
 
   <ThingCategoryDef>
     <defName>LC_Building_Containment</defName>
-    <label>LC building containment</label>
+    <label>Containment</label>
     <parent>LC_Building</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
     <iconPath>UI/Icons/ThingCategories/FoodMeals</iconPath>
@@ -163,7 +163,7 @@
 
   <ThingCategoryDef>
     <defName>LC_Building_Power</defName>
-    <label>LC building power</label>
+    <label>Power</label>
     <parent>LC_Building</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
     <iconPath>UI/Icons/ThingCategories/FoodMeals</iconPath>
@@ -171,7 +171,7 @@
 
   <ThingCategoryDef>
     <defName>LC_Building_Misc</defName>
-    <label>LC building misc</label>
+    <label>Misc</label>
     <parent>LC_Building</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
     <iconPath>UI/Icons/ThingCategories/FoodMeals</iconPath>
@@ -179,7 +179,7 @@
 
   <ThingCategoryDef>
     <defName>LC_Misc</defName>
-    <label>LC misc</label>
+    <label>Misc</label>
     <parent>LC_Thing</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
     <iconPath>UI/Icons/ThingCategories/FoodMeals</iconPath>
