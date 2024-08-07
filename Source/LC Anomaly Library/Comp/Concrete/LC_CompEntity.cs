@@ -192,6 +192,13 @@ namespace LCAnomalyLibrary.Comp
         }
 
         /// <summary>
+        /// 正在被研究时执行的操作
+        /// </summary>
+        public virtual void Notify_Studying(Pawn studier)
+        {
+        }
+
+        /// <summary>
         /// 绑到收容平台上的操作
         /// </summary>
         public virtual void Notify_Holded()

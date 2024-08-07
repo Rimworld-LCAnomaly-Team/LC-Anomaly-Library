@@ -34,6 +34,11 @@ namespace LCAnomalyLibrary.Comp
         /// </summary>
         public int customWarningPoints;
 
+        /// <summary>
+        /// XML：被研究时播放的音效
+        /// </summary>
+        public SoundDef soundWorking;
+
         #endregion XML字段
 
         /// <summary>

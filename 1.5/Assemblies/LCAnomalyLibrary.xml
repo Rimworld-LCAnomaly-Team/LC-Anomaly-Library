@@ -92,6 +92,11 @@
             被研究后执行的操作
             </summary>
         </member>
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.Notify_Studying(Verse.Pawn)">
+            <summary>
+            正在被研究时执行的操作
+            </summary>
+        </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.Notify_Holded">
             <summary>
             绑到收容平台上的操作
@@ -182,6 +187,11 @@
         <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.customWarningPoints">
             <summary>
             XML：自定义出逃警报点数（填大于0则启用自定义点数，否则按异常等级计算）
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.soundWorking">
+            <summary>
+            XML：被研究时播放的音效
             </summary>
         </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompProperties_Entity.#ctor">
