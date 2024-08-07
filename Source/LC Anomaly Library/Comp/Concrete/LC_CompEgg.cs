@@ -7,7 +7,7 @@ namespace LCAnomalyLibrary.Comp
     /// <summary>
     /// LC异想体蛋基础Comp
     /// </summary>
-    public abstract class LC_CompEgg : CompInteractable
+    public class LC_CompEgg : CompInteractable
     {
         public new LC_CompProperties_InteractableEgg Props => (LC_CompProperties_InteractableEgg)props;
 

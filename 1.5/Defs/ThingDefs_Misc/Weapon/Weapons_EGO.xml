@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-  
+
   <!--==================================== Melee ====================================-->
 
   <ThingDef Name="LC_BaseMeleeWeapon_EGO" Abstract="True" ParentName="BaseWeapon">
@@ -37,6 +37,38 @@
     <weaponClasses>
       <li>MeleeBlunt</li>
     </weaponClasses>
+  </ThingDef>
+  
+  <!--==================================== Ranged ====================================-->
+
+  <ThingDef Name="LC_BaseRangedWeapon_EGO" ParentName="BaseGun" Abstract="True">
+    <techLevel>Industrial</techLevel>
+    <weaponClasses>
+      <li>LongShots</li>
+    </weaponClasses>
+    <stackLimit>1</stackLimit>
+    <useHitPoints>false</useHitPoints>
+    <statBases>
+      <Flammability>0</Flammability>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Beauty>0</Beauty>
+    </statBases>
+    <generateAllowChance>0</generateAllowChance>
+    <generateCommonality>0</generateCommonality>
+    <burnableByRecipe>false</burnableByRecipe>
+    <smeltable>false</smeltable>
+    <tradeTags>
+      <li>WeaponEGO</li>
+    </tradeTags>
+    <weaponTags>
+      <li>WeaponEGO</li>
+    </weaponTags>
+  </ThingDef>
+
+  <ThingDef Name="LC_BaseBullet_EGO" ParentName="BaseBullet" Abstract="True">
+    <projectile>
+      <damageDef>Bullet</damageDef>
+    </projectile>
   </ThingDef>
 
 </Defs>

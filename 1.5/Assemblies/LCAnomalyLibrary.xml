@@ -57,6 +57,11 @@
             XML引用：逆卡巴拉计数器最大值
             </summary>
         </member>
+        <member name="P:LCAnomalyLibrary.Comp.LC_CompEntity.QliphothEnabled">
+            <summary>
+            逆卡巴拉机制是否启用
+            </summary>
+        </member>
         <member name="P:LCAnomalyLibrary.Comp.LC_CompEntity.WarningPoints">
             <summary>
             XML引用：警报点数

@@ -68,6 +68,10 @@
       <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.TextRenderingModule">
       <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
       <Private>False</Private>
@@ -86,10 +90,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Comp\Abstract\LC_CompEgg.cs" />
+    <Compile Include="Comp\Concrete\LC_CompEgg.cs" />
     <Compile Include="Comp\Concrete\LC_CompEntity.cs" />
     <Compile Include="Comp\Concrete\LC_CompProperties_Entity.cs" />
-    <Compile Include="Comp\Abstract\LC_CompProperties_InteractableEgg.cs" />
+    <Compile Include="Comp\Concrete\LC_CompProperties_InteractableEgg.cs" />
     <Compile Include="Comp\Abstract\LC_CompProperties_RequireThingSpawner.cs" />
     <Compile Include="Comp\Concrete\LC_CompProperties_Studiable.cs" />
     <Compile Include="Comp\Concrete\LC_CompProperties_StudyUnlocks.cs" />

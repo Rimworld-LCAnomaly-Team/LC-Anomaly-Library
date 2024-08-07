@@ -1,6 +1,5 @@
 ﻿using LCAnomalyLibrary.Interface;
 using LCAnomalyLibrary.Setting;
-using LCAnomalyLibrary.Singleton;
 using LCAnomalyLibrary.Util;
 using RimWorld;
 using System.Collections.Generic;
@@ -44,6 +43,11 @@ namespace LCAnomalyLibrary.Comp
         /// XML引用：逆卡巴拉计数器最大值
         /// </summary>
         public int QliphothCountMax => Props.qliphothCountMax;
+        
+        /// <summary>
+        /// 逆卡巴拉机制是否启用
+        /// </summary>
+        public bool QliphothEnabled => QliphothCountMax > 0;
 
         /// <summary>
         /// XML引用：警报点数
@@ -80,9 +84,21 @@ namespace LCAnomalyLibrary.Comp
         /// </summary>
         public int QliphothCountCurrent
         {
-            get => qliphothCountCurrent;
+            get
+            {
+                //无逆卡巴拉值的情况下只会返回-1
+                if (!QliphothEnabled)
+                    return -1;
+
+                return qliphothCountCurrent;
+            }
             set
             {
+                //无逆卡巴拉值的情况下修改无效
+                if (!QliphothEnabled)
+                    return;
+
+                //值相同则修改无效
                 if (qliphothCountCurrent == value)
                     return;
 
@@ -325,35 +341,39 @@ namespace LCAnomalyLibrary.Comp
                     }
                 };
 
-                yield return new Command_Action
+                //逆卡巴拉值有效情况
+                if(QliphothEnabled)
                 {
-                    defaultLabel = "Force Meltdown",
-                    action = delegate
+                    yield return new Command_Action
                     {
-                        Log.Warning($"Dev：{parent.def.label.Translate()} 的收容单元发生了强制熔毁");
-                        ForceQliphothMeltdown();
-                    }
-                };
+                        defaultLabel = "Force Meltdown",
+                        action = delegate
+                        {
+                            Log.Warning($"Dev：{parent.def.label.Translate()} 的收容单元发生了强制熔毁");
+                            ForceQliphothMeltdown();
+                        }
+                    };
 
-                yield return new Command_Action
-                {
-                    defaultLabel = "QliphothCount +1",
-                    action = delegate
+                    yield return new Command_Action
                     {
-                        Log.Warning($"Dev：{parent.def.label.Translate()} 的逆卡巴拉计数器上升了1点");
-                        QliphothCountCurrent++;
-                    }
-                };
+                        defaultLabel = "QliphothCount +1",
+                        action = delegate
+                        {
+                            Log.Warning($"Dev：{parent.def.label.Translate()} 的逆卡巴拉计数器上升了1点");
+                            QliphothCountCurrent++;
+                        }
+                    };
 
-                yield return new Command_Action
-                {
-                    defaultLabel = "QliphothCount -1",
-                    action = delegate
+                    yield return new Command_Action
                     {
-                        Log.Warning($"Dev：{parent.def.label.Translate()} 的逆卡巴拉计数器下降了1点");
-                        QliphothCountCurrent--;
-                    }
-                };
+                        defaultLabel = "QliphothCount -1",
+                        action = delegate
+                        {
+                            Log.Warning($"Dev：{parent.def.label.Translate()} 的逆卡巴拉计数器下降了1点");
+                            QliphothCountCurrent--;
+                        }
+                    };
+                }
 
                 //yield return new Command_Action
                 //{
