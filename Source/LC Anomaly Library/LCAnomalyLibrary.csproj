@@ -130,6 +130,9 @@
     <Compile Include="Patch\Patch_TickManager.cs" />
     <Compile Include="Patch\Patch_Pawn.cs" />
     <Compile Include="PsychicRituals\PsychicRitualToil_ExtractAnomaly.cs" />
+    <Compile Include="Render\PawnRenderNodeProperties_HediffUpHead.cs" />
+    <Compile Include="Render\PawnRenderNodeWorker_HediffUpHead.cs" />
+    <Compile Include="Render\PawnRenderNode_HediffUpHead.cs" />
     <Compile Include="Setting\Setting_LCAnomalyLibrary.cs" />
     <Compile Include="Setting\Setting_LCAnomalyLibrary_Main.cs" />
     <Compile Include="Singleton\LCCanvasSingleton.cs" />
