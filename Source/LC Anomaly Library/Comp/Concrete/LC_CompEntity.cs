@@ -215,17 +215,34 @@ namespace LCAnomalyLibrary.Comp
             switch (result)
             {
                 case LC_StudyResult.Good:
-                    QliphothCountCurrent++;
-                    AccessoryableComp?.CheckGiveAccessory(studier);
+                    StudyEvent_Good(studier);
                     break;
 
                 case LC_StudyResult.Normal:
+                    StudyEvent_Normal(studier);
                     break;
             }
 
             PeBoxComp?.CheckSpawnPeBox(studier, result);
-
             StudyUtil.DoStudyResultEffect(studier, (Pawn)parent, result);
+        }
+
+        /// <summary>
+        /// 研究质量：优秀
+        /// </summary>
+        /// <param name="studier">研究者</param>
+        protected virtual void StudyEvent_Good(Pawn studier)
+        {
+            QliphothCountCurrent++;
+            AccessoryableComp?.CheckGiveAccessory(studier);
+        }
+
+        /// <summary>
+        /// 研究质量：良好
+        /// </summary>
+        /// <param name="studier">研究者</param>
+        protected virtual void StudyEvent_Normal(Pawn studier)
+        {
         }
 
         /// <summary>
@@ -235,10 +252,6 @@ namespace LCAnomalyLibrary.Comp
         protected virtual void StudyEvent_Bad(Pawn studier)
         {
             QliphothCountCurrent--;
-
-            PeBoxComp?.CheckSpawnPeBox(studier, LC_StudyResult.Bad);
-
-            StudyUtil.DoStudyResultEffect(studier, (Pawn)parent, LC_StudyResult.Bad);
         }
 
         /// <summary>

@@ -109,6 +109,18 @@
             <param name="studier">研究者</param>
             <param name="result">研究质量</param>
         </member>
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.StudyEvent_Good(Verse.Pawn)">
+            <summary>
+            研究质量：优秀
+            </summary>
+            <param name="studier">研究者</param>
+        </member>
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.StudyEvent_Normal(Verse.Pawn)">
+            <summary>
+            研究质量：良好
+            </summary>
+            <param name="studier">研究者</param>
+        </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.StudyEvent_Bad(Verse.Pawn)">
             <summary>
             研究质量：差
