@@ -236,6 +236,11 @@
             LC实体Pawn基类
             </summary>
         </member>
+        <member name="M:LCAnomalyLibrary.Comp.LC_EntityBasePawn.TickHolded">
+            <summary>
+            被收容时的Tick
+            </summary>
+        </member>
         <member name="T:LCAnomalyLibrary.Comp.CompAccessoryable">
             <summary>
             可获取饰品的Comp

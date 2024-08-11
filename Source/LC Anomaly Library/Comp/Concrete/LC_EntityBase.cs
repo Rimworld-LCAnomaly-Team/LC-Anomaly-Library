@@ -20,5 +20,13 @@ namespace LCAnomalyLibrary.Comp
         public LC_EntityBasePawn()
         {
         }
+
+        /// <summary>
+        /// 被收容时的Tick
+        /// </summary>
+        public virtual void TickHolded()
+        {
+
+        }
     }
 }
