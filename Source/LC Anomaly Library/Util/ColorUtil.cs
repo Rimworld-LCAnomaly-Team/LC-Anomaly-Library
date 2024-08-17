@@ -9,5 +9,6 @@ namespace LCAnomalyLibrary.Util
         public static readonly Texture2D WhiteTex = SolidColorMaterials.NewSolidColorTexture(Color.white);
         public static readonly Texture2D PurpleTex = SolidColorMaterials.NewSolidColorTexture(GenColor.FromHex("7e1e9c"));
         public static readonly Texture2D BlueTex = SolidColorMaterials.NewSolidColorTexture(Color.blue);
+        public static readonly Texture2D CyanTex = SolidColorMaterials.NewSolidColorTexture(Color.cyan);
     }
 }

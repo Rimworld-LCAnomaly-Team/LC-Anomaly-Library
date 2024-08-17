@@ -1,5 +1,6 @@
 ﻿using LCAnomalyLibrary.Comp.Pawns;
 using RimWorld;
+using System;
 using Verse;
 
 namespace LCAnomalyLibrary.Util
@@ -58,6 +59,104 @@ namespace LCAnomalyLibrary.Util
                 return EPawnLevel.II;
             else
                 return EPawnLevel.I;
+        }
+
+        /// <summary>
+        /// 计算处理脑叶员工数值变化量
+        /// </summary>
+        public static float GetPawnStatusIncreaseValue(CompPawnStatus studier, EAnomalyWorkType workType, string abnormalLevel)
+        {
+            EPawnLevel pawnLevel;
+            switch (workType)
+            {
+                case EAnomalyWorkType.Instinct:
+                    pawnLevel = studier.GetPawnStatusELevel(EPawnStatus.Fortitude);
+                    break;
+                case EAnomalyWorkType.Attachment:
+                    pawnLevel = studier.GetPawnStatusELevel(EPawnStatus.Temperance);
+                    break;
+                case EAnomalyWorkType.Insight:
+                    pawnLevel = studier.GetPawnStatusELevel(EPawnStatus.Prudence);
+                    break;
+                case EAnomalyWorkType.Repression:
+                    pawnLevel = studier.GetPawnStatusELevel(EPawnStatus.Justice);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException("Unknown EPawnStatus");
+            }
+
+            return get_value(pawnLevel, abnormalLevel);
+
+            //根据员工技能评级和异常等级来获取增加值
+            static float get_value(EPawnLevel pawnLevel, string abnormalLevel)
+            {
+                //算法表格详见 https://lobotomycorp.fandom.com/zh/wiki/%E8%81%8C%E5%91%98
+                if (abnormalLevel == "ZAYIN")
+                {
+                    if (pawnLevel == EPawnLevel.I)
+                        return 0.6f;
+                    else if (pawnLevel == EPawnLevel.II)
+                        return 0.44f;
+                    else if (pawnLevel == EPawnLevel.III)
+                        return 0.3f;
+                    else if (pawnLevel == EPawnLevel.IV)
+                        return 0.18f;
+                    else
+                        return 0.08f;
+                }
+                else if(abnormalLevel == "TETH")
+                {
+                    if (pawnLevel == EPawnLevel.I)
+                        return 0.6f;
+                    else if (pawnLevel == EPawnLevel.II)
+                        return 0.55f;
+                    else if (pawnLevel == EPawnLevel.III)
+                        return 0.4f;
+                    else if (pawnLevel == EPawnLevel.IV)
+                        return 0.27f;
+                    else
+                        return 0.16f;
+                }
+                else if (abnormalLevel == "HE")
+                {
+                    if (pawnLevel == EPawnLevel.I)
+                        return 0.72f;
+                    else if (pawnLevel == EPawnLevel.II)
+                        return 0.55f;
+                    else if (pawnLevel == EPawnLevel.III)
+                        return 0.5f;
+                    else if (pawnLevel == EPawnLevel.IV)
+                        return 0.36f;
+                    else
+                        return 0.24f;
+                }
+                else if (abnormalLevel == "WAW")
+                {
+                    if (pawnLevel == EPawnLevel.I)
+                        return 0.84f;
+                    else if (pawnLevel == EPawnLevel.II)
+                        return 0.66f;
+                    else if (pawnLevel == EPawnLevel.III)
+                        return 0.5f;
+                    else if (pawnLevel == EPawnLevel.IV)
+                        return 0.45f;
+                    else
+                        return 0.32f;
+                }
+                else
+                {
+                    if (pawnLevel == EPawnLevel.I)
+                        return 0.6f;
+                    else if (pawnLevel == EPawnLevel.II)
+                        return 0.77f;
+                    else if (pawnLevel == EPawnLevel.III)
+                        return 0.6f;
+                    else if (pawnLevel == EPawnLevel.IV)
+                        return 0.45f;
+                    else
+                        return 0.4f;
+                }
+            }
         }
     }
 

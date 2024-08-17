@@ -102,7 +102,7 @@
             逃脱收容后执行的操作
             </summary>
         </member>
-        <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.Notify_Studied(Verse.Pawn)">
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.Notify_Studied(Verse.Pawn,System.Boolean)">
             <summary>
             被研究后执行的操作
             </summary>
@@ -153,11 +153,19 @@
             <param name="workType">工作类型</param>
             <returns>研究成功率</returns>
         </member>
-        <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.CheckStudierSkillRequire(Verse.Pawn)">
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.StudierExpCalculate(LCAnomalyLibrary.Comp.Pawns.CompPawnStatus,LCAnomalyLibrary.Util.EAnomalyWorkType)">
             <summary>
-            检查研究者技能是否符合最低要求
+            工作后的数值经验增长
+            </summary>
+            <param name="studier"></param>
+            <param name="workType"></param>
+        </member>
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.CheckStudierSkillRequire(LCAnomalyLibrary.Comp.Pawns.CompPawnStatus,LCAnomalyLibrary.Util.EAnomalyWorkType)">
+            <summary>
+            检查研究者研究成功率百分比
             </summary>
             <param name="studier">研究者</param>
+            <param name="workType">工作类型</param>
             <returns></returns>
         </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.ForceQliphothMeltdown">
@@ -1323,6 +1331,11 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:LCAnomalyLibrary.Util.StudyUtil.GetPawnStatusIncreaseValue(LCAnomalyLibrary.Comp.Pawns.CompPawnStatus,LCAnomalyLibrary.Util.EAnomalyWorkType,System.String)">
+            <summary>
+            计算处理脑叶员工数值变化量
+            </summary>
+        </member>
         <member name="T:LCAnomalyLibrary.Util.LC_StudyResult">
             <summary>
             研究质量枚举
@@ -1354,6 +1367,61 @@
             </summary>
             <param name="thing">实体</param>
             <returns>是则返回true，反之false</returns>
+        </member>
+        <member name="F:LCAnomalyLibrary.Util.EAnomalyWorkType.Unknown">
+            <summary>
+            未知
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Util.EAnomalyWorkType.Instinct">
+            <summary>
+            本能
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Util.EAnomalyWorkType.Attachment">
+            <summary>
+            沟通
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Util.EAnomalyWorkType.Insight">
+            <summary>
+            洞察
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Util.EAnomalyWorkType.Repression">
+            <summary>
+            压迫
+            </summary>
+        </member>
+        <member name="T:LCAnomalyLibrary.Util.EAbnormalLevelType">
+            <summary>
+            异想体等级
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Util.EAbnormalLevelType.ZAYIN">
+            <summary>
+            Z
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Util.EAbnormalLevelType.TETH">
+            <summary>
+            T
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Util.EAbnormalLevelType.HE">
+            <summary>
+            H
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Util.EAbnormalLevelType.WAW">
+            <summary>
+            W
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Util.EAbnormalLevelType.ALEPH">
+            <summary>
+            A
+            </summary>
         </member>
     </members>
 </doc>

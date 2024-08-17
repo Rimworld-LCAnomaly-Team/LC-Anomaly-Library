@@ -2,6 +2,7 @@
 using LCAnomalyLibrary.Setting;
 using LCAnomalyLibrary.Util;
 using RimWorld;
+using System;
 using System.Collections.Generic;
 using Verse;
 
@@ -198,6 +199,7 @@ namespace LCAnomalyLibrary.Comp
         protected bool escaped = false;
 
         protected int PeBoxProducedTemp = 0;
+        protected int NeBoxProducedTemp = 0;
 
         #endregion 变量
 
@@ -251,7 +253,7 @@ namespace LCAnomalyLibrary.Comp
         /// <summary>
         /// 被研究后执行的操作
         /// </summary>
-        public virtual void Notify_Studied(Pawn studier)
+        public virtual void Notify_Studied(Pawn studier, bool interrupted = false)
         {
             //优秀
             if (PeBoxProducedTemp > PeBoxComp.Props.amountProdueRangeNormal.max)
@@ -271,6 +273,7 @@ namespace LCAnomalyLibrary.Comp
 
             //清空缓存数量
             PeBoxProducedTemp = 0;
+            NeBoxProducedTemp = 0;
         }
 
         /// <summary>
@@ -282,6 +285,8 @@ namespace LCAnomalyLibrary.Comp
 
         public virtual bool Notify_StudyInterval(CompPawnStatus studier, EAnomalyWorkType workType)
         {
+            StudierExpCalculate(studier, workType);
+
             float rate = StudySuccessRateCalculate(studier, workType);
             if (Rand.Chance(rate))
             {
@@ -292,6 +297,7 @@ namespace LCAnomalyLibrary.Comp
             else
             {
                 Log.Warning($"研究失败一次，当前最终成功率为：{rate}");
+                NeBoxProducedTemp++;
                 return false;
             }
         }
@@ -384,13 +390,43 @@ namespace LCAnomalyLibrary.Comp
         }
 
         /// <summary>
-        /// 检查研究者技能是否符合最低要求
+        /// 工作后的数值经验增长
+        /// </summary>
+        /// <param name="studier"></param>
+        /// <param name="workType"></param>
+        protected virtual void StudierExpCalculate(CompPawnStatus studier, EAnomalyWorkType workType)
+        {
+            float value = StudyUtil.GetPawnStatusIncreaseValue(studier, workType, parent.def.entityCodexEntry.category.defName);
+            value *= 0.1f;
+
+            switch(workType)
+            {
+                case EAnomalyWorkType.Instinct:
+                    studier.GetPawnStatusLevel(EPawnStatus.Fortitude).Exp += value;
+                    break;
+                case EAnomalyWorkType.Attachment:
+                    studier.GetPawnStatusLevel(EPawnStatus.Temperance).Exp += value;
+                    break;
+                case EAnomalyWorkType.Insight:
+                    studier.GetPawnStatusLevel(EPawnStatus.Prudence).Exp += value;
+                    break;
+                case EAnomalyWorkType.Repression:
+                    studier.GetPawnStatusLevel(EPawnStatus.Justice).Exp += value;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException("Unknown EAnomalyWorkType");
+            }
+        }
+
+        /// <summary>
+        /// 检查研究者研究成功率百分比
         /// </summary>
         /// <param name="studier">研究者</param>
+        /// <param name="workType">工作类型</param>
         /// <returns></returns>
-        public virtual bool CheckStudierSkillRequire(Pawn studier)
+        public virtual float CheckStudierSkillRequire(CompPawnStatus studier, EAnomalyWorkType workType)
         {
-            return false;
+            return StudySuccessRateCalculate(studier, workType);
         }
 
         /// <summary>

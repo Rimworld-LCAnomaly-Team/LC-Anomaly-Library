@@ -122,16 +122,16 @@ namespace LCAnomalyLibrary.UI
             using (new TextBlock(TextAnchor.MiddleLeft))
             {
                 string text = "LC_ITab_PawnStatus_Justice".Translate() + " " + StatusComp.GetPawnStatusELevel(EPawnStatus.Justice).ToString();
-                Widgets.Label(rect4, ColoredText.Colorize(text, ColorLibrary.Blue));
+                Widgets.Label(rect4, ColoredText.Colorize(text, ColorLibrary.Cyan));
             }
             Rect rect4_1 = new Rect(rectLevelNumber_x, yOffset, 40f, 20f);
             using (new TextBlock(TextAnchor.MiddleLeft))
             {
                 string text = StatusComp.GetPawnStatusLevel(EPawnStatus.Justice).Status.ToString();
-                Widgets.Label(rect4_1, ColoredText.Colorize(text, ColorLibrary.Blue));
+                Widgets.Label(rect4_1, ColoredText.Colorize(text, ColorLibrary.Cyan));
             }
             Rect rect4Exp = new Rect(rectBar_x, yOffset, 100f, 20f);
-            Widgets.FillableBar(rect4Exp, StatusComp.GetPawnStatusLevel(EPawnStatus.Justice).Exp, ColorUtil.BlueTex);
+            Widgets.FillableBar(rect4Exp, StatusComp.GetPawnStatusLevel(EPawnStatus.Justice).Exp, ColorUtil.CyanTex);
         }
     }
 }

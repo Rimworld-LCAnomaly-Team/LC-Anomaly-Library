@@ -62,16 +62,16 @@ namespace LCAnomalyLibrary.Comp.Pawns
         }
 
 
-        public PawnStatus GetPawnStatusLevel(EPawnStatus statusType)
+        public ref PawnStatus GetPawnStatusLevel(EPawnStatus statusType)
         {
             if (statusType == EPawnStatus.Fortitude)
-                return status_Fortitude;
+                return ref status_Fortitude;
             else if (statusType == EPawnStatus.Prudence)
-                return status_Prudence;
+                return ref status_Prudence;
             else if (statusType == EPawnStatus.Temperance)
-                return status_Temperance;
+                return ref status_Temperance;
             else
-                return status_Justice;
+                return ref status_Justice;
         }
 
         public EPawnLevel GetPawnStatusELevel(EPawnStatus statusType)
@@ -85,7 +85,6 @@ namespace LCAnomalyLibrary.Comp.Pawns
             else
                 return StudyUtil.CalculatePawnLevel(status_Justice.Status);
         }
-
 
         public override void PostExposeData()
         {
@@ -211,7 +210,7 @@ namespace LCAnomalyLibrary.Comp.Pawns
             {
                 if (value >= 1f)
                 {
-                    if(Status < maxLevel)
+                    if (Status < maxLevel)
                     {
                         exp = 0;
                         Status++;
