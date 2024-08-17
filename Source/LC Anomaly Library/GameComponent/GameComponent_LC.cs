@@ -1,5 +1,8 @@
 ﻿using LCAnomalyLibrary.Setting;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.InteropServices;
+using UnityEngine;
 using Verse;
 
 namespace LCAnomalyLibrary.GameComponent
@@ -53,8 +56,44 @@ namespace LCAnomalyLibrary.GameComponent
 
         protected Dictionary<ThingDef, AnomalyStatusSaved> anomalyStatusSavedDict;
 
+
+        public AssetBundle MainBundle
+        {
+            get
+            {
+                if (mainBundle == null)
+                {
+                    string text = "";
+
+                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                    {
+                        text = "StandaloneWindows64";
+                    }
+                    
+                    string bundlePath = Path.Combine(Setting_LCAnomalyLibrary_Main.ContentDir, "Materials\\Bundles\\" + text + "\\mosaicshader");
+                    AssetBundle bundle = AssetBundle.LoadFromFile(bundlePath);
+                    mainBundle = bundle;
+
+                    if (bundle == null)
+                    {
+                        Log.Error("Failed to load bundle at path: " + bundlePath);
+                    }
+                }
+
+                return mainBundle;
+            }
+        }
+        private AssetBundle mainBundle;
+
         public GameComponent_LC(Game game)
         {
+        }
+
+        public override void LoadedGame()
+        {
+            base.LoadedGame();
+
+            //Current.Camera.gameObject.AddComponent<ImageEffect_Mosaic>();
         }
 
         /// <summary>

@@ -9,7 +9,7 @@ namespace LCAnomalyLibrary.Comp
     /// <summary>
     /// LC可产PeBox的基类Comp
     /// </summary>
-    public abstract class LC_CompPeBoxProduce : ThingComp
+    public class LC_CompPeBoxProduce : ThingComp
     {
         /// <summary>
         /// CompProperties
@@ -42,26 +42,11 @@ namespace LCAnomalyLibrary.Comp
         /// 检查生成Pebox
         /// </summary>
         /// <param name="studier">研究者</param>
-        /// <param name="result">工作质量</param>
-        public virtual void CheckSpawnPeBox(Pawn studier, LC_StudyResult result)
+        /// <param name="amount">生产量</param>
+        public virtual void CheckSpawnPeBox(Pawn studier, int amount)
         {
             if (studier != null)
             {
-                int amount = 0;
-                switch (result)
-                {
-                    case LC_StudyResult.Good:
-                        amount = Props.amountStudyGood;
-                        break;
-
-                    case LC_StudyResult.Normal:
-                        amount = Props.amountStudyNormal;
-                        break;
-
-                    case LC_StudyResult.Bad:
-                        amount = Props.amountStudyBad;
-                        break;
-                }
                 if (amount <= 0) return;
 
                 if (Props.peBoxDef != null)
@@ -72,7 +57,7 @@ namespace LCAnomalyLibrary.Comp
                     Thing thing = ThingMaker.MakeThing(Props.peBoxDef);
                     thing.stackCount = amount;
                     GenSpawn.Spawn(thing, studier.Position, studier.Map);
-                    //Log.Message($"工作：{parent.def.label.Translate()}生成了{amount}单位的打包PeBox");
+                    Log.Message($"工作：{parent.def.label.Translate()}生成了{amount}单位的独立和打包PeBox");
                 }
             }
         }

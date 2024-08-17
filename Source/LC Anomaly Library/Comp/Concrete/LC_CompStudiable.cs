@@ -18,7 +18,7 @@ namespace LCAnomalyLibrary.Comp
             studyAmount *= Find.Storyteller.difficulty.researchSpeedFactor;
             studyAmount *= studier.GetStatValue(StatDefOf.ResearchSpeed);
             anomalyKnowledgeGained += anomalyKnowledgeAmount;
-            Find.StudyManager.Study(parent, studier, studyAmount);
+            //Find.StudyManager.Study(parent, studier, studyAmount);
 
             if (ModsConfig.AnomalyActive && anomalyKnowledgeAmount > 0f)
             {
@@ -38,10 +38,24 @@ namespace LCAnomalyLibrary.Comp
                     Find.LetterStack.ReceiveLetter(Props.completedLetterTitle.Formatted(studier.Named("STUDIER"), parent.Named("PARENT")), Props.completedLetterText.Formatted(studier.Named("STUDIER"), parent.Named("PARENT")), Props.completedLetterDef ?? LetterDefOf.NeutralEvent, new List<Thing> { parent, studier });
                 }
             }
+        }
 
-            //如果是LC实体派生，则触发回调事件
-            LC_CompEntity entity = Pawn.TryGetComp<LC_CompEntity>();
-            entity?.Notify_Studied(studier);
+        /// <summary>
+        /// 研究解锁带来的工作速度加成
+        /// </summary>
+        /// <returns></returns>
+        public virtual float GetWorkSpeedOffset()
+        {
+            return 0;
+        }
+
+        /// <summary>
+        /// 研究解锁带来的成功率加成
+        /// </summary>
+        /// <returns></returns>
+        public virtual float GetWorkSuccessRateOffset()
+        {
+            return 0;
         }
     }
 }

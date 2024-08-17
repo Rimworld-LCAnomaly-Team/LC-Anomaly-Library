@@ -1,4 +1,5 @@
-﻿using RimWorld;
+﻿using LCAnomalyLibrary.Comp.Pawns;
+using RimWorld;
 using Verse;
 
 namespace LCAnomalyLibrary.Util
@@ -37,6 +38,26 @@ namespace LCAnomalyLibrary.Util
                     //Log.Error("工作：检测到错误的输入。");
                     break;
             }
+        }
+
+        /// <summary>
+        /// 根据数值计算员工属性等级
+        /// </summary>
+        /// <returns></returns>
+        public static EPawnLevel CalculatePawnLevel(float points)
+        {
+            if (points > 100)
+                return EPawnLevel.EX;
+            else if (points >= 85)
+                return EPawnLevel.V;
+            else if (points >= 65)
+                return EPawnLevel.IV;
+            else if (points >= 45)
+                return EPawnLevel.III;
+            else if (points >= 30)
+                return EPawnLevel.II;
+            else
+                return EPawnLevel.I;
         }
     }
 

@@ -10,6 +10,8 @@ namespace LCAnomalyLibrary.Setting
         /// </summary>
         public static Setting_LCAnomalyLibrary Settings;
 
+        public static string ContentDir;
+
         private string PointsOfWarning_FadeDurationEditBuffer;
         private string PointsOfWarning_FadeAmountEditBuffer;
 
@@ -28,6 +30,7 @@ namespace LCAnomalyLibrary.Setting
         public Setting_LCAnomalyLibrary_Main(ModContentPack content) : base(content)
         {
             Setting_LCAnomalyLibrary_Main.Settings = base.GetSettings<Setting_LCAnomalyLibrary>();
+            ContentDir = base.Content.RootDir;
         }
 
         /// <summary>

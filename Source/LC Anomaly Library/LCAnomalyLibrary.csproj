@@ -60,6 +60,10 @@
       <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
@@ -92,6 +96,8 @@
   <ItemGroup>
     <Compile Include="Comp\Concrete\LC_CompEgg.cs" />
     <Compile Include="Comp\Concrete\LC_CompEntity.cs" />
+    <Compile Include="Comp\Pawns\CompProperties_PawnStatus.cs" />
+    <Compile Include="Comp\Pawns\CompPawnStatus.cs" />
     <Compile Include="Comp\Concrete\LC_CompProperties_Entity.cs" />
     <Compile Include="Comp\Concrete\LC_CompProperties_InteractableEgg.cs" />
     <Compile Include="Comp\Abstract\LC_CompProperties_RequireThingSpawner.cs" />
@@ -103,13 +109,13 @@
     <Compile Include="Comp\Concrete\LC_EntityBase.cs" />
     <Compile Include="Comp\Concrete\CompAccessoryable.cs" />
     <Compile Include="Comp\Concrete\CompEgoExtractable.cs" />
-    <Compile Include="Comp\Abstract\LC_CompPeBoxProduce.cs" />
+    <Compile Include="Comp\Concrete\LC_CompPeBoxProduce.cs" />
     <Compile Include="Comp\Concrete\CompEgoSuit.cs" />
     <Compile Include="Comp\Concrete\CompEgoWeapon.cs" />
     <Compile Include="Comp\Concrete\CompPoperties_EgoSuit.cs" />
     <Compile Include="Comp\Concrete\CompProperties_Accessoryable.cs" />
     <Compile Include="Comp\Concrete\CompProperties_EgoExtractable.cs" />
-    <Compile Include="Comp\Abstract\LC_CompProperties_PeBoxProduce.cs" />
+    <Compile Include="Comp\Concrete\LC_CompProperties_PeBoxProduce.cs" />
     <Compile Include="Comp\Concrete\CompProperties_EgoWeapon.cs" />
     <Compile Include="DamageWorker\DamageWorker_LC_Red.cs" />
     <Compile Include="Defs\ApparelLayerDefOf.cs" />
@@ -117,10 +123,12 @@
     <Compile Include="Defs\DamageDefOf.cs" />
     <Compile Include="Defs\EntityCodexEntryDef.cs" />
     <Compile Include="Defs\FleckDefOf.cs" />
+    <Compile Include="Defs\LCShaderTypeDefOf.cs" />
     <Compile Include="Defs\ResearchTabDefOf.cs" />
     <Compile Include="Defs\SongDefOf.cs" />
     <Compile Include="Defs\EGO_TYPE.cs" />
     <Compile Include="Defs\ThingDef_LCAnomalyBase.cs" />
+    <Compile Include="Defs\WorkTypeDefOf.cs" />
     <Compile Include="GameComponent\GameComponent_LC.cs" />
     <Compile Include="Interface\IHoldingPlatformWorkTypeSelectable.cs" />
     <Compile Include="Patch\Patch_ApparelProperties.cs" />
@@ -138,6 +146,7 @@
     <Compile Include="Render\Normal\PawnRenderNode_StillState.cs" />
     <Compile Include="Setting\Setting_LCAnomalyLibrary.cs" />
     <Compile Include="Setting\Setting_LCAnomalyLibrary_Main.cs" />
+    <Compile Include="Shader\ImageEffect_Mosaic.cs" />
     <Compile Include="Singleton\LCCanvasSingleton.cs" />
     <Compile Include="Sounds\ExtractRitualTransition.cs" />
     <Compile Include="Jobs\JobGiver_GatherOfferingsForExtractRitual.cs" />
@@ -153,6 +162,8 @@
     <Compile Include="Toils\ExtractRitualToil_GatherOfferings.cs" />
     <Compile Include="Toils\ExtractRitualToil_GatherForInvocation.cs" />
     <Compile Include="UI\Dialog_LC_EntityCodex.cs" />
+    <Compile Include="UI\ITab_PawnStatus.cs" />
+    <Compile Include="Util\ColorUtil.cs" />
     <Compile Include="Util\Components.cs" />
     <Compile Include="Util\Curves.cs" />
     <Compile Include="Util\DamageUtils.cs" />
@@ -160,6 +171,7 @@
     <Compile Include="Util\ExtractUtil.cs" />
     <Compile Include="Util\Gizmos.cs" />
     <Compile Include="Util\MusicUtils.cs" />
+    <Compile Include="Util\SightUtil.cs" />
     <Compile Include="Util\StudyUtils.cs" />
     <Compile Include="Util\Types.cs" />
   </ItemGroup>

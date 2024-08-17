@@ -1,4 +1,4 @@
-﻿using LCAnomalyLibrary.Interface;
+﻿using LCAnomalyLibrary.Comp.Pawns;
 using LCAnomalyLibrary.Setting;
 using LCAnomalyLibrary.Util;
 using RimWorld;
@@ -22,17 +22,78 @@ namespace LCAnomalyLibrary.Comp
         /// <summary>
         /// 研究阶段解锁
         /// </summary>
-        public CompStudyUnlocks StudyUnlocksComp => parent.GetComp<CompStudyUnlocks>();
+        public CompStudyUnlocks StudyUnlocksComp
+        {
+            get
+            {
+                if(studyUnlocksComp == null) 
+                    return studyUnlocksComp = parent.GetComp<CompStudyUnlocks>();
+                else
+                    return studyUnlocksComp;
+            }
+        }
+        protected CompStudyUnlocks studyUnlocksComp;
+
+        /// <summary>
+        /// 研究组件
+        /// </summary>
+        public LC_CompStudiable StudiableComp
+        {
+            get
+            {
+                if (studiableComp == null)
+                    return studiableComp = parent.GetComp<LC_CompStudiable>();
+                else
+                    return studiableComp;
+            }
+        }
+        protected LC_CompStudiable studiableComp;
 
         /// <summary>
         /// 首饰组件
         /// </summary>
-        public CompAccessoryable AccessoryableComp => parent.GetComp<CompAccessoryable>();
+        public CompAccessoryable AccessoryableComp
+        {
+            get
+            {
+                if(studyUnlocksComp == null)
+                    return accessoryableComp = parent.GetComp<CompAccessoryable>();
+                else 
+                    return accessoryableComp;
+            }
+        }
+        protected CompAccessoryable accessoryableComp;
+
 
         /// <summary>
         /// PeBox组件
         /// </summary>
-        public LC_CompPeBoxProduce PeBoxComp => parent.GetComp<LC_CompPeBoxProduce>();
+        public LC_CompPeBoxProduce PeBoxComp
+        {
+            get
+            {
+                if(peBoxComp == null)
+                    return peBoxComp = parent.GetComp<LC_CompPeBoxProduce>();
+                else
+                    return peBoxComp;
+            }
+        }
+        protected LC_CompPeBoxProduce peBoxComp;
+
+        /// <summary>
+        /// 收容控制组件
+        /// </summary>
+        public CompHoldingPlatformTarget HoldingPlaformTargetComp
+        {
+            get
+            {
+                if(holdingPlatformTargetComp == null)
+                    return holdingPlatformTargetComp = parent.GetComp<CompHoldingPlatformTarget>();
+                else
+                    return holdingPlatformTargetComp;
+            }
+        }
+        protected CompHoldingPlatformTarget holdingPlatformTargetComp;
 
         /// <summary>
         /// 生物特征
@@ -130,6 +191,14 @@ namespace LCAnomalyLibrary.Comp
 
         private string biosignatureName;
 
+        /// <summary>
+        /// 是否已出逃
+        /// </summary>
+        public bool Escaped => escaped;
+        protected bool escaped = false;
+
+        protected int PeBoxProducedTemp = 0;
+
         #endregion 变量
 
         #region 触发事件
@@ -151,6 +220,12 @@ namespace LCAnomalyLibrary.Comp
         /// </summary>
         public virtual void Notify_Escaped()
         {
+            //避免重复出逃
+            if (escaped)
+                return;
+            else
+                escaped = true;
+
             //如果出逃提醒就弹出逃信封和计算警报点数
             if (Props.shouldNotifyWhenEscape)
             {
@@ -171,9 +246,6 @@ namespace LCAnomalyLibrary.Comp
                     }
                 }
             }
-
-            CompHoldingPlatformTarget comp = parent.TryGetComp<CompHoldingPlatformTarget>();
-            comp.isEscaping = true;
         }
 
         /// <summary>
@@ -181,14 +253,24 @@ namespace LCAnomalyLibrary.Comp
         /// </summary>
         public virtual void Notify_Studied(Pawn studier)
         {
-            if (studier == null)
-                return;
-            var platform = parent.GetComp<CompHoldingPlatformTarget>().HeldPlatform as IHoldingPlatformWorkTypeSelectable;
-            if (platform != null)
+            //优秀
+            if (PeBoxProducedTemp > PeBoxComp.Props.amountProdueRangeNormal.max)
             {
-                //Log.Warning($"研究者：{studier.Name} 将通过工作类型 {platform.CurWorkType.ToString()} 来通过判定");
-                CheckIfStudySuccess(studier, platform.CurWorkType);
+                StudyEvent_Good(studier);
             }
+            //差
+            else if (PeBoxProducedTemp < PeBoxComp.Props.amountProdueRangeNormal.min)
+            {
+                StudyEvent_Bad(studier);
+            }
+            //良好
+            else
+            {
+                StudyEvent_Normal(studier);
+            }
+
+            //清空缓存数量
+            PeBoxProducedTemp = 0;
         }
 
         /// <summary>
@@ -196,6 +278,22 @@ namespace LCAnomalyLibrary.Comp
         /// </summary>
         public virtual void Notify_Studying(Pawn studier)
         {
+        }
+
+        public virtual bool Notify_StudyInterval(CompPawnStatus studier, EAnomalyWorkType workType)
+        {
+            float rate = StudySuccessRateCalculate(studier, workType);
+            if (Rand.Chance(rate))
+            {
+                Log.Message($"研究成功一次，当前最终成功率为：{rate}");
+                PeBoxProducedTemp++;
+                return true;
+            }
+            else
+            {
+                Log.Warning($"研究失败一次，当前最终成功率为：{rate}");
+                return false;
+            }
         }
 
         /// <summary>
@@ -206,35 +304,16 @@ namespace LCAnomalyLibrary.Comp
         }
 
         /// <summary>
-        /// 研究质量：非差
-        /// </summary>
-        /// <param name="studier">研究者</param>
-        /// <param name="result">研究质量</param>
-        protected virtual void StudyEvent_NotBad(Pawn studier, LC_StudyResult result)
-        {
-            switch (result)
-            {
-                case LC_StudyResult.Good:
-                    StudyEvent_Good(studier);
-                    break;
-
-                case LC_StudyResult.Normal:
-                    StudyEvent_Normal(studier);
-                    break;
-            }
-
-            PeBoxComp?.CheckSpawnPeBox(studier, result);
-            StudyUtil.DoStudyResultEffect(studier, (Pawn)parent, result);
-        }
-
-        /// <summary>
         /// 研究质量：优秀
         /// </summary>
         /// <param name="studier">研究者</param>
         protected virtual void StudyEvent_Good(Pawn studier)
         {
-            QliphothCountCurrent++;
+            PeBoxComp?.CheckSpawnPeBox(studier, PeBoxProducedTemp);
+            StudyUtil.DoStudyResultEffect(studier, (Pawn)parent, LC_StudyResult.Good);
             AccessoryableComp?.CheckGiveAccessory(studier);
+
+            QliphothCountCurrent++;
         }
 
         /// <summary>
@@ -243,6 +322,9 @@ namespace LCAnomalyLibrary.Comp
         /// <param name="studier">研究者</param>
         protected virtual void StudyEvent_Normal(Pawn studier)
         {
+            PeBoxComp?.CheckSpawnPeBox(studier, PeBoxProducedTemp);
+            StudyUtil.DoStudyResultEffect(studier, (Pawn)parent, LC_StudyResult.Normal);
+            AccessoryableComp?.CheckGiveAccessory(studier);
         }
 
         /// <summary>
@@ -251,6 +333,10 @@ namespace LCAnomalyLibrary.Comp
         /// <param name="studier">研究者</param>
         protected virtual void StudyEvent_Bad(Pawn studier)
         {
+            PeBoxComp?.CheckSpawnPeBox(studier, PeBoxProducedTemp);
+            StudyUtil.DoStudyResultEffect(studier, (Pawn)parent, LC_StudyResult.Bad);
+            AccessoryableComp?.CheckGiveAccessory(studier);
+
             QliphothCountCurrent--;
         }
 
@@ -260,13 +346,7 @@ namespace LCAnomalyLibrary.Comp
         protected virtual void QliphothMeltdown()
         {
             //Log.Message($"收容：{parent.def.label.Translate()} 的收容单元发生了熔毁");
-
-            CompHoldingPlatformTarget comp = parent.TryGetComp<CompHoldingPlatformTarget>();
-            if (comp != null)
-            {
-                //Log.Message($"收容：{parent.def.label.Translate()} 因收容单元熔毁而出逃");
-                comp.Escape(initiator: true);
-            }
+            HoldingPlaformTargetComp.Escape(initiator: true);
         }
 
         #endregion 触发事件
@@ -279,6 +359,7 @@ namespace LCAnomalyLibrary.Comp
         public override void PostExposeData()
         {
             Scribe_Values.Look(ref biosignature, "biosignature", 0);
+            Scribe_Values.Look(ref escaped, "escaped", defaultValue: false);
             Scribe_Values.Look(ref qliphothCountCurrent, "qliphothCountCurrent", defaultValue: QliphothCountMax);
         }
 
@@ -287,34 +368,19 @@ namespace LCAnomalyLibrary.Comp
         #region 工具功能
 
         /// <summary>
-        /// 检查研究是否成功
+        /// 获取研究成功率
         /// </summary>
         /// <param name="studier">研究者</param>
         /// <param name="workType">工作类型</param>
-        /// <returns></returns>
-        protected virtual bool CheckIfStudySuccess(Pawn studier, EAnomalyWorkType workType)
+        /// <returns>研究成功率</returns>
+        protected virtual float StudySuccessRateCalculate(CompPawnStatus studier, EAnomalyWorkType workType)
         {
-            if (CheckStudierSkillRequire(studier))
-            {
-                StudyEvent_NotBad(studier, CheckFinalStudyQuality(studier, workType));
-                return true;
-            }
-            else
-            {
-                StudyEvent_Bad(studier);
-                return false;
-            }
-        }
+            //默认基本成功率为 每点正义值x0.2%
+            float baseRate = studier.GetPawnStatusLevel(EPawnStatus.Justice).Status * 0.002f;
+            //观察等级解锁的成功率
+            float unlockRate = StudiableComp.GetWorkSuccessRateOffset();
 
-        /// <summary>
-        /// 计算研究质量
-        /// </summary>
-        /// <param name="studier">研究者</param>
-        /// <param name="workType">工作类型</param>
-        /// <returns>研究质量</returns>
-        protected virtual LC_StudyResult CheckFinalStudyQuality(Pawn studier, EAnomalyWorkType workType)
-        {
-            return LC_StudyResult.Bad;
+            return baseRate + unlockRate;
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
-﻿using Verse;
+﻿using UnityEngine;
+using Verse;
 
 namespace LCAnomalyLibrary.Comp
 {
@@ -14,20 +15,10 @@ namespace LCAnomalyLibrary.Comp
         /// </summary>
         public ThingDef peBoxDef;
 
-        /// <summary>
-        /// XML：工作产生PeBox的数量（良好）
-        /// </summary>
-        public int amountStudyGood;
+        public IntRange amountProdueRangeNormal;
+        public int amountProdueMax;
 
-        /// <summary>
-        /// XML：工作产生PeBox的数量（普通）
-        /// </summary>
-        public int amountStudyNormal;
-
-        /// <summary>
-        /// XML：工作产生PeBox的数量（差）
-        /// </summary>
-        public int amountStudyBad;
+        public float boxTexOffsetZ;
 
         #endregion XML字段
 

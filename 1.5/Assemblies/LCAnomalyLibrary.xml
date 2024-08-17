@@ -37,6 +37,11 @@
             研究阶段解锁
             </summary>
         </member>
+        <member name="P:LCAnomalyLibrary.Comp.LC_CompEntity.StudiableComp">
+            <summary>
+            研究组件
+            </summary>
+        </member>
         <member name="P:LCAnomalyLibrary.Comp.LC_CompEntity.AccessoryableComp">
             <summary>
             首饰组件
@@ -45,6 +50,11 @@
         <member name="P:LCAnomalyLibrary.Comp.LC_CompEntity.PeBoxComp">
             <summary>
             PeBox组件
+            </summary>
+        </member>
+        <member name="P:LCAnomalyLibrary.Comp.LC_CompEntity.HoldingPlaformTargetComp">
+            <summary>
+            收容控制组件
             </summary>
         </member>
         <member name="F:LCAnomalyLibrary.Comp.LC_CompEntity.biosignature">
@@ -77,6 +87,11 @@
             生物特征名
             </summary>
         </member>
+        <member name="P:LCAnomalyLibrary.Comp.LC_CompEntity.Escaped">
+            <summary>
+            是否已出逃
+            </summary>
+        </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.PostPostMake">
             <summary>
             PostPostMake初始化
@@ -101,13 +116,6 @@
             <summary>
             绑到收容平台上的操作
             </summary>
-        </member>
-        <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.StudyEvent_NotBad(Verse.Pawn,LCAnomalyLibrary.Util.LC_StudyResult)">
-            <summary>
-            研究质量：非差
-            </summary>
-            <param name="studier">研究者</param>
-            <param name="result">研究质量</param>
         </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.StudyEvent_Good(Verse.Pawn)">
             <summary>
@@ -137,21 +145,13 @@
             我不知道这是什么，好像和数据保存有关
             </summary>
         </member>
-        <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.CheckIfStudySuccess(Verse.Pawn,LCAnomalyLibrary.Util.EAnomalyWorkType)">
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.StudySuccessRateCalculate(LCAnomalyLibrary.Comp.Pawns.CompPawnStatus,LCAnomalyLibrary.Util.EAnomalyWorkType)">
             <summary>
-            检查研究是否成功
+            获取研究成功率
             </summary>
             <param name="studier">研究者</param>
             <param name="workType">工作类型</param>
-            <returns></returns>
-        </member>
-        <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.CheckFinalStudyQuality(Verse.Pawn,LCAnomalyLibrary.Util.EAnomalyWorkType)">
-            <summary>
-            计算研究质量
-            </summary>
-            <param name="studier">研究者</param>
-            <param name="workType">工作类型</param>
-            <returns>研究质量</returns>
+            <returns>研究成功率</returns>
         </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompEntity.CheckStudierSkillRequire(Verse.Pawn)">
             <summary>
@@ -170,6 +170,86 @@
             Gizmos
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:LCAnomalyLibrary.Comp.Pawns.CompProperties_PawnStatus">
+            <summary>
+            LC员工基本属性CompProperties
+            </summary>
+        </member>
+        <member name="T:LCAnomalyLibrary.Comp.Pawns.CompPawnStatus">
+            <summary>
+            LC员工基本属性Comp
+            </summary>
+        </member>
+        <member name="P:LCAnomalyLibrary.Comp.Pawns.CompPawnStatus.Props">
+            <summary>
+            Properties
+            </summary>
+        </member>
+        <member name="P:LCAnomalyLibrary.Comp.Pawns.CompPawnStatus.SingleLevel">
+            <summary>
+            综合等级
+            </summary>
+        </member>
+        <member name="T:LCAnomalyLibrary.Comp.Pawns.EPawnStatus">
+            <summary>
+            LC员工基本属性类型
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.Pawns.EPawnStatus.Fortitude">
+            <summary>
+            勇气
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.Pawns.EPawnStatus.Prudence">
+            <summary>
+            谨慎
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.Pawns.EPawnStatus.Temperance">
+            <summary>
+            自律
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.Pawns.EPawnStatus.Justice">
+            <summary>
+            正义
+            </summary>
+        </member>
+        <member name="T:LCAnomalyLibrary.Comp.Pawns.EPawnLevel">
+            <summary>
+            LC员工基本属性等级
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.Pawns.EPawnLevel.I">
+            <summary>
+            1级
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.Pawns.EPawnLevel.II">
+            <summary>
+            2级
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.Pawns.EPawnLevel.III">
+            <summary>
+            3级
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.Pawns.EPawnLevel.IV">
+            <summary>
+            4级
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.Pawns.EPawnLevel.V">
+            <summary>
+            5级
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.Pawns.EPawnLevel.EX">
+            <summary>
+            6级
+            </summary>
         </member>
         <member name="T:LCAnomalyLibrary.Comp.LC_CompProperties_Entity">
             <summary>
@@ -226,6 +306,18 @@
             Comp
             </summary>
         </member>
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompStudiable.GetWorkSpeedOffset">
+            <summary>
+            研究解锁带来的工作速度加成
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompStudiable.GetWorkSuccessRateOffset">
+            <summary>
+            研究解锁带来的成功率加成
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:LCAnomalyLibrary.Comp.LC_EntityBaseThing">
             <summary>
             LC实体Thing基类
@@ -234,6 +326,11 @@
         <member name="T:LCAnomalyLibrary.Comp.LC_EntityBasePawn">
             <summary>
             LC实体Pawn基类
+            </summary>
+        </member>
+        <member name="P:LCAnomalyLibrary.Comp.LC_EntityBasePawn.EntityComp">
+            <summary>
+            LC的实体Comp
             </summary>
         </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_EntityBasePawn.TickHolded">
@@ -362,12 +459,12 @@
             当前独立PeBox数量
             </summary>
         </member>
-        <member name="M:LCAnomalyLibrary.Comp.LC_CompPeBoxProduce.CheckSpawnPeBox(Verse.Pawn,LCAnomalyLibrary.Util.LC_StudyResult)">
+        <member name="M:LCAnomalyLibrary.Comp.LC_CompPeBoxProduce.CheckSpawnPeBox(Verse.Pawn,System.Int32)">
             <summary>
             检查生成Pebox
             </summary>
             <param name="studier">研究者</param>
-            <param name="result">工作质量</param>
+            <param name="amount">生产量</param>
         </member>
         <member name="E:LCAnomalyLibrary.Comp.LC_CompPeBoxProduce.OnContentsChanged">
             <summary>
@@ -462,21 +559,6 @@
         <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_PeBoxProduce.peBoxDef">
             <summary>
             XML：工作产生PeBox的类型
-            </summary>
-        </member>
-        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_PeBoxProduce.amountStudyGood">
-            <summary>
-            XML：工作产生PeBox的数量（良好）
-            </summary>
-        </member>
-        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_PeBoxProduce.amountStudyNormal">
-            <summary>
-            XML：工作产生PeBox的数量（普通）
-            </summary>
-        </member>
-        <member name="F:LCAnomalyLibrary.Comp.LC_CompProperties_PeBoxProduce.amountStudyBad">
-            <summary>
-            XML：工作产生PeBox的数量（差）
             </summary>
         </member>
         <member name="M:LCAnomalyLibrary.Comp.LC_CompProperties_PeBoxProduce.#ctor">
@@ -1214,6 +1296,14 @@
             音乐工具
             </summary>
         </member>
+        <member name="M:LCAnomalyLibrary.Util.SightUtil.IsOutsideView(Verse.Thing,RimWorld.Faction)">
+            <summary>
+            判断目标是否在视野里
+            </summary>
+            <param name="thing">目标</param>
+            <param name="faction">派系</param>
+            <returns></returns>
+        </member>
         <member name="T:LCAnomalyLibrary.Util.StudyUtil">
             <summary>
             研究工作工具类
@@ -1226,6 +1316,12 @@
             <param name="studier">研究者</param>
             <param name="entity">被研究者</param>
             <param name="result">研究质量</param>
+        </member>
+        <member name="M:LCAnomalyLibrary.Util.StudyUtil.CalculatePawnLevel(System.Single)">
+            <summary>
+            根据数值计算员工属性等级
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:LCAnomalyLibrary.Util.LC_StudyResult">
             <summary>

@@ -125,15 +125,20 @@ namespace LCAnomalyLibrary.Patch
         private static bool Prefix(bool initiator, CompHoldingPlatformTarget __instance)
         {
             //如果不是LC实体就执行原方法
-            LC_CompEntity compEntity = __instance.parent.TryGetComp<LC_CompEntity>();
-            if (compEntity == null)
+            var entitiyBasePawn = __instance.parent as LC_EntityBasePawn;
+            if (entitiyBasePawn == null)
+            {
                 return true;
+            }
+            //LC_CompEntity compEntity = __instance.parent.TryGetComp<LC_CompEntity>();
+            //if (compEntity == null)
+            //    return true;
 
             //从下面开始不会再执行原方法
             //-------------------------------------------------------------------------------------//
 
             //重置收容平台状态
-            __instance.HeldPlatform.EjectContents();
+            __instance.HeldPlatform?.EjectContents();
 
             //Pawn不存在则退出
             Pawn pawn = (Pawn)__instance.parent;
@@ -145,7 +150,7 @@ namespace LCAnomalyLibrary.Patch
 
             //设置逃跑状态，弹信封，触发回调方法
             __instance.isEscaping = true;
-            compEntity.Notify_Escaped();
+            entitiyBasePawn.EntityComp.Notify_Escaped();
 
             //设置脱离后的第一个目标（感觉没必要，这是原方法的部分内容）
             //感觉是给幽魂用的
