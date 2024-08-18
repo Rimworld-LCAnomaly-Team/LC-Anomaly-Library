@@ -367,6 +367,9 @@ namespace LCAnomalyLibrary.Comp
             Scribe_Values.Look(ref biosignature, "biosignature", 0);
             Scribe_Values.Look(ref escaped, "escaped", defaultValue: false);
             Scribe_Values.Look(ref qliphothCountCurrent, "qliphothCountCurrent", defaultValue: QliphothCountMax);
+
+            Scribe_Values.Look(ref PeBoxProducedTemp, "PeBoxProducedTemp");
+            Scribe_Values.Look(ref NeBoxProducedTemp, "NeBoxProducedTemp");
         }
 
         #endregion 生命周期
