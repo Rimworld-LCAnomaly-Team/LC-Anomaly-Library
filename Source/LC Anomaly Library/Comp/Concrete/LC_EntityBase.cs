@@ -1,4 +1,5 @@
-﻿using RimWorld;
+﻿using LCAnomalyLibrary.Util;
+using RimWorld;
 using Verse;
 
 namespace LCAnomalyLibrary.Comp
@@ -40,8 +41,7 @@ namespace LCAnomalyLibrary.Comp
 
         public override void Notify_Studied(Pawn studier, float amount, KnowledgeCategoryDef category = null)
         {
-            Log.Warning("研究了一次");
-            //base.Notify_Studied(studier, amount, category);
+            LogUtil.Warning("研究了一次");
             EntityComp?.Notify_Studied(studier);
         }
 

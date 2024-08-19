@@ -290,13 +290,13 @@ namespace LCAnomalyLibrary.Comp
             float rate = StudySuccessRateCalculate(studier, workType);
             if (Rand.Chance(rate))
             {
-                Log.Message($"研究成功一次，当前最终成功率为：{rate}");
+                LogUtil.Message($"Study success，final success rate：{rate}");
                 PeBoxProducedTemp++;
                 return true;
             }
             else
             {
-                Log.Warning($"研究失败一次，当前最终成功率为：{rate}");
+                LogUtil.Warning($"Study failure，final success rate：{rate}");
                 NeBoxProducedTemp++;
                 return false;
             }
@@ -474,7 +474,7 @@ namespace LCAnomalyLibrary.Comp
                         defaultLabel = "Force Meltdown",
                         action = delegate
                         {
-                            Log.Warning($"Dev：{parent.def.label.Translate()} 的收容单元发生了强制熔毁");
+                            LogUtil.Warning($"Dev：{parent.def.label.Translate()} 的收容单元发生了强制熔毁");
                             ForceQliphothMeltdown();
                         }
                     };
@@ -484,7 +484,7 @@ namespace LCAnomalyLibrary.Comp
                         defaultLabel = "QliphothCount +1",
                         action = delegate
                         {
-                            Log.Warning($"Dev：{parent.def.label.Translate()} 的逆卡巴拉计数器上升了1点");
+                            LogUtil.Warning($"Dev：{parent.def.label.Translate()} 的逆卡巴拉计数器上升了1点");
                             QliphothCountCurrent++;
                         }
                     };
@@ -494,7 +494,7 @@ namespace LCAnomalyLibrary.Comp
                         defaultLabel = "QliphothCount -1",
                         action = delegate
                         {
-                            Log.Warning($"Dev：{parent.def.label.Translate()} 的逆卡巴拉计数器下降了1点");
+                            LogUtil.Warning($"Dev：{parent.def.label.Translate()} 的逆卡巴拉计数器下降了1点");
                             QliphothCountCurrent--;
                         }
                     };

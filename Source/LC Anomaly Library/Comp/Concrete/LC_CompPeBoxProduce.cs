@@ -57,7 +57,7 @@ namespace LCAnomalyLibrary.Comp
                     Thing thing = ThingMaker.MakeThing(Props.peBoxDef);
                     thing.stackCount = amount;
                     GenSpawn.Spawn(thing, studier.Position, studier.Map);
-                    Log.Message($"工作：{parent.def.label.Translate()}生成了{amount}单位的独立和打包PeBox");
+                    LogUtil.Message($"Study: {parent.def.label.Translate()} spawned {amount} PeBox");
                 }
             }
         }
@@ -81,7 +81,7 @@ namespace LCAnomalyLibrary.Comp
                     defaultLabel = "IndiPebox + 10",
                     action = delegate
                     {
-                        //Log.Warning($"Dev：{parent.def.label.Translate()} 的独立PeBox增加了20点");
+                        LogUtil.Warning($"Dev：{parent.def.label.Translate()}'s Indi-PeBox +20");
                         CurAmountIndiPebox += 10;
                     }
                 };
@@ -91,7 +91,7 @@ namespace LCAnomalyLibrary.Comp
                     defaultLabel = "IndiPebox - 10",
                     action = delegate
                     {
-                        //Log.Warning($"Dev：{parent.def.label.Translate()} 的独立PeBox减少了20点");
+                        LogUtil.Warning($"Dev：{parent.def.label.Translate()}'s Indi-PeBox -20");
                         CurAmountIndiPebox -= 10;
                     }
                 };

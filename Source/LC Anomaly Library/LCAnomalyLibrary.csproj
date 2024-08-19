@@ -170,6 +170,7 @@
     <Compile Include="Util\ExpansionActive.cs" />
     <Compile Include="Util\ExtractUtil.cs" />
     <Compile Include="Util\Gizmos.cs" />
+    <Compile Include="Util\LogUtil.cs" />
     <Compile Include="Util\MusicUtils.cs" />
     <Compile Include="Util\SightUtil.cs" />
     <Compile Include="Util\StudyUtils.cs" />

@@ -23,7 +23,7 @@ namespace LCAnomalyLibrary.Util
             {
                 if (musicManager.CurrentSong != Defs.SongDefOf.ThirdWarning)
                 {
-                    Log.Warning("警报音乐：播放3级警报音乐");
+                    LogUtil.Warning("WaringMusic：Play tier3 music");
                     musicManager.ForcePlaySong(Defs.SongDefOf.ThirdWarning, false);
                     LCCanvasSingleton.Instance.ShowWarningUI(EWarningLevel.Third);
                 }
@@ -38,7 +38,7 @@ namespace LCAnomalyLibrary.Util
                     if (musicManager.CurrentSong == Defs.SongDefOf.ThirdWarning)
                         return;
 
-                    Log.Warning("警报音乐：播放2级警报音乐");
+                    LogUtil.Warning("WaringMusic：Play tier2 music");
                     musicManager.ForcePlaySong(Defs.SongDefOf.SecondWarning, false);
                     LCCanvasSingleton.Instance.ShowWarningUI(EWarningLevel.Second);
                 }
@@ -54,7 +54,7 @@ namespace LCAnomalyLibrary.Util
                     if (musicManager.CurrentSong == Defs.SongDefOf.ThirdWarning || musicManager.CurrentSong == Defs.SongDefOf.SecondWarning)
                         return;
 
-                    Log.Warning("警报音乐：播放1级警报音乐");
+                    LogUtil.Warning("WaringMusic：Play tier1 music");
                     musicManager.ForcePlaySong(Defs.SongDefOf.FirstWarning, false);
                     LCCanvasSingleton.Instance.ShowWarningUI(EWarningLevel.First);
                 }
@@ -67,7 +67,7 @@ namespace LCAnomalyLibrary.Util
                 || musicManager.CurrentSong == Defs.SongDefOf.SecondWarning
                 || musicManager.CurrentSong == Defs.SongDefOf.ThirdWarning)
             {
-                Log.Warning("警报音乐：重置音乐");
+                LogUtil.Warning("WaringMusic：Reset");
                 musicManager.StartNewSong();
             }
         }

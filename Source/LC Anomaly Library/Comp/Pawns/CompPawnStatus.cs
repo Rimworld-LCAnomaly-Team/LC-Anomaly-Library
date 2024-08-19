@@ -19,17 +19,21 @@ namespace LCAnomalyLibrary.Comp.Pawns
         protected PawnStatus status_Temperance;
         protected PawnStatus status_Justice;
 
-        public override void PostSpawnSetup(bool respawningAfterLoad)
+        protected bool Inited = false;
+
+        public override void Initialize(CompProperties props)
         {
-            if (!respawningAfterLoad)
+            base.Initialize(props);
+
+            if (!Inited)
             {
                 status_Fortitude.Status = Props.initialRange_Fortitude.RandomInRange;
                 status_Prudence.Status = Props.initialRange_Prudence.RandomInRange;
                 status_Temperance.Status = Props.initialRange_Temperance.RandomInRange;
                 status_Justice.Status = Props.initialRange_Justice.RandomInRange;
-            }
 
-            base.PostSpawnSetup(respawningAfterLoad);
+                Inited = true;
+            }
         }
 
         /// <summary>
@@ -100,6 +104,7 @@ namespace LCAnomalyLibrary.Comp.Pawns
 
         public override void PostExposeData()
         {
+            Scribe_Deep.Look(ref Inited, "inited");
             Scribe_Deep.Look(ref status_Fortitude, "pawnStatus_Fortitude");
             Scribe_Deep.Look(ref status_Prudence, "pawnStatus_Prudence");
             Scribe_Deep.Look(ref status_Temperance, "pawnStatus_Temperance");
@@ -233,6 +238,12 @@ namespace LCAnomalyLibrary.Comp.Pawns
             }
         }
         private float exp;
+
+        public PawnStatus(int status, int exp = 0)
+        {
+            Status = status;
+            Exp = exp;
+        }
 
         public void ExposeData()
         {
