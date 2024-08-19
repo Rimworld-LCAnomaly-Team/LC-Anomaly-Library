@@ -24,14 +24,26 @@ namespace LCAnomalyLibrary.Comp.Pawns
         public override void Initialize(CompProperties props)
         {
             base.Initialize(props);
+            StatusInit();
+        }
 
-            if (!Inited)
+        public override void PostSpawnSetup(bool respawningAfterLoad)
+        {
+            base.PostSpawnSetup(respawningAfterLoad);
+            StatusInit();
+        }
+
+        protected void StatusInit(bool force = false)
+        {
+            //未初始化或强制初始化，就执行初始化
+            if (!Inited || force)
             {
                 status_Fortitude.Status = Props.initialRange_Fortitude.RandomInRange;
                 status_Prudence.Status = Props.initialRange_Prudence.RandomInRange;
                 status_Temperance.Status = Props.initialRange_Temperance.RandomInRange;
                 status_Justice.Status = Props.initialRange_Justice.RandomInRange;
 
+                LogUtil.Message($"{((Pawn)parent).Name}'s LC_PawnStatus inited.");
                 Inited = true;
             }
         }
@@ -104,7 +116,7 @@ namespace LCAnomalyLibrary.Comp.Pawns
 
         public override void PostExposeData()
         {
-            Scribe_Deep.Look(ref Inited, "inited");
+            Scribe_Values.Look(ref Inited, "inited");
             Scribe_Deep.Look(ref status_Fortitude, "pawnStatus_Fortitude");
             Scribe_Deep.Look(ref status_Prudence, "pawnStatus_Prudence");
             Scribe_Deep.Look(ref status_Temperance, "pawnStatus_Temperance");
@@ -117,36 +129,45 @@ namespace LCAnomalyLibrary.Comp.Pawns
             {
                 yield return new Command_Action
                 {
-                    defaultLabel = "DEV: Add 10 Points of Fortitude",
+                    defaultLabel = "DEV: Reset To LC Level I",
                     action = delegate
                     {
-                        status_Fortitude.Status += 10;
+                        StatusInit(true);
                     }
                 };
-                yield return new Command_Action
-                {
-                    defaultLabel = "DEV: Add 10 Points of Prudence",
-                    action = delegate
-                    {
-                        status_Prudence.Status += 10;
-                    }
-                };
-                yield return new Command_Action
-                {
-                    defaultLabel = "DEV: Add 10 Points of Temperance",
-                    action = delegate
-                    {
-                        status_Temperance.Status += 10;
-                    }
-                };
-                yield return new Command_Action
-                {
-                    defaultLabel = "DEV: Add 10 Points of Justice",
-                    action = delegate
-                    {
-                        status_Justice.Status += 10;
-                    }
-                };
+
+                //yield return new Command_Action
+                //{
+                //    defaultLabel = "DEV: Add 10 Points of Fortitude",
+                //    action = delegate
+                //    {
+                //        status_Fortitude.Status += 10;
+                //    }
+                //};
+                //yield return new Command_Action
+                //{
+                //    defaultLabel = "DEV: Add 10 Points of Prudence",
+                //    action = delegate
+                //    {
+                //        status_Prudence.Status += 10;
+                //    }
+                //};
+                //yield return new Command_Action
+                //{
+                //    defaultLabel = "DEV: Add 10 Points of Temperance",
+                //    action = delegate
+                //    {
+                //        status_Temperance.Status += 10;
+                //    }
+                //};
+                //yield return new Command_Action
+                //{
+                //    defaultLabel = "DEV: Add 10 Points of Justice",
+                //    action = delegate
+                //    {
+                //        status_Justice.Status += 10;
+                //    }
+                //};
             }
         }
     }
