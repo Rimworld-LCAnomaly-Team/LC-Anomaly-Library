@@ -3,5 +3,10 @@
 	<v1.5>
 		<li>Cont</li>
 		<li>1.5</li>
+		<li IfModActive="Ancot.KiiroRace">Extension/1.5/HAR/Kiiro</li>
+		<li IfModActive="ancot.milirarace">Extension/1.5/HAR/Milira</li>
+		<li IfModActive="miho.fortifiedoutremer">Extension/1.5/HAR/Miho</li>
+		<li IfModActive="seioch.kurin.har">Extension/1.5/HAR/KurinHAR</li>
+		<li IfModActive="hentailoliteam.axolotl">Extension/1.5/HAR/MoeLotl</li>
     </v1.5>
 </loadFolders>

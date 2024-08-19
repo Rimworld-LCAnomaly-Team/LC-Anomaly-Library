@@ -3,8 +3,8 @@
 
   <WorkTypeDef>
     <defName>AbnormalityStudy</defName>
-    <labelShort>abnormality study</labelShort>
-    <pawnLabel>Studier</pawnLabel>
+    <labelShort>abnormal study</labelShort>
+    <pawnLabel>Employee</pawnLabel>
     <gerundLabel>abnormality studying</gerundLabel>
     <description>Interact with abnormalities.</description>
     <verb>Study at</verb>

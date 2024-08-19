@@ -9,6 +9,16 @@ namespace LCAnomalyLibrary.Comp
 
         new public LC_CompProperties_Studiable Props => (LC_CompProperties_Studiable)props;
 
+        protected LC_CompStudyUnlocks CompStudyUnlocks
+        {
+            get
+            {
+                compStudyUnlocks ??= parent.GetComp<LC_CompStudyUnlocks>();
+                return compStudyUnlocks;
+            }
+        }
+        private LC_CompStudyUnlocks compStudyUnlocks;
+
         public int StudyTimesPeriod => Props.studyTimesPeriod;
 
         public override void Study(Pawn studier, float studyAmount, float anomalyKnowledgeAmount = 0)

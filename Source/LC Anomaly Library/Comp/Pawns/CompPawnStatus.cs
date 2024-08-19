@@ -19,6 +19,19 @@ namespace LCAnomalyLibrary.Comp.Pawns
         protected PawnStatus status_Temperance;
         protected PawnStatus status_Justice;
 
+        public override void PostSpawnSetup(bool respawningAfterLoad)
+        {
+            if (!respawningAfterLoad)
+            {
+                status_Fortitude.Status = Props.initialRange_Fortitude.RandomInRange;
+                status_Prudence.Status = Props.initialRange_Prudence.RandomInRange;
+                status_Temperance.Status = Props.initialRange_Temperance.RandomInRange;
+                status_Justice.Status = Props.initialRange_Justice.RandomInRange;
+            }
+
+            base.PostSpawnSetup(respawningAfterLoad);
+        }
+
         /// <summary>
         /// 综合等级
         /// </summary>
@@ -60,7 +73,6 @@ namespace LCAnomalyLibrary.Comp.Pawns
                 return level;
             }
         }
-
 
         public ref PawnStatus GetPawnStatusLevel(EPawnStatus statusType)
         {
