@@ -117,6 +117,8 @@
     <Compile Include="Comp\Concrete\CompProperties_EgoExtractable.cs" />
     <Compile Include="Comp\Concrete\LC_CompProperties_PeBoxProduce.cs" />
     <Compile Include="Comp\Concrete\CompProperties_EgoWeapon.cs" />
+    <Compile Include="Defs\HediffDefOf.cs" />
+    <Compile Include="Hediffs\HediffComp_PawnStatus.cs" />
     <Compile Include="DamageWorker\DamageWorker_LC_Red.cs" />
     <Compile Include="Defs\ApparelLayerDefOf.cs" />
     <Compile Include="Defs\DutyDefOf.cs" />

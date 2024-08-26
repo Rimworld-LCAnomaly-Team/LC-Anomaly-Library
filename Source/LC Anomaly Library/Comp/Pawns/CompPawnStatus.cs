@@ -1,4 +1,5 @@
-﻿using LCAnomalyLibrary.Util;
+﻿using LCAnomalyLibrary.Defs;
+using LCAnomalyLibrary.Util;
 using System.Collections.Generic;
 using Verse;
 
@@ -35,6 +36,9 @@ namespace LCAnomalyLibrary.Comp.Pawns
 
         protected void StatusInit(bool force = false)
         {
+            //检查hediff存在情况
+            (parent as Pawn)?.health?.GetOrAddHediff(HediffDefOf.LC_PawnStatus);
+
             //未初始化或强制初始化，就执行初始化
             if (!Inited || force)
             {
@@ -168,6 +172,18 @@ namespace LCAnomalyLibrary.Comp.Pawns
                 //        status_Justice.Status += 10;
                 //    }
                 //};
+
+                yield return new Command_Action
+                {
+                    defaultLabel = "DEV: Update To 100 ALL",
+                    action = delegate
+                    {
+                        status_Fortitude.Status = 100;
+                        status_Prudence.Status = 100;
+                        status_Temperance.Status = 100;
+                        status_Justice.Status = 100;
+                    }
+                };
             }
         }
     }

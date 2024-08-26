@@ -400,7 +400,7 @@ namespace LCAnomalyLibrary.Comp
         protected virtual void StudierExpCalculate(CompPawnStatus studier, EAnomalyWorkType workType)
         {
             float value = StudyUtil.GetPawnStatusIncreaseValue(studier, workType, parent.def.entityCodexEntry.category.defName);
-            value *= 0.1f;
+            value *= 0.05f;
 
             switch(workType)
             {
