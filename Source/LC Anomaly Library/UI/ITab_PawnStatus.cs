@@ -33,25 +33,32 @@ namespace LCAnomalyLibrary.UI
 
         protected override void FillTab()
         {
-            //if (previous != StudiableThing)
-            //{
-            //    selectedLetter = (Letters.EnumerableNullOrEmpty() ? null : Letters.Last());
-            //    previous = StudiableThing;
-            //}
-
-            Rect rectAvgLevel = new Rect(10f, 20f, size.x, 20f);
-            //rectAvgLevel = rectAvgLevel.ContractedBy(10f);
-            using (new TextBlock(TextAnchor.UpperLeft))
+            if (StatusComp.Triggered)
             {
-                string text = "LC_ITab_PawnStatus_AvgLevel".Translate() + StatusComp.SingleLevel.ToString();
-                Widgets.LabelEllipses(rectAvgLevel, ColoredText.Colorize(text, ColorLibrary.Grey));
+                Rect rectAvgLevel = new Rect(10f, 20f, size.x, 20f);
+                //rectAvgLevel = rectAvgLevel.ContractedBy(10f);
+
+                using (new TextBlock(TextAnchor.UpperLeft))
+                {
+                    string text = "LC_ITab_PawnStatus_AvgLevel".Translate() + StatusComp.SingleLevel.ToString();
+                    Widgets.LabelEllipses(rectAvgLevel, ColoredText.Colorize(text, ColorLibrary.Grey));
+                }
+
+                //分割线
+                using (new TextBlock(Widgets.SeparatorLineColor))
+                    Widgets.DrawLineHorizontal(0f, 40f, size.x);
+
+                DrawStatusTab();
             }
-
-            //分割线
-            using (new TextBlock(Widgets.SeparatorLineColor))
-                Widgets.DrawLineHorizontal(0f, 40f, size.x);
-
-            DrawStatusTab();
+            else
+            {
+                Rect rectAvgLevel = new Rect(10f, 20f, size.x, 40f);
+                using (new TextBlock(TextAnchor.UpperLeft))
+                {
+                    string text = "LC_ITab_PawnStatus_NonTriggered".Translate() + StatusComp.SingleLevel.ToString();
+                    Widgets.LabelEllipses(rectAvgLevel, ColoredText.Colorize(text, ColorLibrary.Red));
+                }
+            }
         }
 
         protected void DrawStatusTab()

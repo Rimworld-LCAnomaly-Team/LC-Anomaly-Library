@@ -10,47 +10,40 @@ namespace LCAnomalyLibrary.Comp.Pawns
     /// </summary>
     public class CompPawnStatus : ThingComp
     {
+        #region 变量
+
         /// <summary>
         /// Properties
         /// </summary>
         public CompProperties_PawnStatus Props => (CompProperties_PawnStatus)props;
 
+        /// <summary>
+        /// 勇气
+        /// </summary>
         protected PawnStatus status_Fortitude;
+        /// <summary>
+        /// 谨慎
+        /// </summary>
         protected PawnStatus status_Prudence;
+        /// <summary>
+        /// 自律
+        /// </summary>
         protected PawnStatus status_Temperance;
+        /// <summary>
+        /// 正义
+        /// </summary>
         protected PawnStatus status_Justice;
 
+        /// <summary>
+        /// 是否已经初始化
+        /// </summary>
         protected bool Inited = false;
 
-        public override void Initialize(CompProperties props)
-        {
-            base.Initialize(props);
-            StatusInit();
-        }
-
-        public override void PostSpawnSetup(bool respawningAfterLoad)
-        {
-            base.PostSpawnSetup(respawningAfterLoad);
-            StatusInit();
-        }
-
-        protected void StatusInit(bool force = false)
-        {
-            //检查hediff存在情况
-            (parent as Pawn)?.health?.GetOrAddHediff(HediffDefOf.LC_PawnStatus);
-
-            //未初始化或强制初始化，就执行初始化
-            if (!Inited || force)
-            {
-                status_Fortitude.Status = Props.initialRange_Fortitude.RandomInRange;
-                status_Prudence.Status = Props.initialRange_Prudence.RandomInRange;
-                status_Temperance.Status = Props.initialRange_Temperance.RandomInRange;
-                status_Justice.Status = Props.initialRange_Justice.RandomInRange;
-
-                LogUtil.Message($"{((Pawn)parent).Name}'s LC_PawnStatus inited.");
-                Inited = true;
-            }
-        }
+        /// <summary>
+        /// 是否已经激活
+        /// </summary>
+        public bool Triggered => triggered;
+        private bool triggered;
 
         /// <summary>
         /// 综合等级
@@ -64,9 +57,9 @@ namespace LCAnomalyLibrary.Comp.Pawns
                 EPawnLevel level;
 
                 //获取总等级
-                sum = (int)GetPawnStatusELevel(EPawnStatus.Fortitude) 
-                    + (int)GetPawnStatusELevel(EPawnStatus.Temperance) 
-                    + (int)GetPawnStatusELevel(EPawnStatus.Prudence) 
+                sum = (int)GetPawnStatusELevel(EPawnStatus.Fortitude)
+                    + (int)GetPawnStatusELevel(EPawnStatus.Temperance)
+                    + (int)GetPawnStatusELevel(EPawnStatus.Prudence)
                     + (int)GetPawnStatusELevel(EPawnStatus.Justice);
 
                 //计算平均等级
@@ -77,49 +70,32 @@ namespace LCAnomalyLibrary.Comp.Pawns
 
                 //预防出现0或者负值
                 if (result <= 0)
-                    return EPawnLevel.I;
-                else
-                {
-                    //V和EX属性只能在总和大于16的时候出现
-                    if(level == EPawnLevel.V || level == EPawnLevel.EX)
-                    {
-                        if (sum >= 16)
-                            return level;
-                        else
-                            level = EPawnLevel.IV;
-                    }
-                }
+                    level = EPawnLevel.I;
+
+                //V只能在总和大于16的时候出现
+                if ((level == EPawnLevel.V || level == EPawnLevel.EX) && sum >= 16)
+                    level = EPawnLevel.V;
 
                 return level;
             }
         }
 
-        public ref PawnStatus GetPawnStatusLevel(EPawnStatus statusType)
+        #endregion
+
+        #region 生命周期
+
+        public override void PostSpawnSetup(bool respawningAfterLoad)
         {
-            if (statusType == EPawnStatus.Fortitude)
-                return ref status_Fortitude;
-            else if (statusType == EPawnStatus.Prudence)
-                return ref status_Prudence;
-            else if (statusType == EPawnStatus.Temperance)
-                return ref status_Temperance;
-            else
-                return ref status_Justice;
+            base.PostSpawnSetup(respawningAfterLoad);
+            StatusInit();
         }
 
-        public EPawnLevel GetPawnStatusELevel(EPawnStatus statusType)
-        {
-            if (statusType == EPawnStatus.Fortitude)
-                return StudyUtil.CalculatePawnLevel(status_Fortitude.Status);
-            else if (statusType == EPawnStatus.Prudence)
-                return StudyUtil.CalculatePawnLevel(status_Prudence.Status);
-            else if(statusType == EPawnStatus.Temperance)
-                return StudyUtil.CalculatePawnLevel(status_Temperance.Status);
-            else
-                return StudyUtil.CalculatePawnLevel(status_Justice.Status);
-        }
-
+        /// <summary>
+        /// 保存
+        /// </summary>
         public override void PostExposeData()
         {
+            Scribe_Values.Look(ref triggered, "triggered");
             Scribe_Values.Look(ref Inited, "inited");
             Scribe_Deep.Look(ref status_Fortitude, "pawnStatus_Fortitude");
             Scribe_Deep.Look(ref status_Prudence, "pawnStatus_Prudence");
@@ -127,6 +103,10 @@ namespace LCAnomalyLibrary.Comp.Pawns
             Scribe_Deep.Look(ref status_Justice, "pawnStatus_Justice");
         }
 
+        /// <summary>
+        /// Gizmo
+        /// </summary>
+        /// <returns></returns>
         public override IEnumerable<Verse.Gizmo> CompGetGizmosExtra()
         {
             if (DebugSettings.ShowDevGizmos)
@@ -186,6 +166,94 @@ namespace LCAnomalyLibrary.Comp.Pawns
                 };
             }
         }
+
+        #endregion
+
+        #region 外部方法
+
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="props"></param>
+        public override void Initialize(CompProperties props)
+        {
+            base.Initialize(props);
+            StatusInit();
+        }
+
+        /// <summary>
+        /// 获取员工属性结构
+        /// </summary>
+        /// <param name="statusType">属性类型</param>
+        /// <returns></returns>
+        public ref PawnStatus GetPawnStatusLevel(EPawnStatus statusType)
+        {
+            if (statusType == EPawnStatus.Fortitude)
+                return ref status_Fortitude;
+            else if (statusType == EPawnStatus.Prudence)
+                return ref status_Prudence;
+            else if (statusType == EPawnStatus.Temperance)
+                return ref status_Temperance;
+            else
+                return ref status_Justice;
+        }
+
+        /// <summary>
+        /// 获取员工属性等级枚举
+        /// </summary>
+        /// <param name="statusType">属性类型</param>
+        /// <returns></returns>
+        public EPawnLevel GetPawnStatusELevel(EPawnStatus statusType)
+        {
+            if (statusType == EPawnStatus.Fortitude)
+                return StudyUtil.CalculatePawnLevel(status_Fortitude.Status);
+            else if (statusType == EPawnStatus.Prudence)
+                return StudyUtil.CalculatePawnLevel(status_Prudence.Status);
+            else if (statusType == EPawnStatus.Temperance)
+                return StudyUtil.CalculatePawnLevel(status_Temperance.Status);
+            else
+                return StudyUtil.CalculatePawnLevel(status_Justice.Status);
+        }
+
+        /// <summary>
+        /// 激活员工属性
+        /// </summary>
+        /// <returns>激活是否成功</returns>
+        public bool TriggerPawnStatus()
+        {
+            if (Triggered) return false;
+
+            //检查hediff存在情况
+            (parent as Pawn)?.health?.GetOrAddHediff(HediffDefOf.LC_PawnStatus);
+            triggered = true;
+
+            return true;
+        }
+
+        #endregion
+
+        #region 内部方法
+
+        /// <summary>
+        /// 员工属性初始化
+        /// </summary>
+        /// <param name="force">是否为强制初始化</param>
+        protected void StatusInit(bool force = false)
+        {
+            //未初始化或强制初始化，就执行初始化
+            if (!Inited || force)
+            {
+                status_Fortitude.Status = Props.initialRange_Fortitude.RandomInRange;
+                status_Prudence.Status = Props.initialRange_Prudence.RandomInRange;
+                status_Temperance.Status = Props.initialRange_Temperance.RandomInRange;
+                status_Justice.Status = Props.initialRange_Justice.RandomInRange;
+
+                LogUtil.Message($"{((Pawn)parent).Name}'s LC_PawnStatus inited.");
+                Inited = true;
+            }
+        }
+
+        #endregion
     }
 
     /// <summary>

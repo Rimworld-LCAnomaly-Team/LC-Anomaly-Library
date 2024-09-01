@@ -9,4 +9,6 @@
   <LC_ITab_PawnStatus_Temperance>自律</LC_ITab_PawnStatus_Temperance>
   <LC_ITab_PawnStatus_Justice>正义</LC_ITab_PawnStatus_Justice>
 
+  <LC_ITab_PawnStatus_NonTriggered>属性未激活</LC_ITab_PawnStatus_NonTriggered>
+
 </LanguageData>

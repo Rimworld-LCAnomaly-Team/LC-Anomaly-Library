@@ -194,10 +194,83 @@
             Properties
             </summary>
         </member>
+        <member name="F:LCAnomalyLibrary.Comp.Pawns.CompPawnStatus.status_Fortitude">
+            <summary>
+            勇气
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.Pawns.CompPawnStatus.status_Prudence">
+            <summary>
+            谨慎
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.Pawns.CompPawnStatus.status_Temperance">
+            <summary>
+            自律
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.Pawns.CompPawnStatus.status_Justice">
+            <summary>
+            正义
+            </summary>
+        </member>
+        <member name="F:LCAnomalyLibrary.Comp.Pawns.CompPawnStatus.Inited">
+            <summary>
+            是否已经初始化
+            </summary>
+        </member>
+        <member name="P:LCAnomalyLibrary.Comp.Pawns.CompPawnStatus.Triggered">
+            <summary>
+            是否已经激活
+            </summary>
+        </member>
         <member name="P:LCAnomalyLibrary.Comp.Pawns.CompPawnStatus.SingleLevel">
             <summary>
             综合等级
             </summary>
+        </member>
+        <member name="M:LCAnomalyLibrary.Comp.Pawns.CompPawnStatus.PostExposeData">
+            <summary>
+            保存
+            </summary>
+        </member>
+        <member name="M:LCAnomalyLibrary.Comp.Pawns.CompPawnStatus.CompGetGizmosExtra">
+            <summary>
+            Gizmo
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LCAnomalyLibrary.Comp.Pawns.CompPawnStatus.Initialize(Verse.CompProperties)">
+            <summary>
+            初始化
+            </summary>
+            <param name="props"></param>
+        </member>
+        <member name="M:LCAnomalyLibrary.Comp.Pawns.CompPawnStatus.GetPawnStatusLevel(LCAnomalyLibrary.Comp.Pawns.EPawnStatus)">
+            <summary>
+            获取员工属性结构
+            </summary>
+            <param name="statusType">属性类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:LCAnomalyLibrary.Comp.Pawns.CompPawnStatus.GetPawnStatusELevel(LCAnomalyLibrary.Comp.Pawns.EPawnStatus)">
+            <summary>
+            获取员工属性等级枚举
+            </summary>
+            <param name="statusType">属性类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:LCAnomalyLibrary.Comp.Pawns.CompPawnStatus.TriggerPawnStatus">
+            <summary>
+            激活员工属性
+            </summary>
+            <returns>激活是否成功</returns>
+        </member>
+        <member name="M:LCAnomalyLibrary.Comp.Pawns.CompPawnStatus.StatusInit(System.Boolean)">
+            <summary>
+            员工属性初始化
+            </summary>
+            <param name="force">是否为强制初始化</param>
         </member>
         <member name="T:LCAnomalyLibrary.Comp.Pawns.EPawnStatus">
             <summary>
