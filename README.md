@@ -1,1 +1,2 @@
-这是一个基于RimWorld1.5 Anomaly开发的mod框架，主要内容是提供对脑叶公司相关mod的异常mod开发支持。
+本Mod无限期停更，已与Core合并，请移步LC-Anomaly-Core。
+This mod has been integrated in LC-Anomaly-Core.
